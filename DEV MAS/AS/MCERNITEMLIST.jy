@@ -1,0 +1,7 @@
+if mbo.getString("LINETYPE") == "RENTALITEM":
+	domainid = "MCERNITEM"
+	listWhere = "MCERENTAL=1"
+else:
+	domainid = "MCERNITEM"
+	listWhere = "MCERENTAL=0"
+	

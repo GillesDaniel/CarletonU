@@ -1,0 +1,55 @@
+from java.io import File
+from psdi.server import MXServer
+from com.ibm.tivoli.maximo.oslc.provider import COSAttachmentStorage
+
+topLevelFilePath = service.getProperty("mxe.doclink.doctypes.topLevelPaths")
+
+doclink = mbo
+isCos = False
+
+docinfoSet = doclink.getMboSet("DOCINFO")
+docinfo = docinfoSet.moveFirst()
+
+directoryPath = service.getProperty("mxe.doclink.doctypes.defpath")
+
+if "cos:doclinks" in topLevelFilePath:
+    isCos = True
+
+if isCos:
+    print ("")
+    print ("-----------------------------------")
+    print ("S3 Attachments")
+    print ("-----------------------------------")
+    
+    fileName = docinfo.getString("DOCUMENT") + ".zip"
+    print ("fileName")
+    cosAS = COSAttachmentStorage()
+    try:
+        cosAS.deleteAttachment(doclink)
+        docinfo.setDeleted(True)
+        doclink.setDeleted(True)
+    except Exception as e:
+        print ("Error deleting file: " + fileName + ", Error " + str(e))
+
+else:
+    print("")
+    print ("-----------------------------------")
+    print ("Normal/Secure Atachments")
+    print ("-----------------------------------")
+
+    directoryPath = File(directoryPath)
+    document = docinfo.getString("DOCUMENT") + ".zip"
+
+    print ("Document: " + document)
+
+    for file in directoryPath.listFiles():
+        fileName = file.getName()
+        print ("File Name: " + fileName)
+        if document == fileName:
+            try:
+                print ("In the try!")
+                file.delete()
+                doclink.delete()
+                docinfo.delete()
+            except Exception as e:
+                print ("Error deleteing file: " + fileName + ", Error " + str(e))

@@ -1,0 +1,5 @@
+if (mbo is not None):
+	if (mbo.isNull("scheduledate")):
+		result = "#ffcb7d";
+	else:
+		result = "#009900";

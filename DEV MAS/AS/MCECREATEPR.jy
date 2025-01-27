@@ -1,0 +1,18 @@
+# Script created by Diksha Khanna-26/06/2024
+# The script is to cancel pr,prline and workorder save
+# The script is created on Action Launch Point 
+# Run on "Close" button of the Direct Issue Dialog Box
+
+
+from psdi.mbo import MboConstants
+from psdi.server import MXServer
+from java.util import Date
+
+# Getting workorder object
+origWo = mbo.getOwner()
+
+#Save the workorder object
+origWo.getThisMboSet().reset()
+
+# To close the dialog box
+service.closeDialog()

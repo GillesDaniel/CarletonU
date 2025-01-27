@@ -1,0 +1,35 @@
+#BPD Query Person Group Restriction Config
+# Name MCEQUERYPG
+# Launch Point Object / Query / MCEQUERYPERSONGROUP
+# Author MRAWLINSON 2023
+# Requires additional object QUERYPERSONGROUP
+# Requires attributes on QUERYPERSONGROUP: QUERYID, PERSONGROUP, DESCRIPTION
+# Requires relationship from QUERY to QUERYPERSONGROUP called MCEQUERYPERSONGROUP =
+# :QUERYID = QUERYID
+# Requires relationship from QUERY to PERSONGROUP called MCEPERSONGROUPMODIFY =
+# NOT EXISTS(SELECT 1 FROM QUERYPERSONGROUP WHERE PERSONGROUP.PERSONGROUP = 
+# QUERYPERSONGROUP.PERSONGROUP AND QUERYPERSONGROUP.QUERYID = :QUERYID)
+
+qpgSet = mbo.getMboSet("MCEQUERYPERSONGROUP")
+qpg = qpgSet.moveFirst()
+pgSet = mbo.getMboSet("MCEPERSONGROUPMODIFY")
+while qpg is not None:
+    if qpg.toBeDeleted():
+        if mbo.getString("ISPUBLIC") == "N":
+            errorgroup ="mcesignature"
+            errorkey="queryNotPublic"
+            qpg.setDeleted(False)
+        elif mbo.getString("OWNER") != user:
+            errorgroup ="signature"
+            errorkey="notQueryOwner"
+            qpg.setDeleted(False)
+    qpg = qpgSet.moveNext()
+if mbo.getString("ISPUBLIC") == "Y":
+    queryid = mbo.getString("QUERYID")
+    selection = pgSet.getSelection()
+    for select in selection:
+        qpg = qpgSet.add()
+        qpg.setValue("PERSONGROUP", select.getString("PERSONGROUP"), 11L)
+        qpg.setValue("QUERYID", queryid)
+mbo.getThisMboSet().save()
+service.closeDialog()

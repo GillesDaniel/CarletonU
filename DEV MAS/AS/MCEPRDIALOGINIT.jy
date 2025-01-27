@@ -1,0 +1,97 @@
+# Script created by Diksha Khanna-02/07/2024
+# The below script will show the preview of the purchase requisitions for Direct Issue Items, Materials and Services
+# The script is created on Object Launch Point  - 	Initialize Value
+# Run on "OK" button of the Direct Issue Dialog Box will help to save the PR and Prline generated
+
+from psdi.mbo import MboConstants
+from psdi.server import MXServer
+from java.util import Date
+from java.lang import System
+from java.util import HashMap
+
+# Get workorder object as Owner
+origWo = mbo.getOwner()
+
+# Get WPItem object
+wpItemSet = origWo.getMboSet("MCEWPITEM")
+
+# Create a hashmap
+vendorgrp=HashMap()
+
+
+# We can't generate PR when workorder status is WAPPR
+status=MXServer.getMXServer().getMaximoDD().getTranslator().toInternalString("WOSTATUS",origWo.getString("STATUS"), origWo)
+
+if  status !='WAPPR':
+    # Get workorder number
+    wonum=origWo.getString("WONUM")
+    
+    # Condition to check if WpItem is Empty or not
+    if not wpItemSet.isEmpty():
+        # Iterate over all WPItem records
+        for i in range(0,wpItemSet.count()):
+            
+            wpitem=wpItemSet.getMbo(i)
+            # Getting vendor
+            vendor=wpitem.getString("VENDOR")
+                
+            # Check if vendor is not in vendorgrp (HashMap)
+            # This will help to group together the WPItem lines based on different Vendors
+            if vendor not in vendorgrp:
+                vendorgrp[vendor]=[]
+                    
+            vendorgrp[vendor].append(wpitem)
+            
+        # Create PR for each vendor        
+        for vendor,items in vendorgrp.items():
+            
+            #Getting PR object from temporary object using relationship
+            
+                prSet = mbo.getMboSet("MCEPRS")
+                
+                #Adding WPItem details in PR object
+                pr = prSet.add()
+                pr.setValue("DESCRIPTION","Direct Issue PR for Work Order # "+ wonum + "#" + vendor)
+                pr.setValue("VENDOR", vendor, MboConstants.NOACCESSCHECK)
+                pr.setValue("SITEID", origWo.getString("SITEID"), MboConstants.NOACCESSCHECK)
+                pr.setValue("ORGID", origWo.getString("ORGID"), MboConstants.NOACCESSCHECK)
+                pr.setValue("REQUIREDDATE", wpitem.getDate("REQUIREDATE"), MboConstants.NOACCESSCHECK)
+                
+                ##Getting PR object from PR object using relationship
+            
+                prLineSet = pr.getMboSet("PRLINE")
+                
+                # Loop to check for all the WPItem lines
+                for wpitem in items:
+                    
+                    #Add all the wpmaterial lines in PRLINE in PR application for that PR
+                    
+                    prline = prLineSet.add(MboConstants.NOACCESSCHECK)
+                    
+                    # Populating the fields from Workorder and WPItem to Prline
+                    
+                    prline.setValue("wonum", origWo.getString("wonum"), MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+                    prline.setValue("itemnum", wpitem.getString("itemnum"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("linetype", wpitem.getString("linetype"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("description", wpitem.getString("description"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("description_longdescription", wpitem.getString("description_longdescription"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("orderqty", wpitem.getLong("itemqty"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("orderunit", wpitem.getString("orderunit"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("unitcost", wpitem.getDouble("unitcost"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("requestedby", wpitem.getString("requestby"), MboConstants.NOACCESSCHECK)
+                    prline.setValue("reqdeliverydate", wpitem.getDate("requiredate"), MboConstants.NOACCESSCHECK)
+                    
+                    # Add the pr and prline number generate using the code below to WPItems line
+    
+                    wpitem.setValue("pr", pr.getString("prnum"), MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+                    wpitem.setValue("prlinenum", prline.getString("prlinenum"), MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+
+#Throw error message if all the Item lines are not Direct Issue
+    else :
+        errorgroup = "mceworkorder"
+        errorkey = "noDirectIssue"
+#Throw error message if the status of workorder is 'WAPPR'  
+
+else:
+    errorgroup = "mceworkorder"
+    errorkey = "NoDirectwappr"

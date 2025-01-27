@@ -1,0 +1,118 @@
+###############################################################################################################################
+###### Script Definition ##########
+
+"""
+    Created by: MCE Zenith
+    Date created: 02-APR-2019
+
+This script performs the following functions:
+When a user has checked Is Applicable, and Reviewed, an automation script will need to run that does the following:
+ 1. Create an action for each preventive measure.  The siteid of the action should be the siteid corresponding with the business unit (the location in Maximo). OK
+ 2. The BU will go into the location field for the action that is created. -OK
+ 3. The description of the action will be the description of the preventive measure. OK
+ 4. The long description of the action will be the long description of the preventive measure. OK
+ 5. The target completion date of the action will be the target completion of the SR.CNRTARGCOMP. OK
+ 6. The owner of the action will be the ACTIONBY (if no ACTIONBY then REVIEWER). OK
+ 7. The Category of the action that is created will be “Bulletin”. OK
+ 8. The status of the action that is created will be “SUBMIT” . OK
+ 9. Actions that are created by the automation script need to show up in the related records tab for the safety bulletin. OK
+ 10. There needs to be some sort of mechanism in  place so that actions are not created twice for the same reviewer/Site/Location. OK, need to test several cases
+ 11. Woclass should = ACTTRACK,  worktype should be null. OK
+
+"""
+
+###############################################################################################################################
+
+########
+# Imports
+########
+
+from psdi.util import MXApplicationException
+from psdi.mbo import MboConstants
+from psdi.mbo import SqlFormat
+from psdi.server import MXServer
+from psdi.util.logging import MXLoggerFactory
+from psdi.security import UserInfo
+from psdi.server import MXServer
+from psdi.security import UserInfo
+
+################
+# Initialise variables
+################
+
+myLogger = MXLoggerFactory.getLogger("maximo.script.scripts")
+runasUser=MXServer.getMXServer().getUserInfo('MAXADMIN') 
+
+#################################### 
+# Helper functions
+#################################### 
+
+def addact():
+ ############Getting MBOs: 1. Standard Actions, 2. Prev. Mes., 3. SR, 4. Actions###################
+ actSet = MXServer.getMXServer().getMboSet('WOACTIVITY',  mbo.getUserInfo()) 
+ sactSet = MXServer.getMXServer().getMboSet('MCESTDACT', runasUser) 
+ sactSet.setWhere("STDACTNUM = '"+mbo.getString("STDACTNUM")+"'")
+ pmSet = MXServer.getMXServer().getMboSet('MCEPREVMEASURES', runasUser) 
+ pmSet.setWhere("TICKETID = '"+mbo.getString("TICKETID")+"'")
+ relrecSet = mbo.getOwner().getMboSet('RELATEDRECORD')
+ sactSet.reset()
+ sact = sactSet.moveFirst()
+ ##################Adding Action#################################
+ if(sact):
+  pmSet.reset()
+  pm = pmSet.moveFirst()
+  while (pm):
+   act = actSet.add()
+   act.setValue("WOCLASS","ACTIVITY",MboConstants.NOACCESSCHECK)
+   act.setValue("ORIGRECORDID",mbo.getOwner().getString("TICKETID"))
+   if pm.getString("DESCRIPTION") != "":
+    act.setValue("DESCRIPTION",pm.getString("DESCRIPTION"))
+   if pm.getString("DESCRIPTION_LONGDESCRIPTION") != "":
+    act.setValue("DESCRIPTION_LONGDESCRIPTION",pm.getString("DESCRIPTION_LONGDESCRIPTION"))
+   if sact.getString("SITEID") != "":
+    act.setValue("SITEID",sact.getString("SITEID"),MboConstants.NOACCESSCHECK)
+   if sact.getString("ORGID") != "":
+    act.setValue("ORGID",sact.getString("ORGID"),MboConstants.NOACCESSCHECK)
+   if mbo.getOwner().getString("TARGETFINISH") != "":
+    act.setValue("TARGCOMPDATE", mbo.getOwner().getString("TARGETFINISH"),MboConstants.NOACCESSCHECK)
+   if mbo.getString("ACTIONBY") != "":
+    act.setValue("OWNER",mbo.getString("ACTIONBY"),MboConstants.NOACCESSCHECK)
+   elif mbo.getString("REVIEWER") != "":
+    act.setValue("OWNER",mbo.getString("REVIEWER"),MboConstants.NOACCESSCHECK)
+   act.setValue("STATUS","WAPPR",MboConstants.NOACCESSCHECK)
+   if sact.getString("MCELOCATION") != "":
+    act.setValue("LOCATION",sact.getString("MCELOCATION"),MboConstants.NOACCESSCHECK)
+   myLogger.info("------ MCESB002 Action has been added ---- " + pm.getString("DESCRIPTION"))
+   ##################Adding Related Rec#################################
+   actSet.save()
+#   relrec = relrecSet.add()
+#   relrec.setValue("CLASS","SR")
+#   relrec.setValue("RECORDKEY",mbo.getString("TICKETID"))
+#   relrec.setValue("RELATEDRECCLASS","ACTIVITY")
+#   if act.getString("SITEID") != "":
+#    relrec.setValue("RELATEDRECSITEID",act.getString("SITEID"),MboConstants.NOACCESSCHECK)
+#   if act.getString("ORGID") != "":
+#    relrec.setValue("RELATEDRECORGID",act.getString("ORGID"),MboConstants.NOACCESSCHECK)
+#   if mbo.getString("SITEID") != "":
+#    relrec.setValue("SITEID",mbo.getString("SITEID"),MboConstants.NOACCESSCHECK)
+#   if mbo.getString("ORGID") != "":
+#    relrec.setValue("ORGID",mbo.getString("ORGID"),MboConstants.NOACCESSCHECK)
+#   relrec.setValue("RELATETYPE","RELATED")
+#   relrec.setValue("RELATEDRECKEY",act.getString("WORKORDERID"))
+   pm = pmSet.moveNext()
+ actSet.save()
+# relrecSet.save()
+ actSet.close()
+# relrecSet.close()
+
+##############
+# Business Logic
+##############
+
+myLogger.info("------ MCESB002 version 0.2 script started ------")
+
+if mbo.getBoolean("REQUIRED") and mbo.getBoolean("APPROVED") and mbo.getMboValue("APPROVED").getPreviousValue().asString()=='0':
+ myLogger.info("------ CNRACT003 Conditions meet :) , Actions are going to be created for this SR ------")
+ addact()
+
+myLogger.info("------ MCESB002 version 0.2 script finished------")

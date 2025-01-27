@@ -1,0 +1,77 @@
+################################################################################
+# Date      17/12/2021
+# Author    P IRVING
+# Company   BPD Zentih Ltd
+# Purpose   Automatically Create Bins for Repairs Items
+# Script	MCERPCREATEBINS
+################################################################################
+
+#Loop through the Planned Materials on the work order
+#Create an INVBALANCES record for each
+#Populate the MCERPWONUM and MCERPWOSITEID from the work order
+
+
+def addInvBalanceAndRelatedObjects(curbal, inventory, binnum,conditioncode,wonum):
+	from psdi.app.inventory import InvBalancesRemote, InvTransRemote
+	inventoryBalances = inventory.getMboSet("INVBALANCES")
+	newinvbal = inventoryBalances.add()
+	newinvbal.setValue("BINNUM",binnum,3L)
+	newinvbal.setValue("CURBAL",float(curbal),2L)
+	newinvbal.setValue("CONDITIONCODE",conditioncode,11L)
+	newinvbal.setValue("MCERPWONUM",wonum,2L)
+	itMbo = inventory.getMboSet("INVTRANS").add(2L)
+	itMbo.setValue("TRANSTYPE", "INSERTITEM")
+	itMbo.setValue("itemnum", inventory.getString("itemnum"), 11L)
+	itMbo.setValue("itemsetid", inventory.getString("itemsetid"), 11L)
+	itMbo.setValue("conditioncode", inventory.getString("conditioncode"), 11L)
+	itMbo.setValue("storeloc", inventory.getString("location"), 11L)
+	itMbo.setValue("binnum", binnum, 11L)
+	itMbo.setValue("lotnum", "", 11L)
+	itMbo.setValue("curbal", curbal, 2L)
+	itMbo.setValue("quantity", curbal, 11L)
+	itMbo.setValue("newcost", inventory.getDouble("stdcost"), 11L)
+	itMbo.setValue("physcnt", curbal, 2L)
+	itMbo.setValue("gldebitacct", inventory.getString("controlacc"), 2L)
+	itMbo.setValue("glcreditacct", inventory.getString("controlacc"), 2L)
+
+#related wpmaterial rows from work order
+wpMaterialSet = mbo.getMboSet("SHOWPLANMATERIAL")
+#Select first row
+wpmaterialMbo = wpMaterialSet.moveFirst()
+
+while wpmaterialMbo is not None:
+	#need to connect to inventory
+	invBinBalSet = wpmaterialMbo.getMboSet("MCERPINVBINBAL")
+	invbalances = invBinBalSet.moveFirst()
+	
+	if invbalances is None:
+		#go to inventory 
+		#add a bin to the balance from there...
+		#Get inventory set that isn't related because it causes save issues
+		from psdi.server import MXServer
+		from psdi.mbo import SqlFormat
+
+		mxserver = MXServer.getMXServer()
+		inventorySet = mxserver.getMboSet("INVENTORY",mbo.getUserInfo())
+		invWhere = SqlFormat(mbo, "itemnum=:1 and location=:2 and itemsetid=:3 and siteid=:4")
+		invWhere.setObject(1,'INVENTORY','ITEMNUM',wpmaterialMbo.getString("ITEMNUM"))
+		invWhere.setObject(2,'INVENTORY','LOCATION',wpmaterialMbo.getString("LOCATION"))
+		invWhere.setObject(3,'INVENTORY','ITEMSETID',wpmaterialMbo.getString("ITEMSETID"))
+		invWhere.setObject(4,'INVENTORY','SITEID',wpmaterialMbo.getString("STORELOCSITE"))
+		
+		inventorySet.setUserWhere(invWhere.format())
+		inventorySet.reset()
+		inventory = inventorySet.moveFirst()
+		
+		if inventory is not None:
+			binnum = "RP-"+wpmaterialMbo.getString("WONUM")
+			curbal = 0
+			conditioncode = wpmaterialMbo.getString("CONDITIONCODE")
+			wonum = mbo.getString("WONUM")
+			addInvBalanceAndRelatedObjects(curbal, inventory, binnum,conditioncode,wonum)
+			inventorySet.save()
+		
+	wpmaterialMbo = wpMaterialSet.moveNext()
+	
+#Refresh the Table onscreen 
+#service.webclientsession().findControl("OR76113479048341372").getDataBean().refreshTable();

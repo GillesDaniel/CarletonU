@@ -1,0 +1,9 @@
+# Created by Diksha Khanna - CAFD Field Unchecked if status is complete
+from psdi.server import MXServer;
+from psdi.mbo import MboConstants;
+from java.util import Date
+
+
+woMbo=mbo
+if woMbo.getString("MCESTATUS") in ('COMP','CLOSE'):
+      woMbo.setValue("MCECAFD",0,MboConstants.NOACCESSCHECK)

@@ -1,0 +1,15 @@
+from psdi.app.labor import LabTransRemote
+from psdi.mbo import MboSetRemote
+
+ltset = mbo.getMboSet("LABTRANS")
+x = 0
+y = ltset.count()
+
+while x < y:
+  lt = ltset.getMbo(x)
+  x += 1
+  if lt.getBoolean("GENAPPRSERVRECEIPT") == True:
+    continue
+  lt.approveLaborTransaction()
+
+mbo.getThisMboSet().save()

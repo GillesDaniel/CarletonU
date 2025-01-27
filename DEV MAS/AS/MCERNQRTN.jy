@@ -1,0 +1,40 @@
+################################################################################
+# Date      02-01-20
+# Author    P Irving
+# Company   BPD Zentih Ltd
+# Purpose   Update Quantity Returned on Orig Receipt when creating a return
+# Script	MCERNQRTN
+################################################################################
+
+if(mbo.getString("ISSUETYPE")=="RETURN"):
+    orig = mbo.getMboSet("ORIGINALRECEIPT").getMbo(0)
+    if orig is not None:
+	
+		#we need to get the receipt from the same set or we can end up with record updated by another user
+		thisSet = mbo.getThisMboSet()
+		rec = thisSet.moveFirst()
+		found = False
+		while not found and rec is not None:
+			if rec.getUniqueIDValue() == orig.getUniqueIDValue():
+				found = True
+			else:
+				rec = thisSet.moveNext()
+
+		if found==True:
+			mcernqrtn = 0
+			
+			if not rec.isNull("MCERNQRTN"):
+				mcernqrtn = rec.getDouble("MCERNQRTN")
+			
+			mcernqrtn = mcernqrtn + (mbo.getDouble("QUANTITY")*-1)
+			rec.setValue("MCERNQRTN",mcernqrtn,2L)
+			
+			origuse = rec.getMboSet("MCERNMATUSETRANS").getMbo(0)
+			if origuse is not None:
+				origuse.setValue("MCERNQRTN",mcernqrtn,2L)
+				if mcernqrtn == 0:
+					origuse.setValue("MCERNRTN",'NONE',2L)
+				elif mcernqrtn >= rec.getDouble("QUANTITY"):
+					origuse.setValue("MCERNRTN",'COMPLETE',2L)
+				else:
+					origuse.setValue("MCERNRTN",'PARTIAL',2L)

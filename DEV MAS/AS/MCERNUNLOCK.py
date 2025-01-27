@@ -1,0 +1,3 @@
+fields = ["RETURNCOMPANY","RETURNNAME","RETURNADD1","RETURNADD2","RETURNADD3","RETURNADD4"]
+
+mbo.setFieldFlag(fields,7L,False)

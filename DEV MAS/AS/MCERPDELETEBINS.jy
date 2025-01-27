@@ -1,0 +1,18 @@
+################################################################################
+# Date      17/12/2021
+# Author    P IRVING
+# Company   BPD Zentih Ltd
+# Purpose   Clean Up Empty Repair Bins After Repair Work Order Complete
+# Script	MCERPDELETEBINS
+################################################################################
+
+#Find all repair bins for this work order
+invBinBalSet = mbo.getMboSet("MCERPREPBINS")
+
+bin = invBinBalSet.moveFirst()
+
+while bin is not None:
+	if bin.toBeDeleted()==False:
+		if bin.getDouble("CURBAL")==0.0:
+			bin.setDeleted(True)
+	bin = invBinBalSet.moveNext()

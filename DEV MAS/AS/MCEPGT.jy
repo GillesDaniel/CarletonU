@@ -1,0 +1,36 @@
+def setLatestSeq(personGroup):
+    if personGroup is not None:
+        ownerString = str(personGroup)
+        
+        if "PersonGroupTeam" in ownerString:
+            memberSet = personGroup.getMboSet("PRIMARYMEMBER_ALTERNATES")
+        else:
+            memberSet = personGroup.getMboSet("PERSONGROUP_PRIMARYMEMBERS")
+            
+        if memberSet.isEmpty():
+            mbo.setValue("GROUPDEFAULT",1,11L)
+            maxseq=0	
+        else:
+            maxseq = memberSet.max("RESPPARTYGROUPSEQ")
+        mbo.setValue("RESPPARTYSEQ",maxseq+1,11L)
+        mbo.setValue("RESPPARTYGROUPSEQ",maxseq+1,11L)
+
+appname = mbo.getThisMboSet().getParentApp()
+if appname=="PERSONGR":
+    #Requires PERSONGROUPTEAM.RESPPARTYGROUPSEQ to have default value of 9999 in DB Config
+    if mbo.getInt("RESPPARTYGROUPSEQ") == 9999:
+        mbo.setValueNull("RESPPARTYSEQ",11L)
+        mbo.setValueNull("RESPPARTYGROUPSEQ",11L)
+        personGroup = mbo.getOwner()
+        setLatestSeq(personGroup)
+elif appname=="PERSON":
+    seq = mbo.getInt("RESPPARTYGROUPSEQ")
+    print seq
+    if mbo.getInt("RESPPARTYGROUPSEQ") == 9999:
+        mbo.setValueNull("RESPPARTYSEQ",11L)
+        mbo.setValueNull("RESPPARTYGROUPSEQ",11L)
+    elif mbo.isNull("RESPPARTYGROUPSEQ") and not mbo.isNull("PERSONGROUP"):
+        personGroupSet = mbo.getMboSet("MCEPG")
+        personGroup = personGroupSet.getMbo(0)
+        print personGroup
+        setLatestSeq(personGroup)

@@ -1,0 +1,20 @@
+#If work orders status is COMP and is modified
+status = mbo.getString("STATUS")
+modified = mbo.isModified("STATUS")
+priority = mbo.getInt("WOPRIORITY")
+
+if status=="COMP" and modified:
+	#Use a relationship to find all rentals which aren't fully returned
+	unreturnedSet = mbo.getMboSet("MCERNMUTNOTCOMP")
+	
+	#If not empty set
+	if not unreturnedSet.isEmpty():
+		#If work order priority is 1
+		if priority==1:
+			#Warning message
+			warngroup = "mcern"
+			warnkey = "returnb4comp"
+		else:
+			#error message
+			errorgroup = "mcern"
+			errorkey = "returnb4comp"

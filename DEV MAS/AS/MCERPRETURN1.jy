@@ -1,0 +1,146 @@
+################################################################################
+# Date      15/12/2021
+# Author    P IRVING
+# Company   BPD Zentih Ltd
+# Purpose   Automatically Create Inventory Usage Lines for all items on a repair
+# Script	MCERPRETURN1
+#
+# Updated   K ST-CLAIRE
+# Date      12/01/2023
+# Fix       Checks if Auto Create Inventory Usage is ticked in Organisation Settings, 
+#           
+################################################################################
+
+#One inventory usage and line for each item (makes it easier if there are multiple storerooms)
+#Set type to return and choose the bin from a relationship that should already exist
+#Auto complete it, returning the item to the storeroom
+
+from psdi.server import MXServer
+
+#get the MXServer
+mxs = MXServer.getMXServer();
+
+#Get the set of all wpmaterials
+wpmSet = mbo.getMboSet("SHOWPLANMATERIAL");
+
+#move first
+wpm = wpmSet.moveFirst();
+
+#12/01/2023
+#Check Auto create inventory usage is Not ticked
+aiu = mbo.getMboSet("MCEAUTOINVUSE").moveFirst();
+
+#Check if Logistics is installed
+lgst = mbo.getMboSet("MCERPLGST").moveFirst();
+
+#loop through them to Create the invuse for each where there is a planned material And Auto Create Invuse is not ticked
+#while wpm is not None:
+while wpm is not None and aiu is not None:
+	#check the quantity and storeroom are valid
+	if wpm.isNull("ITEMQTY") or wpm.getDouble("ITEMQTY")<=0:
+		#throw error
+		errorgroup = "MCERP";
+		errorkey = "noitems";
+	if wpm.isNull("LOCATION") or wpm.getString("LOCATION")=="":
+		#throw an error
+		errorgroup = "MCERP";
+		errorkey = "nostoreroom";
+		
+	#get a new invuse mbo set
+	invUseSet = mxs.getMboSet("INVUSE",mbo.getUserInfo())
+		
+	#add a new record
+	invUse = invUseSet.add();
+	invUse.setValue("DESCRIPTION","Repair: Return Item "+wpm.getString("ITEMNUM")+" to Storeroom for Repair "+wpm.getString("WONUM"),2L)
+	invUse.setValue("USETYPE","ISSUE",2L)
+	invUse.setValue("FROMSTORELOC",wpm.getString("LOCATION"),2L)
+	
+	
+	#get the invuseline set as a related record
+	#add a line
+	invLineSet = invUse.getMboSet("INVUSELINE")
+	invLine = invLineSet.add()
+	invLine.setValue("USETYPE","RETURN",2L)
+	invLine.setValue("ITEMNUM",wpm.getString("ITEMNUM"),2L)
+	invLine.setValue("REFWO",wpm.getString("WONUM"),2L)
+	invLine.setValue("QUANTITY",wpm.getDouble("ITEMQTY"),2L)
+	
+	invLine.setValue("FROMCONDITIONCODE",wpm.getString("CONDITIONCODE"),2L)
+	invLine.setValue("FROMBIN","RP-"+mbo.getString("WONUM"),2L)
+	
+	#Logistics Compatability Addition and RP bin qty fix - do an extra save.
+	invUseSet.save();
+	invUseSet.close();
+	iuuid = invUse.getString("INVUSEID")
+	invUseSet = mxs.getMboSet("INVUSE",mbo.getUserInfo())
+	invUseSet.setWhere("invuseid = "+iuuid)
+	invUseSet.reset();
+	invUse = invUseSet.moveFirst() 
+	    
+	#call change status on the invuse record
+	#service.log("INVUSE IS "+invUse.getString("INVUSENUM"))
+	#service.log("INVUSE STATUS "+invUse.getString("STATUS"))
+	invUse.changeStatus("COMPLETE",mxs.getDate(), "AUTO COMPLETE BY WORKFLOW", 2L)
+	
+	#save and close the invuse set
+	#yes it's bad to save in a script but it's opened from MXServer and then closed so contained
+	invUseSet.save();
+	invUseSet.close();
+	
+	#move next
+	wpm = wpmSet.moveNext();
+    
+  
+#12/01/2023
+#loop through them to UPDATE the invuse for each where there is a planned material And Auto Create Invuse Is Ticked
+while wpm is not None and aiu is None:
+	#check the quantity and storeroom are valid
+	if wpm.isNull("ITEMQTY") or wpm.getDouble("ITEMQTY")<=0:
+		#throw error
+		errorgroup = "MCERP";
+		errorkey = "noitems";
+	if wpm.isNull("LOCATION") or wpm.getString("LOCATION")=="":
+		#throw an error
+		errorgroup = "MCERP";
+		errorkey = "nostoreroom";
+		
+	#get auto created invuse set
+	invUseSet = wpm.getMboSet("MCEINVUSE");
+	invUse = invUseSet.moveFirst();
+    
+	#Update the Auto Created Record
+	invUse.setValue("DESCRIPTION","Repair: Return Item "+wpm.getString("ITEMNUM")+" to Storeroom for Repair "+wpm.getString("WONUM"),2L)
+	
+	#get the invuseline set as a related record
+	#Update the Line 
+	invLineSet = invUse.getMboSet("INVUSELINE")
+	invLine = invLineSet.moveFirst()
+	invLine.setValue("USETYPE","RETURN",2L)
+	invLine.setValue("REFWO",wpm.getString("WONUM"),2L)
+	invLine.setValue("FROMCONDITIONCODE",wpm.getString("CONDITIONCODE"),2L)
+	invLine.setValue("FROMBIN","RP-"+mbo.getString("WONUM"),2L)
+	invLine.setValue("UNITCOST",wpm.getString("UNITCOST"),2L)
+	
+	#Logistics Compatability Addition and RP bin qty fix - do an extra save.
+	invUseSet.save();
+	invUseSet.close();
+	iuuid = invUse.getString("INVUSEID")
+	invUseSet = mxs.getMboSet("INVUSE",mbo.getUserInfo())
+	invUseSet.setWhere("invuseid = "+iuuid)
+	invUseSet.reset();
+	invUse = invUseSet.moveFirst()      
+    
+    #call change status on the invuse record
+	invUse.changeStatus("COMPLETE",mxs.getDate(), "AUTO COMPLETE BY WORKFLOW", 2L)
+	
+	#save and close the invuse set
+	#yes it's bad to save in a script but it's opened from MXServer and then closed so contained
+	invUseSet.save(2L);
+	invUseSet.close();
+	
+	#move next
+	wpm = wpmSet.moveNext();
+
+	
+#Refresh the Table onscreen 
+#service.webclientsession().findControl("ORP76113479048343253").getDataBean().refreshTable();

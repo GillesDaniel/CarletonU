@@ -1,0 +1,14 @@
+################################################################################
+# Date      08-01-20
+# Author    P Irving
+# Company   BPD Zentih Ltd
+# Purpose   Unlock the Off Hire Date Field for Manual Override
+# Script	MCERNOHDUNLOCK
+################################################################################
+
+rentals = mbo.getMboSet("MCERNWPMATERIAL")
+
+rental = rentals.moveFirst()
+while rental is not None:
+    rental.setFlag(7L,False)
+    rental = rentals.moveNext()

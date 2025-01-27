@@ -1,0 +1,14 @@
+qr = mbo.getOwner()
+
+wcs = service.webclientsession()
+appl = wcs.getCurrentApp()
+print appl.getAppTitle()
+if qr is not None and appl.getAppTitle() == "Query Manager":
+    
+    qrlock = qr.getBoolean("MCEQRYLOCK")
+    
+    if qrlock == 0 and qr.getString("OWNER") != user:
+        
+        mbo.delete()
+        errorgroup = "MCEQRYLOCK"
+        errorkey = "MCEQRYKEY"

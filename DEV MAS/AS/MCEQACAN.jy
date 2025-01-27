@@ -1,0 +1,26 @@
+from psdi.server import MXServer
+from psdi.mbo import MboConstants
+
+maximoServer = MXServer.getMXServer()
+userInfo = mbo.getUserInfo()
+auditID = mbo.getString("MCEQAID")
+
+#Change status to 'CAN' / 'Cancelled'
+mbo.setValue("STATUS", "CAN")
+
+#Cancel WO with Audit ID 
+def cancelQAWO(auditID):
+    workOrderSet = maximoServer.getMboSet("WORKORDER", userInfo)
+    workOrderSet.setWhere("WONUM = 'QA-{}'".format(auditID))
+    workOrderSet.reset()
+    workOrderCount = workOrderSet.count()
+
+    print("Amount of WOs retrieved:", workOrderSet.count())
+
+    if workOrderCount > 0:
+        woMbo = workOrderSet.getMbo(0)
+        woMbo.setValue("STATUS", "CAN", MboConstants.NOACCESSCHECK)
+        workOrderSet.save()
+
+cancelQAWO(auditID)
+mbo.getThisMboSet().save()

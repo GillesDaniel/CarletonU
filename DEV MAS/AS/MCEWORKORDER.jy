@@ -1,0 +1,69 @@
+# Created by Diksha Khanna
+# The script is created to Rollback the current status to the previous usable status
+# The script is created on Action Launch Point 
+# Run on "OK" button of the Rollback Change Status Dialog Box
+
+from psdi.server import MXServer;
+from psdi.mbo import MboConstants;
+from java.util import Date
+from psdi.common.context import UIContext 
+from psdi.webclient.system.controller import SessionContext, Utility, WebClientEvent
+
+# Getting Workorder mbo object
+woMbo = mbo
+
+#To get Workorder Status mbo
+
+woStatusSet = mbo.getMboSet("WOSTATUS")
+
+# Order the Workorder Status set by change date desc to get the last/latest record
+woStatusSet.setOrderBy("CHANGEDATE DESC")
+woStatusSet.reset()
+
+# Check if Rollback Change Status field is empty or not
+if woMbo.getString("MCESTATUS")!= None:
+    
+# Setting the Rollback Change status to the workorder status
+
+    woMbo.setValue("STATUS",woMbo.getString("MCESTATUS"),MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+    woMbo.setValue("STATUSDATE",MXServer.getMXServer().getDate(),MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+    
+    # Add the new Status details in WOSTATUS object from Rollback Change Status
+    newStatus = woStatusSet.add(MboConstants.NOACCESSCHECK)
+    newStatus.setValue("WONUM",woMbo.getString("WONUM") ,MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+    newStatus.setValue("STATUS",woMbo.getString("MCESTATUS"),MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+    newStatus.setValue("CHANGEDATE", MXServer.getMXServer().getDate(),MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+    newStatus.setValue("MEMO",woMbo.getString("MCEMEMO"),MboConstants.NOACCESSCHECK)
+    
+    # If history flag is 1
+    if woMbo.getBoolean("HISTORYFLAG"):
+        
+        # Set the history flag of workorder object to 0 when changing the status from Close to Complete 
+        woMbo.setValue("HISTORYFLAG",0,MboConstants.NOACCESSCHECK)
+    
+    # Actfinish date is generated when the workorder is complete or closed
+    # Changing from Complete status to any other status, we need to remove Actfinish date
+    if (MXServer.getMXServer().getMaximoDD().getTranslator().toInternalString("WOSTATUS",mbo.getString("MCESTATUS"), mbo) not in ('COMP','CLOSE')):
+        if woMbo.getBoolean("MCECAFD")==1:
+            woMbo.setValueNull("ACTFINISH",MboConstants.NOACCESSCHECK| MboConstants.NOVALIDATION)
+        
+    # To get Asset History mbo
+    assetHistSet = mbo.getMboSet("MCEASSETHISTORY")
+
+    # To get Asset Hierarchy mbo
+
+    assetHierSet = mbo.getMboSet("MCEASSETHIERARCHY")
+    
+    # Delete the asset History and asset Hierarchy records 
+    # When the workorder is completed or close -  Asset History and Hierarchy
+    # If we are changing the status from Complete to any other status, 
+    # We need to remove asset history and hierarchy details
+    if not assetHistSet.isEmpty():
+            assetHistSet.deleteAll(MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION)
+            assetHierSet.deleteAll(MboConstants.NOACCESSCHECK | MboConstants.NOVALIDATION) 
+    
+    # Save the workorder object
+    woMbo.getThisMboSet().save()
+
+    # To close the dialog box
+    service.closeDialog()

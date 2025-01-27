@@ -1,0 +1,22 @@
+appSet = mbo.getMboSet("MAXAPPS")
+appl = appSet.moveFirst()
+
+objectname = appl.getString("MAINTBNAME")
+
+#go get the record
+recordset = mbo.getMboSet("$MYSET",objectname)
+record = recordset.getMboForUniqueId(mbo.getInt("KEYVALUE"))
+
+keyInfo = recordset.getMboSetInfo().getKeyAttributes()
+mcename = ""
+
+i = 0
+while i < len(keyInfo):
+    if i == 0:
+        mcename = record.getString(keyInfo[i])
+    else:
+        mcename = mcename + " - " + record.getString(keyInfo[i])
+    i += 1
+
+mbo.setValue("MCENAME", mcename)
+mbo.getThisMboSet().save()
