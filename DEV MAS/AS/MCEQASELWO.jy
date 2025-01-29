@@ -1,0 +1,101 @@
+from psdi.server import MXServer
+from java.util import Random
+from java.text import SimpleDateFormat
+
+maximoServer = MXServer.getMXServer()
+userInfo = mbo.getUserInfo()
+auditID = mbo.getString("MCEQAID")
+selection = mbo.getInt("SELECTIONQTY")
+selection_type = mbo.getString("SELECTIONTYPE")
+location = mbo.getString("LOCATION")
+priority = mbo.getInt("PRIORITY")
+orgid = mbo.getString("ORGID")
+startdate = mbo.getDate("STARTFROM")
+startdateto = mbo.getDate("STARTTO")
+enddate = mbo.getDate("FINISHFROM")
+enddateto = mbo.getDate("FINISHTO")
+pm = mbo.getString("PM")
+jobplan = mbo.getString("JOBPLAN")
+asset = mbo.getString("ASSET")
+status = mbo.getString("STATUS")
+wostatus = mbo.getString("WOSTATUS")
+
+def format_date(date):
+    dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    return dateFormat.format(date)
+
+#Set Where Clause based on populated fields within Quality Audit
+whereClause = "SITEID = '{}' AND (WONUM NOT LIKE 'QA-%' )".format(mbo.getString("SITEID"))
+if asset:
+    whereClause += " AND ASSETNUM = '{}'".format(asset)
+if location:
+    whereClause += " AND LOCATION = '{}'".format(location)
+if priority:
+    whereClause += " AND WOPRIORITY = {}".format(priority)
+if orgid:
+    whereClause += " AND ORGID = '{}'".format(orgid)
+if startdate and startdateto:
+    whereClause += " AND ACTSTART BETWEEN timestamp('{}') AND timestamp('{}')".format(format_date(startdate), format_date(startdateto)) 
+elif startdateto:
+    whereClause += " AND ACTSTART <= timestamp('{}')".format(format_date(startdateto))
+elif startdate:
+    whereClause += " AND ACTSTART >= timestamp('{}')".format(format_date(startdate))
+if enddate and enddateto:
+    whereClause += " AND ACTFINISH BETWEEN timestamp('{}') AND timestamp('{}')".format(format_date(enddate), format_date(enddateto))
+elif enddateto:
+    whereClause += " AND ACTFINISH <= timestamp('{}')".format(format_date(enddateto)) 
+elif enddate:
+    whereClause += " AND ACTFINISH >= timestamp('{}')".format(format_date(enddate))
+if pm:
+    whereClause += " AND PMNUM = '{}'".format(pm)
+if jobplan:
+    whereClause += " AND JPNUM = '{}'".format(jobplan)
+if wostatus:
+    whereClause += " AND STATUS IN ({})".format(wostatus)
+
+print(whereClause)
+workOrderSet = maximoServer.getMboSet("WORKORDER", userInfo)
+workOrderSet.setWhere(whereClause)
+workOrderSet.reset()
+workOrderCount = workOrderSet.count()
+
+#Random Work Order selection
+def randomWOSelection(selection, workOrderCount):
+    random = Random()
+    workOrderSelection = set()
+    woNumsSelected = []
+    
+    for _ in range(min(selection, workOrderCount)): 
+        while True:
+            random_index = random.nextInt(workOrderCount)
+            if random_index not in workOrderSelection:
+                workOrderSelection.add(random_index)
+                break
+    for i in workOrderSelection:
+        woMbo = workOrderSet.getMbo(i)
+        woNum = woMbo.getString("WONUM")
+        woNumsSelected.append(woNum)
+    return woNumsSelected
+
+if workOrderCount > 0:
+    if selection_type == "PERCENTAGE":
+        selection = int(workOrderCount * (selection / 100.0))
+        woNumsSelected = randomWOSelection(selection, workOrderCount)
+        workOrderSet.save()
+        woNums = ','.join("'{}'".format(wonum) for wonum in woNumsSelected)
+        mbo.setValue("WONUMS", woNums)
+        
+    else:
+        woNumsSelected = randomWOSelection(selection, workOrderCount)
+        workOrderSet.save()
+        woNums = ','.join("'{}'".format(wonum) for wonum in woNumsSelected)
+        mbo.setValue("WONUMS", woNums)
+ 
+    
+    #Create WO for Quality Audit
+    wcs = service.webclientsession()
+    appl = wcs.getCurrentApp()
+    page = appl.getCurrentPage()
+    ci = page.getControlInstance('1680184390171')
+    db = ci.getDataBean()
+    db.refreshTable()

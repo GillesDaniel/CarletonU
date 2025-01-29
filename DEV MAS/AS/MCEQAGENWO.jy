@@ -1,0 +1,62 @@
+from psdi.server import MXServer
+from psdi.mbo import MboConstants
+
+maximoServer = MXServer.getMXServer()
+userInfo = mbo.getUserInfo()
+auditID = mbo.getString("MCEQAID")
+woNums = mbo.getString("WONUMS")
+
+mceQaSet = maximoServer.getMboSet("MCEQA", userInfo)
+whereClause = "MCEQAID ='"+ auditID + "'"
+mceQaSet.setWhere(whereClause)
+mceQaSet.reset()
+
+if not mceQaSet.isEmpty(): 
+
+    if woNums == "":
+        errorgroup = "MCEQA"
+        errorkey = "MCEQA"
+
+    else:
+        #Change status 
+        auditID = mbo.getString("MCEQAID")
+        woNums = mbo.getString("WONUMS")
+        mbo.setValue("STATUS", "INPRG") 
+        mbo.setValue("INSPFORM", "MCEAUDITWO")
+
+
+        #Create WO with Audit ID 
+        def createWO(auditID, woNums):
+            woSet = maximoServer.getMboSet("WORKORDER", userInfo)
+
+            woSet.setWhere("WONUM LIKE 'QA%'")
+            newWoNum = "QA-{}".format(auditID)
+            description = "Quality Audit of {}".format(woNums)
+            jpNum = "MCEQA"
+
+            newWo = woSet.add()
+            newWo.setValue("WONUM", newWoNum)
+            newWo.setValue("DESCRIPTION", description)
+            newWo.setValue("JPNUM", jpNum)
+            mbo.setValue("INSPAUDITID", newWoNum)
+            woSet.save()
+
+        def assignID(auditID, woNums):
+            woSet = maximoServer.getMboSet("MCEQAWO", userInfo)
+            woNumsList = woNums.split(",")
+
+            for woNum in woNumsList:
+                addWO = woSet.add()
+                addWO.setValue("AUDITID", auditID)
+                addWO.setValue("DESCRIPTION", woNums)
+                addWO.setValue("WONUM", woNum.strip().replace("'", ""))  
+            woSet.save()
+
+        assignID(auditID, woNums)
+        createWO(auditID, woNums)
+        mbo.setValue("WOCREATED","Y")
+        mbo.getThisMboSet().save()
+
+else:
+    errorgroup = "MCEQA"
+    errorkey = "MCEQA"

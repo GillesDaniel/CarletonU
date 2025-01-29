@@ -1,0 +1,2 @@
+mbo.setValueNull('SCHEDSTART')
+mbo.setValueNull('SCHEDFINISH')

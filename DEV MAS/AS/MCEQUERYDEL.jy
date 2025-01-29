@@ -1,0 +1,3 @@
+if mbo.toBeDeleted():
+    restrictedSet = mbo.getMboSet("MCEQUERYPERSONGROUP")
+    restrictedSet.deleteAll()

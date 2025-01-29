@@ -1,0 +1,5 @@
+#from psdi.webclient.components import Pushbutton
+mbo.setFieldFlag("DESCRIPTION",7L,False)
+mbo.setFieldFlag("CLAUSE",7L,False)
+mbo.setFieldFlag("ISPUBLIC",7L,False)
+mbo.setValue("MCEQRYLOCK", "Y", 2L)

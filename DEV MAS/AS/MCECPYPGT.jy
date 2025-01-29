@@ -1,0 +1,50 @@
+#Function to set the sequence to the next logically
+def setLatestSeq(personGroup, toPGT):
+	if personGroup is not None:
+		memberSet = personGroup.getMboSet("PERSONGROUP_PRIMARYMEMBERS")
+		if memberSet.isEmpty():
+			toPGT.setValue("GROUPDEFAULT",1,11L)
+			maxseq=0	
+		else:
+			maxseq = memberSet.max("RESPPARTYGROUPSEQ")
+		toPGT.setValue("RESPPARTYSEQ",maxseq+1,11L)
+		toPGT.setValue("RESPPARTYGROUPSEQ",maxseq+1,11L)
+
+
+#This Person
+person = mbo.getString("PERSONID")
+
+#Relationship to PersonGroupTeam where this user is not already a member
+fromPGTSet = mbo.getMboSet("MCEPGTFROM")
+
+if not fromPGTSet.isEmpty():
+    
+    #Relationship to PersonGroupTeam for this user
+    toPGTSet = mbo.getMboSet("MCEPGTTO")
+    
+    #loop through the from set
+    fromPGT = fromPGTSet.moveFirst()
+    
+    while fromPGT is not None:
+        toPGT = toPGTSet.add()
+        toPGT.setValue("RESPPARTYGROUP",person)
+        toPGT.setValue("RESPPARTY",person)
+        toPGT.setValue("PERSONGROUP",fromPGT.getString("PERSONGROUP"))
+        toPGT.setValue("USEFORORG",fromPGT.getString("USEFORORG"),2L)
+        toPGT.setValue("USEFORSITE",fromPGT.getString("USEFORSITE"),2L)
+        fromPGmbo = fromPGT.getMboSet("MCEPG").moveFirst()
+        setLatestSeq(fromPGmbo,toPGT)
+        
+        fromPGT = fromPGTSet.moveNext()
+    
+    wcs = service.webclientsession()
+    appl = wcs.getCurrentApp()
+    page = appl.getCurrentPage()
+    ci = page.getControlInstance('MCECOPYPGTTABTO')
+    db = ci.getDataBean()
+    db.refreshTable()
+    ci2 = page.getControlInstance('MCECOPYPGTTAB')
+    db2 = ci.getDataBean()
+    db2.refreshTable()
+    ci3 = page.getControlInstance("MCECOPYBUTTON")
+    ci3.setDisabled(True)

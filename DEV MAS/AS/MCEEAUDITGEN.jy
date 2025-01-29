@@ -1,0 +1,60 @@
+from psdi.server import MXServer
+from psdi.app.configure import MaxObjectCfg
+from psdi.webclient.system.controller import PageInstance, WebClientEvent
+from java.util import HashMap
+from java.lang import Thread 
+
+mxs = MXServer.getMXServer();
+ui = mxs.getSystemUserInfo()
+wcs = service.webclientsession()
+
+mocfgSet = mxs.getMboSet("MAXOBJECTCFG",ui)
+mocfgSet.setWhere("objectname IN ('ACTION','ACTIONGROUP','ALNDOMAIN','APPLICATIONAUTH','ATTRFORMULA','AUTOSCRIPT','AUTOSCRIPTVARS','COMMTEMPLATE','COMMTMPLTSENDTO','CONDITION','CRONTASKDEF','CRONTASKINSTANCE','CRONTASKPARAM','CROSSOVERDOMAIN','CTRLCONDITION','CTRLCONDPROP','CTRLGROUP','ESCALATION','ESCNOTIFICATION','ESCREFPOINT','INBOUNDCOMMCFG','KPIMAIN','LAUNCHPOINTVARS','LOCAUTH','MAXATTRIBUTECFG','MAXDOMAIN','MAXDOMVALCOND','MAXENDPOINT','MAXENDPOINTDTL','MAXGROUP','MAXIFACECONTROL','MAXIFACEOUT','MAXIFACEPROC','MAXINTOBJALIAS','MAXINTOBJCOLS','MAXINTOBJDETAIL','MAXINTOBJECT','MAXLAUNCHENTRY','MAXLECONTEXT','MAXMENU','MAXMESSAGES','MAXOBJECTCFG','MAXPROP','MAXPROPVALUE','MAXQUEUE','MAXRELATIONSHIP','MAXROLE','MAXSERVICE','MAXTABLEDOMAIN','MAXVARS','MAXWSREGISTRY','NUMERICDOMAIN','OBJECTFORMULA','REPORTAUTH','SCRIPTLAUNCHPOINT','SECURITYRESTRICT','SIGOPTFLAG','SIGOPTION','SITEAUTH','SYNONYMDOMAIN')") 
+
+def yes():
+    mocfgSet.reset()
+
+    mocfg = mocfgSet.moveFirst()
+
+    #Loop through objects
+    while mocfg is not None:
+        mocfg.setValue("EAUDITENABLED",1)
+        macfgSet = mocfg.getMboSet("MAXATTRIBUTECFG")
+        macfg = macfgSet.moveFirst()
+        while macfg is not None:
+            if macfg.getBoolean("PERSISTENT") == True:
+                try:
+                    macfg.setValue("EAUDITENABLED",1)
+                except:
+                    macfg = macfgSet.moveNext()
+                    continue;
+            macfg = macfgSet.moveNext()
+        
+        mocfgSet.save()
+        mocfg = mocfgSet.moveNext()
+        service.log("eAudit tables generated")
+
+    pass
+
+def no():
+    service.log("User cancelled action")
+
+def dflt():
+    # display the initial message
+    service.log("DFLT")
+    service.yncerror("MCEEAUDIT", "MCEEAUDIT")
+
+messagegroup = "MCEEAUDIT"
+messagekey = "MCEEAUDIT"
+cases = {
+    service.YNC_NULL: dflt,
+    service.YNC_YES: yes,
+    service.YNC_NO: no
+}
+
+x = service.yncuserinput()
+
+if x in cases:
+    cases[x]()
+else:
+    dflt()

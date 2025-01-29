@@ -1,0 +1,13 @@
+################################################################################
+# Date      02-01-20
+# Author    P Irving
+# Company   BPD Zentih Ltd
+# Purpose   Set off hire change by and date fields when off hire date changes
+# Script	MCERNOHDAUDIT
+################################################################################
+
+from psdi.server import MXServer
+
+if mbo.isModified("MCERNOHD"):
+	mbo.setValue("MCERNOHDCHANGEBY",user,2L)
+	mbo.setValue("MCERNOHDCHANGEDATE",MXServer.getMXServer().getDate(),2L)

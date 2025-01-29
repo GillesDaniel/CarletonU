@@ -1,0 +1,19 @@
+from psdi.server import MXServer
+
+# Get the referenceobjectid from the current MBO.
+mceqainspid = mbo.getString("INSPAUDITID")
+mceqainspform = mbo.getString("INSPFORM")
+
+mxs = MXServer.getMXServer()
+userinfo = mbo.getUserInfo()
+
+auditresult = mxs.getMboSet("INSPECTIONRESULT", userinfo)
+whereClause = "REFERENCEOBJECTID ='"+ mceqainspid + "'"
+auditresult.setWhere(whereClause)
+auditresult.reset()
+
+if not auditresult.isEmpty():
+    auditresultnum = auditresult.getMbo(0).getString("RESULTNUM")
+    mbo.setValue("AUDITRESULT", auditresultnum)
+else:
+    print("Invalid or missing REFERENCEOBJECTID.")

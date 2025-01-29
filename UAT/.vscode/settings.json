@@ -1,0 +1,11 @@
+{
+    "mxscript.authentication.authenticationType": "apikey",
+    "mxscript.authentication.password": "Yole(6M[6Lk2",
+    "mxscript.authentication.username": "maxadmin.test@cmailcarletonca.onmicrosoft.com",
+    "mxscript.scriptSettings.createPythonFileForJythonScripts": false,
+    "mxscript.scriptSettings.logLevel": "INFO",
+    "mxscript.serverSettings.hostname": "maxtest.carleton.ca",
+    "mxscript.serverSettings.port": 443,
+    "mxscript.authentication.apikey": "oncij1f50e6ksbm27f6o9sjrqhgv45btdotp0791",
+    "mxscript.serverSettings.httpProtocol": "https"
+}

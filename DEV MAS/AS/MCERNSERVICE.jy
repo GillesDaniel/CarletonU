@@ -1,0 +1,134 @@
+################################################################################
+# Date      17-12-19
+# Author    P Irving
+# Company   BPD Zentih Ltd
+# Purpose   Automatically Create a Service for the Rental Line
+# Script	MCERNSERVICE
+# Update	09-04-20 Added update ability and additional launch point
+################################################################################
+
+
+#Create Service Method
+#Accepts Parameter for Quantity double
+def createService(quantity):
+	#get the owner work order
+	wo = mbo.getOwner()
+	if wo is not None:
+		#get the service lines mbo set 
+		services = wo.getMboSet("WPSERVICE")
+		
+			
+		#add service line
+		service = services.add()
+		service.setValue("WONUM",wo.getString("WONUM"),2L)
+		service.setValue("MCERNWPITEMID",mbo.getString("WPITEMID"),2L)
+		service.setValue("LINETYPE","SERVICE",2L)
+		
+		if mbo.getString("LINETYPE")=='RENTALITEM' or mbo.getString("LINETYPE")=='RENTALMAT':
+			service.setValue("MCERNTYPE","RENTAL",2L)
+
+		updateService(service,quantity)
+
+#Create Update Method
+def updateService(service,quantity):	
+	if service is not None:
+		#set values
+		service.setValue("ITEMQTY",quantity,2L)
+		service.setValue("ORDERUNIT",mbo.getString("ORDERUNIT"),2L)
+		service.setValue("UNITCOST",mbo.getDouble("MCERNCOST"),2L)
+		service.setValue("REQUIREDATE",mbo.getDate("REQUIREDATE"),2L)
+		service.setValue("DESCRIPTION",service.getString("MCERNTYPE")+": "+mbo.getString("DESCRIPTION"),2L)
+		service.setValue("VENDOR",mbo.getString("VENDOR"),2L)
+	
+#START OF SCRIPT		
+linetypes=["RENTALITEM","RENTALMAT"]
+
+#method throws an error if can't edit the service due to status
+settings = mbo.getMboServer().getEditSettings(mbo.getOwner())
+if settings is not None and settings.canEditWpSer() == True:
+	
+	#if line is rental material or item...
+	if mbo.getString("LINETYPE") in linetypes:	
+		#if quantity is null then error
+		if mbo.isNull("ITEMQTY") or mbo.getDouble("ITEMQTY")==0:
+			errorgroup = 'oag'
+			errorkey = 'itemqty'
+		itemqty = mbo.getDouble("ITEMQTY")
+		
+		mcerndur = 1
+		
+		#if duration is null then error
+		if mbo.isNull("MCERNDUR") or mbo.getDouble("MCERNDUR")==0:
+		    if mbo.getString("LINETYPE")=="RENTALITEM" or mbo.getString("LINETYPE")=="RENTALMAT":
+			    errorgroup = 'oag'
+			    errorkey = 'mcerndur'
+		else:
+		    mcerndur = mbo.getDouble("MCERNDUR")
+		
+		#if service lines already exist then skip (e.g. work order duplication)
+		if mbo.getMboSet("MCERNWPSERVICE").isEmpty():
+			#set split lines 
+			split = mbo.getBoolean("MCERNSPLIT")
+			
+			#if splitlines then loop for quanitity 
+			if split:
+				i=0
+				while i<itemqty:
+					#call create line method once every loop, with duration
+					createService(mcerndur)
+					i=i+1
+			#else 
+			else:
+				#call the create line method once, with duration * quanitity
+				createService(mcerndur*itemqty)
+		else:
+			#Lines already exist so we should update them
+			serviceSet = mbo.getMboSet("MCERNWPSERVICE")
+			#set split lines 
+			split = mbo.getBoolean("MCERNSPLIT")
+			service = serviceSet.moveFirst()
+
+			#if splitlines then loop for quanitity 
+			if split:
+				#if count < quantity then they've added more so we need to make some more lines 
+				i=serviceSet.count()
+				while i<itemqty:
+					#call create line method once every loop, with duration
+					createService(mcerndur)
+					i=i+1
+				#if they've reduced the quanitity we need to delete some lines...
+				while i>itemqty:
+					toDelete = serviceSet.getMbo(i-1)
+					if toDelete is not None:
+						toDelete.setDeleted(True)
+					i=i-1
+			
+				#now loop through and update
+				while service is not None:
+					#update existing lines
+					#have to belong to the work order or you get an error
+					#get the owner work order
+					wo = mbo.getOwner()
+					if wo is not None:
+						#get the service lines mbo set 
+						woServices = wo.getMboSet("WPSERVICE")
+						woService = woServices.moveFirst()
+						while woService is not None:
+							if woService.getUniqueIDValue() == service.getUniqueIDValue():
+								updateService(woService,mcerndur)
+							woService = woServices.moveNext()
+					service = serviceSet.moveNext()
+			else:
+
+			    #if it's not split then update the one service
+				if service is not None:
+					#get the owner work order
+					wo = mbo.getOwner()
+					if wo is not None:
+						#get the service lines mbo set 
+						woServices = wo.getMboSet("WPSERVICE")
+						woService = woServices.moveFirst()
+						while woService is not None:
+							if woService.getUniqueIDValue() == service.getUniqueIDValue():
+								updateService(woService,mcerndur*itemqty)
+							woService = woServices.moveNext()

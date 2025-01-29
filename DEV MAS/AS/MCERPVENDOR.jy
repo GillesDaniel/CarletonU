@@ -1,0 +1,93 @@
+################################################################################
+# Date      17/12/2021
+# Author    P IRVING
+# Company   BPD Zentih Ltd
+# Purpose   Automatically Create Inventory Usage Lines for all items on a repair
+# Script	MCERPVENDOR
+# LaunchPoints Two Launch Points one for Issue (Out) and one for Return (Return) 
+################################################################################
+
+#One inventory usage and line for each item (makes it easier if there are multiple storerooms)
+#Set type to ISSUE and choose the bin from a relationship that should already exist
+
+from psdi.server import MXServer
+from psdi.mbo import SqlFormat
+
+#get the MXServer
+mxs = MXServer.getMXServer();
+
+#Get the set of all wpmaterials
+wpmSet = mbo.getMboSet("SHOWPLANMATERIAL");
+
+#move first
+wpm = wpmSet.moveFirst()
+
+#loop through them to create the invuse for each
+while wpm is not None:
+	#check the quantity and storeroom are valid
+	if wpm.isNull("ITEMQTY") or wpm.getDouble("ITEMQTY")<=0:
+		#throw error
+		errorgroup = "MCERP";
+		errorkey = "noitems";
+	if wpm.isNull("LOCATION") or wpm.getString("LOCATION")=="":
+		#throw an error
+		errorgroup = "MCERP";
+		errorkey = "nostoreroom";
+		
+	#get a new invuse mbo set
+	invUseSet = mxs.getMboSet("INVUSE",mbo.getUserInfo())
+
+	#invWhere = SqlFormat(mbo, "EXISTS (SELECT 1 FROM invuseline WHERE invuseline.INVUSENUM=invuse.INVUSENUM AND invuseline.SITEID=invuse.siteid AND invuseline.QUANTITY=:1 AND invuseline.itemnum=:2 and invuseline.refwo=:WONUM) AND FROMSTORELOC = :3 AND status IN ('ENTERED','COMPLETE')")
+	#invWhere.setObject(1,'INVUSELINE','QUANTITY',wpm.getString("ITEMQTY"))
+	#invWhere.setObject(2,'INVUSELINE','ITEMNUM',wpm.getString("ITEMNUM"))
+	#invWhere.setObject(3,'INVUSE','FROMSTORELOC',wpm.getString("LOCATION"))
+	
+	#invUseSet.setUserWhere(invWhere.format())
+	#invUseSet.reset()	
+
+	#if invUseSet.isEmpty():
+	
+	#add a new record
+	invUse = invUseSet.add();
+	
+	#This should be overwritten
+	desc = "Repair Issue Item "+wpm.getString("ITEMNUM")+wpm.getString("WONUM")
+	
+	if launchPoint == "MCERPVENDOR-O":
+		desc = "Repair: Issue Item "+wpm.getString("ITEMNUM")+" to Vendor for Repair "+wpm.getString("WONUM")
+	elif launchPoint == "MCERPVENDOR-R":
+		desc = "Repair: Return Item "+wpm.getString("ITEMNUM")+" from Vendor for Repair "+wpm.getString("WONUM")
+	invUse.setValue("DESCRIPTION",desc)
+	invUse.setValue("USETYPE","ISSUE")
+	invUse.setValue("FROMSTORELOC",wpm.getString("LOCATION"))
+	
+	
+	#get the invuseline set as a related record
+	#add a line
+	invLineSet = invUse.getMboSet("INVUSELINE")
+	invLine = invLineSet.add()
+	
+	if launchPoint == "MCERPVENDOR-O":
+		invLine.setValue("USETYPE","ISSUE")
+	elif launchPoint == "MCERPVENDOR-R":
+		invLine.setValue("USETYPE","RETURN")
+		
+	invLine.setValue("ITEMNUM",wpm.getString("ITEMNUM"))
+	invLine.setValue("REFWO",wpm.getString("WONUM"))
+	invLine.setValue("QUANTITY",wpm.getDouble("ITEMQTY"))
+	
+	invLine.setValue("FROMCONDITIONCODE",wpm.getString("CONDITIONCODE"),2L)
+	invLine.setValue("FROMBIN","RP-"+mbo.getString("WONUM"),2L)
+		
+	#save and close the invuse set
+	#yes it's bad to save in a script but it's opened from MXServer and then closed so contained
+	invUseSet.save();
+	
+	invUseSet.close();
+	
+	#move next
+	wpm = wpmSet.moveNext();
+
+
+#Refresh the Table onscreen 
+#service.webclientsession().findControl("ORP76113479048343253").getDataBean("ORP76113479048343253").refreshTable();

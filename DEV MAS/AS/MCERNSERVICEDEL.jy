@@ -1,0 +1,21 @@
+################################################################################
+# Date      18-12-19
+# Author    P Irving
+# Company   BPD Zentih Ltd
+# Purpose   Automatically Delete Service Lines for the Rental Line
+# Script	MCERNSERVICEDEL
+################################################################################
+
+
+#if line is rental material or item...
+if mbo.getString("LINETYPE")=='RENTALITEM' or mbo.getString("LINETYPE")=='RENTALMAT':
+	#if is to be deleted
+	if mbo.toBeDeleted():
+		#get Services associated with line
+		services = mbo.getMboSet("MCERNWPSERVICE")
+		
+		service = services.moveFirst()
+		while service is not None:
+			service.setDeleted(True)
+			service = services.moveNext()
+			

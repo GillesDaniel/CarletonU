@@ -1,0 +1,133 @@
+################################################################################
+# Date	  02-01-20
+# Author	P Irving, C Brown
+# Company   BPD Zentih Ltd
+# Purpose   Return All Rental Lines
+# Script	MCERNRTRNT
+################################################################################
+
+
+#if the record is modified then tell the user to save first
+if mbo.isModified():
+	if interactive:
+		errorgroup = 'mcern'
+		errorkey = 'savefirst'
+else:
+	bpdlgst = False
+	
+	#if BPDLGST is installed
+	if mbo.getMboSet("MCERNBPDLGST").isEmpty() == False:
+		bpdlgst = True
+
+	if bpdlgst and not mbo.getMboSet("MCERNOUTSHIP").isEmpty():
+		errorgroup = 'receipts'
+		errorkey = 'cannotreturn'
+	else:
+		#get all the receipts for rental items 
+		matrectransSet = mbo.getMboSet("MCERNRNTMAT")
+		
+		#show message and reload if any were returned
+		reload = False
+		posToComp = []
+		
+		#loop through matrectransSet
+		matrectrans = matrectransSet.moveFirst()
+		while matrectrans is not None:
+			#if line is rental material or item...
+			if matrectrans.getString("LINETYPE")=='RENTALITEM' or matrectrans.getString("LINETYPE")=='RENTALMAT':
+				alreadyReturned = matrectrans.getDouble("MCERNQRTN")
+				#if it hasnt been returned
+				qtyToReturn = matrectrans.getDouble("QUANTITY") - alreadyReturned
+				#get the po so that it's the owner of the return set
+				poSet = matrectrans.getMboSet("POREV")
+				po = poSet.getMbo(0)
+				if po is not None and po not in posToComp:
+					posToComp.append(po)
+				if qtyToReturn>0:				
+					if not po is None:
+						#get the original receipt as a child of PO 
+						poReceipts = po.getMboSet("PARENTMATRECTRANS")
+						poRec = poReceipts.moveFirst()
+						origRec = None
+						
+						while poRec is not None and origRec is None:
+							if poRec.getUniqueIDValue() == matrectrans.getUniqueIDValue():
+								origRec = poRec
+							poRec = poReceipts.moveNext()
+						
+						#return it!
+						if origRec is not None:
+							returnRec = poReceipts.add(2L)
+							origRec.createReturn(returnRec)
+							returnRec.setPOMbo(origRec.getPO())
+							returnRec.setPOLineMbo(origRec.getPOLine())
+							returnRec.setValue("SITEID",origRec.getString("SITEID"),2L)
+							returnRec.setValue("WONUM",origRec.getString("WONUM"),11L)
+							returnRec.setValue("REFWO",origRec.getString("REFWO"),11L)
+							returnRec.setValue("QUANTITY",qtyToReturn*-1,2L)
+							returnRec.setValue("REQUESTEDBY",origRec.getString("REQUESTEDBY"),2L)
+							returnRec.setValue("LOCATION",origRec.getString("LOCATION"),2L)
+							returnRec.setValue("LINECOST2",origRec.getString("LINECOST2"),2L)
+							returnRec.setValue("POSITEID",origRec.getString("POSITEID"),2L)
+							returnRec.setValue("POREVISIONNUM",origRec.getString("POREVISIONNUM"),2L)
+							
+							#if BPDLGST is installed
+							if mbo.getMboSet("MCERNBPDLGST").isEmpty() == False:
+								returnRec.setValue("LGSTMANIFEST",origRec.getBoolean("LGSTMANIFEST"),2L)
+								returnRec.setValue("LGSTSHIPTO",origRec.getString("LGSTSHIPFROM"),11L)
+								returnRec.setValue("LGSTSHIPFROM",origRec.getString("LGSTSHIPTO"),11L)
+								returnRec.setValue("LGSTCOUNTRYOFORIGIN",origRec.getString("LGSTCOUNTRYOFORIGIN"),2L)
+								returnRec.setValue("LGSTCUSTOMSSTATUS",origRec.getString("LGSTCUSTOMSSTATUS"),2L)
+								returnRec.setValue("LGSTFAO",origRec.getString("LGSTFAO"),2L)
+							
+							poReceipts.save()
+							reload = True
+			matrectrans = matrectransSet.moveNext()
+
+		if reload:
+			poNumList = []
+			#Ignore Storeroom Availability for this work order so it doesn't go back to WMATL
+			#mbo.setValue("ignoresrmavail",1,11L)
+			#If there are POs to Complete Receipts on
+			if len(posToComp)>0:
+				#loop through the POs
+				for poc in posToComp:
+					#list of Pos already done
+					if not poc.getString("PONUM") in poNumList:
+						poNumList.append(poc.getString("PONUM"))
+						poLineSet = poc.getMboSet("POLINE")
+						poLine = poLineSet.moveFirst()
+						while poLine is not None:
+							if poLine.getString("LINETYPE")=='RENTALITEM' or poLine.getString("LINETYPE")=='RENTALMAT':
+								poLine.setValue("RECEIVEDQTY",0,11L)
+								poLine.setValue("RECEIPTSCOMPLETE",0,11L)
+							poLine = poLineSet.moveNext()
+						
+						#Save the Changes to the PO Lines to mark them as incomplete.
+						poLineSet.save()
+						
+						#Refecth Lines in a fresh MBO Set and Select the Lines to Complete (Have to do this as the save fluffs everything up).
+						poSelectSet = mbo.getMboSet("$POSELECT", "PO", "POID = " + str(poc.getInt("POID")))
+						poSelect = poSelectSet.moveFirst()
+						
+						if poSelect is not None:
+							poLineSelectSet = poSelect.getMboSet("POLINE")
+					
+							poSelectLine = poLineSelectSet.moveFirst()
+							while poSelectLine is not None:
+								if poSelectLine.getString("LINETYPE")=='RENTALITEM' or poSelectLine.getString("LINETYPE")=='RENTALMAT':
+									poSelectLine.select() 
+								poSelectLine = poLineSelectSet.moveNext()
+							#Standard Method to Complete Receipts
+							poLineSelectSet.completeReceipts()
+						else:
+							errorgroup = 'oag'
+							errorkey = 'nopo'
+			mbo.getThisMboSet().save()
+			mbo.getThisMboSet().reset()
+			wcs = service.webclientsession()
+			wcs.showMessageBox(wcs.getCurrentEvent(), "mcern", "rcreated", None)
+		else:
+			errorgroup='mcern'
+			errorkey='rnocreated'
+			#mbo.getThisMboSet().save()

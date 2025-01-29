@@ -1,0 +1,48 @@
+################################################################################
+# Date 14-12-21
+# Author K St-Claire
+# Company BPD Zentih Ltd
+# Purpose Automatically Create a Service for the Repair Line
+# Script MCERPSERVICE
+################################################################################
+
+
+
+wo = mbo.getOwner()
+if wo is not None and wo.getString("WORKTYPE")=='REP':
+	#get the service lines for the work order
+	serviceSet = wo.getMboSet("SHOWPLANSERVICE")
+	#get the service lines attached to the wpmaterial
+	wpitemSet = mbo.getMboSet("MCERPWPSERVICE")
+
+	srvc = serviceSet.moveFirst()
+	item = wpitemSet.moveFirst()
+
+	#if item is none then we dont have a service linked at the moment
+	if item is None:
+		#make a new service against the work order
+		srvc = serviceSet.add()
+		srvc.setValue("WONUM",wo.getString("WONUM"),2L)
+		srvc.setValue("MCERPWPITEMID",mbo.getString("WPITEMID"),2L)
+		srvc.setValue("LINETYPE","SERVICE",2L)
+		srvc.setValue("ITEMQTY",mbo.getString("ITEMQTY"),2L)
+		srvc.setValue("ORDERUNIT",mbo.getString("ORDERUNIT"),2L)
+		srvc.setValue("UNITCOST",mbo.getDouble("UNITCOST"),2L)
+		srvc.setValue("REQUIREDATE",mbo.getDate("REQUIREDATE"),2L)
+		srvc.setValue("DESCRIPTION","REPAIR: "+mbo.getString("DESCRIPTION"),2L)
+		srvc.setValue("VENDOR",mbo.getString("VENDOR"),2L)
+
+	#else a service exists so find it and edit it.
+	else:
+		#loop through the services on the work order
+		while srvc is not None:
+			if srvc.getUniqueIDValue() == item.getUniqueIDValue():
+			#found it
+				srvc.setValue("ITEMQTY",mbo.getString("ITEMQTY"),2L)
+				srvc.setValue("ORDERUNIT",mbo.getString("ORDERUNIT"),2L)
+				srvc.setValue("UNITCOST",mbo.getDouble("UNITCOST"),2L)
+				srvc.setValue("REQUIREDATE",mbo.getDate("REQUIREDATE"),2L)
+				srvc.setValue("DESCRIPTION","REPAIR: "+mbo.getString("DESCRIPTION"),2L)
+				srvc.setValue("VENDOR",mbo.getString("VENDOR"),2L)
+				break
+			srvc = serviceSet.moveNext()

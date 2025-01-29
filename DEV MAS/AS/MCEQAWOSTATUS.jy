@@ -1,0 +1,15 @@
+session=service.webclientsession()
+databean=session.getDataBean("wostatus_table")
+if databean: 
+    statusSet=databean.getMboSet()
+
+    statusList=[]
+    selectedRecords=statusSet.getSelection()
+    if selectedRecords:
+        iterator=selectedRecords.iterator()
+        while iterator.hasNext():
+            statusMbo=iterator.next()
+            statusList.append("'{}'".format(statusMbo.getString("VALUE")))
+        
+        mbo.setValue("WOSTATUS",",".join(statusList))
+    service.closeDialog()

@@ -1,0 +1,6 @@
+if (app=="MCERENTAL" or app=="MCERENTALOAG") and mbo.toBeAdded() and (not mbo.isNull("ITEMNUM")) and not "R" in mbo.getString("ITEMNUM"):
+	mbo.setValue("ITEMNUM","R"+mbo.getString("ITEMNUM"))
+	mbo.setValue("ITEMORGINFO.ITEMNUM",mbo.getString("ITEMNUM"),2L)
+elif app=="SRVITEM" and mbo.toBeAdded() and (not mbo.isNull("ITEMNUM")) and not "S" in mbo.getString("ITEMNUM"):
+	mbo.setValue("ITEMNUM","S"+mbo.getString("ITEMNUM"))
+	mbo.setValue("ITEMORGINFO.ITEMNUM",mbo.getString("ITEMNUM"),2L)

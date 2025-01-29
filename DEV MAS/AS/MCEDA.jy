@@ -1,0 +1,161 @@
+#########################################################################################
+# PROPERTY OF BPD ZENITH																#
+# AUTHOR P IRVING																		#
+# CREATED DATE 18/05/2023																#
+# SCRIPTNAME MCEDOWNLOADALL																#
+#########################################################################################
+
+from psdi.server import MXServer
+from java.io import File, ByteArrayOutputStream, FileOutputStream
+from java.util.zip import ZipEntry, ZipOutputStream
+from java.nio.file import Files, Paths
+from java.lang import String
+
+from com.ibm.tivoli.maximo.cos import COSApi
+from com.ibm.tivoli.maximo.oslc.provider import COSAttachmentStorage
+
+topLevelFilePath = service.getProperty("mxe.doclink.doctypes.topLevelPaths")
+secureAttachment = service.getProperty("mxe.doclink.securedAttachment")
+doclinks = mbo.getMboSet("DOCLINKS")
+doclink = doclinks.moveFirst()
+isSecureAttach = False
+isCos = False
+
+if doclink is not None:
+
+    if secureAttachment == "true":
+        isSecureAttach = True
+        
+    if "cos:doclinks" in str(topLevelFilePath).lower():
+        isCos = True
+
+    if isCos == True:
+        
+        cosAS = COSAttachmentStorage()
+        doclink = doclinks.moveFirst()
+        bucketname = service.getProperty("mxe.cosbucketname")
+        i = 0 
+        fileArray = []
+        
+        while doclink is not None:
+        
+            if doclink.getString("DOCUMENT") == "MCEDA" and doclink.getString("CREATEBY") == user:
+                docinfoSet = doclink.getMboSet("DOCINFO")
+                docinfo = docinfoSet.moveFirst()
+                while docinfo is not None:
+                    docinfo.setDeleted(True)
+                    docinfo = docinfoSet.moveNext()
+                cosAS.deleteAttachment(doclink)
+                doclink.setDeleted(True)
+                
+            else:
+            
+                i = i + 1
+                if doclink.getString("URLTYPE")=="FILE":
+                    urlString = doclink.getString("URLNAME").split("/")
+                    fileName = urlString[-1]     
+                    cosApi = COSApi(False)
+                    
+                    fileBytes = cosApi.getFile(bucketname,fileName)
+                    fileArray.append([fileName, fileBytes])
+            doclink = doclinks.moveNext()
+            
+        zipBuffer = ByteArrayOutputStream()
+        zipOutputStream = ZipOutputStream(zipBuffer)    
+        
+        for file in fileArray:
+            print file
+            if not file[0].startswith("MCE") and not file[0].endswith(".zip"):
+                zipOutputStream.putNextEntry(ZipEntry(file[0]))
+                zipOutputStream.write(file[1])
+                zipOutputStream.closeEntry()
+            
+        zipOutputStream.close()
+        zipBytes = zipBuffer.toByteArray()
+        
+        timeStamp = MXServer.getMXServer().getDate().getTime()
+        timeStampString = "MCE" + String.valueOf(timeStamp) + ".zip"
+        
+        cosAS.createAttachment(timeStampString, zipBytes, "application/octet-stream")
+        
+        zipFilePath = "cos:doclinks/" + timeStampString
+    else:
+        
+        dL = doclinks.moveFirst()
+        if dL is not None:
+            directoryPath = service.getProperty("mxe.doclink.doctypes.defpath")
+            timeStamp = MXServer.getMXServer().getDate().getTime()
+            timeStampString = "MCE" + String.valueOf(timeStamp)
+            
+            if "/" in dL.getString("URLNAME"):
+                zipFilePath = directoryPath + "/" + timeStampString + ".zip"
+            else:
+                zipFilePath = directoryPath + "/" + timeStampString + ".zip"
+            zipFile = File(zipFilePath)
+            zipOutputStream = ZipOutputStream(FileOutputStream(zipFile))
+            
+            for i in range(doclinks.count()):
+                doclink = doclinks.getMbo(i)
+                if doclink.getString("DOCUMENT") == "MCEDA" and doclink.getString("CREATEBY") == user:
+                
+                    directoryPath = service.getProperty("mxe.doclink.doctypes.defpath")
+                    docinfoSet = doclink.getMboSet("DOCINFO")
+                    docinfo = docinfoSet.moveFirst()
+                    
+                    while docinfo is not None:
+                        directoryPath = File(directoryPath)
+                        for file in directoryPath.listFiles():
+                            file_name = file.getName()
+                            if file_name == docinfo.getString("DOCUMENT") + ".zip":
+                                file.delete()
+                        docinfo.setDeleted(True)
+                        docinfo = docinfoSet.moveNext()
+                    doclink.setDeleted(True)
+                    
+                elif doclink.getString("URLTYPE")=="FILE":
+                
+                    docPath = doclink.getString("DOCUMENT")
+                    filePath = doclink.getString("URLNAME")
+                    
+                    if "/" in filePath:
+                        filename = filePath[filePath.rindex("/") + 1:]
+                    else:
+						filename = filePath[filePath.rindex("/") + 1:]
+                
+                    file = File(filePath)
+                    
+                    if file.exists() and file.isFile():
+                        entry = ZipEntry(filename)
+                        zipOutputStream.putNextEntry(entry)
+                        Files.copy(Paths.get(filePath), zipOutputStream);
+                        zipOutputStream.closeEntry()
+                        
+            zipOutputStream.close()
+
+    doclink = doclinks.add()
+    docinfoSet = doclink.getMboSet("DOCINFO")
+    docinfo = docinfoSet.add()
+
+    docinfo.setValue("DOCUMENT", timeStampString)
+    docinfo.setValue("DESCRIPTION", "Zip attachment")
+    docinfo.setValue("DOCTYPE", "Attachments")
+    docinfo.setValue("URLTYPE", "FILE")
+    docinfo.setValue("URLNAME", zipFilePath)
+    docinfo.setValue("NEWURLNAME", zipFilePath)
+    docinfo.setValue("PRINTTHRULINKDFLT", 0)
+
+    doclink.setValue("DOCUMENT", "MCEDA")
+    doclink.setValue("DOCINFOID", docinfo.getUniqueIDValue(), 3L)
+
+    docinfoSet.save()
+
+    if isCos or isSecureAttach:
+        wcs = service.webclientsession()
+        wcs.loadDialog("MCEDA")
+    else:
+        weburl = docinfo.getString("WEBURL")
+        service.openURL(weburl, True)
+  
+else:
+    errorkey="MCEDA"
+    errorgroup="MCEDA"

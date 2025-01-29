@@ -1,0 +1,21 @@
+################################################################################
+# Date      14/12/2021
+# Author    K St-Claire
+# Company   BPD Zentih Ltd
+# Purpose   Automatically Delete Service Lines for the Repairs Line
+# Script	MCERPSERVICEDEL
+################################################################################
+
+wo = mbo.getOwner()
+
+
+if wo.getString("WORKTYPE")=='REP':
+	#if is to be deleted
+	if mbo.toBeDeleted():
+		#get Services associated with line
+		services = mbo.getMboSet("MCERPWPSERVICE")
+		
+		service = services.moveFirst()
+		while service is not None:
+			service.setDeleted(True)
+			service = services.moveNext()

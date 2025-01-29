@@ -1,0 +1,14 @@
+mbo.getMboSet("MCEPGTFROM").reset()
+
+wcs = service.webclientsession()
+appl = wcs.getCurrentApp()
+page = appl.getCurrentPage()
+ci = page.getControlInstance('MCECOPYPGTTAB')
+if ci is not None:
+    db = ci.getDataBean()
+    db.refreshTable()
+else:
+    page = appl.getPreviousPage()
+    ci = page.getControlInstance('MCECOPYPGTTAB')
+    db = ci.getDataBean()
+    db.refreshTable()

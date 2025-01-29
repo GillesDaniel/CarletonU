@@ -1,0 +1,4 @@
+if mbo.getMboSet("POLINE").isEmpty() == False:
+	if mbo.getMboSet("POLINE.PRLINE").isEmpty() == False:
+		if mbo.getMboSet("POLINE.PRLINE.MCERNWPSERVICE").isEmpty() == False:
+			mbo.setValue("MCERNTYPE",mbo.getString("POLINE.PRLINE.MCERNWPSERVICE.MCERNTYPE"));

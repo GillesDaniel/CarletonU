@@ -1,0 +1,41 @@
+"""
+    Created by: Stephen Hume
+
+    This script performs the following functions:
+        -  If Reviewed is checkd it will set the Sign off Date to the current date and time
+        -  If Reviewed is unchecked it will clear the sign off date
+        -  validate that the target date is not in the past
+
+"""
+# Imports
+from psdi.app.common import DateUtility
+from psdi.mbo import MboConstants
+from psdi.server import MXServer
+from psdi.util.logging import MXLoggerFactory
+
+# Initialise variables
+attributename = mbovalue.getName()
+
+"""
+    Reusable code to set approval or sign off dates if needed for other SR related attributes in the future.
+"""
+
+if mboname == "MCESAFETYACTIONS" and attributename == "APPROVED":
+    dateAttrDict = {
+        "MCESAFETYACTIONS": "SIGNOFFDATE"
+    }
+
+    # Get the date attribute
+    dateAttr = dateAttrDict.get(mboname)
+
+    # Set sign off date
+    if mbovalue.getBoolean():
+      mbo.setValue(dateAttr, MXServer.getMXServer().getDate(), MboConstants.NOACCESSCHECK)
+    else:
+        mbo.setValueNull(dateAttr, MboConstants.NOACCESSCHECK)
+
+if attributename == "TARGETFINISH":
+   eventdate = mbo.getDate("TARGETFINISH")
+   if eventdate and eventdate < MXServer.getMXServer().getDate():
+      errorkey = "pastdate"
+      errorgroup = "inventory"

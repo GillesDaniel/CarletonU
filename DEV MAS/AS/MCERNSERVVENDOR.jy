@@ -1,0 +1,23 @@
+from psdi.mbo import MboConstants
+
+# This MBO is a PR
+pr = mbo
+
+# Related set of PR Lines from PR
+prLineSet = pr.getMboSet("PRLINE")
+
+prLineMbo = prLineSet.moveFirst()
+prLineVnd = pr.getString('VENDOR')
+
+while prLineMbo is not None:
+    
+    if  prLineMbo.getString("LINETYPE") in ['SERVICE']:
+        
+        #connect work order record wonum wpmaterial
+        wpserviceSet = prLineMbo.getMboSet("MCERNWPSERVICE")
+        wpservice = wpserviceSet.moveFirst()
+        if wpservice is not None:
+            #set the value of the vendor field on the wpservice mbo to be the same as prLineVnd
+            wpservice.setValue("VENDOR",prLineVnd, MboConstants.NOACCESSCHECK)
+            
+    prLineMbo = prLineSet.moveNext()

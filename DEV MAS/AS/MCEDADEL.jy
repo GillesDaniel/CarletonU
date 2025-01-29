@@ -1,0 +1,62 @@
+#########################################################################################
+# PROPERTY OF BPD ZENITH																#
+# AUTHOR M RAWLINSON																	#
+# CREATED DATE 19/10/2023																#
+# SCRIPTNAME MCEDOWNLOADALLDELETE														#
+#########################################################################################
+
+from com.ibm.tivoli.maximo.oslc.provider import COSAttachmentStorage
+from psdi.server import MXServer
+from java.io import File
+import time
+
+topLevelFilePath = service.getProperty("mxe.doclink.doctypes.topLevelPaths")
+directoryPath = service.getProperty("mxe.doclink.doctypes.defpath")
+
+doclinkSet = MXServer.getMXServer().getMboSet("DOCLINKS", mbo.getUserInfo())
+doclinkSet.setWhere("CREATEBY = '" + user + "'" + " and DOCUMENT = 'MCEDA' ")
+doclink = None
+docL = doclinkSet.moveFirst()
+while docL is not None:
+    if docL.getString("DOCUMENT") == "MCEDA":
+        doclink = docL
+    docL = doclinkSet.moveNext()
+    
+if doclink is not None:
+	time.sleep(0.5)
+	doclink.setDeleted(True)
+	docinfoSet = doclink.getMboSet("DOCINFO")
+	docinfo = docinfoSet.moveFirst()
+
+	if "cos:doclinks" in str(topLevelFilePath).lower():
+		
+		cosAS = COSAttachmentStorage()
+		
+		while docinfo is not None:
+			docinfo.setDeleted(True)
+			docinfo = docinfoSet.moveNext()
+			cosAS.deleteAttachment(doclink)
+		doclinkSet.save()
+
+	else:
+		print docinfo.getString("DOCUMENT")
+		while docinfo is not None:
+			print "1"
+			directoryPath = File(directoryPath)
+			print docinfo.getString("DOCUMENT")
+			for file in directoryPath.listFiles():
+				file_name = file.getName()
+				if file_name == docinfo.getString("DOCUMENT") + ".zip":
+					file.delete()
+			docinfo.setDeleted(True)
+			docinfo = docinfoSet.moveNext()
+		doclinkSet.save()
+
+	wcs = service.webclientsession()
+	appl = wcs.getCurrentApp()
+	page = appl.getCurrentPage()
+	ci = page.getControlInstance('mceda_table')
+	db = ci.getDataBean()
+	db.refreshTable()
+
+service.closeDialog()
