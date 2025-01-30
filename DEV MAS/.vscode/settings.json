@@ -1,6 +1,6 @@
 {
     "mxscript.authentication.authenticationType": "apikey",
-    "mxscript.authentication.password": "4Qh+L3ph&-dfjxOhph-nCKJ4",
+    "mxscript.authentication.password": "",
     "mxscript.authentication.username": "maxadmin",
     "mxscript.scriptSettings.createPythonFileForJythonScripts": false,
     "mxscript.scriptSettings.logLevel": "INFO",
@@ -8,5 +8,6 @@
     "mxscript.serverSettings.port": 443,
     "mxscript.authentication.apikey": "m4p6rklnj2pj59em1f7nsq0nv18nb9vvbq52s0uv",
     "mxscript.serverSettings.httpProtocol": "https",
-    "docker.commands.attach": "${containerCommand} exec -it ${containerId} ${shellCommand}"
+    "docker.commands.attach": "${containerCommand} exec -it ${containerId} ${shellCommand}",
+    "mxscript.scriptSettings.ignoresslerrors": true
 }

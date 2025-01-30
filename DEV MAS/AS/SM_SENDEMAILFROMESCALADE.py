@@ -37,6 +37,7 @@ def runReport(v_reportname,v_appname,v_ownerid,v_obj,mbo):
 	birtAdmService = MXServer.getMXServer().lookup("BIRTREPORT");
 	doclinkService = MXServer.getMXServer().lookup("DOCLINK");
 	dirName = doclinkService.getDefaultFilePath("Attachments",mbo.getUserInfo());
+	print "1:"+dirName;
 	
 	if (dirName is not None and v_obj=="PO"):
 	    cy =  GregorianCalendar()

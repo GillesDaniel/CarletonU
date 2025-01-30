@@ -19,7 +19,12 @@ from java.util.regex import Pattern
 from java.util.regex import Matcher
 import sys
 from com.ibm.tivoli.maximo.report.birt.runtime import ReportParameterData
-from java.io   import File  
+from java.io import File 
+
+#Added Code for MAS
+from java.lang import Class
+from com.ibm.tivoli.maximo.oslc import OslcUtils
+from com.ibm.tivoli.maximo.oslc.provider import OslcAttachmentHandler 
 
 
 def multiEmailsValid(emailsAddress):
@@ -134,6 +139,7 @@ def load(newCommlog) :
         urlType = newCommlog.getTranslator().toExternalDefaultValue("URLTYPE", "FILE", docLink);
         docLink.setValue("URLTYPE", urlType, 11L);
         docLink.setValue("URLNAME", path, 11L);
+        docLink.setValue("NEWURLNAME", path, 11L);
         docInfoSet = docLink.getMboSet("DOCINFO");
         docInfo = docInfoSet.add();
         docLink.setValue("DOCINFOID", docInfo.getUniqueIDValue(), 11L);
@@ -147,9 +153,18 @@ def load(newCommlog) :
         docInfo.setValue("SHOW", 1, 11L);
         docInfo.setValue("URLTYPE", urlType, 11L);
         docInfo.setValue("URLNAME", path, 11L);
+        docInfo.setValue("NEWURLNAME", path, 11L);
         docLink.setValue("weburl",CommonUtil.calcWebUrl(docInfo))
            
            ## docLinkSet.save()
+		   
+		   
+        #contentType = OslcAttachmentHandler.getContentTypeFrom(docLink)
+        #attachmentStore = OslcUtils.getAttachmentStore()
+        #attachmentClass = Class.forName(attachmentStore)
+
+        #docStore = attachmentClass.newInstance()
+        #docStore.createAttachment(path, abyte0, contentType)
     
     
 
