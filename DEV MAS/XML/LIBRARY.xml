@@ -8824,6 +8824,8 @@
 				<tablecol dataattribute="doctype" id="registerdocs_table_4" label="Doc Folder"/>
 				<tablecol dataattribute="urltype" id="registerdocs_table_5" label="Type" linkedcontrolid="registerdocs_details_6"/>
 				<tablecol dataattribute="urlname" id="registerdocs_table_6" label="Path" linkedcontrolid="registerdocs_details_8"/>
+				<tablecol dataattribute="WEBURL" id="registerdocs_table_13" label="Path" linkedcontrolid="registerdocs_details_8"/>
+				<tablecol dataattribute="USEDEFAULTFILEPATH" id="registerdocs_table_15" label="Path" linkedcontrolid="registerdocs_details_8"/>
 				<tablecol dataattribute="printthrulinkdflt" id="registerdocs_table_11" label="Print" linkedcontrolid="registerdocs_details_10"/>
 				<tablecol filterable="false" hidden="false" id="registerdocs_table_12" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
 			</tablebody>
@@ -8906,7 +8908,9 @@
 			<checkbox dataattribute="mcespprint" id="linkproperties_1_4_2" label="Print latest copy from SharePoint"/>
 			<checkbox dataattribute="printthrulink" id="linkproperties_1_4" label="Print attached document with report if printable type"/>
 			<textbox dataattribute="docversion" id="linkproperties_1_5" label="Version"/>
-			<textbox dataattribute="urlname" id="linkproperties_1_6" label="Path"/>
+			<textbox dataattribute="urlname" id="linkproperties_1_6" />
+			<textbox dataattribute="weburl" id="linkproperties_1_62" />
+			<textbox dataattribute="URLTYPE" id="linkproperties_1_63" />
 			<textbox dataattribute="description" id="linkproperties_1_7"/>
 			<textbox dataattribute="createby" id="linkproperties_1_8" label="Created By"/>
 			<textbox dataattribute="createdate" id="linkproperties_1_9" label="Created Date"/>
