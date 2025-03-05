@@ -1,0 +1,21 @@
+{
+  "name": "@maximo/manage-shell",
+  "author": "Maximo Dev <maximodev@us.ibm.com>",
+  "version": "9.0.0",
+  "private": true,
+  "homepage": ".",
+  "dependencies": {},
+  "scripts": {},
+  "graphite": {},
+  "resolutions": {
+    "nth-check": "2.1.1",
+    "parse-path": "5.0.0",
+    "parse-url": "8.1.0",
+    "postcss": "8.4.38",
+    "semver": "7.6.0",
+    "tough-cookie": "4.1.3",
+    "@carbon/telemetry": "0.1.0",
+    "@babel/traverse": "7.23.2",
+    "path-to-regexp": "0.1.11"
+  }
+}

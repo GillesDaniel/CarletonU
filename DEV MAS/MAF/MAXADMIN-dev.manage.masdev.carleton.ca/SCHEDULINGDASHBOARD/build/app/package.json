@@ -1,0 +1,9 @@
+{
+  "name": "@maximo/schedulingdashboard",
+  "author": "Maximo Dev <maximodev@us.ibm.com>",
+  "version": "9.0.0",
+  "private": true,
+  "homepage": ".",
+  "dependencies": {},
+  "scripts": {}
+}

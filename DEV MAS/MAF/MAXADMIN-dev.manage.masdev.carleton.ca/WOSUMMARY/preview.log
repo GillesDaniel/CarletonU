@@ -1,0 +1,101 @@
+$ cd build/app && react-scripts start
+
+** maxdev-cli (Graphite) is overriding the default react-scripts webpack.config **
+** webpack version:  5.89.0
+** ENV: NODE_OPTIONS=--max_old_space_size=8192
+** ENV: BROWSER=none
+** ENV: NODE_ENV=development
+** Limiting the generated chunks to 8 **
+** faster builds are enabled **
+   ** removing plugin: CaseSensitivePathsPlugin
+   ** removing plugin: IgnorePlugin
+   ** removing plugin: ESLintWebpackPlugin
+** maxdev-cli config; source-maps: 'eval-cheap-module-source-map', release: false, mem: '8.046875gb', treeshaking: false, mobile: false, fast builds: true, minimize: false, maxChunks: 8 **
+
+
+File '/graphite/node_modules/@babel/preset-react/lib/index.js' has been updated with throwIfNamespace = false.
+[HPM] Proxy created: /maximo/**  -> https://dev.manage.masdev.carleton.ca:443
+[3 %]: setup
+[4 %]: setup
+[5 %]: setup
+[6 %]: setup
+[7 %]: setup
+[8 %]: setup
+[9 %]: setup
+[10 %]: building
+Starting the development server...
+
+[24 %]: building
+[38 %]: building
+[37 %]: building
+[38 %]: building
+[37 %]: building
+[38 %]: building
+[37 %]: building
+[38 %]: building
+[37 %]: building
+[38 %]: building
+[39 %]: building
+[40 %]: building
+[41 %]: building
+[42 %]: building
+[43 %]: building
+[45 %]: building
+[46 %]: building
+[47 %]: building
+[48 %]: building
+[49 %]: building
+[50 %]: building
+[51 %]: building
+[52 %]: building
+[54 %]: building
+[56 %]: building
+[58 %]: building
+[59 %]: building
+[57 %]: building
+[58 %]: building
+[59 %]: building
+[60 %]: building
+[61 %]: building
+[65 %]: building
+[69 %]: building
+[70 %]: sealing
+[71 %]: sealing
+[72 %]: sealing
+[73 %]: sealing
+[74 %]: sealing
+[75 %]: sealing
+[76 %]: sealing
+[77 %]: sealing
+[78 %]: sealing
+[79 %]: sealing
+[80 %]: sealing
+[81 %]: sealing
+[82 %]: sealing
+[83 %]: sealing
+[84 %]: sealing
+[85 %]: sealing
+[86 %]: sealing
+[87 %]: sealing
+[88 %]: sealing
+[89 %]: sealing
+[90 %]: sealing
+[91 %]: sealing
+[92 %]: sealing
+[93 %]: sealing
+[94 %]: sealing
+[95 %]: emitting
+[98 %]: emitting
+[99 %]: done
+Compiled successfully!
+
+You can now view @maximo/WOSUMMARY in the browser.
+
+  Local:            http://localhost:3006
+  On Your Network:  http://172.17.0.2:3006
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+[100 %]: 
+webpack compiled successfully

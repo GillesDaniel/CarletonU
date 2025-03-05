@@ -1,0 +1,8 @@
+build/
+src/dummy-data.json
+node_modules
+update-dev.sh
+files.txt
+index.html
+
+/coverage

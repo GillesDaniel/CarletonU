@@ -1,0 +1,27 @@
+$ cd build/app && react-scripts start
+
+** maxdev-cli (Graphite) is overriding the default react-scripts webpack.config **
+** webpack version:  5.89.0
+** ENV: NODE_OPTIONS=--max_old_space_size=8192
+** ENV: BROWSER=none
+** ENV: NODE_ENV=development
+** Limiting the generated chunks to 8 **
+** faster builds are enabled **
+   ** removing plugin: CaseSensitivePathsPlugin
+   ** removing plugin: IgnorePlugin
+   ** removing plugin: ESLintWebpackPlugin
+** maxdev-cli config; source-maps: 'eval-cheap-module-source-map', release: false, mem: '8.046875gb', treeshaking: false, mobile: true, fast builds: true, minimize: false, maxChunks: 8 **
+
+
+File '/graphite/node_modules/@babel/preset-react/lib/index.js' has been updated with throwIfNamespace = false.
+[HPM] Proxy created: /maximo/**  -> https://dev.manage.masdev.carleton.ca:443
+[3 %]: setup
+[4 %]: setup
+[5 %]: setup
+[6 %]: setup
+[7 %]: setup
+[8 %]: setup
+[9 %]: setup
+[10 %]: building
+Starting the development server...
+

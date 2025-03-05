@@ -1,0 +1,938 @@
+<box direction="column" id="xnd6z">
+  <tabs
+    id="jgmzr"
+    type="default"
+    on-selection-change="switchTabs"
+    selected="{page.params.selectedTab}"
+  >
+    <tab label="Gantt chart" id="g5jz2">
+      <box padding-top="1" id="xqz55" direction="column" fill-parent="false">
+        <box id="jemm6" background-color="ui-01" direction="column" padding="0">
+          <box
+            id="ek2_9"
+            direction="row"
+            manage-children="false"
+            hidden="{!page.state.dispatchloaded}"
+          >
+            <box id="pnxjv">
+              <search
+                place-holder-text="Search"
+                theme="light"
+                id="wnqbn"
+                on-search="searchGraphicalView"
+              />
+            </box>
+            <box id="v54r4">
+              <button-group id="bq8ae">
+                <button
+                  hidden="false"
+                  icon="carbon:filter"
+                  kind="ghost"
+                  hover-tooltip="Filter"
+                  id="dzg27"
+                  on-click="toggleGraphicalViewFilter"
+                />
+                <button
+                  hidden="false"
+                  disabled="{page.state.disableClearGraphicalViewFilters}"
+                  icon="carbon:filter--remove"
+                  on-click="clearGraphicalViewFilters"
+                  kind="ghost"
+                  hover-tooltip="Clear filters"
+                  id="nddxr"
+                />
+              </button-group>
+            </box>
+            <box id="pgwvr">
+              <dropdown
+                theme="dark"
+                id="dvww7"
+                hide-unselected-placeholder="true"
+                selected-item="{page.state.selectedGraphicalViewZoomType}"
+                on-change="onGraphicalViewZoomChange"
+              >
+                <dropdown-item value="Day" text="Day" id="knjdw" />
+                <dropdown-item value="Week" text="Week" id="qm6vb" />
+              </dropdown>
+            </box>
+            <box id="aayzq">
+              <date-input
+                theme="dark"
+                label=""
+                type="date"
+                max-date="{page.params.enddate}"
+                min-date="{page.params.startdate}"
+                on-change="onGraphicalViewCalendarDateChange"
+                value="{page.state.selectedGraphicalViewCalendarDate}"
+                hide-label="{true}"
+                id="qmnyj"
+              />
+            </box>
+            <box id="bx_rr">
+              <button-group id="wrdj7">
+                <button
+                  hidden="false"
+                  icon="carbon:chevron--left"
+                  kind="ghost"
+                  hover-tooltip="Previous"
+                  on-click="onGraphicalViewSkipDay"
+                  on-click-arg="prev"
+                  id="w34q6"
+                  disabled="{page.state.disablePrevBtn}"
+                />
+                <button
+                  hidden="false"
+                  icon="carbon:chevron--right"
+                  on-click="onGraphicalViewSkipDay"
+                  on-click-arg="next"
+                  kind="ghost"
+                  hover-tooltip="Next"
+                  id="ra3qv"
+                  disabled="{page.state.disableNextBtn}"
+                />
+              </button-group>
+            </box>
+          </box>
+          <box id="jj7y2">
+            <treegrid
+              debug=""
+              layoutDatasource="{dispatchdef}"
+              datasource="{dispatchdata}"
+              loading="{!page.state.dispatchloaded}"
+              timeZone="{page.state.userTimezone}"
+              on-column-button-click="onMapButtonClick"
+              id="vj5_q"
+            />
+          </box>
+        </box>
+      </box>
+    </tab>
+    <tab label="Emergency work ({page.state.tasksWithEmergencies})" id="e5d39">
+      <box padding-top="0.5" id="amj_e">
+        <border-layout
+          full-page="true"
+          padding="false"
+          fill-parent="true"
+          id="x5_ke"
+          horizontal-overflow="auto"
+          vertical-overflow="auto"
+        >
+          <start
+            width="{page.state.selectedEmergencyWork === '0' ? 60 : 99}"
+            id="gae6p"
+          >
+            <table
+              fill-parent="true"
+              can-resize="false"
+              display-row-count="false"
+              can-reorder-columns="false"
+              can-filter="true"
+              can-search="true"
+              select-mode="{page.state.selectedEmergencyWork === '0' ? single : none}"
+              on-row-click="onRowItemClicked"
+              datasource="jUnassignedEmergDS"
+              no-data-message="{page.state.selectedEmergencyWork === '0' ? (page.state.startedAssigning ? app.getLocalizedLabel('emergency_assign_complete','Success!') : app.getLocalizedLabel('emergency_no_emergencies','There are no emergency works.')) : ' '}"
+              no-data-sub-message="{page.state.selectedEmergencyWork === '0' ? app.getLocalizedLabel('emergency_assign_complete_sub','All emergency works were assigned.') :  app.getLocalizedLabel('emergency_no_emergencies','There are no emergency works.')}"
+              id="b3gyy"
+            >
+              <view-manager
+                size="medium"
+                for-table="b3gyy"
+                auto-save="false"
+                on-change="{page.state.selectedEmergencyWork = event.selectedItem.id}"
+                id="q2zd5"
+              >
+                <view-manager-item
+                  datasource="jUnassignedEmergDS"
+                  title="Unassigned"
+                  id="vze28"
+                >
+                  <table-column
+                    name="combinedWogroupAndTaskId"
+                    column-type="combinedWogroupAndTaskIdWithLink"
+                    label="Work record"
+                    width="350"
+                    id="y835g"
+                  />
+                  <table-column
+                    name="combinedResourceTypeAndSkillLevel"
+                    width="300"
+                    column-type="combinedResourceTypeAndSkillLevel"
+                    label="Resource"
+                    id="pr89k"
+                  />
+                  <table-column name="laborhrs" label="Duration" id="adz2p" />
+                  <table-column name="wopriority" label="Priority" id="gky4m" />
+                  <table-column name="assetnum" label="Asset" id="bx59g" />
+                  <table-column
+                    name="location"
+                    label="Location"
+                    width="150"
+                    id="qyajn"
+                  />
+                </view-manager-item>
+                <view-manager-item
+                  datasource="jAssignedEmergDS"
+                  title="Assigned"
+                  id="a3385"
+                >
+                  <table-column
+                    name="combinedWogroupAndTaskId"
+                    label="Work record"
+                    column-type="combinedWogroupAndTaskIdWithLink"
+                    width="350"
+                    id="vzrp4"
+                  />
+                  <table-column
+                    name="combinedResourceNAmeAndSkillLevel"
+                    width="300"
+                    column-type="combinedResourceNAmeAndSkillLevel"
+                    label="Resource"
+                    id="rpbbk"
+                  />
+                  <table-column
+                    name="assignstatus_description"
+                    label="Status"
+                    id="n23jd"
+                  />
+                  <table-column name="laborhrs" label="Duration" id="jfrep" />
+                  <table-column
+                    name="wopriority"
+                    label="Priority"
+                    id="e784bb"
+                  />
+                  <table-column name="assetnum" label="Asset" id="wxw7x" />
+                  <table-column
+                    name="location"
+                    label="Location"
+                    id="e24fb"
+                    width="150"
+                  />
+                  <table-column
+                    name="assigneddate"
+                    label="Date assigned"
+                    id="n4v8m"
+                    width="250"
+                  />
+                  <table-column
+                    name="assignedby"
+                    label="Assigned by"
+                    id="n4zz3m"
+                  />
+                </view-manager-item>
+              </view-manager>
+              <toolbar-actions id="ym5vv">
+                <button
+                  hidden="false"
+                  icon="carbon:restart"
+                  on-click="onEmergencyReload"
+                  kind="ghost"
+                  slot="action-button"
+                  hover-tooltip="Refresh"
+                  id="hj5kh"
+                />
+              </toolbar-actions>
+              <row-actions id="n9ny4g">
+                <row-action
+                  hidden="{page.state.selectedEmergencyWork === '0'}"
+                  on-action="unassignWorkRecord"
+                  label="Unassign work record"
+                  icon="carbon:undo"
+                  overflow="true"
+                  id="gvkg4"
+                />
+                <row-action
+                  on-action="loadWoSummaryApp"
+                  label="View more work details"
+                  icon="carbon:launch"
+                  overflow="true"
+                  id="jnm2e"
+                />
+              </row-actions>
+              <table-cell-renders id="m8p7n">
+                <table-cell-render
+                  column-type="combinedWogroupAndTaskIdWithLink"
+                  id="rgb34"
+                >
+                  <box direction="column" id="rwydb">
+                    <link
+                      label="{item.combinedWogroupAndTaskId}"
+                      on-click="loadWoSummaryApp"
+                      on-click-arg="{{item}}"
+                      id="q4dz3"
+                      hidden="{page.state.selectedEmergencyWork === '0'}"
+                    />
+                    <label
+                      theme="small"
+                      spacing="none"
+                      label="{item.combinedWogroupAndTaskId}"
+                      padding="none"
+                      hidden="{page.state.selectedEmergencyWork === '1'}"
+                      id="dqz7p"
+                    />
+                    <label
+                      theme="field"
+                      spacing="none"
+                      label="{item.name}"
+                      padding="none"
+                      id="nz_ej"
+                    />
+                  </box>
+                </table-cell-render>
+                <table-cell-render
+                  column-type="combinedResourceTypeAndSkillLevel"
+                  id="nzb3k"
+                >
+                  <box direction="column" id="yw32k">
+                    <label
+                      theme="small"
+                      spacing="none"
+                      label="{item.resourcetypename}"
+                      padding="none"
+                      id="enqy2"
+                    />
+                    <label
+                      theme="field"
+                      spacing="none"
+                      label="{item.skilllevel}"
+                      padding="none"
+                      id="mb5pv"
+                    />
+                  </box>
+                </table-cell-render>
+                <table-cell-render
+                  column-type="combinedResourceNAmeAndSkillLevel"
+                  id="nm8mr"
+                >
+                  <box direction="column" id="z58dz">
+                    <label
+                      theme="small"
+                      spacing="none"
+                      label="{item.resourcename}"
+                      padding="none"
+                      id="vxxx6"
+                    />
+                    <label
+                      theme="field"
+                      spacing="none"
+                      label="{item.skilllevel}"
+                      padding="none"
+                      id="md342"
+                    />
+                  </box>
+                </table-cell-render>
+              </table-cell-renders>
+            </table>
+          </start>
+          <end
+            width="40"
+            id="x_x42"
+            hidden="{page.state.selectedEmergencyWork === '1'}"
+          >
+            <box
+              fill-parent="true"
+              padding-top="0.5"
+              padding-start="1.5"
+              id="rnw4b"
+            >
+              <box
+                fill-parent="true"
+                direction="column"
+                background-color="field-01"
+                id="yv_72"
+              >
+                <box id="jg6r3">
+                  <box
+                    direction="column"
+                    padding-top="0.75"
+                    padding-bottom="0.75"
+                    padding-start="1"
+                    padding-end="1"
+                    fill-parent="true"
+                    id="kk6_5"
+                  >
+                    <label
+                      theme="header-small"
+                      label="{page.state.resourcePanelHeader}"
+                      spacing="none"
+                      padding="none"
+                      id="kkj7p"
+                    />
+                    <label
+                      theme="field"
+                      label="Last ran on {skdodmerunForEmergenciesDS.item.endtime}"
+                      hidden="{!skdodmerunForEmergenciesDS.item.endtime || page.state.tasksWithEmergencies === 0}"
+                      spacing="none"
+                      padding="none"
+                      id="y9d_r"
+                    />
+                  </box>
+                  <box padding-top="-0.5" padding-bottom="0" id="gk3ay">
+                    <dropdown
+                      background-color="white"
+                      selected-item="{page.state.selectedResourcesFilter}"
+                      on-change="filterResources"
+                      hide-unselected-placeholder="true"
+                      id="nydwq"
+                    >
+                      <dropdown-item
+                        value="topRecommendations"
+                        text="Top recommendations ({page.state.filterCounters.topRecommendations})"
+                        id="zdrwe"
+                      />
+                      <dropdown-item
+                        value="allResources"
+                        text="All resources ({page.state.filterCounters.allResources})"
+                        id="n9e_m"
+                      />
+                    </dropdown>
+                  </box>
+                </box>
+                <box fill-parent="true" id="d55yj" background-color="ui-03">
+                  <box
+                    padding-top="0.63"
+                    padding-bottom="0.63"
+                    padding-start="1"
+                    padding-end="1"
+                    id="ar3kd"
+                  >
+                    <border-layout fill-parent="true" id="ze46n">
+                      <start vertical-align="end" width="40" id="k8pq4">
+                        <label
+                          theme="header-x-small"
+                          label="Resource"
+                          spacing="none"
+                          padding="none"
+                          id="va662"
+                        />
+                      </start>
+                      <middle
+                        horizontal-align="end"
+                        vertical-align="end"
+                        width="30"
+                        id="jvx_y"
+                      >
+                        <label
+                          theme="header-x-small"
+                          label="Estimated start time"
+                          spacing="none"
+                          padding="none"
+                          id="mrwxw"
+                        />
+                      </middle>
+                      <end
+                        horizontal-align="end"
+                        vertical-align="end"
+                        width="30"
+                        id="g2_b7"
+                      >
+                        <label
+                          theme="header-x-small"
+                          label="Estimated drive time"
+                          spacing="none"
+                          padding="none"
+                          id="jv9wr"
+                        />
+                      </end>
+                    </border-layout>
+                  </box>
+                </box>
+                <box
+                  fill-parent="false"
+                  size="200"
+                  hidden="{!page.state.hideRecommendations}"
+                  id="dzx7d"
+                >
+                  <inline-loading
+                    fill="true"
+                    loading-label="Loading"
+                    center="true"
+                    success="false"
+                    success-label=""
+                    id="k8x7y"
+                  />
+                </box>
+                <box
+                  id="gr_wm"
+                  padding="1"
+                  fill-parent="true"
+                  hidden="{page.state.hideRecommendations}"
+                >
+                  <data-list
+                    empty-set-string="{page.state.selectedResourcesFilter === 'topRecommendations' ? app.getLocalizedLabel('emergency_no_recommendations','There are no recommendations.') : app.getLocalizedLabel('emergency_no_resources','There are no resources.')}"
+                    sub-label="{page.state.selectedResourcesFilter === 'topRecommendations' ? app.getLocalizedLabel('emergency_change_filter','To find a solution, change the filter from top recommendations to all resources.') : app.getLocalizedLabel('emergency_add_resources','To find a solution, add resources to the schedule.')}"
+                    datasource="jemergencyRecommendationsDS"
+                    tight="true"
+                    show-search="false"
+                    id="q6aap4ne"
+                  >
+                    <!-- renderer for item details -->
+                    <list-details id="de63498">
+                      <border-layout id="el4asme" fill-parent="true">
+                        <middle id="w88nlsm">
+                          <label
+                            theme="field"
+                            label="Today's assignments"
+                            spacing="none"
+                            id="eday6"
+                          />
+                          <box
+                            hidden="{item.assignments.length}"
+                            padding-start="1"
+                            id="vg69_"
+                          >
+                            <label
+                              theme="header-x-small"
+                              label="No assignments today"
+                              id="vb2j2"
+                            />
+                          </box>
+                          <data-list
+                            datasource="{page.getAssignmentsDatasource(item.assignments)}"
+                            tight="true"
+                            hidden="{!item.assignments.length}"
+                            show-search="false"
+                            id="g4gm5"
+                          >
+                            <border-layout
+                              slot="item"
+                              fill-parent="true"
+                              id="p9yed"
+                            >
+                              <start vertical-align="end" width="40" id="m_gzq">
+                                <box
+                                  direction="column"
+                                  vertical-align="end"
+                                  id="d4xzq"
+                                  padding-top="1"
+                                >
+                                  <label
+                                    label="{item.assignstarttimedate} - {item.assignendtimedate}"
+                                    spacing="none"
+                                    padding="bottom"
+                                    id="y95yd"
+                                  />
+                                </box>
+                              </start>
+                              <middle
+                                horizontal-align="start"
+                                vertical-align="end"
+                                width="30"
+                                id="wdear"
+                              >
+                                <box vertical-align="center" id="gem9v">
+                                  <icon-group
+                                    padding="false"
+                                    primary-icon="carbon:locked"
+                                    hidden="{!item.assgnresourcelock}"
+                                    icon-size="16"
+                                    label=""
+                                    primary-icon-color="icon-02"
+                                    id="dzn25"
+                                  />
+                                  <link
+                                    on-click="{page.loadWoSummaryApp()}"
+                                    label="{item.assignwonum}"
+                                    id="wk8y9"
+                                  />
+                                  <label
+                                    label="{item.wodescription}"
+                                    spacing="none"
+                                    id="waya9"
+                                  />
+                                </box>
+                              </middle>
+                              <end
+                                horizontal-align="end"
+                                vertical-align="end"
+                                width="30"
+                                id="yppgn"
+                              >
+                                <box padding-end="0.5" id="bb8rv">
+                                  <tag-group
+                                    align="start"
+                                    wrap="true"
+                                    tags="{item.priorityTag}"
+                                    id="zxkxn"
+                                  />
+                                </box>
+                              </end>
+                            </border-layout>
+                          </data-list>
+                        </middle>
+                        <bottom id="lsaisbvb" horizontal-align="end">
+                          <box id="vmaagf" horizontal-align="end">
+                            <button
+                              id="lagoa3a"
+                              label="Assign"
+                              icon="carbon:arrow--right"
+                              small="true"
+                              on-click-arg="{item}"
+                              on-click="assignEmergencyWorkToResource"
+                            />
+                          </box>
+                        </bottom>
+                      </border-layout>
+                    </list-details>
+                    <list-item id="gvvby">
+                      <border-layout id="y8a5x" fill-parent="true">
+                        <start id="zrqd2" vertical-align="center" width="40">
+                          <box
+                            id="bgqbg"
+                            fill-parent="true"
+                            children-sizes="90, 10"
+                            direction="row"
+                          >
+                            <box
+                              fill-parent="true"
+                              direction="column"
+                              id="wj94x"
+                            >
+                              <label
+                                theme="header-medium"
+                                label="{item.displayname}"
+                                spacing="none"
+                                padding="top"
+                                id="a99al2ae"
+                              />
+                              <label
+                                theme="field"
+                                label="{item.craft}"
+                                spacing="none"
+                                padding="bottom"
+                                id="me24y"
+                              />
+                            </box>
+                            <icon-group
+                              primary-icon="carbon:star"
+                              hidden="{!item.toprecommendation}"
+                              icon-size="16"
+                              label=""
+                              primary-icon-color="support-02"
+                              id="k5659"
+                            >
+                              <tooltip slot="primary-icon-tooltip" id="n_vr6">
+                                <label
+                                  slot="content"
+                                  wrap="true"
+                                  label="Recommended for capability"
+                                  id="wm_p2"
+                                />
+                              </tooltip>
+                            </icon-group>
+                          </box>
+                        </start>
+                        <middle
+                          id="pz3ja"
+                          horizontal-align="end"
+                          vertical-align="center"
+                          width="30"
+                        >
+                          <box id="qq437" vertical-align="end">
+                            <label
+                              theme="header-medium"
+                              label="{item.formattedtime}"
+                              spacing="none"
+                              id="r9akk"
+                            />
+                          </box>
+                        </middle>
+                        <end
+                          id="n_28_"
+                          horizontal-align="end"
+                          vertical-align="center"
+                          width="30"
+                        >
+                          <box padding-end="0.5" id="ygand">
+                            <label
+                              theme="header-medium"
+                              label="{item.formatteddrivetime}"
+                              spacing="none"
+                              id="yxr7e"
+                            />
+                          </box>
+                        </end>
+                      </border-layout>
+                    </list-item>
+                  </data-list>
+                </box>
+              </box>
+            </box>
+          </end>
+        </border-layout>
+      </box>
+    </tab>
+    <tab label="Assignment issues" id="x3baz">
+      <box padding-top="0.5" padding-bottom="1" id="dgw5w">
+        <table
+          datasource="skdactivityunscheduledDS"
+          can-resize="true"
+          display-row-count="true"
+          can-reorder-columns="false"
+          can-filter="true"
+          can-search="false"
+          no-data-message="No assignment issues"
+          can-download="true"
+          id="dgp7_"
+        >
+          <toolbar-actions id="mndpn">
+            <button
+              icon="carbon:undo"
+              on-click="onUndo"
+              kind="ghost"
+              slot="action-button"
+              hover-tooltip="Undo"
+              label=""
+              id="xnwn3"
+            />
+            <button
+              kind="secondary"
+              on-click="onSave"
+              slot="action-button"
+              hover-tooltip="Save"
+              disabled="{!datasource.state.canSave || page.state.disableSaveButton}"
+              label="Save"
+              id="vzwq7"
+            />
+          </toolbar-actions>
+          <table-column
+            name="id"
+            placeholder-text="Work record"
+            label="Work record"
+            width="220"
+            id="bkmj9"
+          >
+            <box
+              direction="row"
+              children-sizes="10,90"
+              fill-parent="true"
+              id="m594q"
+            >
+              <box id="b7_e2">
+                <icon
+                  icon="{item.computedIssueIcon}"
+                  fill="#DA1E28"
+                  id="r8fkw"
+                />
+              </box>
+              <box
+                padding-start="0.5"
+                direction="column"
+                id="kwqtkk"
+                fill-parent="true"
+              >
+                <label
+                  theme="header-x-small"
+                  label="{item.wonum}"
+                  spacing="none"
+                  padding="none"
+                  id="ga946"
+                />
+                <label
+                  theme="field"
+                  label="{item.name}"
+                  spacing="none"
+                  padding="none"
+                  id="egen6"
+                />
+              </box>
+            </box>
+          </table-column>
+          <table-column
+            name="craft"
+            label="Craft"
+            can-sort="true"
+            width="180"
+            id="yagkd"
+          >
+            <box direction="column" fill-parent="true" id="z92md">
+              <smart-input
+                enable-custom-field="true"
+                select-lookup-attribute="craft"
+                hide-label="true"
+                value="{item.craft}"
+                loading="{item.craftLoading}"
+                placeholder=""
+                theme="dark"
+                id="vmjd9"
+                on-smart-lookup-click="openLookup"
+                on-smart-lookup-click-arg="{{assignmentid:item.assignmentid, lookupId: 'craft_lookup'}}"
+                enable-lookup-buttongroup="true"
+              />
+            </box>
+          </table-column>
+          <table-column name="skillLevel" label="Skill level" id="mbbe9">
+            <box direction="column" fill-parent="true" id="w7pgy">
+              <label
+                theme="field"
+                label="{item.skilllevel}"
+                spacing="none"
+                padding="none"
+                id="d2bxv"
+              />
+            </box>
+          </table-column>
+          <table-column
+            name="laborcode"
+            label="Labor"
+            can-sort="true"
+            width="180"
+            id="ww744"
+          >
+            <box direction="column" fill-parent="true" id="xj_8x">
+              <smart-input
+                select-lookup-attribute="laborcode"
+                enable-custom-field="true"
+                hide-label="true"
+                placeholder=""
+                enable-lookup-buttongroup="true"
+                theme="dark"
+                value="{item.laborcode}"
+                loading="{item.laborcodeLoading}"
+                id="a5epn"
+                on-smart-lookup-click="openLookup"
+                on-smart-lookup-click-arg="{{assignmentid:item.assignmentid, lookupId: 'labor_lookup'}}"
+              />
+            </box>
+          </table-column>
+          <table-column
+            name="crewType"
+            label="Crew type"
+            can-sort="true"
+            width="180"
+            id="q3zma"
+          >
+            <box direction="column" fill-parent="true" id="nmgvr">
+              <smart-input
+                enable-custom-field="true"
+                select-lookup-attribute="crewtype"
+                hide-label="true"
+                value="{item.amcrewtype}"
+                placeholder=""
+                enable-lookup-buttongroup="true"
+                theme="dark"
+                id="ynx9z"
+                loading="{item.amcrewtypeLoading}"
+                on-smart-lookup-click="openLookup"
+                on-smart-lookup-click-arg="{{assignmentid:item.assignmentid, lookupId: 'crewType_lookup'}}"
+              />
+            </box>
+          </table-column>
+          <table-column
+            name="crew"
+            label="Crew"
+            can-sort="true"
+            width="180"
+            id="n481m"
+          >
+            <box direction="column" fill-parent="true" id="x8qpz">
+              <smart-input
+                enable-custom-field="true"
+                select-lookup-attribute="crew"
+                hide-label="true"
+                value="{item.amcrew}"
+                placeholder=""
+                enable-lookup-buttongroup="true"
+                theme="dark"
+                loading="{item.amcrewLoading}"
+                on-smart-lookup-click="openLookup"
+                on-smart-lookup-click-arg="{{assignmentid:item.assignmentid, lookupId: 'crew_lookup'}}"
+                id="ej42j"
+              />
+            </box>
+          </table-column>
+          <table-column
+            name="scheduledStart"
+            placeholder-text="Scheduled start"
+            label="Scheduled start"
+            width="250"
+            id="z89w4"
+          >
+            <box
+              direction="column"
+              padding-top="{0.2}"
+              padding-bottom="{0.2}"
+              fill-parent="true"
+              id="dj7xy"
+            >
+              <smart-input
+                theme="dark"
+                value="{item.scheduledate}"
+                hide-label="true"
+                show-verbose="false"
+                id="bj3k4s"
+              />
+            </box>
+          </table-column>
+          <table-column
+            name="laborhrs"
+            placeholder-text="Duration"
+            label="Duration"
+            width="130"
+            align="start"
+            id="rxgmv"
+          >
+            <box
+              direction="column"
+              padding-top="{0.4}"
+              fill-parent="true"
+              id="ay8ja"
+            >
+              <smart-input
+                hide-label="true"
+                id="durationInput"
+                theme="dark"
+                value="{item.laborhrs}"
+                hide-step-buttons="true"
+                min="0"
+              />
+            </box>
+          </table-column>
+          <table-column
+            name="modified"
+            label="Modified"
+            can-filter="false"
+            can-sort="true"
+            width="110"
+            id="jgmae"
+          >
+            <box direction="column" fill-parent="true" id="nvn37">
+              <label
+                theme="field"
+                label="{item.computeChanged ? 'Yes' : 'No'}"
+                spacing="none"
+                padding="none"
+                id="ed_kq"
+              />
+            </box>
+          </table-column>
+          <table-details id="qrbjx">
+            <box direction="column" padding="1" id="e86p3">
+              <repeat
+                datasource="skdactivityunscheduledDS[schedulingerrors]"
+                id="zz5q3"
+              >
+                <box direction="column" slot="item" id="gp3kw">
+                  <label
+                    spacing="none"
+                    label="Error message"
+                    theme="field"
+                    id="ypnjq"
+                    hidden="{index > 0}"
+                  />
+                  <inline-notification
+                    title="{item.valmsg ? item.valmsg : item.reasoncode}"
+                    subtitle="{item.reasoncode_description}"
+                    kind="error"
+                    id="gazd8"
+                    hide-close-button="true"
+                  />
+                </box>
+              </repeat>
+            </box>
+          </table-details>
+        </table>
+      </box>
+    </tab>
+  </tabs>
+</box>

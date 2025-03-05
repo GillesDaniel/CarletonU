@@ -1,0 +1,41 @@
+{
+  "status": 200,
+  "headers": {
+    "x-frame-options": "SAMEORIGIN",
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "1",
+    "content-security-policy": "font-src 'self' data: https://1.www.s81c.com *.walkme.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.walkme.com; style-src 'self' 'unsafe-inline' 'unsafe-eval' *.walkme.com; img-src 'self' d2qhvajt3imc89.cloudfront.net data: *.walkme.com; object-src *.walkme.com;",
+    "access-control-allow-origin": "https://com.ibm.iot.maximo.mobile",
+    "access-control-allow-credentials": "true",
+    "access-control-allow-methods": "GET,POST,PUT,DELETE",
+    "access-control-allow-headers": "maxauth,x-method-override,patchtype,content-type,accept,x-public-uri",
+    "access-control-expose-headers": "csrftoken",
+    "content-type": "application/json",
+    "cache-control": "max-age=1000000, private",
+    "content-length": 331,
+    "content-language": "en-US",
+    "vary": "Accept-Encoding",
+    "connection": "Close",
+    "date": "Tue, 30 Apr 2024 17:34:25 GMT"
+  },
+  "body": {
+    "CALIBRATION": true,
+    "SCHEDULER_PLUS": true,
+    "SHIFTBREAK": true,
+    "SCHEDULER_FW": true,
+    "VISSCHED": true,
+    "EVERYPLACE": true,
+    "EAMTOPHELPMENU": true,
+    "EAMVISSCHED": true,
+    "SCHEDULER": true,
+    "MANAGE": true,
+    "MAPCONTROL": true,
+    "TPAEBASE": true,
+    "LINEAR": true,
+    "SERVICEADDRESS": true,
+    "SCHEDULER_760": true,
+    "CREW": true,
+    "SCHEDULER_OPT": true,
+    "SCHEDULER_762": true
+  }
+}

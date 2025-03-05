@@ -1,0 +1,681 @@
+<maximo-application product-name="Maximo" controller="AppController" title="Manage Monitoring Information" id="mmiui" version="9.0.0.0" default-log-level="error">
+  <maximo-datasource id="serviceds" service="logging" pre-load="false"/>
+  <dialogs id="pk8w3">
+    <dialog id="displayLog" title="Stream log" primary-action-text="Ok">
+      <box id="x8gaq">
+        <label wrap="true" label="{app.state.currentLog}" id="vqngb"/>
+      </box>
+    </dialog>
+  </dialogs>
+  <pages id="pages">
+    <page id="main" title="Servers">
+      <maximo-datasource id="membersds" item-url="members" selection-mode="none" pre-load="true">
+        <schema id="ggvpq">
+          <attribute name="identifier1" unique-id="true" id="eara2"/>
+        </schema>
+      </maximo-datasource>
+      <header-template title="Servers" enable-white-background="true" id="gb673">
+        <!-- <box slot="custom-content" direction="row" id="nk8k_">
+          <button label="Stream log" on-click="handleCheckStreamLog" id="evmab"/>
+        </box> -->
+      </header-template>
+      <card-group datasource="membersds" show-refresh="true" can-search="false" can-sort="false" id="g8gxg">
+        <card slot="item" id="k68k5">
+          <label theme="header-small" label="{item.serverName}" id="y432p"/>
+          <field label-placement="top" label="Identifier" value="{item.identifier}" id="za3mz"/>
+          <field label-placement="top" label="Server host" value="{item.serverHost}" id="e383p"/>
+          <field label-placement="top" label="Registry port" value="{item.registryPort}" id="z_44a"/>
+          <button-group align="end" id="gk38a">
+            <button kind="ghost" label="Detail" on-click="handleCheckServerDetail" on-click-arg="{{'item':item}}" id="kpez6"/>
+          </button-group>
+        </card>
+      </card-group>
+    </page>
+    <page id="serverdetail" title="Detail" controller="DetailPageController">
+      <states id="y_v3g">
+        <state name="selectedIndex" value="0" type="number" id="vaxd6"/>
+        <state name="selectedContent" value="0" type="number" id="q5xag"/>
+        <state name="selectedSwitch" value="0" type="number" id="nwbv3"/>
+      </states>
+      <maximo-datasource id="serversysteminfods" item-url="members/{page.params.serverIdentifier}" pre-load="true" selection-mode="none">
+        <schema id="aymee">
+          <attribute name="productName" unique-id="true" id="dp7z4"/>
+        </schema>
+      </maximo-datasource>
+      <!-- DB Info datasources -->
+      <maximo-datasource id="dbinfods" item-url="members/{page.params.serverIdentifier}/dbinfo" selection-mode="none">
+        <schema id="jmp_g">
+          <attribute name="dbConnenctionFree" unique-id="true" id="x9ag8"/>
+        </schema>
+        <maximo-datasource id="dbmanagerds" relationship="dbmanager">
+          <schema id="w48bj">
+            <attribute name="dbConnectionFree" unique-id="true" id="kwwnv"/>
+          </schema>
+        </maximo-datasource>
+        <maximo-datasource id="dbconnds" relationship="dbmanager/dbconn">
+          <schema id="y84b_">
+            <attribute name="dbConnectionFree" unique-id="true" id="j5dme"/>
+          </schema>
+        </maximo-datasource>
+      </maximo-datasource>
+      <!-- JVM datasources -->
+      <maximo-datasource id="jvmds" item-url="members/{page.params.serverIdentifier}/jvm" selection-mode="none">
+        <schema id="pwzqa">
+          <attribute name="vmName" unique-id="true" id="m2wb5"/>
+        </schema>
+      </maximo-datasource>
+      <!-- Queues datasources -->
+      <maximo-datasource id="queueds" item-url="members/{page.params.serverIdentifier}/queues" selection-mode="none">
+        <schema id="ep27a">
+          <attribute name="queueName" unique-id="true" id="mmaj9"/>
+        </schema>
+      </maximo-datasource>
+      <maximo-datasource id="testConnectionDs" item-url="{page.state.currentQueue.testConnection.resource}" selection-mode="none">
+        <schema id="eakw4">
+          <attribute name="canConnect" unique-id="true" id="q2kad"/>
+        </schema>
+      </maximo-datasource>
+      <maximo-datasource id="browseMessagesDs" item-url="{page.state.currentQueue.browseMessage.resource}" selection-mode="none">
+        <schema id="np7b7">
+          <attribute name="MEAMessageID" unique-id="true" id="e5q_p"/>
+        </schema>
+      </maximo-datasource>
+      <!-- MBO datasource -->
+      <maximo-datasource id="mbocountds" page-size="50" item-url="members/{page.params.serverIdentifier}/mbocount" selection-mode="none">
+        <schema id="ng9m5">
+          <attribute name="mbosetname" unique-id="true" id="vv945"/>
+        </schema>
+      </maximo-datasource>
+      <!-- thread datasource -->
+      <maximo-datasource id="threadds" item-url="members/{page.params.serverIdentifier}/threads" selection-mode="none">
+        <schema id="bwzd5">
+          <attribute name="threadCount" unique-id="true" id="g4nyq"/>
+        </schema>
+        <maximo-datasource id="threaddumpds" relationship="threaddump">
+          <schema id="gwgxb">
+            <attribute name="member" unique-id="true" id="ddprq"/>
+          </schema>
+        </maximo-datasource>
+      </maximo-datasource>
+      <!-- memory datasource -->
+      <maximo-datasource id="memoryds" item-url="members/{page.params.serverIdentifier}/memory" selection-mode="none">
+        <schema id="eje_y">
+          <attribute name="heapMemory" unique-id="true" id="aevpa"/>
+        </schema>
+      </maximo-datasource>
+      <!-- operating system datasource -->
+      <maximo-datasource id="opsystemds" item-url="members/{page.params.serverIdentifier}/opsystem" selection-mode="none">
+        <schema id="kmd7k">
+          <attribute name="shortTitle" unique-id="true" id="a69ya"/>
+        </schema>
+      </maximo-datasource>
+      <!-- oscache datasource  -->
+      <maximo-datasource id="oscacheds" item-url="members/{page.params.serverIdentifier}/oscache" selection-mode="none" controller="OSCacheDataController" pre-load="true">
+        <schema id="pnk53">
+          <attribute name="osDetailOrphans" unique-id="true" id="y6yn4"/>
+        </schema>
+      </maximo-datasource>
+      <json-datasource id="osDetailOrphansJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="xz727">
+          <attribute name="problemDefinition" id="dbee3"/>
+          <attribute name="objectStructureName" id="mqrym"/>
+          <attribute name="objectName" id="pkxdx"/>
+          <attribute name="probableResolution" id="e6zdx"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osDetailsNoHeaderJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="axgyp">
+          <attribute name="problemDefinition" id="p9pq2"/>
+          <attribute name="objectStructureName" id="p4rnb"/>
+          <attribute name="probableResolution" id="azgyg"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osHeaderNoDetailsJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="an8v6">
+          <attribute name="problemDefinition" id="qnkq3"/>
+          <attribute name="objectStructureName" id="y6bne"/>
+          <attribute name="probableResolution" id="wv9dq"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osNoPrimaryObjectJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="bex8a">
+          <attribute name="problemDefinition" id="b7yg9"/>
+          <attribute name="objectStructureName" id="kqyww"/>
+          <attribute name="probableResolution" id="y72gj"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osColsOrphansJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="deyb2">
+          <attribute name="problemDefinition" id="k2n59"/>
+          <attribute name="objectStructureName" id="d5qaq"/>
+          <attribute name="objectName" id="jd525"/>
+          <attribute name="attributenameName" id="ad_4w"/>
+          <attribute name="probableResolution" id="jz25z"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osColsNoDetailsJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="y2y_q">
+          <attribute name="problemDefinition" id="vz94z"/>
+          <attribute name="objectStructureName" id="xxanr"/>
+          <attribute name="objectName" id="pq8ge"/>
+          <attribute name="probableResolution" id="bayvx"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osEntServiceNoIntJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="rx7k4">
+          <attribute name="problemDefinition" id="q2v7r"/>
+          <attribute name="enterpriseService" id="ka8xe"/>
+          <attribute name="objectStructureName" id="dqagb"/>
+          <attribute name="probableResolution" id="rvvzv"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osExtSystemNoEntServiceJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="znxbq">
+          <attribute name="problemDefinition" id="g8pp9"/>
+          <attribute name="enterpriseService" id="xz3y9"/>
+          <attribute name="externalSystem" id="pe8rk"/>
+          <attribute name="probableResolution" id="y5m3v"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osPubChannelNoIntJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="d2q9g">
+          <attribute name="problemDefinition" id="mgv86"/>
+          <attribute name="publishChannel" id="ppj8v"/>
+          <attribute name="objectStructureName" id="rdp3q"/>
+          <attribute name="probableResolution" id="kjyn8"/>
+        </schema>
+      </json-datasource>
+      <json-datasource id="osExtSystemNoPubChannelJsonDs" src="{[]}" selection-mode="none" schema="schema" order-by="name">
+        <schema id="egexg">
+          <attribute name="problemDefinition" id="zqqwg"/>
+          <attribute name="publishChannel" id="gqqn8"/>
+          <attribute name="externalSystem" id="jdpv9"/>
+          <attribute name="probableResolution" id="yv39p"/>
+        </schema>
+      </json-datasource>
+      <!-- global directory datasource -->
+      <maximo-datasource id="globaldirds" item-url="members/{page.params.serverIdentifier}/globaldirlean" selection-mode="none">
+        <schema id="k_naa">
+          <attribute name="exists" unique-id="true" id="zyw2p"/>
+        </schema>
+      </maximo-datasource>
+      <maximo-datasource id="childdirds" item-url="members/{page.params.serverIdentifier}/globaldirlean/childdirslean" selection-mode="none">
+        <schema id="ajv66">
+          <attribute name="member" unique-id="true" id="yeqw2"/>
+        </schema>
+      </maximo-datasource>
+      <!-- eventtree datasource TODO api needs lean -->
+      <maximo-datasource id="eventtreeds" item-url="members/{page.params.serverIdentifier}/eventtree" selection-mode="none">
+        <schema id="yp7pz">
+          <attribute name="topic:maximo" unique-id="true" id="m6n94"/>
+        </schema>
+      </maximo-datasource>
+      <!-- whoami datasource -->
+      <maximo-datasource id="whoamids" item-url="whoami" selection-mode="none">
+        <schema id="n2_r9">
+          <attribute name="topic:maximo" unique-id="true" id="gw36r"/>
+        </schema>
+      </maximo-datasource>
+      <!-- appservices datasource -->
+      <maximo-datasource id="appservicesds" item-url="members/{page.params.serverIdentifier}/appserviceslean" selection-mode="none">
+        <schema id="r2dgv">
+          <attribute name="serviceName" unique-id="true" id="xmj9b"/>
+        </schema>
+      </maximo-datasource>
+      <!-- crontask datasource -->
+      <maximo-datasource id="crontaskds" item-url="members/{page.params.serverIdentifier}/cronlean" selection-mode="none">
+        <schema id="g7kzg">
+          <attribute name="taskName" unique-id="true" id="rz47d"/>
+        </schema>
+      </maximo-datasource>
+      <!-- classinfo datasource -->
+      <maximo-datasource id="classinfods" item-url="members/{page.params.serverIdentifier}/classinfo/{page.state.classInfoId}" selection-mode="none">
+        <schema id="w8n6b">
+          <attribute name="taskName" unique-id="true" id="vqr8w"/>
+        </schema>
+      </maximo-datasource>
+      <dialogs id="ypb7k">
+        <dialog id="testConnectionResult" title="Queue connection" primary-action-text="Ok">
+          <box id="jazrm">
+            <icon-group primary-icon="carbon:checkmark--filled" primary-icon-color="green" label="Connected" hidden="{!page.state.currentQueueConnection.canConnect}" id="qxp9g"/>
+            <icon-group primary-icon="carbon:error-filled" primary-icon-color="red" label="Not connected" hidden="{page.state.currentQueueConnection.canConnect}" id="qw24x"/>
+          </box>
+        </dialog>
+        <dialog id="viewQueueMessages" title="Messages" size="lg" primary-action-text="Ok">
+          <box id="ggdbj">
+            <table datasource="browseMessagesDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="false" display-row-count="false" no-data-message="No data to show" id="ng37w">
+              <table-column name="JMSMessageID" label="JMS message ID" id="mzrxr"/>
+              <table-column name="interfacetype" label="Interface type" id="vdag7"/>
+              <table-column name="uncompressed_length" label="Uncompressed length" id="v84qp"/>
+              <table-column name="SENDER" label="Sender" id="av_7_"/>
+              <table-column name="destination" label="Destination" id="nrqg6"/>
+              <table-column name="MEAMessageID" label="MEA message ID" id="pbddq"/>
+              <table-column name="JMS_BEA_DeliveryTime" label="JMS delivery time" id="qpe9d"/>
+              <table-column name="redelivered" label="Redelivered" id="ag5ky"/>
+              <table-column name="deliverycount" label="Delivery count" id="n_6k3"/>
+              <table-column name="INTERFACE" label="Interface" id="nv5rd"/>
+              <table-column name="mimetype" label="MIME type" id="ymq_k"/>
+              <table-column name="destjndiname" label="Dest JNDI name" id="kepkz"/>
+            </table>
+          </box>
+        </dialog>
+        <dialog id="classinfodialog" title="Class Information" primary-action-text="Ok">
+          <box  id="vj94g">
+            <dashboard hidden="{!classinfods.item.qName}" id="vdj77">
+              <dashboard-tile title="Class" size="large" id="vgr8d">
+                <field label="Class name" value="{classinfods.item.qName}" padding="top" id="w2ngy"/>
+                <field label="Is interface" value="{classinfods.item.isInterface}" padding="none" id="jym34"/>
+                <field label="Is synthetic" value="{classinfods.item.isSynthetic}" padding="none" id="kbeay"/>
+                <field label="Debug Id" value="{classinfods.item.debugId}" padding="none" id="w8wxg"/>
+                <field label="Class loader" value="{classinfods.item.classLoader}" padding="none" id="exekn"/>
+                <field label="Source" value="{classinfods.item.source}" padding="bottom" id="wjg96"/>
+                <button-group align="start" id="rq5k4">
+                  <button label="Extends" kind="ghost" on-click="lookupItemClassInfo" on-click-arg="{{'item':classinfods.item.extends.resource}}" hidden="{!classinfods.item.extends}" id="d8de_"/>
+                  <button label="Implements" kind="ghost" on-click="lookupItemClassInfo" on-click-arg="{{'item':classinfods.item.implements.resource}}" hidden="{!classinfods.item.implements}" id="d_wn8"/>
+                  <button label="Lookup" kind="ghost" on-click="lookupItemClassInfo" on-click-arg="{{'item':classinfods.item.href}}" hidden="{!classinfods.item.href}" id="rddxz"/>
+                </button-group>       
+              </dashboard-tile>
+            </dashboard>
+            <label label="No class found" hidden="{classinfods.item.qName}" id="j6x9a"/>
+          </box>
+        </dialog>
+      </dialogs>
+      <header-template title="{serversysteminfods.item.serverName}" enable-white-background="true" id="g53ka">
+        <dropdown slot="dropdown" hide-label="true" hide-unselected-placeholder="true" selected-item="{page.state.selectedContent}" id="wyx98">
+          <dropdown-item value="0" text="System" id="x863p"/>
+          <dropdown-item value="1" text="Integration" id="xwbzd"/>
+          <dropdown-item value="2" text="User" id="m866r"/>
+          <dropdown-item value="3" text="Services" id="ya8rd"/>
+        </dropdown>
+        <stacked-panel slot="tabs" selected-index="{page.state.selectedContent}" id="ymr_r">
+          <panel id="rb434">
+            <tabs id="j9rn7">
+              <tab label="Database information" id="w959a">
+                <box padding="0.5" id="xzwz_">
+                  <!-- Server and database information -->
+                  <dashboard id="vkwdy">
+                    <dashboard-tile title="Server information" size="mediumthin" id="b9j8r">
+                      <field label="Application server" value="{serversysteminfods.item.appServer}" padding="top" id="e9p4y"/>
+                      <field label="Application security" value="{serversysteminfods.item.useAppServerSecurity}" padding="none" id="wdqbe"/>
+                      <field label="Allow local objects" value="{serversysteminfods.item.allowLocalObject}" padding="none" id="epnrg"/>
+                      <field label="Perfmon running" value="{serversysteminfods.item.perfMonRunning}" padding="none" id="z4exq"/>
+                      <field label="Users logged in" value="{serversysteminfods.item.loggedInUsers}" padding="none" id="a27jw"/>
+                      <field label="Admin mode" value="{serversysteminfods.item.adminMode}" padding="bottom" id="qn7dr"/>
+                    </dashboard-tile>
+                    <dashboard-tile title="Database information" size="mediumthin" id="er79k">
+                      <field label="Product name" value="{dbinfods.item.productName}" padding="none" id="kzqp3"/>
+                      <field label="Major version" value="{dbinfods.item.majorVersion}" padding="none" id="emrbb"/>
+                      <field label="Minor version" value="{dbinfods.item.minorVersion}" padding="none" id="dm3_8"/>
+                      <field label="Version" value="{dbinfods.item.version}" padding="bottom" id="a93yz"/>
+                    </dashboard-tile>
+                    <dashboard-tile title="Database driver information" size="mediumthin" id="b34x_">
+                      <field label="Driver name" value="{dbinfods.item.driver.driverName}" padding="none" id="eg6xk"/>
+                      <field label="Driver major version" value="{dbinfods.item.driver.majorVersion}" padding="none" id="m7ev5"/>
+                      <field label="Driver minor version" value="{dbinfods.item.driver.minorVersion}" padding="none" id="edg25"/>
+                      <field label="Driver full version" value="{dbinfods.item.driver.version}" padding="none" id="km_g2"/>
+                      <button label="Class information" kind="ghost" on-click="lookupItemClassInfo" on-click-arg="{{'item':dbinfods.item.driver.driverClass.resource}}" id="gxp_8"/>
+                    </dashboard-tile>
+                    <dashboard-tile title="Database connection information" size="mediumthin" id="n94ma">
+                      <field label="Database connections total" value="{dbmanagerds.item.dbConnenctionTotal}" padding="none" id="bkpp6"/>
+                      <field label="Database connections free" value="{dbmanagerds.item.dbConnenctionFree}" padding="none" id="zr3p8"/>
+                      <field label="Database connections used" value="{dbmanagerds.item.dbConnenctionUsed}" padding="bottom" id="bgapp"/>
+                      <field label="Long running connections" value="{dbmanagerds.item.longRunningConnections}" padding="bottom" id="qannv"/>
+                    </dashboard-tile>
+                  </dashboard>
+                </box>
+              </tab>
+              <tab label="Mbo count" id="qggmg">
+                <box direction="row" padding="0" vertical-align="center" horizontal-align="end" size="100" children-sizes="97,1,1,1" id="wrq2y">
+                  <content-switcher selected-index="{page.state.selectedSwitch}" on-change="handleChangeView" id="raqgx">
+                    <cs-switch icon="carbon:list" aria-label="Table" id="gxw88"/>
+                    <cs-switch icon="carbon:chart--line--data" aria-label="Chart" id="m6kya"/>
+                  </content-switcher>
+                </box>
+                <stacked-panel selected-index="{page.state.selectedSwitch}" id="xjkvg">
+                  <panel id="qr5mk">
+                    <box fill-parent="true" id="me28k">
+                      <table datasource="mbocountds" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="false" display-row-count="false" no-data-message="No data to show" row-height="compact" id="nkpdz">
+                        <table-column name="mboSetName" label="MboSet name" id="j6j7q"/>
+                        <table-column name="mboSetCount" label="MboSet count" id="vxqwp"/>
+                        <table-column name="mboCount" label="Mbo count" id="bv9bp"/>
+                        <row-actions id="aae3_">
+                          <row-action label="View class" on-action="lookupMboInfo" overflow="false" id="nabq6"/>
+                        </row-actions>
+                      </table>
+                    </box>
+                  </panel>
+                  <panel id="egqje">
+                    <dashboard id="v_2m6">
+                      <dashboard-chart-tile title="Mbo set count" chart-type="bar" datasource="mbocountds" size="large" id="xy2rp">
+                        <chart-axis position="bottom" title="MboSet name" data-field="mboSetName" scale-type="labels" id="mem9j"/>
+                        <chart-axis position="start" title="Mbo set count" data-field="mboSetCount" scale-type="linear" id="kr89x"/>
+                        <chart-option name="data.groupMapsTo" value="mboSetName" id="pmexk"/>
+                        <chart-legend position="bottom" orientation="horizontal" id="n4xk4"/>
+                      </dashboard-chart-tile>
+                      <dashboard-chart-tile title="Mbo count" chart-type="bar" datasource="mbocountds" size="large" id="w77p_">
+                        <chart-axis position="bottom" title="MboSet name" data-field="mboSetName" scale-type="labels" id="w2amn"/>
+                        <chart-axis position="start" title="Mbo count" data-field="mboCount" scale-type="linear" id="yarz6"/>
+                        <chart-option name="data.groupMapsTo" value="mboSetName" id="zj846"/>
+                        <chart-legend position="bottom" orientation="horizontal" id="qj_qm"/>
+                      </dashboard-chart-tile>
+                    </dashboard>
+                  </panel>
+                </stacked-panel>
+              </tab>
+              <tab label="JVM" id="ry9jj">
+                <box padding="0.5" id="g4vx8">
+                  <dashboard id="r7da9">
+                    <dashboard-tile title="JVM information" size="mediumwide" id="a7jj_">
+                      <field label="Name" value="{jvmds.item.vmName}" padding="none" id="v5e9p"/>
+                      <field label="Vendor" value="{jvmds.item.vmVendor}" padding="none" id="rzb_a"/>
+                      <field label="Version" value="{jvmds.item.vmVersion}" padding="none" id="xdz_a"/>
+                      <field label="Spec" value="{jvmds.item.specVersion}" padding="none" id="djrwq"/>
+                      <field label="Start time" value="{jvmds.item.startTime}" padding="none" id="j7b_p"/>
+                      <field label="Class path" value="{jvmds.item.classPath}" padding="bottom" id="n3p9j"/>
+                    </dashboard-tile>
+                  </dashboard>
+                </box>
+              </tab>
+              <tab label="Threads" id="rayyv">
+                <box padding="0.5" id="yg9wx">
+                  <dashboard id="myq7g">
+                    <dashboard-tile title="Thread Information" size="mediumwide" id="n9m9x">
+                      <field label="Thread count" value="{threadds.item.threadCount}" id="r55gj"/>
+                      <field label="Peak thread count" value="{threadds.item.peakThreadCount}" id="bpepd"/>
+                      <field label="Has deadlock" value="{threadds.item.hasDeadLockedThreads}" id="kjr9b"/>
+                      <field label="Deadlock count" value="{threadds.item.deadLockedThreadCount}" id="jrmxq"/>
+                    </dashboard-tile>
+                  </dashboard>
+                </box>
+                <box fill-parent="true" id="ep8k4">
+                  <table datasource="threaddumpds" rows-per-page="500" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No data to show" row-height="compact" id="ajyk7">
+                    <table-column name="shortId" label="Name" id="nb3ep"/>
+                    <table-column name="threadState" label="State" id="mdakd"/>
+                    <table-column name="cputime" label="CPU time" id="yxn2q"/>
+                    <table-column name="lockName" label="Lock name" id="abrrq"/>
+                  </table>
+                </box>
+              </tab>
+              <tab label="Operating system" id="pk8we">
+                <box padding="0.5" id="z6znz">
+                  <dashboard id="dm83p">
+                    <dashboard-tile title="Operating system information" size="mediumwide" id="x9zk_">
+                      <field label="Operating system" value="{opsystemds.item.shortTitle}" id="n3kvz"/>
+                      <field label="Version" value="{opsystemds.item.version}" id="z8am_"/>
+                      <field label="Available processors" value="{opsystemds.item.availableProcessors}" id="nz23e"/>
+                      <field label="Architecture" value="{opsystemds.item.architecture}" id="kyngj"/>
+                    </dashboard-tile>
+                  </dashboard>
+                </box>
+              </tab>
+              <tab label="Memory" id="zbzn7">
+                <box padding="0.5" id="bjaj2">
+                  <dashboard id="xyr75">
+                    <dashboard-tile title="JVM heap memory" size="medium" id="wagpx">
+                      <field label="Commited memory" value="{memoryds.item.heapMemory.commitedMemory}" id="x2673"/>
+                      <field label="Initial memory" value="{memoryds.item.heapMemory.initialMemory}" id="z5y8n"/>
+                      <field label="Max heap size" value="{memoryds.item.heapMemory.maxMemory}" id="w7n47"/>
+                      <field label="Used heap" value="{memoryds.item.heapMemory.usedMemory}" id="e6rbv"/>
+                    </dashboard-tile>
+                    <dashboard-tile title="Non-Heap Memory" size="medium" id="vjz93">
+                      <field label="Commited memory" value="{memoryds.item.nonHeapMemory.commitedMemory}" id="yg3r2"/>
+                      <field label="Initial memory" value="{memoryds.item.nonHeapMemory.initialMemory}" padding="none" id="ggrq5"/>
+                      <field label="Max heap size" value="{memoryds.item.nonHeapMemory.maxMemory}" id="jx8ww"/>
+                      <field label="Used heap" value="{memoryds.item.nonHeapMemory.usedMemory}" id="gv4ww"/>
+                    </dashboard-tile>
+                  </dashboard>
+                </box>
+              </tab>
+            </tabs>
+          </panel>
+          <panel id="pm6q9">
+            <tabs id="q3623">
+              <tab label="Queues" id="rryye">
+                <table datasource="queueds" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" id="ayz7b">
+                  <table-column name="queueName" width="400" label="Name" id="mg9jr"/>
+                  <table-column name="connectionFactoryName" label="Connection factory" id="vjq32"/>
+                  <table-column name="providerUser" label="User" id="pz2p4"/>
+                  <table-column name="intCtxFactory" label="Ctx factory" id="dvvbz"/>
+                  <table-column name="consumerCount" label="Consumer count" id="qzjyk"/>
+                  <row-actions id="aav9d">
+                    <row-action label="Test connection" on-action="handleTestConnection" overflow="false" id="q5x_8"/>
+                    <row-action label="Browse messages" on-action="handleBrowseMessage" overflow="false" id="wmx8b"/>
+                  </row-actions>
+                </table>
+              </tab>
+              <tab label="OS cache" id="eaj3b">
+                <box fill-parent="true" id="pdr3a">
+                  <table datasource="osDetailOrphansJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No object structure orphans found" row-height="compact" id="kw98y">
+                    <table-column name="objectStructureName" label="Object structure" id="q4_4_"/>
+                    <table-column name="objectName" label="Object" id="ygvmg"/>
+                    <table-column name="problemDefinition" label="Problem" id="b22jx"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="m46ey"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="d7jbz">
+                  <table datasource="osDetailsNoHeaderJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No object structure detail without header found" row-height="compact" id="kbw64">
+                    <table-column name="objectStructureName" label="Object structure" id="j2jge"/>
+                    <table-column name="problemDefinition" label="Problem" id="qpvvy"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="pw9k6"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="pxmbv">
+                  <table datasource="osHeaderNoDetailsJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No object structure header without detail found" row-height="compact" id="drnn3">
+                    <table-column name="objectStructureName" label="Object structure" id="wbm8q"/>
+                    <table-column name="problemDefinition" label="Problem" id="d8w7r"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="vm5rg"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="j7a7a">
+                  <table datasource="osNoPrimaryObjectJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No object structure without primary object found" row-height="compact" id="jzk_d">
+                    <table-column name="objectStructureName" label="Object structure" id="qzvmy"/>
+                    <table-column name="problemDefinition" label="Problem" id="wbb8a"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="kpyxj"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="d8reg">
+                  <table datasource="osColsOrphansJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No object structure columns orphans found" row-height="compact" id="wk343">
+                    <table-column name="objectStructureName" label="Object structure" id="zb4z9"/>
+                    <table-column name="objectName" label="Object" id="vbp32"/>
+                    <table-column name="attributenameName" label="Attribute" id="dk9e5"/>
+                    <table-column name="problemDefinition" label="Problem" id="djzk2"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="rw46g"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="j8a6m">
+                  <table datasource="osColsNoDetailsJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No object structure columns without detail found" row-height="compact" id="qb5ax">
+                    <table-column name="objectStructureName" label="Object structure" id="n6kzv"/>
+                    <table-column name="objectName" label="Object" id="e9xbe"/>
+                    <table-column name="problemDefinition" label="Problem" id="qx7z_"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="jg6q2"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="g4v2q">
+                  <table datasource="osEntServiceNoIntJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No enterprise service with invalid object structure found" row-height="compact" id="zn5mn">
+                    <table-column name="enterpriseService" label="Enterprise service" id="v4d9p"/>
+                    <table-column name="objectStructureName" label="Object structure" id="gmydb"/>
+                    <table-column name="problemDefinition" label="Problem" id="wg8y3"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="pm2x7"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="e6edx">
+                  <table datasource="osExtSystemNoEntServiceJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No external system with invalid enterprise service found" row-height="compact" id="v6g8n">
+                    <table-column name="externalSystem" label="External system" id="pwbmk"/>
+                    <table-column name="enterpriseService" label="Enterprise service" id="j3ab4"/>
+                    <table-column name="problemDefinition" label="Problem" id="x6w_b"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="d87mp"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="dxj6v">
+                  <table datasource="osPubChannelNoIntJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No publish channel with invalid object structure found" row-height="compact" id="y5x5a">
+                    <table-column name="publishChannel" label="Publish channel" id="wnprp"/>
+                    <table-column name="objectStructureName" label="Object structure" id="qgzpx"/>
+                    <table-column name="problemDefinition" label="Problem" id="pek23"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="rye6m"/>
+                  </table>
+                </box>
+                <box fill-parent="true" id="q_4kg">
+                  <table datasource="osExtSystemNoPubChannelJsonDs" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No external system with invalid publish channel found" row-height="compact" id="prrra">
+                    <table-column name="externalSystem" label="External system" id="b_g99"/>
+                    <table-column name="enterpriseService" label="Enterprise service" id="j6nk_"/>
+                    <table-column name="problemDefinition" label="Problem" id="rqrx8"/>
+                    <table-column name="probableResolution" label="Probable resolution" id="bpvkd"/>
+                  </table>
+                </box>
+              </tab>
+              <tab label="Global directory" id="w_8kk">
+                <box padding="0.5" id="kz6ky">
+                  <dashboard id="wmmvw">
+                    <dashboard-tile title="Global directory" size="mediumwide" id="agym9">
+                      <field label="Path" value="{globaldirds.item.path}" padding="none" id="ady9g"/>
+                      <field label="Exists" value="{globaldirds.item.exists}" padding="none" id="wpx34"/>
+                      <field label="Readable" value="{globaldirds.item.canRead}" padding="none" id="gygbm"/>
+                      <field label="Writable" value="{globaldirds.item.canWrite}" padding="none" id="v9m6d"/>
+                      <field label="Free space (bytes)" value="{globaldirds.item.freeSpace}" padding="none" id="rjgr3"/>
+                    </dashboard-tile>
+                  </dashboard>
+                </box>
+                <box fill-parent="true" id="zpp_q">
+                  <table datasource="childdirds" rows-per-page="500" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" no-data-message="No data to show" row-height="compact" id="d5a6n">
+                    <table-column name="path" label="Path" id="aaqk3"/>
+                    <table-column name="shortId" label="Short ID" id="pyxra"/>
+                    <table-column name="exists" label="Exists" id="bd4pk"/>
+                    <table-column name="canRead" label="Readable" id="znvak"/>
+                    <table-column name="canWrite" label="Writable" id="qqznx"/>
+                    <table-column name="freeSpace" label="Free space (bytes)" id="j32yv"/>
+                  </table>
+                </box>
+              </tab>
+              <!-- <tab label="Event Topic Tree" id="d9wyv">
+                <dashboard id="eye7b">
+                  <dashboard-tile title="Event Topic Tree" size="mediumthin" id="az22_">
+                    <field label="Active" value="{eventtreeds.item.active}" padding="none" id="pb7_x"/>
+                  </dashboard-tile>
+                </dashboard>
+              </tab> -->
+            </tabs>
+          </panel>
+          <panel id="de6dv">
+            <label theme="header-medium" label="Personal information" id="xzv27"/>
+            <box direction="row" background-color="ui-01" id="mgkyn">
+              <box direction="column" padding="0.5" id="jr2k9">
+                <field label="Person uid" value="{whoamids.item.personuid}" id="gj3rg"/>
+                <field label="Person ID" value="{whoamids.item.personId}" id="r3kwg"/>
+                <field label="Login ID" value="{whoamids.item.loginID}" id="d5zgj"/>
+                <field label="Login username" value="{whoamids.item.loginUserName}" id="mzbbm"/>
+                <field label="User name" value="{whoamids.item.userName}" id="k99ex"/>
+                <field label="Title" value="{whoamids.item.title}" id="yz5rg"/>
+                <field label="Display name" value="{whoamids.item.displayName}" id="gm43m"/>
+              </box>
+              <box direction="column" padding="0.5" id="a4977">
+                <field label="First name" value="{whoamids.item.firstname}" id="rbjp4"/>
+                <field label="Last name" value="{whoamids.item.lastname}" id="x55z_"/>
+                <field label="Primary phone" value="{whoamids.item.primaryphone}" id="z2_g3"/>
+                <field label="Phone" value="{whoamids.item.phone}" id="v__5n"/>
+                <field label="Primary email" value="{whoamids.item.primaryemail}" id="y35pb"/>
+                <field label="Email" value="{whoamids.item.email}" id="y23ke"/>
+                <field label="Default application" value="{whoamids.item.defaultApplication}" id="v6mdb"/>
+              </box>
+              <box direction="column" padding="0.5" id="m5a_2">
+                <field label="City" value="{whoamids.item.city}" id="k4nmv"/>
+                <field label="State/province" value="{whoamids.item.stateprovince}" id="bderd"/>
+                <field label="Country" value="{whoamids.item.country}" id="braaa"/>
+                <field label="Postal code" value="{whoamids.item.postalcode}" id="q52m5"/>
+              </box>
+            </box>
+            <label theme="header-medium" label="Orgnization and site" id="mv3gj"/>
+            <box direction="row" background-color="ui-01" id="rr863">
+              <box direction="column" padding="0.5" id="p8krm">
+                <field label="Default organization" value="{whoamids.item.defaultOrg}" id="a3g64"/>
+                <field label="Base currency" value="{whoamids.item.baseCurrency}" id="b25n5"/>
+                <field label="Insert organization" value="{whoamids.item.insertOrg}" id="nvvgg"/>
+                <field label="Insert company set" value="{whoamids.item.insertCompanySet}" id="b6e8g"/>
+              </box>
+              <box direction="column" padding="0.5" id="nknyy">
+                <field label="Default site" value="{whoamids.item.defaultSite} ({whoamids.item.defaultSiteDescription})" padding="none" id="ad_9d"/>
+                <field label="Can use inactive sites" value="{whoamids.item.canUseInactiveSites}" id="we9vy"/>
+                <field label="Insert site" value="{whoamids.item.insertSite}" id="q6wd5"/>
+                <field label="Query with site" value="{whoamids.item.queryWithSite}" id="vr36z"/>
+                <field label="Inactive sites" value="{whoamids.item.inactiveSites}" id="dnmpq"/>
+              </box>
+            </box>
+            <label theme="header-medium" label="Repair and storeroom" id="mrenb"/>
+            <box direction="row" background-color="ui-01" id="e3pma">
+              <box direction="column" padding="0.5" id="gyv6w">
+                <field label="Default repair site" value="{whoamids.item.defaultRepairSite}" id="e3ay_"/>
+                <field label="Default repair facility" value="{whoamids.item.defaultRepairFacility}" id="k78je"/>
+                <field label="Default storeroom" value="{whoamids.item.defaultStoreroom}" id="n9vy7"/>
+                <field label="Default storeroom site" value="{whoamids.item.defaultStoreroomSite}" id="vn82x"/>
+              </box>
+            </box>
+            <label theme="header-medium" label="Language, locale and timezone" id="dva83"/>
+            <box direction="row" background-color="ui-01" id="b_gkn">
+              <box direction="column" padding="0.5" id="e8n2g">
+                <field label="Base language" value="{whoamids.item.baseLang}" id="wkkv3"/>
+                <field label="Language code" value="{whoamids.item.langcode}" id="kxkag"/>
+                <field label="Default language" value="{whoamids.item.defaultLanguage}" id="rdev4"/>
+                <field label="Default locale" value="{whoamids.item.defaultLcale}" id="rjg5k"/>
+              </box>
+              <box direction="column" padding="0.5" id="k29bx">
+                <field label="System time zone" value="{whoamids.item.systimezone}" id="gwr96"/>
+                <field label="Default time zone" value="{whoamids.item.defaultTimeZone}" id="vr9qa"/>
+                <field label="Timezone" value="{whoamids.item.timezone}" id="wpmdw"/>
+              </box>
+              <box direction="column" padding="0.5" id="r8a9q">
+                <field label="Datetime format" value="{whoamids.item.datetimeformat}" id="d5n6z"/>
+                <field label="Time format" value="{whoamids.item.timeformat}" id="ewzen"/>
+                <field label="Date format" value="{whoamids.item.dateformat}" id="pq583"/>
+                <field label="Base calendar" value="{whoamids.item.baseCalendar}" id="bjbxy"/>
+                <field label="Calendar type" value="{whoamids.item.calendarType}" id="eb88g"/>
+              </box>
+            </box>
+            <label theme="header-medium" label="Others" id="jvmd5"/>
+            <box direction="row" background-color="ui-01" id="kk73q">
+              <box direction="column" padding="0.5" id="jkvr_">
+                <field label="Display of yes" value="{whoamids.item.displayyes}" id="xxrg5"/>
+                <field label="Display of no" value="{whoamids.item.displayno}" id="egre7"/>
+                <field label="Local session" value="{whoamids.item.isLocalSession}" id="d8k5k"/>
+                <field label="Last login time" value="{whoamids.item.user.logouttracking.attemptedate}" id="axa_d"/>
+              </box>
+            </box>
+          </panel>
+          <panel id="pq7v3">
+            <tabs id="n_v_e">
+              <tab label="Application services" id="mg4n9">
+                <table datasource="appservicesds" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" id="ed4wa">
+                  <table-column name="serviceName" width="400" label="Name" id="pmdzq"/>
+                  <table-column name="isRunning" label="Active" id="rqkyy"/>
+                  <row-actions id="mxq_e">
+                    <row-action label="View class" on-action="lookupAppserviceInfo" overflow="false" id="bdded"/>
+                  </row-actions>
+                </table>
+              </tab>
+              <tab label="Crontasks" id="pdq3d">
+                <table datasource="crontaskds" rows-per-page="50" can-page="true" has-column-config="false" can-filter="false" can-search="false" can-reorder-columns="true" display-row-count="false" id="p6p8r">
+                  <table-column name="taskName" width="300" label="Crontask name" id="ynd_m"/>
+                  <table-column name="instanceName" label="Instance name" id="zw2yg"/>
+                  <table-column name="active" label="Active" id="r7mvw"/>
+                  <table-column name="lastRun" label="Last run" id="bzx26"/>
+                  <table-column name="lastEnd" label="Last end" id="yjrjn"/>
+                  <row-actions id="nvyak">
+                    <row-action label="View class" on-action="lookupCronClassInfo" overflow="false" id="d6qjd"/>
+                  </row-actions>
+                </table>
+              </tab>
+              <tab label="Class search" id="ga96p">
+                <box padding="0.5" id="xzg2g">
+                  <dashboard id="a38wv">
+                    <dashboard-tile title="Search class information" size="mediumwide" id="x5rma">
+                      <text-input id="classInput" label="Class name" placeholder="java.lang.Object" helper-text="Enter full class name including package." type="text" value="{item.qName}"/>
+                      <button label="Search" on-click="lookupQname" on-click-arg="{{'item':item.qName}}" id="yp8zm"/>
+                    </dashboard-tile>
+                  </dashboard>
+                </box>
+              </tab>
+            </tabs>
+          </panel>
+        </stacked-panel>
+      </header-template>
+    </page>
+  </pages>
+</maximo-application>
