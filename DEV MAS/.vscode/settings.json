@@ -4,7 +4,7 @@
     "mxscript.authentication.username": "maxadmin",
     "mxscript.scriptSettings.createPythonFileForJythonScripts": false,
     "mxscript.scriptSettings.logLevel": "INFO",
-    "mxscript.serverSettings.hostname": "dev.manage.dev.carletonnp.max-it-eam.com",
+    "mxscript.serverSettings.hostname": "dev.manage.masdev.carleton.ca",
     "mxscript.serverSettings.port": 443,
     "mxscript.authentication.apikey": "m4p6rklnj2pj59em1f7nsq0nv18nb9vvbq52s0uv",
     "mxscript.serverSettings.httpProtocol": "https",
