@@ -1,3 +1,15 @@
 {
-    "docker-explorer.executionCommand": "docker run -it --privileged -p 3001:3001 -p 3006:3006 -v /home/core/maximo_workspace_directory:/graphite/.workspace -it cp.icr.io/cp/manage/maf-tools:9.0.0"
+    "docker-explorer.executionCommand": "docker run -it --privileged -p 3001:3001 -p 3006:3006 -v /home/core/maximo_workspace_directory:/graphite/.workspace -it cp.icr.io/cp/manage/maf-tools:9.0.0",
+    "mxscript.serverSettings.hostname": "prod.manage.masprod.carleton.ca",
+    "mxscript.serverSettings.port": null,
+    "mxscript.authentication.username": "",
+    "mxscript.authentication.password": "",
+    "mxscript.authentication.apikey": "d846o70nlo98n1m7erv89f1m0pgb74au8q7n2g28",
+    "mxscript.authentication.authenticationType": "apikey",
+    "mxscript.serverSettings.objectStructure": "MXSCRIPT",
+    "mxscript.serverSettings.httpProtocol": "https",
+    "mxscript.scriptSettings.createPythonFileForJythonScripts": true,
+    "mxscript.scriptSettings.logLevel": "DEBUG",
+    "mxscript.scriptSettings.ignoresslerrors": true,
+    "mxscript.serverSettings.activeEnvironmentName": "Carleton MAS PROD"
 }
