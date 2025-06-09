@@ -1,0 +1,43 @@
+{
+    "database": {
+        "1749475288949": {
+            "host": "10.114.91.222",
+            "port": 1433,
+            "user": "maximo",
+            "password": "dbclient_a$R8DVj+PVEDAhdnUl4CiLWA==",
+            "dbType": "SqlServer",
+            "database": "maxprod",
+            "name": "Carleton MAS MS SQL PROD",
+            "advance": {
+                "idleConfig": {
+                    "enable": true
+                },
+                "hideSystemSchema": true,
+                "groupingTables": false,
+                "loadMetaDataWhenExpandTreeView": true
+            },
+            "treeFeatures": [],
+            "usingSSH": false,
+            "useSocksProxy": false,
+            "useHTTPProxy": false,
+            "global": false,
+            "savePassword": "Forever",
+            "readonly": false,
+            "sort": 11,
+            "useSSL": false,
+            "fs": {
+                "encoding": "utf8",
+                "showHidden": true
+            },
+            "sqlServer": {
+                "encrypt": false,
+                "connectionType": "host",
+                "domain": "TRINMAX-LPTP001",
+                "authType": "default"
+            },
+            "key": "1749475288949",
+            "connectionKey": "database.connections"
+        }
+    },
+    "$schema": "https://cdn.database-client.com/dbclient/schema.json"
+}
