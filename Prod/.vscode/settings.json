@@ -1,9 +1,0 @@
-{
-    "mxscript.authentication.authenticationType": "ldap",
-    "mxscript.authentication.password": "v3z9K3n_PL[m",
-    "mxscript.authentication.username": "maxadmin.prod@cmailcarletonca.onmicrosoft.com",
-    "mxscript.scriptSettings.createPythonFileForJythonScripts": false,
-    "mxscript.scriptSettings.logLevel": "INFO",
-    "mxscript.serverSettings.hostname": "maximo.carleton.ca",
-    "mxscript.serverSettings.port": 443
-}
