@@ -37,6 +37,44 @@
             },
             "key": "1749475288949",
             "connectionKey": "database.connections"
+        },
+        "1749486731300": {
+            "host": "10.140.172.117",
+            "port": 1433,
+            "user": "maximo",
+            "password": "dbclient_a$U7XI5qf9ZEuBoruV9SKnyw==",
+            "dbType": "SqlServer",
+            "database": "maxdev",
+            "name": "Carleton MAS MS SQL DEV",
+            "advance": {
+                "idleConfig": {
+                    "enable": true
+                },
+                "hideSystemSchema": true,
+                "groupingTables": false,
+                "loadMetaDataWhenExpandTreeView": true
+            },
+            "treeFeatures": [],
+            "usingSSH": false,
+            "useSocksProxy": false,
+            "useHTTPProxy": false,
+            "global": false,
+            "savePassword": "Forever",
+            "readonly": false,
+            "sort": 12,
+            "useSSL": false,
+            "fs": {
+                "encoding": "utf8",
+                "showHidden": true
+            },
+            "sqlServer": {
+                "encrypt": false,
+                "connectionType": "host",
+                "domain": "TRINMAX-LPTP001",
+                "authType": "default"
+            },
+            "key": "1749486731300",
+            "connectionKey": "database.connections"
         }
     },
     "$schema": "https://cdn.database-client.com/dbclient/schema.json"
