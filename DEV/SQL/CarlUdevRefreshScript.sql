@@ -27,7 +27,7 @@ DECLARE
 	@URL VARCHAR(1024),
 	@GLOBALDIR VARCHAR(1024) = '/opt/IBM/maximomif',
 	@HOSTNAME VARCHAR(1024) = '<>',	
-	@DBSERVERHOSTNAME VARCHAR(1024) = 'maximo.carleton.ca', 
+	@DBSERVERHOSTNAME VARCHAR(1024) = 'prod.manage.masprod.carleton.ca', 
 	@SMP_DIR VARCHAR(1024) = '/opt/IBM/SMP', 
 	@TEMP_LOGS VARCHAR(1024) = '/opt/IBM/logs', 
 	@HTTP_DOCUMENT_ROOT VARCHAR(1024) = '/opt/IBM/DOCLINKS', 
@@ -41,13 +41,13 @@ DECLARE
 	@DUMMY_FAX VARCHAR(20) = '1-800-555-5555',
 	@WEBAPPURL VARCHAR(1024),
 	@URL VARCHAR(1024),
-	@HOSTNAME VARCHAR(1024) = 'carletonu-test-app.TriNmax-inc.cloud', 
+	@HOSTNAME VARCHAR(1024) = 'dev.manage.masdev.carleton.ca', 
 	@GLOBALDIR VARCHAR(1024) = '/opt/IBM/maximomif',
-	@DBSERVERHOSTNAME VARCHAR(1024) = 'carletonu-test-db.TriNmax-inc.cloud', 
+	@DBSERVERHOSTNAME VARCHAR(1024) = '169.54.82.157', 
 	@SMP_DIR VARCHAR(1024) = '/opt/IBM/SMP', 
-	@TEMP_LOGS VARCHAR(1024) = '/opt/IBM/logs', 
-	@HTTP_DOCUMENT_ROOT VARCHAR(1024) = '/opt/IBM/DOCLINKS', 
-	@DOC_PATH VARCHAR(1024) = '/opt/IBM/DOCLINKS', 
+	@TEMP_LOGS VARCHAR(1024) = '/mnt/ftp/Logs', 
+	@HTTP_DOCUMENT_ROOT VARCHAR(1024) = '	/doclink', 
+	@DOC_PATH VARCHAR(1024) = '	/doclink', 
 	@SCANNMAX_PSWD VARBINARY(MAX) = 0xE79C31CFA677919BB79521B78E6F757D339637CE24DF7199766DEA4FE7E30AFCC7BB5903CFC3DAC1,
 	@SCANNMAX_URL VARCHAR(250) = 'https://www.staging.scannmax.ca/';
 	
@@ -64,7 +64,7 @@ update INBOUNDCOMMCFG set ACTIVE = 1;
 update MAXPROPVALUE set PROPVALUE=@HOSTNAME where propname='mxe.hostname';
 update MAXPROPVALUE set PROPVALUE='https://'+@HOSTNAME+'/meaweb' where PROPNAME='mxe.int.webappurl';
 update MAXPROPVALUE set PROPVALUE='https://'+@HOSTNAME+'/maxrest/oslc' where PROPNAME='mxe.oslc.restwebappurl';
-update MAXPROPVALUE set PROPVALUE='http://'+@HOSTNAME+':80/maximo/oslc' where PROPNAME='mxe.oslc.webappurl';
+update MAXPROPVALUE set PROPVALUE='http://'+@HOSTNAME+'/maximo/oslc' where PROPNAME='mxe.oslc.webappurl';
 update MAXPROPVALUE set PROPVALUE='https://'+@HOSTNAME where PROPNAME='mxe.report.birt.proxyurlredirect';
 
 --Logs
@@ -101,14 +101,13 @@ UPDATE SKDPROJECTSCENARIO SET TOEMAILADDR = LOWER(LEFT(TOEMAILADDR, CHARINDEX('@
 UPDATE TICKET SET AFFECTEDEMAIL = LOWER(LEFT(AFFECTEDEMAIL, CHARINDEX('@', AFFECTEDEMAIL) - 1) + @DUMMY_DOMAIN) WHERE AFFECTEDEMAIL IS NOT NULL;
 UPDATE TICKET SET REPORTEDEMAIL = LOWER(LEFT(REPORTEDEMAIL, CHARINDEX('@', REPORTEDEMAIL) - 1) + @DUMMY_DOMAIN) WHERE REPORTEDEMAIL IS NOT NULL;
 UPDATE COMMTMPLTSENDTO SET SENDTOVALUE = 'maximo' + @DUMMY_DOMAIN WHERE SENDTOVALUE IS NOT NULL AND COMMTMPLTSENDTO.TYPE = 'EMAIL';
+UPDATE PO SET EMAIL = LOWER(LEFT(EMAIL, CHARINDEX('@', EMAIL) - 1) + @DUMMY_DOMAIN) WHERE EMAIL IS NOT NULL; 
+UPDATE PO SET EMAIL = LOWER(LEFT(CU_POEMAILCC, CHARINDEX('@', CU_POEMAILCC) - 1) + @DUMMY_DOMAIN) WHERE CU_POEMAILCC IS NOT NULL; 
+SET ColumnName = ColumnValue
+WHERE WhereClause ;
 
 -- Update MIF home directory if needed
 update MAXPROPVALUE set PROPVALUE= @GLOBALDIR where PROPNAME='mxe.int.globaldir';
-
-
--- Set SMP directory
-update maxpropvalue set propvalue = @SMP_DIR where propname='Maximo.InstallLocation'
-update maxpropvalue set propvalue = @SMP_DIR where propname='CCMDB.InstallLocation'
 
 --******** Set doclink directories
 update maxpropvalue set propvalue = @HTTP_DOCUMENT_ROOT where propname='mxe.doclink.doctypes.topLevelPaths' --validate if path is the same on new server as prod
@@ -122,17 +121,12 @@ update doctypes set defaultfilepath = @HTTP_DOCUMENT_ROOT + '/DIAGRAMS' where do
 update doctypes set defaultfilepath = @HTTP_DOCUMENT_ROOT + '/IMAGES' where doctype='Images'
 update doctypes set defaultfilepath = @HTTP_DOCUMENT_ROOT + '/ASSIST' where doctype='ASSIST'
 update doctypes set defaultfilepath = @HTTP_DOCUMENT_ROOT + '/ATTACHMENTS' where doctype='Documents'
-update doctypes set defaultfilepath = @HTTP_DOCUMENT_ROOT + '/ATTACHMENTS' where doctype='Documents_MCC'
 update doctypes set defaultfilepath = @HTTP_DOCUMENT_ROOT + '/SCANNMAX' where doctype='SCANNMAX'
 
 -- Set Welcome Message --SPECIFY ENVIRONMENT NAME
 update maxmessages set value = 'Welcome to Maximo ' + @ENVIRONMENT_NAME where msggroup = 'login' and msgkey = 'welcomemaximomessage'
 update maxmessages set value = 'Welcome, {0} on ' + @ENVIRONMENT_NAME where msggroup = 'login' and msgkey = 'welcomeusername'
 update maxmessages set value = '<span>IBM</span>'+'&'+'nbsp;<span>Maximo ' + @ENVIRONMENT_NAME+'</span>' where msggroup = 'login' and msgkey = 'welcomemsg_iot18'
-
--- update ScanNmax properties
-update maxpropvalue set encryptedvalue = @SCANNMAX_PSWD where propname='scannmax.client.password' -- update ScanNmax Password
-update maxpropvalue set propvalue = @SCANNMAX_URL where propname='scannmax.api.baseUrl' -- update ScanNmax url
 
 --Delete all session
 delete maxsession
