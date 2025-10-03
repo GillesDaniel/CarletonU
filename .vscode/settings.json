@@ -11,5 +11,12 @@
     "mxscript.scriptSettings.createPythonFileForJythonScripts": true,
     "mxscript.scriptSettings.logLevel": "DEBUG",
     "mxscript.scriptSettings.ignoresslerrors": true,
-    "mxscript.serverSettings.activeEnvironmentName": "Carleton MAS PROD"
+    "mxscript.serverSettings.activeEnvironmentName": "Carleton MAS PROD",
+    "powerquery.client.additionalSymbolsDirectories": [
+        "c:/mount/Git/client/CarletonU/.vscode/excel-pq-symbols"
+    ],
+    "openshiftToolkit.crcNameserver": "8.8.8.8",
+    "openshiftToolkit.crcBinaryLocation": "",
+    "openshiftToolkit.showChannelOnOutput": true,
+    "openshiftToolkit.searchForToolsInPath": true
 }
