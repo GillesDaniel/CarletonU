@@ -1,0 +1,63 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define(
+({
+	'bold': 'Halvfet',
+	'copy': 'Kopiera',
+	'cut': 'Klipp ut',
+	'delete': 'Ta bort',
+	'indent': 'Indrag',
+	'insertHorizontalRule': 'Horisontell linje',
+	'insertOrderedList': 'Numrerad lista',
+	'insertUnorderedList': 'Punktlista',
+	'italic': 'Kursiv',
+	'justifyCenter': 'Centrera',
+	'justifyFull': 'Marginaljustera',
+	'justifyLeft': 'Vänsterjustera',
+	'justifyRight': 'Högerjustera',
+	'outdent': 'Utdrag',
+	'paste': 'Klistra in',
+	'redo': 'Gör om',
+	'removeFormat': 'Ta bort format',
+	'selectAll': 'Markera allt',
+	'strikethrough': 'Genomstruken',
+	'subscript': 'Nedsänkt',
+	'superscript': 'Upphöjt',
+	'underline': 'Understruken',
+	'undo': 'Ångra',
+	'unlink': 'Ta bort länk',
+	'createLink': 'Skapa länk',
+	'toggleDir': 'Växla riktning',
+	'insertImage': 'Infoga bild',
+	'insertTable': 'Infoga/redigera tabell',
+	'toggleTableBorder': 'Växla tabellinjer',
+	'deleteTable': 'Ta bort tabell',
+	'tableProp': 'Tabellegenskap',
+	'htmlToggle': 'HTML-källkod',
+	'foreColor': 'Förgrundsfärg',
+	'hiliteColor': 'Bakgrundsfärg',
+	'plainFormatBlock': 'Styckeformat',
+	'formatBlock': 'Styckeformat',
+	'fontSize': 'Teckenstorlek',
+	'fontName': 'Teckensnitt',
+	'tabIndent': 'Tabbindrag',
+	"fullScreen": "Växla helskärm",
+	"viewSource": "Visa HTML-kod",
+	"print": "Skriv ut",
+	"newPage": "Ny sida",
+	/* Error messages */
+	'systemShortcut': 'Åtgärden ${0} är endast tillgänglig i webbläsaren via ett tangentbordskommando. Använd ${1}.',
+	'ctrlKey':'Ctrl+${0}',
+	'appleKey':'\u2318${0}' // "command" or open-apple key on Macintosh
+})
+);

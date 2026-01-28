@@ -18,3 +18,26 @@ if(mbo.toBeUpdated() and not mbo.isNull("PONUM")):
                 if(prMbo is not None):
                     if(not prMbo.isNull("CU_PMMGR") and poMbo.isNull("CU_PMMGR")):
                         poMbo.setValue("CU_PMMGR",prMbo.getString("CU_PMMGR"),2L)
+
+scriptConfig="""{
+    "autoscript": "CU_PRLINE_UPDATE",
+    "description": "CU: Update PRLINE COPY FROM PR TO PO",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "CU_PRLINE_UPDATE",
+            "launchPointType": "OBJECT",
+            "active": true,
+            "description": "CU: Update PRLINE COPY FROM PR TO PO",
+            "objectName": "PRLINE",
+            "save": true,
+            "add": false,
+            "update": true,
+            "delete": false,
+            "afterSave": true
+        }
+    ]
+}"""

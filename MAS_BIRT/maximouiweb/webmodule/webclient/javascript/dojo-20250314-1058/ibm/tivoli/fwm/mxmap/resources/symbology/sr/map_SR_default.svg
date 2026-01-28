@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="37px" viewBox="0 0 36 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>map_SR_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-25.4369877%" y1="103.351287%" x2="74.3589826%" y2="12.8067026%" id="linearGradient-1">
+            <stop stop-color="#231F20" offset="0%"></stop>
+            <stop stop-color="#3A3637" stop-opacity="0.9" offset="32%"></stop>
+            <stop stop-color="#807E7F" stop-opacity="0.58" offset="62%"></stop>
+            <stop stop-color="#F6F6F6" stop-opacity="0.04" offset="91%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="93%"></stop>
+        </linearGradient>
+        <linearGradient x1="49.9971436%" y1="0.0302766529%" x2="49.9971436%" y2="96.5257541%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#2D83A8" offset="0%"></stop>
+            <stop stop-color="#2A799A" offset="36%"></stop>
+            <stop stop-color="#22627D" offset="93%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="map_SR_default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(0.000000, 0.000000)">
+        <g id="Artboard-1-copy" transform="translate(8.000000, 1.000000)" fill-rule="nonzero">
+            <polygon id="Path" fill="url(#linearGradient-1)" points="10.04 33.07 25.73 21.78 17.36 16.36 10.04 32.21"></polygon>
+            <path d="M10,31 C7.8,27 2.71,17.3 1.88,15.73 L1.88,2.54 C1.88,1.99 2.61,1.67 3.01,1.65 C3.41,1.63 6.01,1.65 9.51,1.65 C13.36,1.65 16.75,1.65 17.25,1.65 C17.8160671,1.74520638 18.2230562,2.24644559 18.2,2.82 L18.2,15.7 C17.37,17.28 12.27,27 10,31 Z" id="Path" fill="url(#linearGradient-2)"></path>
+            <path d="M9.49,2.62 C13.11,2.62 16.49,2.62 17.14,2.62 C17.1758786,2.66974557 17.1967052,2.72875424 17.2,2.79 L17.2,15.45 C16.2,17.3 12.4,24.59 10.04,28.95 C7.68,24.6 3.85,17.33 2.88,15.48 L2.88,2.71 C2.93541011,2.67822256 2.99660545,2.65782411 3.06,2.65 C3.37,2.65 5.48,2.65 9.49,2.65 M9.49,0.65 C6.38,0.65 3.43,0.65 2.96,0.65 C1.88869468,0.663900913 0.996146122,1.47491859 0.88,2.54 L0.88,16 C0.88,16 8.68,30.85 10.04,33.1 C11.4,30.85 19.2,15.97 19.2,15.97 L19.2,2.82 C19.2316797,1.70743183 18.3975899,0.759800954 17.29,0.65 C16.72,0.65 13.01,0.65 9.49,0.65 Z" id="Shape" fill="#76A9BE"></path>
+            <path d="M9.49,1.62 C13.34,1.62 16.75,1.62 17.25,1.62 C17.8160671,1.71520638 18.2230562,2.21644559 18.2,2.79 L18.2,15.7 C17.37,17.28 12.27,27 10,31 C7.8,27 2.71,17.3 1.88,15.73 L1.88,2.54 C1.88,1.99 2.62,1.67 3.01,1.65 C3.4,1.63 5.95,1.65 9.49,1.65 M9.49,0.65 C6.38,0.65 3.43,0.65 2.96,0.65 C1.88869468,0.663900913 0.996146122,1.47491859 0.88,2.54 L0.88,16 C0.88,16 8.68,30.85 10.04,33.1 C11.4,30.85 19.2,15.97 19.2,15.97 L19.2,2.82 C19.2316797,1.70743183 18.3975899,0.759800954 17.29,0.65 C16.72,0.65 13.01,0.65 9.49,0.65 Z" id="Shape" fill="#231F20"></path>
+        </g>
+    </g>
+</svg>

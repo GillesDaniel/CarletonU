@@ -1,0 +1,12 @@
+# HTML element events
+#  http://en.wikipedia.org/wiki/DOM_events
+ondomfocusin
+ondomfocusout
+ondomactivate
+onsubtreemodified
+onnodeinserted
+onnoderemoved
+ondomnoderemovedfromdocument
+ondomnodeinsertedintodocument
+onattrmodified
+oncharacterdatamodified

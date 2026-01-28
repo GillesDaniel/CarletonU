@@ -1,0 +1,78 @@
+@charset "utf-8";
+/*
+ * Licensed Materials - Property of IBM
+ * "Restricted Materials of IBM"
+ * 5724-U18, 5737-M66
+ * (C) COPYRIGHT IBM CORP. 2010,2021 All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+ html {
+     overflow-x: hidden;
+ }
+ 
+body {
+	background: #FFF url(../images/ge_login_bkgnd_ev.png) repeat-x top left;
+}
+
+body div {
+	background: inherit;
+}
+
+body > div[role=main] {
+	display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    min-height: 90vh;
+    justify-content: center;
+}
+
+.main_tbl {
+	width: 355px;
+	margin-top: inherit;
+	margin-bottom: inherit;
+}
+
+.dialog {
+	background: inherit;
+	border: inherit;
+	padding: inherit;
+}
+
+
+.copyright {
+    color: #535353;
+	position: fixed;
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #1D3649;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+img.prodIcon {
+   margin-left: -25px;
+}
+
+.copyright img {
+    align-self: center;
+}
+
+td, div {
+	text-align: left !important;
+}
+
+h1.prod_name {
+	left: 7px !important;
+    font-size: 35px !important;
+	color: #FFFFFF;
+}
+
+.prod_name.ext_prod_name, .selfregform, .guestform, .langform, .mobileform {
+	left: 170px;
+}

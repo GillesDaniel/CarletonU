@@ -1,0 +1,11 @@
+define('layers/mbs/nls/richtexteditor_th',{
+'dijit/_editor/nls/commands':{"removeFormat":"ลบรูปแบบออก","copy":"คัดลอก","paste":"วาง","selectAll":"เลือกทั้งหมด","insertOrderedList":"ลำดับเลข","insertTable":"แทรก/แก้ไขตาราง","print":"พิมพ์","underline":"ขีดเส้นใต้","foreColor":"สีพื้นหน้า","htmlToggle":"ซอร์ส HTML","formatBlock":"ลักษณะย่อหน้า","newPage":"หน้าใหม่","insertHorizontalRule":"ไม้บรรทัดแนวนอน","delete":"ลบ","appleKey":"⌘${0}","insertUnorderedList":"หัวข้อย่อย","tableProp":"คุณสมบัติตาราง","insertImage":"แทรกรูปภาพ","superscript":"ตัวยก","subscript":"ตัวห้อย","createLink":"สร้างลิงก์","undo":"เลิกทำ","fullScreen":"สลับจอภาพแบบเต็ม","italic":"ตัวเอียง","fontName":"ชื่อฟอนต์","justifyLeft":"จัดชิดซ้าย","unlink":"ลบลิงก์ออก","toggleTableBorder":"สลับเส้นขอบตาราง","viewSource":"ดูซอร์ส HTML","ctrlKey":"ctrl+${0}","fontSize":"ขนาดฟอนต์","systemShortcut":"แอ็กชัน \"${0}\" ใช้งานได้เฉพาะกับเบราว์เซอร์ของคุณโดยใช้แป้นพิมพ์ลัด ใช้ ${1}","indent":"เพิ่มการเยื้อง","redo":"ทำซ้ำ","strikethrough":"ขีดทับ","justifyFull":"ชิดขอบ","justifyCenter":"จัดแนวกึ่งกลาง","hiliteColor":"สีพื้นหลัง","deleteTable":"ลบตาราง","outdent":"ลดการเยื้อง","cut":"ตัด","_localized":{},"plainFormatBlock":"ลักษณะย่อหน้า","toggleDir":"สลับทิศทาง","bold":"ตัวหนา","tabIndent":"เยื้องแท็บ","justifyRight":"จัดชิดขวา"}
+,
+'dijit/_editor/nls/FontChoice':{"noFormat":"ไม่มี","1":"xx-small","2":"x-small","formatBlock":"รูปแบบ","3":"small","4":"medium","5":"large","6":"x-large","7":"xx-large","_localized":{},"fantasy":"fantasy","serif":"serif","p":"ย่อหน้า","pre":"การกำหนดรูปแบบล่วงหน้า","sans-serif":"sans-serif","fontName":"ฟอนต์","h1":"ส่วนหัว","h2":"ส่วนหัวย่อย","h3":"ส่วนย่อยของส่วนหัวย่อย","monospace":"monospace","fontSize":"ขนาด","cursive":"cursive"}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"การเลือกก่อนหน้า","_localized":{},"nextMessage":"การเลือกเพิ่มเติม"}
+,
+'dijit/form/nls/validate':{"invalidMessage":"ค่าที่ป้อนไม่ถูกต้อง","rangeMessage":"ค่านี้เกินช่วง","_localized":{},"missingMessage":"จำเป็นต้องมีค่านี้"}
+,
+'dojox/editor/plugins/nls/PasteFromWord':{"pasteFromWord":"วางจาก Word","instructions":"วางเนื้อหาจาก Word ลงในกล่องข้อความข้างล่าง เมื่อคุณพอใจกับเนื้อหาที่แทรกแล้วให้กดปุ่ม วาง เมื่อต้องการยกเลิกการเรียงลำดับข้อความให้กดปุ่ม ยกเลิก","_localized":{}}
+});

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="INVOICESV2_YARAMATNI_1620328409.rptdesign">
+    <attribute name="filename">INVOICESV2_YARAMATNI_1620328409.rptdesign</attribute>
+    <attribute name="description">2021-05-06</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">INVOICESV2</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="invoicenum">
+        <attribute name="attributename">INVOICENUM</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Invoice</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>INVOICESV2_YARAMATNI_16203284091620328570887.properties</reference>
+        <filename>./INVOICESV2_YARAMATNI_1620328409/INVOICESV2_YARAMATNI_16203284091620328570887.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="INVOICESV2_JANETHANNA_1635882805.rptdesign">
+    <attribute name="filename">INVOICESV2_JANETHANNA_1635882805.rptdesign</attribute>
+    <attribute name="description">66715</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">INVOICESV2</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>INVOICESV2_JANETHANNA_16358828051635882927305.properties</reference>
+        <filename>./INVOICESV2_JANETHANNA_1635882805/INVOICESV2_JANETHANNA_16358828051635882927305.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

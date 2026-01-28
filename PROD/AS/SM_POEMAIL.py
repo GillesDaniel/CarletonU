@@ -99,3 +99,21 @@ if(""!=allMessage):
         clientSession.addWarning( MXApplicationException("sm", "allmessage", param))
         
 service.closeDialog();
+
+scriptConfig="""{
+    "autoscript": "SM_POEMAIL",
+    "description": "Send by email - List Tab Action Send PO",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_POEMAIL",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Send by email - List Tab Action Send PO",
+            "actionName": "SM_POEMAIL"
+        }
+    ]
+}"""

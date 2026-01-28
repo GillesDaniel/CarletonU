@@ -199,3 +199,12 @@ try:
 
 except Exception, e:
 	logger.error("An unhandled exception has occurred in the method main : " + str(e))
+
+scriptConfig="""{
+    "autoscript": "RETRIEVE_SCANNMAX_DOCUMENTS",
+    "description": "Retrieves documents from the ScanNmax backend",
+    "version": "1.0",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+}"""

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ibm.com/obp10" targetNamespace="http://www.ibm.com/obp10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:simpleType name="attrDataType">
+		<xsd:annotation>
+			<xsd:documentation>Enumerated List of Data Types </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="DateTime"/>
+			<xsd:enumeration value="String"/>
+			<xsd:enumeration value="Integer"/>
+			<xsd:enumeration value="Short"/>
+			<xsd:enumeration value="Long"/>
+			<xsd:enumeration value="ByteArray"/>
+			<xsd:enumeration value="Byte"/>
+			<xsd:enumeration value="Double"/>
+			<xsd:enumeration value="Float"/>
+			<xsd:enumeration value="Boolean"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:attributeGroup name="OperationPropertyGroup">
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="doc" type="xsd:string" use="optional"/>
+	</xsd:attributeGroup>
+	<xsd:complexType name="OperationType">
+		<xsd:sequence>
+			<xsd:element name="Request" type="ObjectGraphType"/>
+			<xsd:element name="Response" type="ObjectGraphType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="OperationPropertyGroup"/>
+	</xsd:complexType>
+	<xsd:complexType name="ObjectGraphType">
+		<xsd:sequence>
+			<xsd:element name="WSIO" type="WSIOType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WSIOType">
+		<xsd:sequence>
+			<xsd:element name="NAME" type="xsd:string"/>
+			<xsd:element name="VISIBLE" type="xsd:boolean" default="1" minOccurs="0"/>
+			<xsd:element name="DOC" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="XMLLOCATION" type="xsd:string"/>
+			<xsd:element name="TITLE" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="MAXOCCURS" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="WSIOATTRIBUTE" type="WSIOATTRIBUTEType" maxOccurs="unbounded"/>
+			<xsd:element name="WSIO" type="WSIOType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WSIOATTRIBUTEType">
+		<xsd:sequence>
+			<xsd:element name="NAME" type="xsd:string"/>
+			<xsd:element name="TYPE" type="attrDataType"/>
+			<xsd:element name="VISIBLE" type="xsd:boolean" default="1" minOccurs="0"/>
+			<xsd:element name="READONLY" type="xsd:boolean" default="0" minOccurs="0"/>
+			<xsd:element name="REQUIRED" type="xsd:boolean" default="1" minOccurs="0"/>
+			<xsd:element name="DOC" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="XMLLOCATION" type="xsd:string"/>
+			<xsd:element name="TITLE" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LENGTH" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="MAXLENGTH" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="MINLENGTH" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="PATTERN" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="OPERATION" type="OperationType"/>
+</xsd:schema>

@@ -1,0 +1,41 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.11
+Created-By: 8.0.5.41 - pxa6480sr5fp41-20190919_01(SR5 FP41) (IBM Corpo
+ ration)
+Class-Path: ../businessobjects/classes ../commonweb/classes ../propert
+ ies ../optimization ../resources ../lib/xmlbeans-3.1.0.jar ../lib/axi
+ s2.jar ../lib/jaxen-1.1.1.jar ../lib/log4j-1.2-api-2.17.1.jar ../lib/
+ log4j-api-2.17.1.jar ../lib/log4j-core-2.17.1.jar ../lib/log4j-web-2.
+ 17.1.jar ../lib/commons-discovery.jar ../lib/commons-io-2.15.1.jar ..
+ /lib/commons-logging-1.2.jar ../lib/jdom.jar ../lib/axis-ant.jar ../l
+ ib/platform-model.jar ../lib/remoteaccess.jar ../lib/ssh.jar ../lib/a
+ pi-client.jar ../lib/api-dep.jar ../lib/oal-api.jar ../lib/oal-topomg
+ r.jar ../lib/oal-common.jar ../lib/edm-server.jar ../lib/api-dl.jar .
+ ./lib/maxcom.jar ../lib/icu4j.jar ../lib/MxCMSClient.jar ../lib/iscli
+ te.jar ../lib/iscportal.jar ../lib/json4j.jar ../lib/jviews-chart.jar
+  ../lib/jviews-gantt.jar ../lib/contentloader.jar ../lib/oslcquery.ja
+ r ../lib/commons-codec.jar ../lib/oauth.jar ../lib/commons-pool-1.5.4
+ .jar ../lib/tdb-0.8.7-patched.jar ../lib/jena-2.6.3-patched.jar ../li
+ b/slf4j-log4j12-1.6.4.jar ../lib/slf4j-api-2.0.11.jar ../lib/iri-0.8.
+ jar ../lib/sdb-1.3.2.jar ../lib/gson-2.8.9.jar ../lib/freemarker-2.3.
+ 22.jar ../lib/antisamy-1.7.5.jar ../lib/batik-constants-1.17.jar ../l
+ ib/batik-css-1.17.jar ../lib/batik-i18n-1.17.jar ../lib/batik-util-1.
+ 17.jar ../lib/httpclient5-5.3.1.jar ../lib/httpcore5-5.2.4.jar ../lib
+ /httpcore5-h2-5.2.4.jar ../lib/neko-htmlunit-3.11.1.jar ../lib/xml-ap
+ is-ext-1.3.04.jar ../lib/xmlgraphics-commons-2.9.jar ../lib/sac.jar .
+ ./lib/jackson-core-2.15.1.jar ../lib/jackson-databind-2.15.1.jar ../l
+ ib/jackson-annotations-2.15.1.jar ../lib/commons-codec-1.15.jar ../li
+ b/docloud_api_java_client-1.0-STABLE-b277.jar ../lib/kafka-clients-3.
+ 8.0.jar ../lib/zstd-jni-1.5.6-3.jar ../lib/snappy-java-1.1.10.4.jar .
+ ./lib/lz4-java-1.7.1.jar ../lib/aws-java-sdk-core-1.12.651.jar  ../li
+ b/aws-java-sdk-kms-1.12.651.jar ../lib/aws-java-sdk-s3-1.12.651.jar .
+ ./lib/jackson-dataformat-cbor-2.12.6.jar ../lib/jmespath-java-1.12.65
+ 1.jar ../lib/ion-java-1.0.2.jar ../lib/softlayer-api-client-0.2.3 ../
+ lib/httpclient-4.5.13.jar ../lib/httpcore-4.4.13.jar ../lib/joda-time
+ -2.8.1.jar ../lib/javax.json-api-1.1.4.jar ../lib/graphql-java-20.9.j
+ ar ../lib/antlr4-runtime-4.8.jar ../lib/reactive-streams-1.0.4.jar ..
+ /lib/java-dataloader-3.3.0.jar ../lib/spatiotemporal-core-1.6.0.jar .
+ ./lib/vertx-core-4.1.0.jar ../lib/mas-data-dictionary-lib-1.0.0.jar .
+ ./lib/jackson-dataformat-yaml-2.11.3.jar ../lib/annotations-16.0.2.ja
+ r ../lib/jsch.jar ../mboejbclient/classes ../lib/bcel-6.6.1.jar
+

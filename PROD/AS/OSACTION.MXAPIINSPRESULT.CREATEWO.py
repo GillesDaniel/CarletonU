@@ -65,3 +65,12 @@ for i in range(0,resultSet.count()):
    woSet.save();
 resultSet.save();
 print "=============== END CREATE WO SCRIPT ===============";
+
+scriptConfig="""{
+    "autoscript": "OSACTION.MXAPIINSPRESULT.CREATEWO",
+    "description": "Create WO for items that require action",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+}"""

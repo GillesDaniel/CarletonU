@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="commodity_anlys.rptdesign">
+    <attribute name="filename">commodity_anlys.rptdesign</attribute>
+    <attribute name="description">Commodity Analysis</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ITEM</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="commoditygroup">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Commodity Group</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="vendor">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Vendor</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="buyer">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Buyer</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+      <parameter name="glaccount">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">G/L Account</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">4</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">5</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">6</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>item.properties</reference>
+        <filename>./commodity_anlys/item.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

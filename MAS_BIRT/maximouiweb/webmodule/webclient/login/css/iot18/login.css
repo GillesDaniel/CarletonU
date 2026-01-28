@@ -1,0 +1,250 @@
+@charset "utf-8";
+/*
+ * Licensed Materials - Property of IBM
+ * "Restricted Materials of IBM"
+ * 5724-U18, 5737-M66
+ * (C) COPYRIGHT IBM CORP. 2013,2021 All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ *
+ */
+/**********************************************************
+ * Notes:
+ * The style leverages CSS3 Border-radius which not all
+ * browsers support. Browser specific statments are 
+ * included, otherwise the design will degrade to square
+ * corners. As of Oct 10, 2009, IE currently does not 
+ * support border-radius or provide a browser shortcut.
+ **********************************************************/
+html {
+  	height: 100%;
+	background: #1D3649; 
+}
+ body {
+ 	background: none !important;
+ }
+ 
+ body > div {
+	background: transparent;
+ }
+ 
+@font-face{font-family:'MaximoBase';
+			src:local("IBM Plex Sans"), local("IBMPlexSans"), url("../font/Sans/IBMPlexSans-Regular.woff2") format("woff2"),url("../font/Sans/IBMPlexSans-Regular.woff") format("woff");
+			font-weight:400;
+			font-style:normal;
+			unicode-range: 'U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1, U+EBE3-EBE4, U+EBE6-EBE7, U+ECE0, U+EFCC';
+			}
+@font-face{font-family:'MaximoBase-Italic';
+			src:local("IBM Plex Sans Italic"), local("IBMPlexSansItalic"), url("../font/Sans/IBMPlexSans-Italic.woff2") format("woff2"),url("../font/Sans/IBMPlexSans-Italic.woff") format("woff");
+			font-weight:400;
+			font-style:italic;
+  			unicode-range: 'U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1, U+EBE3-EBE4, U+EBE6-EBE7, U+ECE0, U+EFCC';
+			}
+@font-face {font-family: 'MaximoBase-Light';
+		  font-style: normal;
+		  font-weight: normal;
+		  src: local("IBM Plex Sans Light"), local("IBMPlexSansLight"), url("../font/Sans/IBMPlexSans-Light.woff2") format("woff2"), url("../font/Sans/IBMPlexSans-Light.woff") format("woff");
+		  unicode-range: 'U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1, U+EBE3-EBE4, U+EBE6-EBE7, U+ECE0, U+EFCC';
+		  }
+@font-face{font-family:'MaximoBase-Light-Italic';
+			src:local("IBM Plex Sans Light Italic"), local("IBMPlexSansLightItalic"), url("../font/Sans/IBMPlexSans-LightItalic.woff2") format("woff2"),url("../font/Sans/IBMPlexSans-LightItalic.woff") format("woff");
+			font-weight:300;
+			font-style:italic
+			unicode-range: 'U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1, U+EBE3-EBE4, U+EBE6-EBE7, U+ECE0, U+EFCC';
+			}
+@font-face{font-family:'MaximoBase-Bold';
+			src:local("IBM Plex Sans SemiBold"), local("IBMPlexSansSemiBold"), url("../font/Sans/IBMPlexSans-Bold.woff2") format("woff2"),url("../font/Sans/IBMPlexSans-Bold.woff") format("woff");
+			font-weight:600;
+			font-style:normal
+			unicode-range: 'U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1, U+EBE3-EBE4, U+EBE6-EBE7, U+ECE0, U+EFCC';
+			}
+@font-face{font-family:'MaximoBase-Bold-Italic';
+			src:local("IBM Plex Sans SemiBold Italic"), local("IBMPlexSansSemiBoldItalic"), url("../font/Sans/IBMPlexSans-BoldItalic.woff2") format("woff2"),url("../font/Sans/IBMPlexSans-BoldItalic.woff") format("woff");
+			font-weight:600;
+			font-style:italic
+			unicode-range: 'U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1, U+EBE3-EBE4, U+EBE6-EBE7, U+ECE0, U+EFCC';
+			}
+
+ 
+ body {
+ 	background: none !important;
+ 	font-family: MaximoBase;
+ 	font-size: 14px;
+ }
+ 
+ * {
+ 	font-family: MaximoBase !important;
+ }
+ 
+ body > div {
+	background: #1D3649; 	
+ }
+
+ .dialog {
+    background: none !important;
+    border: 0px !important;
+    color: #c0c0c0;
+    padding: 15vh 10px 40px;
+ } 
+ 
+ .dialog img {
+ 	margin-top: 8px;
+ }
+ 
+ .main_tbl {
+ 	width: 420px;
+ }
+  .copyright {
+  	border-top: 4px solid #0d85b4;
+  	padding-top: 20px;
+  }
+ 
+ .copyright p {
+ 	color: #c0c0c0;
+ 	display: inline;
+ }
+ 
+ .copyright img {
+ 	display: inline !important;
+ 	margin: 0px 24px 0px 0px;
+ 	vertical-align: middle;
+ }
+ 
+.defaultibmlogo, .defaultbrandinglogo {
+	display: none !important;	
+}
+ 
+ input[type="text"], input[type="password"], select {
+	font-size: 14px;
+	background: #fff !important;
+	margin-top: 3px;
+	padding: 0px 1px;
+	color: #222;
+	height: 22px;
+	line-height: 22px;
+	vertical-align: middle;
+	padding-top: 2px;
+	border: 0px;
+    padding: 6px 3px;
+}
+
+select {
+	height: auto;
+}
+
+.input_pad {
+	padding-top: 10px;	
+}
+
+.prod_name {
+	display: none !important;
+}
+
+.ext_prod_name {
+	display: inline !important;
+	color: #ffffff;
+}
+
+label { 
+	color: #adacac;
+}
+
+.fednotice
+{
+	color: #adacac;
+}
+
+.tiv_btn
+{
+	background: #4178be;
+    border: 1px solid #0a4e74;
+    cursor: pointer;
+    min-width: 87px;
+    margin: 2px 0px 20px 0px;
+    min-height: 26px;
+    vertical-align: middle;
+    color: #ffffff;
+    padding: 10px 24px;
+    font-size: 14px;
+}
+	
+.tiv_btn:hover {
+	background: #5aaafa;
+	color: #ffffff;
+}
+
+
+#error_img {
+	vertical-align: top;
+	margin-top: 0px;	
+}
+
+.errorText {
+	padding: 5px;
+	background: #FFD4A0;
+	margin-bottom: 10px;
+	color: #000;
+}
+
+.exit {
+	border: 1px solid #888;
+	border-radius: 5px;
+	padding: 20px;
+}
+
+.exitsep {
+	height: 2px;
+	background: #0d85b4;
+	margin: 20px 0px 15px 0px;
+}
+
+.link {
+	color: #5aaafa; 
+}
+
+.link:hover {
+	color: #4178be;
+}
+
+.prod_name.ext_prod_name {
+	font-size: 32px;	
+	line-height: 42px;
+}
+
+.prod_name.ext_prod_name, .selfregform, .guestform, .langform, .mobileform {
+	position: relative;
+	left: 195px;
+	font-family: "MaximoBase-Light" !important;
+}
+
+.langform {
+	padding-bottom: 10px;
+}
+
+.prod_name.ext_prod_name span:first-of-type {
+	font-family: "MaximoBase-Light" !important;
+}
+
+.prod_name.ext_prod_name div, .sub_product{
+	font-size: 14px;
+	color: #ffffff;
+    left: 195px;
+    position: relative;
+    display: table-cell;
+}
+
+body[rtl] .prod_name.ext_prod_name, body[rtl] .selfregform, body[rtl] .guestform, body[rtl] .langform, body[rtl] .prod_name.ext_prod_name div, body[rtl] .sub_product{
+	left: auto;
+	right: 195px;
+}
+
+.sub_product {
+	border-top: 1px solid #5aaafa;
+	padding: 5px 0px 10px 0px;
+}
+
+img.prodIcon {
+	width: 185px;
+    height: 141px;
+}

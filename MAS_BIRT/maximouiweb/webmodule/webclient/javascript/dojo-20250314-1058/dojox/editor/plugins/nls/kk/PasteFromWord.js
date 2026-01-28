@@ -1,0 +1,18 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define(
+"dojox/editor/plugins/nls/kk/PasteFromWord", ({
+	"pasteFromWord": "Word бағдарламасынан қою",
+	"instructions": "Мазмұнды Word бағдарламасынан төмендегі мәтін ұясына қойыңыз.  Кірістірілетін мазмұн дұрыс болса, қою түймешігін басыңыз.  Мәтінді кірістіруді доғару үшін болдырмау түймешігін басыңыз."
+})
+);

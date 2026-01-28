@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation apphelp="com.ibm.mbs.doc,condexpmgr/c_condexpmgr_application.html" beanclass="psdi.webclient.beans.common.CondExpMgrAppBean" id="condexpmgr" mboname="condition" orderby="conditionnum" version="7.1.0.0">
+    <page id="mainrec">
+        <include id="single_pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup format="carddeck" id="maintabs" style="form">
+                <tab id="results">
+                    <table id="results_Table" label="All Conditions">
+                        <tablebody displayrowsperpage="10" filterexpanded="true" id="results_Tablebody">
+                            <tablecol filterable="false" id="results_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                            <tablecol dataattribute="conditionnum" id="results_col_1"/>
+                            <tablecol dataattribute="description" id="results_col_2"/>
+                            <tablecol dataattribute="type" id="results_col_3" linkedcontrolid="results_details_2"/>
+                            <tablecol dataattribute="booleannocaching" id="results_col_4"/>
+                            <tablecol dataattribute="refcount" id="results_col_5"/>
+                            <tablecol filterable="false" id="results_col_delete" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <tabledetails id="results_Tabledetails">
+                            <section id="results_Table_section_1" label="Details">
+                                <helpgrid id="results_Table_section_1_help" innerhtml="Give the condition a name that will help you identify the condition when you apply it in the Security Groups application or in Application Designer. If you apply multiple conditions, the conditions are joined by an OR clause when they are evaluated. If you want to use Automation Scripts for conditions, first define a script with a condition launch point and then use the custom class option along with the expression to connect the script to the condtion below"/>
+                                <sectionrow id="results_Table_sec1_row1">
+                                    <sectioncol id="results_Table_sec1_row1_col1">
+                                        <section id="results_Table_sec1_row1_col1_sec1">
+                                            <multiparttextbox dataattribute="conditionnum" descdataattribute="description" id="results_details_1"/>
+                                            <textbox dataattribute="type" id="results_details_2" lookup="valuelist"/>
+                                            <multilinetextbox dataattribute="EXPRESSION" id="new_multilinetextbox" menutype="CONDEXPBUILDER" moreinformation="com.ibm.mbs.doc,condexpmgr/c_expression_syntax_cond_expressions_classes.html" synchronous="true"/>
+                                            <textbox dataattribute="CLASSNAME" id="new_textbox" label="Class" maxdatalength="200" moreinformation="com.ibm.mbs.doc,condexpmgr/c_sample_conditional_expr_classes.html"/>
+                                            <checkbox dataattribute="booleannocaching" id="new_nocaching"/>
+                                            <textbox dataattribute="REFCOUNT" id="new_refcount" label="Reference Count"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                        <buttongroup id="results_Buttongroup">
+                            <pushbutton default="true" id="results_button_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include id="pageFooter"/>
+    </page>
+</presentation>

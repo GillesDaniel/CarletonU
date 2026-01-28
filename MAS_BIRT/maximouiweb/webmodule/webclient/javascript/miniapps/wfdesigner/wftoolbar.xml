@@ -1,0 +1,19 @@
+<Designer>
+   <Cfg Code="GTXDVWLEAORYUB" Dragging="2" Dropping="0" Deleting="0" Grid="" Selecting="0" Editing="0" Resizing="0" Padding="5,0,10,10"/>
+   <Actions OnDragBox="Copy"
+      OnRightDragBox="1" OnCtrlDragBox="1" OnShiftDragBox="1"
+      OnRightClick="1" OnDblClickText="Edit"
+      />
+   <!--DefBoxes>
+      <D Name="Shape" Background="url(#Gradient5)" BorderWidth="1"/>
+   </DefBoxes-->
+   <Boxes>
+      <B Def="ShapeTask" id="wf_tb_task" Text="Task" Width="70" Height="45" Background="#87CEFA" X="25" Y="5" R="0"/>
+      <B Def="ShapeCondition" id="wf_tb_condition" Text="Condition" Width="45" Height="45" Background="#FFFF00" X="135" Y="5" R="0.5"/>
+      <B Def="ShapeInput" id="wf_tb_input" Text="Input" Width="60" Height="45" Background="#F8F8FF" X="235" Y="5" R="10,0,-10,0"/>
+      <B Def="ShapeSubprocess" id="wf_tb_subprocess" Text="Subprocess" Width="70" Height="45" Background="#87CEFA" X="350" Y="5" R="0"/>
+      <B Def="ShapeWait" id="wf_tb_wait" Text="Wait" Width="70" Height="45" Background="#87CEFA" X="475" Y="5" R="0"/>
+      <B Def="ShapeInteraction" id="wf_tb_interaction" Text="Interaction" Width="70" Height="45" Background="#87CEFA" X="590" Y="5" R="0"/>
+      <B Def="ShapeStop" id="wf_tb_stop" Text="Stop" Width="45" Height="45" Background="#FF0000" X="710" Y="5" R="10"/>
+   </Boxes>
+</Designer>      

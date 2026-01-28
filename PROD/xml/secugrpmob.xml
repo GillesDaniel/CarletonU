@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation beanclass="psdi.webclient.beans.securgroup.mobile.MobileSecurGroupBean" id="secugrpmob" mboname="MAXGROUP" orderby="groupname" originalapp="SECURGROUP" resultstableid="results_showlist" version="6.2.8">
+    <page id="mainrec">
+        <include id="pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="List" type="list" width="15%">
+                    <menubar event="search" id="actiontoolbar" sourcemethod="getAppSearchOptions"/>
+                    <table datasrc="results_showlist" id="results_showlist" inputmode="readonly" label="Groups" mboname="MAXGROUP" orderby="groupname" selectmode="multiple">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol dataattribute="GROUPNAME" filterable="false" hidden="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol dataattribute="groupname" id="results_showlist_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+                            <tablecol dataattribute="description" id="results_showlist_tablebody_3"/>
+                            <tablecol dataattribute="independent" id="results_showlist_tablebody_4"/>
+                            <tablecol dataattribute="authallsites" id="results_showlist_tablebody_5"/>
+                            <tablecol dataattribute="authallstorerooms" id="results_showlist_tablebody_6"/>
+                            <tablecol dataattribute="authlaborall" id="results_showlist_tablebody_7"/>
+                            <tablecol filterable="false" hidden="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="main" label="Group" type="insert">
+                    <section border="true" id="main_header_row1_col1_sec1">
+                        <multiparttextbox dataattribute="GROUPNAME" descdataattribute="DESCRIPTION" id="main_header_1"/>
+                        <multiparttextbox dataattribute="sctemplateid" descdataattribute="sctemplate.description" descinputmode="readonly" id="main_header_4" lookup="sctemplate"/>
+                        <checkbox dataattribute="INDEPENDENT" id="main_header_3"/>
+                    </section>
+                </tab>
+                <tab id="sites" label="Sites">
+                    <section border="true" id="main_header2">
+                        <sectionrow id="main_header2_row1">
+                            <sectioncol id="main_header2_row1_col1">
+                                <section id="sites_grid1">
+                                    <multiparttextbox dataattribute="groupname" descdataattribute="description" id="sites_grid1_1"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="main_header2_row1_col2">
+                                <section id="sites_grid2">
+                                    <checkbox dataattribute="authallsites" id="sites_grid2_1" ondatachange="resetchildren"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table id="sites_sites_table" label="Sites" orderby="siteid" relationship="SITEAUTH">
+                        <tablebody displayrowsperpage="10" filterable="true" id="sites_sites_table_tablebody">
+                            <tablecol filterable="false" hidden="false" id="sites_sites_table_tablebody_1a" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                            <tablecol dataattribute="siteid" defaultfocus="true" id="sites_sites_table_tablebody_1" lookup="sitewithstatus"/>
+                            <tablecol dataattribute="site.description" id="sites_sites_table_tablebody_2" longdescreadonly="true" lookup="longdesc" sortable="false">
+                                <textbox id="sites_sites_table_tablebody_2a" inputmode="readonly"/>
+                            </tablecol>
+                            <tablecol dataattribute="orgid" id="sites_sites_table_tablebody_3">
+                                <textbox id="sites_sites_table_tablebody_3a" inputmode="readonly"/>
+                            </tablecol>
+                            <tablecol dataattribute="site.active" id="sites_sites_table_tablebody_4">
+                                <checkbox dataattribute="site.active" id="sites_sites_table_tablebody_4_box" inputmode="readonly"/>
+                            </tablecol>
+                            <tablecol dataattribute="authorized" id="sites_sites_table_tablebody_6">
+                                <checkbox dataattribute="authorized" id="sites_sites_table_tablebody_6_box" inputmode="readonly"/>
+                            </tablecol>
+                            <tablecol filterable="false" hidden="false" id="sites_sites_table_tablebody_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <tabledetails id="sites_sites_table_details">
+                            <section id="sites_sites_table_details_sec1" label="Details">
+                                <sectionrow id="sites_sites_table_details_sec1_r1">
+                                    <sectioncol id="sites_sites_table_details_sec1_r1_c1">
+                                        <section id="sites_sites_table_details_sec1_r1_c1_sec1">
+                                            <multiparttextbox dataattribute="siteid" defaultfocus="true" descdataattribute="site.description" descinputmode="readonly" id="sites_sites_table_details_sec11_1" lookup="sitewithstatus"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="sites_sites_table_details_sec1_r1_c2">
+                                        <section id="sites_sites_table_details_sec1_r1_c2_sec1">
+                                            <textbox dataattribute="orgid" id="sites_sites_table_details_sec11_2" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="sites_sites_table_details_sec1_r1_c3">
+                                        <section id="sites_sites_table_details_sec1_r1_c3_sec1">
+                                            <checkbox dataattribute="site.active" id="sites_sites_table_details_sec11_3" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="sites_sites_table_details_sec1_r1_c4">
+                                        <section id="sites_sites_table_details_sec1_r1_c4_sec1">
+                                            <checkbox dataattribute="authorized" id="sites_sites_table_details_sec11_4" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                        <buttongroup id="sites_sites_table_2">
+                            <pushbutton default="true" id="sites_sites_table_2_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+                <tab id="applications" label="Applications">
+                    <section border="true" id="appls_grid1">
+                        <multiparttextbox dataattribute="groupname" descdataattribute="description" id="appls_grid1_1"/>
+                    </section>
+                    <tabgroup id="appcat">
+                        <tab default="true" id="desktop" label="Desktop">
+                            <table beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="appls_app_table" label="Applications" orderby="description" relationship="MAXAPPSDSK">
+                                <buttongroup id="appls_buttons">
+                                    <pushbutton id="appgrantbutton" label="Grant Listed Applications" menutype="APPGRANT" targetid="appls_app_table"/>
+                                    <pushbutton id="apprevokebutton" label="Revoke Listed Applications" menutype="APPREVOKE" targetid="appls_app_table"/>
+                                </buttongroup>
+                                <tablebody displayrowsperpage="10" filterable="true" id="appls_app_table_tablebody">
+                                    <tablecol dataattribute="description" id="appls_app_table_tablebody_1" inputmode="readonly"/>
+                                    <tablecol dataattribute="maxobject.description" id="appls_app_table_tablebody_2" inputmode="readonly" label="Main Object/Table"/>
+                                    <tablecol dataattribute="origapp.description" id="appls_app_table_tablebody_3" inputmode="readonly" label="Original Application (if copied)"/>
+                                </tablebody>
+                            </table>
+                            <table beanclass="psdi.webclient.beans.securgroup.ApplicationsBean" id="appls_sigmain_table" label="Options for {0}" orderby="description" parentdatasrc="appls_app_table" parentemptylabel="Options" relationship="SIGOMAIN">
+                                <sectionheader id="appls_sigmain_table_sectionheader">
+                                    <paramvalues id="appls_sigmain_table_params">
+                                        <paramvalue dataattribute="description" datasrc="appls_app_table" id="appls_sigmain__table_param_1" position="0"/>
+                                    </paramvalues>
+                                </sectionheader>
+                                <buttongroup id="sigmain_buttons">
+                                    <pushbutton id="sigmain_buttons_1" label="Grant Listed Options for This Application" mxevent="allsigoauthorized"/>
+                                </buttongroup>
+                                <tablebody displayrowsperpage="4" filterable="true" id="appls_sigmain_table_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="appls_sigmain_table_tablebody_1a" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="description" id="appls_sigmain_table_tablebody_1" inputmode="readonly"/>
+                                    <tablecol dataattribute="authorized" id="appls_sigmain_table_tablebody_2" ondatachange="resetchildren" sortable="false">
+                                        <checkbox dataattribute="authorized" id="appls_sigmain_table_tablebody_2_box" ondatachange="resetchildren" sortable="false"/>
+                                    </tablecol>
+                                    <tablecol applink="condexpmgr" dataattribute="conditionnum" id="appls_sigmain_table_tablebody_3" lookup="conditionexp" menutype="normal">
+                                        <textbox id="appls_sigmain_table_tablebody_3a"/>
+                                    </tablecol>
+                                </tablebody>
+                                <tabledetails id="appls_sigmain_table_tabledetails_1">
+                                    <section id="appls_sigmain_table_tabledetails_grid30" label="Details">
+                                        <sectionrow id="appls_sigmain_table_tabledetails_r1">
+                                            <textbox dataattribute="description" id="appls_sigmain_table_tabledetailsrow1_1" inputmode="readonly"/>
+                                            <checkbox dataattribute="authorized" defaultfocus="true" id="appls_sigmain_table_tabledetailsrow1_2"/>
+                                            <multiparttextbox applink="condexpmgr" dataattribute="conditionnum" descdataattribute="condition.description" descinputmode="readonly" id="appls_sigmain_table_tabledetailsrow1_3" lookup="conditionexp" menutype="normal"/>
+                                            <textbox dataattribute="condition.type" id="appls_sigmain_table_tabledetailsrow1_4" inputmode="readonly"/>
+                                            <multilinetextbox columns="55" dataattribute="condition.expression" id="appls_sigmain_table_tabledetailsrow1_5" inputmode="readonly" rows="4"/>
+                                            <textbox dataattribute="condition.classname" id="appls_sigmain_table_tabledetailsrow1_6" inputmode="readonly"/>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                            </table>
+                            <table beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="appls_sigo_table" orderby="description" parentdatasrc="appls_app_table" relationship="SIGOOTHER">
+                                <sectionheader id="appls_sigo_table_sectionheader">
+                                    <paramvalues id="appls_sigo_table_params">
+                                        <paramvalue dataattribute="description" id="appls_sigo__table_param_1" position="0"/>
+                                    </paramvalues>
+                                </sectionheader>
+                                <tablebody displayrowsperpage="10" filterable="true" id="appls_sigo_table_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="appls_sigo_table_tablebody_1a" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="description" id="appls_sigo_table_tablebody_1" inputmode="readonly"/>
+                                    <tablecol dataattribute="authorized" id="appls_sigo_table_tablebody_2" ondatachange="refreshtable" sortable="false">
+                                        <checkbox dataattribute="authorized" id="appls_sigo_table_tablebody_2_box" ondatachange="refreshtable" sortable="false"/>
+                                    </tablecol>
+                                    <tablecol applink="condexpmgr" dataattribute="conditionnum" id="appls_sigo_table_tablebody_3" lookup="conditionexp" menutype="normal">
+                                        <textbox id="appls_sigo_table_tablebody_3a"/>
+                                    </tablecol>
+                                </tablebody>
+                                <tabledetails id="appls_sigo_table_tabledetails_1">
+                                    <section id="appls_sigo_table_tabledetails_grid30" label="Details">
+                                        <sectionrow id="appls_sigo_table_tabledetails_r1">
+                                            <textbox dataattribute="description" id="appls_sigo_table_tabledetailsrow1_1" inputmode="readonly"/>
+                                            <checkbox dataattribute="authorized" defaultfocus="true" id="appls_sigo_table_tabledetailsrow1_2"/>
+                                            <multiparttextbox applink="condexpmgr" dataattribute="conditionnum" descdataattribute="condition.description" descinputmode="readonly" id="sigo_sigmain_table_tabledetailsrow1_3" lookup="conditionexp" menutype="normal"/>
+                                            <textbox dataattribute="condition.type" id="appls_sigo_table_tabledetailsrow1_4" inputmode="readonly"/>
+                                            <multilinetextbox columns="55" dataattribute="condition.expression" id="sigo_sigmain_table_tabledetailsrow1_5" inputmode="readonly" rows="4"/>
+                                            <textbox dataattribute="condition.classname" id="appls_sigo_table_tabledetailsrow1_6" inputmode="readonly"/>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                            </table>
+                        </tab>
+                        <tab id="mobile" label="Mobile">
+                            <table beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="appls_app_table_mob" label="Applications" orderby="description" relationship="MAXAPPSMOB">
+                                <tablebody displayrowsperpage="10" filterable="true" id="appls_app_table_tablebody_mob">
+                                    <tablecol dataattribute="description" id="appls_app_table_tablebody_1_mob" inputmode="readonly"/>
+                                    <tablecol dataattribute="read" id="appls_app_table_tablebody_2_mob" ondatachange="resetchildren" sortable="false">
+                                        <checkbox dataattribute="read" id="appls_app_table_tablebody_2_box_mob" ondatachange="resetchildren" sortable="false"/>
+                                    </tablecol>
+                                    <tablecol dataattribute="insert" id="appls_app_table_tablebody_3_mob" ondatachange="resetchildren" sortable="false">
+                                        <checkbox dataattribute="insert" id="appls_app_table_tablebody_3_box_mob" ondatachange="resetchildren" sortable="false"/>
+                                    </tablecol>
+                                    <tablecol dataattribute="save" id="appls_app_table_tablebody_4_mob" ondatachange="resetchildren" sortable="false">
+                                        <checkbox dataattribute="save" id="appls_app_table_tablebody_4_box_mob" ondatachange="resetchildren" sortable="false"/>
+                                    </tablecol>
+                                    <tablecol dataattribute="delete" id="appls_app_table_tablebody_5_mob" ondatachange="resetchildren" sortable="false">
+                                        <checkbox dataattribute="delete" id="appls_app_table_tablebody_5_box_mob" ondatachange="resetchildren" sortable="false"/>
+                                    </tablecol>
+                                </tablebody>
+                                <buttongroup id="appls_buttons_mob">
+                                    <pushbutton id="appls_buttons_1_mob" label="Read All" mxevent="allappsread"/>
+                                    <pushbutton id="appls_buttons_2_mob" label="Insert All" mxevent="allappsinsert"/>
+                                    <pushbutton id="appls_buttons_3_mob" label="Save All" mxevent="allappssave"/>
+                                    <pushbutton id="appls_buttons_4_mob" label="Delete All" mxevent="allappsdelete"/>
+                                </buttongroup>
+                            </table>
+                            <table beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="appls_sigo_table_mob" label="Options for {0}" orderby="description" parentdatasrc="appls_app_table_mob" parentemptylabel="Options" relationship="SIGOOTHER">
+                                <sectionheader id="appls_sigo_table_sectionheader_mob">
+                                    <paramvalues id="appls_sigo_table_params_mob">
+                                        <paramvalue dataattribute="description" id="appls_sigo__table_param_1_mob" position="0"/>
+                                    </paramvalues>
+                                </sectionheader>
+                                <tablebody displayrowsperpage="10" filterable="true" id="appls_sigo_table_tablebody_mob">
+                                    <tablecol dataattribute="description" id="appls_sigo_table_tablebody_1_mob" inputmode="readonly"/>
+                                    <tablecol dataattribute="authorized" id="appls_sigo_table_tablebody_2_mob" ondatachange="refreshtable" sortable="false">
+                                        <checkbox dataattribute="authorized" id="appls_sigo_table_tablebody_2_box_mob" ondatachange="refreshtable" sortable="false"/>
+                                    </tablecol>
+                                </tablebody>
+                                <buttongroup id="sigo_buttons_mob">
+                                    <pushbutton id="sigo_buttons_1_mob" label="Grant All" mxevent="allsigoauthorized"/>
+                                </buttongroup>
+                            </table>
+                        </tab>
+                    </tabgroup>
+                </tab>
+                <tab id="storerooms" label="Storerooms">
+                    <section border="true" id="store_grid1">
+                        <sectionrow id="store_grid1_row1">
+                            <sectioncol id="store_grid1_row1_col1">
+                                <section id="store_grid1_row1_col1_sec1">
+                                    <multiparttextbox dataattribute="groupname" descdataattribute="description" id="store_grid1_1"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="store_grid1_row2_col1">
+                                <section id="store_grid1_row2_col1_sec1">
+                                    <checkbox dataattribute="authallstorerooms" id="store_grid2_1" ondatachange="resetchildren"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table id="store_store_table" label="Storeroom Authorization" orderby="siteid" relationship="LOCAUTH">
+                        <tablebody displayrowsperpage="10" filterable="true" id="store_store_table_tablebody">
+                            <tablecol filterable="false" hidden="false" id="store_store_table_tablebody_1a" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                            <tablecol dataattribute="siteid" id="store_store_table_tablebody_1" lookup="site"/>
+                            <tablecol applink="storeroom,ipc" dataattribute="location" id="store_store_table_tablebody_2" lookup="storeroom" menutype="normal"/>
+                            <tablecol dataattribute="locations.description" id="store_store_table_tablebody_3" longdescreadonly="true" lookup="longdesc" sortable="false">
+                                <textbox id="store_store_table_tablebody_3a" inputmode="readonly"/>
+                            </tablecol>
+                            <tablecol filterable="false" hidden="false" id="store_store_table_tablebody_4" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <tabledetails id="store_store_table_details">
+                            <section id="store_store_table_details_sec1" label="Details">
+                                <sectionrow id="store_store_table_details_sec1_r1">
+                                    <sectioncol id="store_store_table_details_sec1_r1_c1">
+                                        <section id="store_store_table_details_sec1_r1_c1_1">
+                                            <textbox dataattribute="siteid" defaultfocus="true" id="store_store_table_details_sec1_r1_c1_1_1" lookup="site"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="store_store_table_details_sec1_r1_c2">
+                                        <section id="store_store_table_details_sec1_r1_c2_1">
+                                            <multiparttextbox applink="storeroom,ipc" dataattribute="location" descdataattribute="locations.description" descinputmode="readonly" id="store_store_table_details_sec1_r1_c1_2" lookup="storeroom" menutype="normal"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                        <buttongroup id="store_store_table_2">
+                            <pushbutton default="true" id="store_store_table_2_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+                <tab id="labor" label="Labor">
+                    <section border="true" id="labor_grid2">
+                        <sectionrow id="labor_grid2_row1">
+                            <sectioncol id="labor_grid2_col1">
+                                <section id="labor_grid2_col1_sec1">
+                                    <multiparttextbox dataattribute="groupname" descdataattribute="description" id="labor_grid1_1"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section id="labor_grid2a" label="Labor Authorization">
+                        <sectionrow id="labor_grid2_row2">
+                            <sectioncol id="labor_grid2_row2_col1">
+                                <section id=" labor_grid2_row2_col1_sec1">
+                                    <checkbox dataattribute="authlaborall" id="labor_grid2_col1_sec1_1" ondatachange="resetchildren"/>
+                                    <checkbox dataattribute="authlaborcrew" id="labor_grid2_col1_sec1_2"/>
+                                    <checkbox dataattribute="authpersongroup" id="labor_grid2_col1_sec1_3"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="labor_grid2_col2">
+                                <section id="labor_grid2_col2_sec1">
+                                    <checkbox dataattribute="authlaborsuper" id="labor_grid2_col2_sec1_2"/>
+                                    <checkbox dataattribute="authlaborself" id="labor_grid2_col2_sec1_1"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table id="labor_labor_table" label="Individual Labor Authorization" orderby="orgid" relationship="LABORAUTH">
+                        <tablebody displayrowsperpage="10" filterable="true" id="labor_labor_table_tablebody">
+                            <tablecol filterable="false" hidden="false" id="labor_labor_table_tablebody_1a" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                            <tablecol dataattribute="orgid" id="labor_labor_table_tablebody_1" linkedcontrolid="labor_labor_table_details_sec1_r1_c1_sec1_1"/>
+                            <tablecol applink="labor" dataattribute="laborcode" id="labor_labor_table_tablebody_2" lookup="labor" menutype="normal"/>
+                            <tablecol dataattribute="person.displayname" id="labor_labor_table_tablebody_3">
+                                <textbox id="labor_labor_table_tablebody_3a" inputmode="readonly" sortable="false"/>
+                            </tablecol>
+                            <tablecol filterable="false" hidden="false" id="labor_labor_table_tablebody_4" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <tabledetails id="labor_labor_table_details">
+                            <section id="labor_labor_table_details_sec1" label="Details">
+                                <sectionrow id="labor_labor_table_details_sec1_r1">
+                                    <sectioncol id="labor_labor_table_details_sec1_r1_c1">
+                                        <section id="labor_labor_table_details_sec1_r1_c1_sec1">
+                                            <textbox applink="multisite" dataattribute="orgid" id="labor_labor_table_details_sec1_r1_c1_sec1_1" lookup="org" menutype="normal"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="labor_labor_table_details_sec1_r1_c2">
+                                        <section id="labor_labor_table_details_sec1_r1_c2_sec1">
+                                            <multiparttextbox applink="labor" dataattribute="laborcode" descdataattribute="person.displayname" descinputmode="readonly" id="labor_labor_table_details_sec1_r1_c2_sec1_1" lookup="labor" menutype="normal"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                        <buttongroup id="labor_labor_table_2">
+                            <pushbutton default="true" id="labor_labor_table_2_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+                <tab id="glcomp" label="GL Components">
+                    <section border="true" id="glcomp_header">
+                        <sectionrow id="glcomp_header_r1">
+                            <sectioncol id="glcomp_header_r1_c1">
+                                <section id="glcomp_grid1">
+                                    <multiparttextbox dataattribute="groupname" descdataattribute="description" id="glcomp_grid1_1"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="glcomp_header_r1_c2">
+                                <section id="glcomp_grid2">
+                                    <checkbox dataattribute="authallgls" id="glcomp_grid2_1" ondatachange="resetchildren"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table id="glcomp_table" label="GL Components" orderby="glorder" relationship="GLCONFIGURE">
+                        <tablebody displayrowsperpage="10" filterable="true" id="glcomp_table_tablebody">
+                            <tablecol dataattribute="glaccountfield" id="glcomp_table_tablebody_1" inputmode="readonly"/>
+                            <tablecol dataattribute="authorized" id="glcomp_table_tablebody_2">
+                                <checkbox dataattribute="authorized" id="glcomp_table_tablebody_2_box"/>
+                            </tablecol>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="limits" label="Limits and Tolerances">
+                    <section border="true" id="limits_grid1">
+                        <multiparttextbox dataattribute="groupname" descdataattribute="description" id="limits_grid1_1"/>
+                    </section>
+                    <table id="limits_table" label="Organizations" orderby="orgid" relationship="LIMITTOLERANCE">
+                        <tablebody displayrowsperpage="10" filterable="true" id="limits_table_tablebody">
+                            <tablecol filterable="false" hidden="false" id="limits_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                            <tablecol dataattribute="orgid" id="limits_table_tablebody_2" linkedcontrolid="limits_row1_1"/>
+                            <tablecol dataattribute="organization.description" id="limits_table_tablebody_3" linkedcontrolid="limits_row1_2"/>
+                            <tablecol dataattribute="organization.basecurrency1" id="limits_table_tablebody_4" linkedcontrolid="limits_row1_3"/>
+                            <tablecol filterable="false" hidden="false" id="limits_table_tablebody_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <tabledetails id="limits_1">
+                            <section id="limits_table_1_grid30" label="Details">
+                                <textbox applink="multisite" dataattribute="orgid" defaultfocus="true" id="limits_row1_1" lookup="org" menutype="normal"/>
+                                <textbox dataattribute="organization.description" id="limits_row1_2" inputmode="readonly"/>
+                                <textbox dataattribute="organization.basecurrency1" id="limits_row1_3" inputmode="readonly"/>
+                            </section>
+                            <section id="limits_grid_11" label="Limits">
+                                <sectionrow id="limits_grid3_r1">
+                                    <sectioncol id="limits_grid3_r1_c1">
+                                        <section id="limits_grid3_r1_c1_sec1">
+                                            <textbox dataattribute="prlimit" id="limits_grid3_col1_1"/>
+                                            <textbox dataattribute="polimit" id="limits_grid3_col1_2"/>
+                                            <textbox dataattribute="mrlimit" id="limits_grid3_col1_3"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="limits_grid3_r1_c2">
+                                        <section id="limits_grid3_r1_c2_sec1">
+                                            <textbox dataattribute="invoicelimit" id="limits_grid3_col2_1"/>
+                                            <textbox dataattribute="contractlimit" id="limits_grid3_col2_2"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <section id="limits_f">
+                                <sectionrow id="limits_g">
+                                    <sectioncol id="limits_grid4_col1">
+                                        <section id="limits_grid4_col1_header" label="Invoice Tolerance">
+                                            <textbox dataattribute="upperinvoiceamt" id="limits_grid4_col2_1"/>
+                                            <textbox dataattribute="lowerinvoiceamt" id="limits_grid4_col1_1"/>
+                                            <textbox dataattribute="upperinvoicepct" id="limits_grid4_col2_2"/>
+                                            <textbox dataattribute="lowerinvoicepct" id="limits_grid4_col1_2"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="limits_grid4_col2">
+                                        <section id="limits_grid4_col2_header" label="Tax Tolerance">
+                                            <textbox dataattribute="uppertaxamt" id="limits_grid4_col2_5"/>
+                                            <textbox dataattribute="lowertaxamt" id="limits_grid4_col1_5"/>
+                                            <textbox dataattribute="uppertaxpct" id="limits_grid4_col2_6"/>
+                                            <textbox dataattribute="lowertaxpct" id="limits_grid4_col1_6"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="limits_grid4_col3">
+                                        <section id="limits_grid4_col3_header" label="Service Tolerance">
+                                            <textbox dataattribute="upperserviceamt" id="limits_grid4_col3_3"/>
+                                            <textbox dataattribute="lowerserviceamt" id="limits_grid4_col1_3"/>
+                                            <textbox dataattribute="upperservicepct" id="limits_grid4_col3_4"/>
+                                            <textbox dataattribute="lowerservicepct" id="limits_grid4_col1_4"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                        <buttongroup id="limits_table_2">
+                            <pushbutton default="true" id="limits_table_2_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+                <tab id="datarest" label="Data Restrictions">
+                    <section border="true" id="datarest_grid1">
+                        <multiparttextbox dataattribute="groupname" descdataattribute="description" id="datarest_grid1_1"/>
+                    </section>
+                    <tabgroup id="datarest_tabgroup">
+                        <tab default="true" id="datarest_obj_tab" label="Object Restrictions">
+                            <table id="datarest_obj_table" label="Objects" orderby="objectname" relationship="GROUPOBJRESTRICT">
+                                <tablebody displayrowsperpage="10" filterable="true" id="datarest_obj_table_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="datarest_obj_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="objectname" id="datarest_obj_table_tablebody_2" lookup="objectname"/>
+                                    <tablecol dataattribute="app" id="datarest_obj_table_tablebody_3" lookup="maxapps"/>
+                                    <tablecol dataattribute="restriction" id="datarest_obj_table_tablebody_4" lookup="valuelist" ondatachange="resetchildren"/>
+                                    <tablecol applink="condexpmgr" dataattribute="conditionnum" id="datarest_obj_table_tablebody_5" lookup="conditionexp" menutype="normal"/>
+                                    <tablecol filterable="false" hidden="false" id="datarest_obj_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="datarest_obj_table_tabledetails_1">
+                                    <section id="datarest_obj_table_tabledetails_grid30" label="Details">
+                                        <sectionrow id="datarest_obj_table_tabledetails_r0">
+                                            <sectioncol id="datarest_obj_table_tabledetails_r0_c1">
+                                                <section id="datarest_obj_table_tabledetails_grid30a0">
+                                                    <multiparttextbox dataattribute="objectname" descdataattribute="maxobject.description" descinputmode="readonly" id="datarest_obj_table_tabledetailsrow1_1" lookup="objectname"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                        <sectionrow id="datarest_obj_table_tabledetails_r1">
+                                            <sectioncol id="datarest_obj_table_tabledetails_r1_c1">
+                                                <section id="datarest_obj_table_tabledetails_grid30a">
+                                                    <multiparttextbox dataattribute="app" descdataattribute="maxapps.description" descinputmode="readonly" id="datarest_obj_table_tabledetailsrow1_2" lookup="maxapps"/>
+                                                    <textbox dataattribute="restriction" id="datarest_obj_table_tabledetailsrow1_3" lookup="valuelist" ondatachange="resetchildren"/>
+                                                    <checkbox dataattribute="reevaluate" id="datarest_obj_table_tabledetailsrow1_9"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="datarest_obj_table_tabledetails_r1_c2">
+                                                <section id="datarest_obj_table_tabledetails_grid30b">
+                                                    <multiparttextbox applink="condexpmgr" dataattribute="conditionnum" descdataattribute="condition.description" descinputmode="readonly" id="datarest_obj_table_tabledetailsrow1_4" lookup="conditionexp" menutype="normal"/>
+                                                    <textbox dataattribute="condition.classname" id="datarest_obj_table_tabledetailsrow1_6" inputmode="readonly"/>
+                                                    <multilinetextbox columns="35" dataattribute="condition.expression" id="datarest_obj_table_tabledetailsrow1_5" inputmode="readonly" rows="4"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                                <buttongroup id="datarest_obj_table_2">
+                                    <pushbutton default="true" id="datarest_obj_table_2_1" label="New Row" mxevent="addrow"/>
+                                </buttongroup>
+                            </table>
+                        </tab>
+                        <tab id="datarest_attr_tab" label="Attribute Restrictions">
+                            <table id="datarest_attr_table" label="Attributes" orderby="objectname, attributename" relationship="GROUPATTRRESTRICT">
+                                <tablebody displayrowsperpage="10" filterable="true" id="datarest_attr_table_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="datarest_attr_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="objectname" id="datarest_attr_table_tablebody_2" lookup="objectname"/>
+                                    <tablecol dataattribute="attributename" id="datarest_attr_table_tablebody_2a" lookup="attributename"/>
+                                    <tablecol dataattribute="app" id="datarest_attr_table_tablebody_3" lookup="maxapps"/>
+                                    <tablecol dataattribute="restriction" id="datarest_attr_table_tablebody_4" lookup="valuelist"/>
+                                    <tablecol applink="condexpmgr" dataattribute="conditionnum" id="datarest_attr_table_tablebody_5" lookup="conditionexp" menutype="normal"/>
+                                    <tablecol filterable="false" hidden="false" id="datarest_attr_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="datarest_attr_table_tabledetails_1">
+                                    <section id="datarest_attr_table_tabledetails_grid30" label="Details">
+                                        <sectionrow id="datarest_attr_table_tabledetails_r0">
+                                            <sectioncol id="datarest_attr_table_tabledetails_r0_c1">
+                                                <section id="datarest_attr_table_tabledetails_grid30a0">
+                                                    <multiparttextbox dataattribute="objectname" descdataattribute="maxobject.description" descinputmode="readonly" id="datarest_attr_table_tabledetailsrow1_1" lookup="objectname"/>
+                                                    <multiparttextbox dataattribute="attributename" descdataattribute="maxattribute.title" descinputmode="readonly" id="datarest_attr_table_tabledetailsrow1_1a" lookup="attributename"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                    <section id="datarest_attr_table_tabledetails_grid31">
+                                        <sectionrow id="datarest_attr_table_tabledetails_r1">
+                                            <sectioncol id="datarest_attr_table_tabledetails_r1_c1">
+                                                <section id="datarest_attr_table_tabledetails_grid30a">
+                                                    <multiparttextbox dataattribute="app" descdataattribute="maxapps.description" descinputmode="readonly" id="datarest_attr_table_tabledetailsrow1_2" lookup="maxapps"/>
+                                                    <textbox dataattribute="restriction" id="datarest_attr_table_tabledetailsrow1_3" lookup="valuelist"/>
+                                                    <checkbox dataattribute="reevaluate" id="datarest_attr_table_tabledetailsrow1_9"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="datarest_attr_table_tabledetails_r1_c2">
+                                                <section id="datarest_attr_table_tabledetails_grid30b">
+                                                    <multiparttextbox applink="condexpmgr" dataattribute="conditionnum" descdataattribute="condition.description" descinputmode="readonly" id="datarest_attr_table_tabledetailsrow1_4" lookup="conditionexp" menutype="normal"/>
+                                                    <textbox dataattribute="condition.classname" id="datarest_attr_table_tabledetailsrow1_6" inputmode="readonly"/>
+                                                    <multilinetextbox columns="35" dataattribute="condition.expression" id="datarest_attr_table_tabledetailsrow1_5" inputmode="readonly" rows="4"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                                <buttongroup id="datarest_attr_table_2">
+                                    <pushbutton default="true" id="datarest_attr_table_2_1" label="New Row" mxevent="addrow"/>
+                                </buttongroup>
+                            </table>
+                        </tab>
+                        <tab id="datarest_coll_tab" label="Collection Restrictions">
+                            <table beanclass="psdi.webclient.beans.securgroup.CollectionAuthBean" id="datarest_coll_table" label="Collections" orderby="collectionnum" relationship="COLLECTIONAUTH">
+                                <tablebody displayrowsperpage="10" filterable="true" id="datarest_coll_table_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="datarest_coll_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol applink="collection" dataattribute="collectionnum" id="datarest_coll_table_tablebody_2" lookup="collection" menutype="normal"/>
+                                    <tablecol dataattribute="collection.description" id="datarest_coll_table_tablebody_3"/>
+                                    <tablecol filterable="false" hidden="false" id="datarest_coll_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="datarest_coll_table_tabledetails_1">
+                                    <section id="datarest_coll_table_tabledetails_grid30" label="Details">
+                                        <sectionrow id="datarest_coll_table_tabledetails_r0">
+                                            <sectioncol id="datarest_coll_table_tabledetails_r0_c1">
+                                                <section id="datarest_coll_table_tabledetails_grid30a0">
+                                                    <multiparttextbox applink="collection" dataattribute="collectionnum" descdataattribute="collection.description" descinputmode="readonly" id="datarest_coll_table_tabledetailsrow1_1" lookup="collection" menutype="normal"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                                <buttongroup id="datarest_coll_table_2">
+                                    <pushbutton default="true" id="datarest_coll_table_2_1" label="New Row" mxevent="addrow"/>
+                                </buttongroup>
+                            </table>
+                        </tab>
+                    </tabgroup>
+                </tab>
+                <tab id="users" label="Users">
+                    <section border="true" id="users_grid1">
+                        <multiparttextbox dataattribute="groupname" descdataattribute="description" id="users_grid1_1"/>
+                    </section>
+                    <table id="users_users_table" label="Users" orderby="userid" relationship="GROUPUSER">
+                        <tablebody displayrowsperpage="10" filterable="true" id="users_users_table_tablebody">
+                            <tablecol filterable="false" hidden="false" id="users_users_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                            <tablecol dataattribute="userid" id="users_users_table_tablebody_2" linkedcontrolid="users_row1_col1_1"/>
+                            <tablecol dataattribute="maxuser.personid" id="users_users_table_tablebody_3" linkedcontrolid="users_row1_col2_1" sortable="false"/>
+                            <tablecol dataattribute="maxuser.person.displayname" id="users_users_table_tablebody_4" linkedcontrolid="users_row1_col1_3" sortable="false"/>
+                            <tablecol dataattribute="maxuser.status" id="users_users_table_tablebody_5" linkedcontrolid="users_row1_col1_4" sortable="false"/>
+                            <tablecol dataattribute="maxuser.type" id="users_users_table_tablebody_6" linkedcontrolid="users_row1_col2_3" sortable="false"/>
+                            <tablecol filterable="false" hidden="false" id="users_users_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <tabledetails id="users_users_1">
+                            <section id="users_users_table_1_grid30" label="Details">
+                                <sectionrow id="users_row1">
+                                    <sectioncol id="users_row1_col1">
+                                        <section id="usersrow1_col1_sec1">
+                                            <textbox applink="user" dataattribute="userid" defaultfocus="true" id="users_row1_col1_1" lookup="maxuser" menutype="normal"/>
+                                            <textbox dataattribute="maxuser.personid" id="users_row1_col2_1" inputmode="readonly"/>
+                                            <textbox dataattribute="maxuser.person.displayname" id="users_row1_col1_3" inputmode="readonly"/>
+                                            <textbox dataattribute="maxuser.status" id="users_row1_col1_4" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="users_row1_col2">
+                                        <section id="usersrow1_col2_sec1">
+                                            <textbox dataattribute="maxuser.person.firstname" id="users_row1_col1_2" inputmode="readonly"/>
+                                            <textbox dataattribute="maxuser.person.lastname" id="users_row1_col2_2" inputmode="readonly"/>
+                                            <textbox dataattribute="maxuser.type" id="users_row1_col2_3" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                        <buttongroup id="users_users_table_2">
+                            <pushbutton id="users_users_table_2_2" label="Select Users" mxevent="maxusermulti"/>
+                            <pushbutton default="true" id="users_users_table_2_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include id="pageFooter"/>
+    </page>
+    <dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+        <section id="qbe_grid2_1_1_grid3">
+            <sectionrow id="qbe_grid2_1_1_grid3_r1">
+                <sectioncol id="qbe_grid2_1_1_grid3_r1_c1">
+                    <section id="qbe_grid2_1_1_grid3_r1_c1_1">
+                        <multiparttextbox dataattribute="groupname" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1a" inputmode="query"/>
+                        <textbox applink="user" dataattribute="GROUPUSER.USERID" id="qbe_grid2_1_1_grid3_1" inputmode="query" lookup="maxuser" menutype="normal"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_1_1_grid3_r1_c2">
+                    <section id="qbe_grid2_1_1_grid3_r1_c2_1">
+                        <textbox dataattribute="INDEPENDENT" id="qbe_grid2_1_1_grid3_14" inputmode="query"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_grid2_1_1_grid3a" label="Access Information">
+            <sectionrow id="qbe_grid2_1_1_grid3_r2">
+                <sectioncol id="qbe_grid2_1_1_grid3_r2_c1">
+                    <section id="qbe_grid2_1_1_grid3_r2_c1_sec1">
+                        <textbox dataattribute="SITEAUTH.SITEID" id="qbe_grid2_1_1_grid3_2" inputmode="query" lookup="site"/>
+                        <textbox dataattribute="APPLICATIONAUTH.APP" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="maxapps"/>
+                        <textbox dataattribute="APPLICATIONAUTH.OPTIONNAME" id="qbe_grid2_1_1_grid3_4" inputmode="query"/>
+                        <textbox applink="storeroom,ipc" dataattribute="LOCAUTH.LOCATION" id="qbe_grid2_1_1_grid3_5" inputmode="query" lookup="storeroom" menutype="normal"/>
+                        <textbox applink="labor" dataattribute="LABORAUTH.LABORCODE" id="qbe_grid2_1_1_grid3_13" inputmode="query" lookup="labor" menutype="normal"/>
+                        <textbox dataattribute="GLAUTH.GLACCOUNTFIELD" id="qbe_grid2_1_1_grid3_25" inputmode="query"/>
+                        <textbox dataattribute="SECURITYRESTRICT.OBJECTNAME" id="qbe_grid2_1_1_grid3_12" inputmode="query" lookup="objectname"/>
+                        <textbox dataattribute="SCTEMPLATEID" id="qbe_grid2_1_1_grid3_23" inputmode="query" lookup="sctemplate"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_1_1_grid3_r2_c2">
+                    <section id="qbe_grid2_1_1_grid3_r2_c2_sec1">
+                        <textbox dataattribute="AUTHALLSITES" id="qbe_grid2_1_1_grid3_15" inputmode="query"/>
+                        <textbox dataattribute="AUTHALLSTOREROOMS" id="qbe_grid2_1_1_grid3_16" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORALL" id="qbe_grid2_1_1_grid3_18" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORSELF" id="qbe_grid2_1_1_grid3_19" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORCREW" id="qbe_grid2_1_1_grid3_20" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORSUPER" id="qbe_grid2_1_1_grid3_21" inputmode="query"/>
+                        <textbox dataattribute="AUTHPERSONGROUP" id="qbe_grid2_1_1_grid3_22" inputmode="query"/>
+                        <textbox dataattribute="AUTHALLGLS" id="qbe_grid2_1_1_grid3_17" inputmode="query"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_grid2_1_1_grid3d" label="Limits">
+            <sectionrow id="qbe_grid2_1_1_grid3d_r1">
+                <sectioncol id="qbe_grid2_1_1_grid3d_r1_c1">
+                    <section id="qbe_grid2_1_1_grid3d_r1_c1_s1">
+                        <textbox applink="multisite" dataattribute="LIMITTOLERANCE.ORGID" id="qbe_grid2_1_1_grid3_24" inputmode="query" lookup="org" menutype="normal"/>
+                        <textbox dataattribute="LIMITTOLERANCE.PRLIMIT" id="qbe_grid2_1_1_grid3_7" inputmode="query"/>
+                        <textbox dataattribute="LIMITTOLERANCE.POLIMIT" id="qbe_grid2_1_1_grid3_6" inputmode="query"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_1_1_grid3d_r1_c2">
+                    <section id="qbe_grid2_1_1_grid3d_r1_c2_s1">
+                        <textbox dataattribute="LIMITTOLERANCE.MRLIMIT" id="qbe_grid2_1_1_grid3_8" inputmode="query"/>
+                        <textbox dataattribute="LIMITTOLERANCE.INVOICELIMIT" id="qbe_grid2_1_1_grid3_9" inputmode="query"/>
+                        <textbox dataattribute="LIMITTOLERANCE.CONTRACTLIMIT" id="qbe_grid2_1_1_grid3_10" inputmode="query"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="qbe_grid5_1_1_grid6">
+            <pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_2" label="Clear" mxevent="qbeclear"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog datasrc="MAINRECORD" id="pswddurat" label="Override Password Duration">
+        <helpgrid id="pswddurat_help" msggroup="signature" msgkey="pwdurhelp"/>
+        <section border="true" id="pswddurat_grid1">
+            <multiparttextbox dataattribute="groupname" descdataattribute="description" descinputmode="readonly" id="pswddurat_grid1_1" inputmode="readonly"/>
+        </section>
+        <section id="pswddurat_grid2">
+            <sectionrow id="pswddurat_grid2_1">
+                <sectioncol id="pswddurat_grid2_1_1">
+                    <section id="pswddurat_grid2_1_1_grid2">
+                        <textbox dataattribute="passwordduration" id="pswddurat_grid2_1_1_grid2_1"/>
+                        <textbox dataattribute="passwordwarning" id="pswddurat_grid2_1_1_grid2_2"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="pswddurat_3">
+            <pushbutton default="true" id="pswddurat_3_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="pswddurat_3_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog datasrc="MAINRECORD" id="grpassign" label="Authorize Group Reassignment" savemode="ONLOADUNLOAD">
+        <section border="true" id="grpassign_grid1">
+            <multiparttextbox dataattribute="groupname" descdataattribute="description" descinputmode="readonly" id="grpassign_grid1_1" inputmode="readonly"/>
+        </section>
+        <table id="grpassign_table" label="Authorized Users" relationship="GRPREASSIGNAUTH">
+            <tablebody displayrowsperpage="10" filterable="true" id="grpassign_table_tablebody">
+                <tablecol filterable="false" hidden="false" id="grpassign_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol applink="user" dataattribute="userid" id="grpassign_table_tablebody_2" linkedcontrolid="grpassign_table_table_details_sec1_1" lookup="maxuser" menutype="normal"/>
+                <tablecol dataattribute="maxuser.person.displayname" id="grpassign_table_tablebody_3" linkedcontrolid="grpassign_table_table_details_sec1_2">
+                    <textbox id="grpassign_table_tablebody_3a" inputmode="readonly"/>
+                </tablecol>
+                <tablecol filterable="false" hidden="false" id="grpassign_table_tablebody_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <tabledetails id="grpassign_table_table_details">
+                <section id="grpassign_table_outersec" label="Details">
+                    <sectionrow id="grpassign_table_outersec_row1">
+                        <sectioncol id="grpassign_table_row1_col1">
+                            <section id="grpassign_table_details_sec1">
+                                <textbox applink="user" dataattribute="userid" defaultfocus="true" id="grpassign_table_table_details_sec1_1" lookup="maxuser" menutype="normal"/>
+                            </section>
+                        </sectioncol>
+                        <sectioncol id="grpassign_table_row1_col2">
+                            <section id="grpassign_table_table_details_sec2">
+                                <textbox dataattribute="maxuser.person.displayname" id="grpassign_table_table_details_sec1_2" inputmode="readonly"/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+            </tabledetails>
+            <buttongroup id="grpassign_table_2">
+                <pushbutton id="grpassign_table_2_1" label="Select Users" mxevent="maxusermulti"/>
+                <pushbutton default="true" id="grpassign_table_2_2" label="New Row" mxevent="addrow"/>
+            </buttongroup>
+        </table>
+        <buttongroup id="grpassign_2">
+            <pushbutton default="true" id="grpassign_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="grpassign_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.SelectUsersBean" id="maxusermulti" label="Select Users" mboname="MAXUSER">
+        <TABLE id="maxusermulti_table" label="Users" selectmode="multiple">
+            <tablebody displayrowsperpage="10" filterable="true" filterexpanded="true" id="maxusermulti_lookup_tablebody">
+                <tablecol filterable="false" hidden="false" id="maxusermulti_lookup_tablebody_col_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+                <tablecol dataattribute="userid" id="maxusermulti_lookup_tablebody_col_2" inputmode="readonly"/>
+                <tablecol dataattribute="PERSON.displayname" id="maxusermulti_lookup_tablebody_col_3" inputmode="readonly"/>
+            </tablebody>
+        </TABLE>
+        <buttongroup id="maxusermulti_2">
+            <pushbutton id="maxusermulti_2_1" label="OK" mxevent="okUsers"/>
+            <pushbutton id="maxusermulti_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.GlobalDataBean" id="globaldata" label="Global Data Restrictions" parentdatasrc="results_showlist">
+        <tabgroup id="gdatarest_tabgroup">
+            <tab default="true" id="gdatarest_obj_tab" label="Object Restrictions">
+                <table beanclass="psdi.webclient.beans.securgroup.GlobalDataBean" id="gdatarest_obj_table" label="Objects" mboname="SECURITYRESTRICT" orderby="objectname" whereclause="groupname is null and attributename is null">
+                    <tablebody displayrowsperpage="10" filterable="true" id="gdatarest_obj_table_tablebody">
+                        <tablecol filterable="false" hidden="false" id="gdatarest_obj_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                        <tablecol dataattribute="objectname" id="gdatarest_obj_table_tablebody_2" lookup="objectname"/>
+                        <tablecol dataattribute="app" id="gdatarest_obj_table_tablebody_3" lookup="maxapps"/>
+                        <tablecol dataattribute="restriction" id="gdatarest_obj_table_tablebody_4" lookup="valuelist" ondatachange="resetchildren"/>
+                        <tablecol applink="condexpmgr" dataattribute="conditionnum" id="gdatarest_obj_table_tablebody_5" lookup="conditionexp" menutype="normal"/>
+                        <tablecol filterable="false" hidden="false" id="gdatarest_obj_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <tabledetails id="gdatarest_obj_table_tabledetails_1">
+                        <section id="gdatarest_obj_table_tabledetails_grid30" label="Details">
+                            <sectionrow id="gdatarest_obj_table_tabledetails_r0">
+                                <sectioncol id="gdatarest_obj_table_tabledetails_r0_c1">
+                                    <section id="gdatarest_obj_table_tabledetails_grid30a0">
+                                        <multiparttextbox dataattribute="objectname" descdataattribute="maxobject.description" descinputmode="readonly" id="gdatarest_obj_table_tabledetailsrow1_1" lookup="objectname"/>
+                                        <multiparttextbox dataattribute="app" descdataattribute="maxapps.description" descinputmode="readonly" id="gdatarest_obj_table_tabledetailsrow1_2" lookup="maxapps"/>
+                                        <textbox dataattribute="restriction" id="gdatarest_obj_table_tabledetailsrow1_3" lookup="valuelist" ondatachange="resetchildren"/>
+                                        <checkbox dataattribute="reevaluate" id="gdatarest_obj_table_tabledetailsrow1_9"/>
+                                        <multiparttextbox applink="condexpmgr" dataattribute="conditionnum" descdataattribute="condition.description" descinputmode="readonly" id="gdatarest_obj_table_tabledetailsrow1_4" lookup="conditionexp" menutype="normal"/>
+                                        <textbox dataattribute="condition.classname" id="gdatarest_obj_table_tabledetailsrow1_6" inputmode="readonly"/>
+                                        <multilinetextbox columns="35" dataattribute="condition.expression" id="gdatarest_obj_table_tabledetailsrow1_5" inputmode="readonly" rows="4"/>
+                                    </section>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                    </tabledetails>
+                    <buttongroup id="gdatarest_obj_table_2">
+                        <pushbutton default="true" id="gdatarest_obj_table_2_1" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+            <tab id="gdatarest_attr_tab" label="Attribute Restrictions">
+                <table beanclass="psdi.webclient.beans.securgroup.GlobalDataBean" id="gdatarest_attr_table" label="Attributes" mboname="SECURITYRESTRICT" orderby="objectname, attributename" whereclause="groupname is null and attributename is not null">
+                    <tablebody displayrowsperpage="10" filterable="true" id="gdatarest_attr_table_tablebody">
+                        <tablecol filterable="false" hidden="false" id="gdatarest_attr_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                        <tablecol dataattribute="objectname" id="gdatarest_attr_table_tablebody_2" lookup="objectname"/>
+                        <tablecol dataattribute="attributename" id="gdatarest_attr_table_tablebody_2a" lookup="attributename"/>
+                        <tablecol dataattribute="app" id="gdatarest_attr_table_tablebody_3" lookup="maxapps"/>
+                        <tablecol dataattribute="restriction" id="gdatarest_attr_table_tablebody_4" lookup="valuelist"/>
+                        <tablecol applink="condexpmgr" dataattribute="conditionnum" id="gdatarest_attr_table_tablebody_5" lookup="conditionexp" menutype="normal"/>
+                        <tablecol filterable="false" hidden="false" id="gdatarest_attr_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <tabledetails id="gdatarest_attr_table_tabledetails_1">
+                        <section id="gdatarest_attr_table_tabledetails_grid30" label="Details">
+                            <sectionrow id="gdatarest_attr_table_tabledetails_r0">
+                                <sectioncol id="gdatarest_attr_table_tabledetails_r0_c1">
+                                    <section id="gdatarest_attr_table_tabledetails_grid30a0">
+                                        <multiparttextbox dataattribute="objectname" descdataattribute="maxobject.description" descinputmode="readonly" id="gdatarest_attr_table_tabledetailsrow1_1" lookup="objectname"/>
+                                        <multiparttextbox dataattribute="attributename" descdataattribute="maxattribute.title" descinputmode="readonly" id="gdatarest_attr_table_tabledetailsrow1_1a" lookup="attributename"/>
+                                        <multiparttextbox dataattribute="app" descdataattribute="maxapps.description" descinputmode="readonly" id="gdatarest_attr_table_tabledetailsrow1_2" lookup="maxapps"/>
+                                        <textbox dataattribute="restriction" id="gdatarest_attr_table_tabledetailsrow1_3" lookup="valuelist"/>
+                                        <checkbox dataattribute="reevaluate" id="gdatarest_attr_table_tabledetailsrow1_9"/>
+                                        <multiparttextbox applink="condexpmgr" dataattribute="conditionnum" descdataattribute="condition.description" descinputmode="readonly" id="gdatarest_attr_table_tabledetailsrow1_4" lookup="conditionexp" menutype="normal"/>
+                                        <textbox dataattribute="condition.classname" id="gdatarest_attr_table_tabledetailsrow1_6" inputmode="readonly"/>
+                                        <multilinetextbox columns="35" dataattribute="condition.expression" id="gdatarest_attr_table_tabledetailsrow1_5" inputmode="readonly" rows="4"/>
+                                    </section>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                    </tabledetails>
+                    <buttongroup id="gdatarest_attr_table_2">
+                        <pushbutton default="true" id="gdatarest_attr_table_2_1" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+        </tabgroup>
+        <buttongroup id="gdatarest_2">
+            <pushbutton id="gdatarest_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="gdatarest_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="websecure" label="Standard Service Authorization" mboname="MAXSERVSECURITY">
+        <table id="websecure_table" label="Web Methods">
+            <tablebody displayrowsperpage="10" filterable="true" id="websecure_table_tablebody">
+                <tablecol dataattribute="servicename" id="websecure_table_tablebody_2" lookup="maxservice"/>
+                <tablecol dataattribute="methodname" id="websecure_table_tablebody_3" lookup="method"/>
+                <tablecol dataattribute="app" id="websecure_table_tablebody_4" lookup="maxapps"/>
+                <tablecol dataattribute="optionname" id="websecure_table_tablebody_5" lookup="sigoption"/>
+                <tablecol filterable="false" hidden="false" id="websecure_table_tablebody_6" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <buttongroup id="websecure_table_2">
+                <pushbutton default="true" id="websecure_table_2_1" label="New Row" mxevent="addrow"/>
+            </buttongroup>
+        </table>
+        <buttongroup id="websecure_2">
+            <pushbutton default="true" id="websecure_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="websecure_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="MAXGROUP">
+        <table id="bookmarks_table" inputmode="readonly" label="Groups" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+                <tablecol dataattribute="groupname" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
+                <tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
+                <tablecol filterable="false" hidden="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmarks_2">
+            <pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.mobile.MobileQueriesBean" id="addexisting" label="Add From Existing Queries" mboname="QUERY">
+        <table id="addexisting_table" selectmode="multiple" width="500">
+            <tablebody displayrowsperpage="20" filterable="true" id="addexisting_table_tablebody">
+                <tablecol filterable="false" hidden="false" id="selectgroups_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+                <tablecol filterable="false" hidden="false" id="addexisting_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol dataattribute="clausename" id="addexisting_tablebody_2" inputmode="readonly" mxevent="selectrecord"/>
+                <tablecol dataattribute="description" id="addexisting_table_tablebody_3" inputmode="readonly"/>
+            </tablebody>
+            <tabledetails id="addexisting_tabledtails">
+                <section id="addexisting_tabledtails_1">
+                    <multilinetextbox columns="40" dataattribute="clause" id="addexisting_tabledtails_1_1" inputmode="readonly" rows="5"/>
+                </section>
+            </tabledetails>
+        </table>
+        <buttongroup id="addexisting_2">
+            <pushbutton default="true" id="addexisting_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="addexisting_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.mobile.MobileQueryValidatePreviewBean" id="validatequeryprew" label="Preview Records" mboname="MOBILEVALIDQRY">
+        <section id="validatequery_grid3pr">
+            <sectioncol id="validatequery_col1pr">
+                <helpgrid id="mvalidatequery_help1pr" innerhtml="The table window below displays all records that match the queries specified for this data group.                 Members of this security group will then be able to download these records to their devices."/>
+            </sectioncol>
+        </section>
+        <table id="validatequery_tablepr" width="700">
+            <tablebody displayrowsperpage="20" filterable="false" id="validatequery_table_tablebodypr">
+                <tablecol dataattribute="uniqueid" id="validatequery_tablebody_1pr" inputmode="readonly"/>
+                <tablecol dataattribute="description" id="validatequery_tablebody_4pr" inputmode="readonly"/>
+            </tablebody>
+        </table>
+        <buttongroup id="validatequery_2pr">
+            <pushbutton id="validatequery_2_2pr" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="mobsetwm" label="Work Management Settings" mboname="MOBSETUI">
+        <section id="po_grid1_1_1_grid3">
+            <sectioncol id="act_tab_col1">
+                <helpgrid id="tasktab_help" innerhtml="The settings below do not apply to the current Security Group, but rather apply to all users of the mobile Work Management application."/>
+            </sectioncol>
+            <checkbox dataattribute="DLWORKORD" id="mobsetwm_grid1_1_1_grid3_1"/>
+            <textbox dataattribute="DLHISTORY" id="mobsetwm_grid1_1_1_grid3_2"/>
+            <checkbox dataattribute="LABTIMER" id="mobsetwm_grid1_1_1_grid3_3"/>
+            <textbox dataattribute="AUTOPULLREF" id="mobsetwm_grid1_1_1_grid3_4"/>
+            <checkbox dataattribute="UPDATEWL" id="mobsetwm_grid1_1_1_grid3_5"/>
+            <textbox dataattribute="ATTACHSIZE" id="mobsetwm_grid1_1_1_grid3_6"/>
+            <textbox dataattribute="ATTACHTYPES" id="mobsetwm_grid1_1_1_grid3_7"/>
+        </section>
+        <buttongroup id="mobsetwm_2">
+            <pushbutton clickmessage="Work Management settings have been saved." default="true" id="mobsetwm_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="mobsetwm_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="mobsetinv" label="Inventory Settings" mboname="MOBSETUI">
+        <section id="mobsetinv_grid3">
+            <sectioncol id="mobsetinv_col1">
+                <helpgrid id="mobsetinvtasktab_help" innerhtml="The settings below do not apply to the current Security Group, but rather apply to all users of the mobile Inventory application."/>
+            </sectioncol>
+            <textbox dataattribute="AUTOPULLREF" id="mobsetinv_grid1_1_1_grid3_4"/>
+            <checkbox dataattribute="REVIEWCHGS" id="mobsetinv_grid1_1_1_grid3_5"/>
+            <checkbox dataattribute="UPDATEWL" id="mobsetinv_grid1_1_1_grid3_6"/>
+        </section>
+        <buttongroup id="mobsetinv_2">
+            <pushbutton clickmessage="Inventory settings have been saved." default="true" id="mobsetinv_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="mobsetinv_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.mobile.MobExpBuilderBean" icon="img_expbuilder.gif" id="expbuilder" label="SQL Expression Builder(Mobile)" relationship="EXPBUILDER">
+        <section border="true" id="eb_table_1_rowdetails">
+            <sectionrow id="eb_table_1_rowdetails_r1">
+                <sectioncol id="eb_table_1_rowdetailsr2">
+                    <section id="multi1">
+                        <multilinetextbox columns="38" dataattribute="usersql" id="eb_sql" rows="5"/>
+                        <checkbox dataattribute="ISCUSTOMCLASS" id="chkcust1"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section border="true" id="exp_panel_1">
+            <sectionrow id="exp_panel_1_r1">
+                <sectioncol id="exp_panel_1_r1_c1">
+                    <section id="expbutton_sec1" label="Conditions" layout="vertical">
+                        <buttongroup align="center" id="expbutton_sec1_row1">
+                            <pushbutton id="expbutton_sec1_and" label="And" mxevent="expressionbuildereventinvalue" value="setValueAND"/>
+                            <pushbutton id="expbutton_sec1_or" label="Or" mxevent="expressionbuildereventinvalue" value="setValueOR"/>
+                            <pushbutton id="expbutton_sec1_not" label="Not" mxevent="expressionbuildereventinvalue" value="setValueNOT"/>
+                            <pushbutton id="expbutton_sec1_like" label="Like" mxevent="expressionbuildereventinvalue" value="setValueLIKE"/>
+                            <pushbutton id="expbutton_sec1_openparenthesis" label="(" mxevent="expressionbuildereventinvalue" value="setValueOPENPAREN"/>
+                            <pushbutton id="expbutton_sec1_closeparenthesis" label=")" mxevent="expressionbuildereventinvalue" value="setValueCLOSEPAREN"/>
+                        </buttongroup>
+                        <buttongroup align="center" id="expbutton_sec1_row2">
+                            <pushbutton id="expbutton_sec1_in" label="In" mxevent="expressionbuildereventinvalue" value="setValueIN"/>
+                            <pushbutton id="expbutton_sec1_between" label="Between" mxevent="expressionbuildereventinvalue" value="setValueBETWEEN"/>
+                            <pushbutton id="expbutton_sec1_isnull" label="Is Null" mxevent="expressionbuildereventinvalue" value="setValueNULL"/>
+                            <pushbutton id="expbutton_sec1_isnotnull" label="Is Not Null" mxevent="expressionbuildereventinvalue" value="setValueNOTNULL"/>
+                        </buttongroup>
+                    </section>
+                    <section id="expbutton_sec2" label="Operators">
+                        <buttongroup align="center" id="expbutton_sec2_row1">
+                            <pushbutton id="expbutton_sec2_lesserthan" label="&lt;" mxevent="expressionbuildereventinvalue" value="setValueLESSERTHAN"/>
+                            <pushbutton id="expbutton_sec2_greaterthan" label="&gt;" mxevent="expressionbuildereventinvalue" value="setValueGREATERTHAN"/>
+                            <pushbutton id="expbutton_sec2_equalto" label="=" mxevent="expressionbuildereventinvalue" value="setValueEQUALTO"/>
+                            <pushbutton id="expbutton_sec2_notequalto" label="&lt;&gt;" mxevent="expressionbuildereventinvalue" value="setValueNOTEQUALTO"/>
+                            <pushbutton id="expbutton_sec2_lesserorequal" label="&lt;=" mxevent="expressionbuildereventinvalue" value="setValueLESSEREQUAL"/>
+                            <pushbutton id="expbutton_sec2_greaterorequal" label="&gt;=" mxevent="expressionbuildereventinvalue" value="setValueGREATEREQUAL"/>
+                        </buttongroup>
+                    </section>
+                    <section id="expbutton_sec3" label="Miscellaneous">
+                        <buttongroup align="center" id="expbutton_sec3_row1">
+                            <pushbutton id="expbutton_sec3_validateexpression" label="Test Expression ..." mxevent="expressionbuildereventinvalue" value="validateExpression"/>
+                            <pushbutton id="expbutton_sec3_calendar" label="Calendar" mxevent="expressionbuildereventinvalue" value="selectdate"/>
+                            <pushbutton id="expbutton_sec3_classification" label="Classification" mxevent="expressionbuildereventinvalue" value="selectclassification"/>
+                        </buttongroup>
+                    </section>
+                </sectioncol>
+                <sectioncol id="exp_panel_1_r1_c2">
+                    <section id="tree1">
+                        <tree beanclass="psdi.webclient.beans.common.RelationshipTreeBean" height="250" id="tree11" relationship="EXPBUILDTREE" restrictactionon="LEAF_NODES" usedatasrc="true" width="250">
+                            <treenode displaykeyattribute="false" displayobjectname="false" id="tree11_node1" keyattribute="maxrelationshipid">
+                                <treeattribute dataattribute="name" display="true" id="tree11_node1_attr1"/>
+                                <treeattribute dataattribute="parent" id="tree11_node1_attr2"/>
+                            </treenode>
+                        </tree>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="eb_buttons" show="true">
+            <pushbutton default="true" id="eb_ok" label="OK" mxevent="dialogok"/>
+            <pushbutton id="eb_cancel" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="mobduplicate" label="Duplicate Group" parentmbo="MAXGROUP">
+        <section id="mobduplicate_sec_1">
+            <multiparttextbox dataattribute="GROUPNAME" descdataattribute="DESCRIPTION" id="mobdup_sec_1_header_1"/>
+        </section>
+        <buttongroup id="mobduplicate_btngrp_1">
+            <pushbutton default="true" id="mobduplicate_sec_1_btn_1" label="OK" mxevent="SAVEDUPLICATE"/>
+            <pushbutton id="mobduplicate_sec_2_btn_2" label="Cancel" mxevent="CANCEL"/>
+        </buttongroup>
+    </dialog>
+</presentation>

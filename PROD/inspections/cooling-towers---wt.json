@@ -1,0 +1,364 @@
+{
+    "sourceVersion": "9.0.84",
+    "activateOnDeploy": false,
+    "inspformnum": "1005",
+    "revision": 2,
+    "name": "Cooling Towers - WT",
+    "instructions": "",
+    "reason": "",
+    "type": "Inspection",
+    "readconfirmation": false,
+    "audioguided": false,
+    "questions": [
+        {
+            "inspquestionnum": "1632",
+            "inspformnum": "1005",
+            "description": "Date",
+            "information": "",
+            "sequence": 1,
+            "groupseq": 1,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1979",
+                    "inspquestionnum": "1632",
+                    "inspformnum": "1005",
+                    "fieldtype": "DT",
+                    "description": "Date/time",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1634",
+            "inspformnum": "1005",
+            "description": "Dipslide",
+            "information": "",
+            "sequence": 2,
+            "groupseq": 2,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1981",
+                    "inspquestionnum": "1634",
+                    "inspformnum": "1005",
+                    "fieldtype": "SO",
+                    "description": "Acceptable?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "1981",
+                            "inspquestionnum": "1634",
+                            "inspformnum": "1005",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "1981",
+                            "inspquestionnum": "1634",
+                            "inspformnum": "1005",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1636",
+            "inspformnum": "1005",
+            "description": "Chemical Board",
+            "information": "",
+            "sequence": 3,
+            "groupseq": 3,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1983",
+                    "inspquestionnum": "1636",
+                    "inspformnum": "1005",
+                    "fieldtype": "SO",
+                    "description": "Bleed?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "1983",
+                            "inspquestionnum": "1636",
+                            "inspformnum": "1005",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "1983",
+                            "inspquestionnum": "1636",
+                            "inspformnum": "1005",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1638",
+            "inspformnum": "1005",
+            "description": "Pumps",
+            "information": "",
+            "sequence": 4,
+            "groupseq": 4,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1985",
+                    "inspquestionnum": "1638",
+                    "inspformnum": "1005",
+                    "fieldtype": "SO",
+                    "description": "Pump",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "1985",
+                            "inspquestionnum": "1638",
+                            "inspformnum": "1005",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "1985",
+                            "inspquestionnum": "1638",
+                            "inspformnum": "1005",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1640",
+            "inspformnum": "1005",
+            "description": "Temperature",
+            "information": "",
+            "sequence": 5,
+            "groupseq": 5,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1987",
+                    "inspquestionnum": "1640",
+                    "inspformnum": "1005",
+                    "fieldtype": "SE",
+                    "description": "Celcius",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1642",
+            "inspformnum": "1005",
+            "description": "pH Level",
+            "information": "",
+            "sequence": 6,
+            "groupseq": 6,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1989",
+                    "inspquestionnum": "1642",
+                    "inspformnum": "1005",
+                    "fieldtype": "SE",
+                    "description": "pH",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1644",
+            "inspformnum": "1005",
+            "description": "Water Meter",
+            "information": "",
+            "sequence": 7,
+            "groupseq": 7,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1991",
+                    "inspquestionnum": "1644",
+                    "inspformnum": "1005",
+                    "fieldtype": "SE",
+                    "description": "litres",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1646",
+            "inspformnum": "1005",
+            "description": "Corrosion Inhibitor - PTSA",
+            "information": "",
+            "sequence": 8,
+            "groupseq": 8,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1993",
+                    "inspquestionnum": "1646",
+                    "inspformnum": "1005",
+                    "fieldtype": "SE",
+                    "description": "(ppm)",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1648",
+            "inspformnum": "1005",
+            "description": "Conductivity",
+            "information": "",
+            "sequence": 9,
+            "groupseq": 9,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1995",
+                    "inspquestionnum": "1648",
+                    "inspformnum": "1005",
+                    "fieldtype": "SE",
+                    "description": "(us/cm)",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        }
+    ],
+    "cascadeoptions": [],
+    "scripts": []
+}

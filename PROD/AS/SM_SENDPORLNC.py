@@ -20,3 +20,21 @@ else:
                 params = [pomax]   
             else:
                 clientSession.loadDialog("smsendporlnc")
+
+scriptConfig="""{
+    "autoscript": "SM_SENDPORLNC",
+    "description": "Send by email: Send purchase orders follow ups to vendors in batch",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_SENDPORLNC",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Send by email: Send purchase orders follow ups to vendors in batch",
+            "actionName": "SM_SENDPORLNC"
+        }
+    ]
+}"""

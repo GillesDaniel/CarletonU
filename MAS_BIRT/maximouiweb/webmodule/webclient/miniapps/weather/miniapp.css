@@ -1,0 +1,256 @@
+.weather label {
+    font-weight: bold;
+}
+
+.weather_content span {
+    vertical-align: top;
+    padding-bottom: 5px;
+}
+
+.weather label, .weather span {
+    display: block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.weather ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.weather li {
+    display: inline-block;
+}
+
+.weather li a {
+    display: inline-block;
+    color: #000;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+.weather li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.weather .selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.weather .right > span {
+    margin-left: auto;
+    text-align: right;
+}
+
+.weather .right > label {
+    margin-left: auto;
+    text-align: right;
+}
+
+.weather .left > span {
+    margin-right: auto;
+    text-align: left;
+}
+
+.weather .left > label {
+    margin-right: auto;
+    text-align: left;
+}
+
+
+.weather .space-bottom {
+    padding-bottom: {{space_padding}};
+}
+
+.weather .space-top {
+    padding-top: {{space_padding}};
+}
+
+.weather .large > span {
+    font-size: {{large_font}};
+}
+
+.weather .medium > span {
+    font-size: {{medium_font}};
+}
+
+.weather .center img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.weather .right img {
+    display: block;
+    margin-left: auto;
+}
+
+.weather .left img {
+    display: block;
+    margin-right: auto;
+}
+
+.weather .large img {
+    height: {{large_image}};
+    width: {{large_image}};
+}
+
+.weather .medium img {
+    height: {{medium_image}};
+    width: {{medium_image}};
+}
+
+.weather .small img {
+    height: {{small_image}};
+    width: {{small_image}};
+}
+
+.weather .more img {
+    height: {{xsmall_image}};
+    width: {{xsmall_image}};
+}
+
+.weather div.error{
+    display: table;
+    text-align: center;
+    width: 100%;
+    height: {{largest_panel_height}};
+}
+
+.weather .front, .weather .back {
+    background-color: white;
+}
+
+.weather .striped .front, .weather .striped .back {
+    background-color: #f8f8f8;
+}
+
+.weather span.error{
+    color: red;
+    font-weight: bold;
+    font-size: larger;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.weather_content .current {
+    width: {{current_content_width}};
+    overflow-x: auto!important;
+    overflow-y: hidden!important;
+    white-space: nowrap!important;
+}
+
+.weather_content .daily .section {
+    display: inline-block;
+    width: {{current_panel_width}};
+    text-wrap: none;
+}
+
+.weather_content .daily {
+    width: {{daily_content_width}};
+    overflow-x: auto!important;
+    overflow-y: hidden!important;
+    white-space: nowrap!important;
+}
+
+.weather_content .daily .section {
+    display: inline-block;
+    width: {{daily_panel_width}};
+    text-wrap: none;
+}
+
+.weather_content .hourly {
+    width: {{hourly_content_width}};
+    overflow-x: auto!important;
+    overflow-y: hidden!important;
+    white-space: nowrap!important;
+}
+
+.weather_content .hourly .section {
+    display: inline-block;
+    width: {{hourly_panel_width}};
+    text-wrap: none;
+}
+
+/** card flipping **/
+.weather_content .section {
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+
+.weather_content .card {
+    /*width: {{panel_width}};*/
+    /*height: {{panel_height}};*/
+    -webkit-transition: -webkit-transform 500ms;
+    -moz-transition: -moz-transform 500ms;
+    -o-transition: -o-transform 500ms;
+    transition: transform 500ms;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.weather_content .flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+/** IE has issues with the flip, so we'll just do a standard show/hid */
+.weather_content .flipped_ie .front {
+    display: none;
+}
+.weather_content .flipped_ie .back {
+    -webkit-transform: rotateY( 0deg );
+    -moz-transform: rotateY( 0deg );
+    -o-transform: rotateY( 0deg );
+    transform: rotateY( 0deg );
+}
+
+.weather_content .front, .weather_content .back {
+    display: block;
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.weather_content .current .front, .weather_content .current .back {
+    height: {{current_panel_height}};
+}
+
+.weather_content .daily .front, .weather_content .daily .back {
+    height: {{daily_panel_height}};
+}
+
+.weather_content .hourly .front, .weather_content .hourly .back {
+    height: {{hourly_panel_height}};
+}
+
+
+.weather_content .back {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+/** highlighting */
+.weather .highlight .front {
+    background-color: oldlace!important;
+}

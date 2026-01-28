@@ -1,0 +1,197 @@
+<Designer>
+   <Cfg/>
+
+   <!-- external CSS style for box shapes; Name is unique among all designers; included only once -->
+   <Styles>
+      <S Name="Shapes" Src="Shapes.css"/>
+   </Styles>
+
+   <!-- Global definitions for <svg>, added only once per page by the unique <D> Name, on its first occurrence -->
+   <DefSvg>
+      <D Name="ShapesGradients">
+         <linearGradient id="ShapesYellowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#FAFA66;" />
+            <stop offset="100%" style="stop-color:#FA3;" />
+         </linearGradient>
+         <linearGradient id="ShapesBlueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#BFF;" />
+            <stop offset="100%" style="stop-color:#AAF;" />
+         </linearGradient>
+         <linearGradient id="ShapesRedGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#FA6666;" />
+            <stop offset="100%" style="stop-color:#FF3;" />
+         </linearGradient>
+         <linearGradient id="ShapesGreenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#66CC66;" />
+            <stop offset="100%" style="stop-color:#FF3;" />
+         </linearGradient>
+
+         <radialGradient id="ShapesGrayRadial" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:#FFF;" />
+            <stop offset="100%" style="stop-color:#BBB;" />
+         </radialGradient>
+      </D>
+   </DefSvg>
+
+   <!-- Boxes definitions -->
+   <DefBoxes>
+
+      <!-- Shared definition -->
+      <D Name="Shape"
+         ResizeResizeEdge="All" Background="url(#ShapesYellowGradient)" Border="#025" BorderWidth="2"
+         HoverClass="SVGBlock,SVGBlockHover" SelectClass="SVGBlock,SVGBlockSelect" FocusClass="SVGBlock,SVGBlockFocus" DisableClass="SVGBlock,SVGBlockDisabled" LockClass="SVGBlock,SVGBlockLocked"
+         />
+
+      <!-- Rectangle shape -->
+      <D Name="ShapeRect" Def="Shape" R="0">
+         <![CDATA[
+            O.R = (R+","+R).split(","); if(R[1]<=0) R[1] = R[0]>0 ? R[0] : -R[0]; if(R[0]<=0) R[0] = R[1];
+            var rx = (R[0]>(Width-6)/2 ? (Width-6)/2 : R[0]) * 0.293, ry = (R[1]>(Height-6)/2 ? (Height-6)/2 : R[1]) * 0.293;
+            I.TopLeftLineDX = rx+1; I.TopLeftLineDY = ry+1; I.TopRightLineDX = -rx-1; I.TopRightLineDY = ry+1;
+            I.BottomLeftLineDX = rx+1; I.BottomLeftLineDY = -ry-1; I.BottomRightLineDX = -rx-1; I.BottomRightLineDY = -ry-1; 
+         ]]>
+         <svg>
+            <rect part="Box" class="SVGBlock" fill="{Background}" stroke="{Border}" stroke-width="{BorderWidth}" x='3' y='3' width='{Width-6}' height='{Height-6}' rx='{R[0]}' ry='{R[1]}'/>
+            <rect part="Resize" class="SVGResize" x='3' y='3' width='{Width-6}' height='{Height-6}' rx='{R[0]}' ry='{R[1]}'/>
+         </svg>
+      </D>
+
+      <!-- Octagon shape -->
+      <D Name="ShapeOctagon" Def="Shape" R="10">
+         <![CDATA[
+            O.X1 = 3; O.Y1 = 3; O.X2 = Width-3; O.Y2 = Height-3; O.R = (R+","+R+","+R+","+R+","+R+","+R+","+R+","+R).split(",");
+            for(var i=0;i<8;i++) if(R[i]>=-1 && R[i]<=1) R[i] *= i%2 ? Y2-Y1 : X2-X1; else R[i] -= 0;
+            var A = [0,2,X2-X1,4,6,X2-X1,1,5,Y2-Y1,3,7,Y2-Y1];
+            for(var i=0;i<12;i+=3) { var a = R[A[i]]+R[A[i+1]]; if(a>A[i+2]){ R[A[i]] *= A[i+2]/a; R[A[i+1]] *= A[i+2]/a; } }
+            I.TopLineDX = (R[0]-R[2]) / 2; I.BottomLineDX = (R[4]-R[6]) / 2; I.LeftLineDY = (R[1]-R[5]) / 2; I.RightLineDY = (R[3]-R[7]) / 2;
+            I.TopLeftLineDX = R[0]>=0 && R[1]>=0 ? R[0]/2+1 : R[0]>=0 ? 1 : R[0]+1; I.TopLeftLineDY = R[0]>=0 && R[1]>=0 ? R[1]/2+1 : R[1]>=0 ? 1 : R[1]+1;
+            I.TopRightLineDX = R[2]>=0 && R[3]>=0 ? -R[2]/2-1 : R[2]>=0 ? -1 : -R[2]-1; I.TopRightLineDY = R[2]>=0 && R[3]>=0 ? R[3]/2+1 : R[3]>=0 ? 1 : R[3]+1;
+            I.BottomLeftLineDX = R[4]>=0 && R[5]>=0 ? R[4]/2+1 : R[4]>=0 ? 1 : R[4]+1; I.BottomLeftLineDY = R[4]>=0 && R[5]>=0 ? -R[5]/2-1 : R[5]>=0 ? -1 : -R[5]-1;
+            I.BottomRightLineDX = R[6]>=0 && R[7]>=0 ? -R[6]/2-1 : R[6]>=0 ? -1 : -R[6]-1; I.BottomRightLineDY = R[6]>=0 && R[7]>=0 ? -R[7]/2-1 : R[7]>=0 ? -1 : -R[7]-1; 
+         ]]>
+         <svg>
+            <polygon part="Box" class="SVGBlock" fill="{Background}" stroke="{Border}" stroke-width="{BorderWidth}" points='{X1+R[0]} {Y1} {X2-R[2]} {Y1} {X2} {Y1+R[3]} {X2} {Y2-R[7]} {X2-R[6]} {Y2} {X1+R[4]} {Y2} {X1} {Y2-R[5]} {X1} {Y1+R[1]}'/>
+            <polygon part="Resize" class="SVGResize" points='{X1+R[0]} {Y1} {X2-R[2]} {Y1} {X2} {Y1+R[3]} {X2} {Y2-R[7]} {X2-R[6]} {Y2} {X1+R[4]} {Y2} {X1} {Y2-R[5]} {X1} {Y1+R[1]}'/>
+         </svg>
+      </D>
+
+      <!-- Diamond shape -->
+      <D Name="ShapeDiamond" Def="Shape" CornerSize="0.4" R="0.5">
+         <![CDATA[
+            O.X1 = 3; O.Y1 = 3; O.X2 = Width-3; O.Y2 = Height-3; O.R = (R+","+R).split(",");
+            if(R[0]<-X2+X1) R[0] = 0; else if(R[0]<-1) R[0] = R[0]-X1+X2; else if(R[0]<0) R[0] = (R[0]-0+1)*(X2-X1); else if(R[0]<=1) R[0] *= X2-X1; else if(R[0]>X2-X1) R[0] = X2-X1; else R[0] -= 0;
+            if(R[1]<-Y2+Y1) R[1] = 0; else if(R[1]<-1) R[1] = R[1]-Y1+Y2; else if(R[1]<0) R[1] = (R[1]-0+1)*(Y2-Y1); else if(R[1]<=1) R[1] *= Y2-Y1; else if(R[1]>Y2-Y1) R[1] = Y2-Y1; else R[1] -= 0;
+            I.TopLineDX = X1+R[0]-Width/2; I.BottomLineDX = X1+R[0]-Width/2;
+            I.LeftLineDY = Y1+R[1]-Height/2; I.RightLineDY = Y1+R[1]-Height/2;
+            I.TopLeftLineDX = (X1+R[0])/2; I.TopLeftLineDY = (Y1+R[1])/2; I.TopRightLineDX = (R[0]-X2)/2; I.TopRightLineDY = (Y1+R[1])/2; 
+            I.BottomLeftLineDX = (X1+R[0])/2; I.BottomLeftLineDY = (R[1]-Y2)/2; I.BottomRightLineDX = (R[0]-X2)/2; I.BottomRightLineDY = (R[1]-Y2)/2; 
+         ]]>
+         <svg>
+            <polygon part="Box" class="SVGBlock" fill="{Background}" stroke="{Border}" stroke-width="{BorderWidth}" points='{X1+R[0]} {Y1} {X2} {Y1+R[1]} {X1+R[0]} {Y2} {X1} {Y1+R[1]}' />
+            <polygon part="Resize" class="SVGResize" points='{X1+R[0]} {Y1} {X2} {Y1+R[1]} {X1+R[0]} {Y2} {X1} {Y1+R[1]}' />
+         </svg>
+      </D>
+
+      <!-- Trapezoid shape -->
+      <D Name="ShapeTrapezoid" Def="Shape" R="10,0">
+         <![CDATA[
+            O.X1 = 3; O.Y1 = 3; O.X2 = Width-3; O.Y2 = Height-3; O.R = (R+","+R+","+R+","+R).split(",");
+            for(var i=0;i<4;i++) if(R[i]>=-1 && R[i]<=1) R[i] *= i%2 ? Y2-Y1 : X2-X1; else R[i] -= 0;
+            I.LeftLineDY = (R[1]-R[3])/2; I.RightLineDY = (R[3]-R[1])/2; I.TopLineDX = (R[0]-R[2])/2; I.BottomLineDX = (R[2]-R[0])/2;
+            I.TopLeftLineDX = R[0]; I.TopLeftLineDY = R[1]; I.TopRightLineDX = -R[2]; I.TopRightLineDY = -R[1];
+            I.BottomLeftLineDX = -R[0]; I.BottomLeftLineDY = -R[3]; I.BottomRightLineDX = R[2]; I.BottomRightLineDY = R[3];
+            var a = (X2-X1)/(R[0]+R[2]); if(a<1) { R[0] *= a; R[2] *= a; }
+            var a = (Y2-Y1)/(R[1]+R[3]); if(a<1) { R[1] *= a; R[3] *= a; }
+         ]]>
+         <svg>
+            <polygon part="Box" class="SVGBlock" fill="{Background}" stroke="{Border}" stroke-width="{BorderWidth}" points='{X1+R[0]} {Y1+R[1]} {X2-R[2]} {Y1-R[1]} {X2+R[2]} {Y2+R[3]} {X1-R[0]} {Y2-R[3]}'/>
+            <polygon part="Resize" class="SVGResize" points='{X1+R[0]} {Y1+R[1]} {X2-R[2]} {Y1-R[1]} {X2+R[2]} {Y2-R[3]} {X1-R[0]} {Y2+R[3]}'/>
+         </svg>
+      </D>
+
+      <!-- Cloud rectangle shape -->
+      <D Name="ShapeCloud" Def="Shape" R="13"> 
+         <![CDATA[
+            var w = Width-6, h = Height-6; O.R = (R+","+R+","+R+","+R+","+R+","+R+","+R+","+R).split(",");
+            for(var i=0;i<8;i++) if(R[i]>=-1 && R[i]<=1) R[i] *= i%4>=2 ? h : w; else R[i] -= 0;
+            for(var i=0;i<4;i++) { var a = i%2 ? h : w, j = i*2; if(R[j]<=0) R[j] = a; if(a%R[j]>=0.1) R[j] -= (R[j]-a%R[j]) / Math.ceil(a/R[j]); }
+            O.d = "M 3 3";
+            for(var x=0.001;x<w;x+=R[0]) d += " q "+R[0]/2+" "+-R[1]+" "+R[0]+" 0";
+            for(var y=0.001;y<h;y+=R[2]) d += " q "+R[3]+" "+R[2]/2+" 0 "+R[2];
+            for(var x=0.001;x<w;x+=R[4]) d += " q "+-R[4]/2+" "+R[5]+" "+-R[4]+" 0";
+            for(var y=0.001;y<h;y+=R[6]) d += " q "+-R[7]+" "+-R[6]/2+" 0 "+-R[6];
+            I.LeftLineDX = -R[7]/2; I.RightLineDX = R[3]/2; I.TopLineDY = -R[1]/2; I.BottomLineDY = R[5]/2;
+         ]]>
+         <svg>
+            <path part="Box" class="SVGBlock" fill="{Background}" stroke="{Border}" stroke-width="{BorderWidth}" d="{d}" />
+            <path part="Resize" class="SVGResize" d="{d}" />
+         </svg>
+      </D>
+
+      <!-- Box width calculation according to its Text -->
+      <D Name="SizeWidth" MinWidth="50" MinHeight="30" PaddingLeft="15" PaddingRight="15" AutoSize="1">
+         <size width="" padding="{PaddingLeft+PaddingRight}"><span class="Text">{Text?Text:id}</span></size>
+      </D>
+
+      <!-- Single line Text with editing in <input> -->
+      <D Name="EditSingle" EditAttr="Text" EditClass="Edit" Save="R,Text,IconValue" Color="inherit" EditedClass="SVGBlock,SVGBlockEdit">
+         <div class='None' style="width:{Width-PaddingRight}px;overflow-x:hidden;height:{Height}px;">
+            <div class="Abs Text" part="Text" style="left:{Width/2-(AutoWidth>Width?Width/2:AutoWidth/2)+PaddingLeft}px;top:{Height/2-9}px;white-space:nowrap;color:{Color}">{Text?Text:id}</div>
+            <div class="Abs Edit" part="None" style="left:{PaddingLeft-1}px;top:{Height/2-11}px;width:{Width-PaddingLeft-PaddingRight+1}px;">&#160;</div>
+         </div>
+      </D>
+
+      <!-- Check box on left side of the box text -->
+      <D Name="CheckLeft" PaddingLeft="35" IconValue="0" OnLeftClickIcon="if(!I.Disabled) { I.IconValue = !I.IconValue; D.RefreshItem(I); } return 1;">
+         <svg>
+            <rect class='SVGIcon' part="Icon" x='{PaddingLeft-20}' y='{Height/2-6}' width='12' height='12' rx='2' ry='2'/>
+            <if condition='{IconValue}'>
+               <path class='SVGCross' d='M {PaddingLeft-18} {Height/2-4} l 8 8 m -8 0 l 8 -8'/>
+            </if>
+         </svg>
+      </D>
+
+      <!-- Box height calculation according to its Text -->
+      <D Name="SizeHeight" MinWidth="50" MinHeight="30" PaddingLeft="10" PaddingRight="10" PaddingTop="5" PaddingBottom="5" AutoSize="6">
+         <size width="" height="" padding="{PaddingLeft+PaddingRight},{PaddingTop+PaddingBottom}">
+            <span class="Text" style="width:{Width-PaddingLeft-PaddingRight}px;display:inline-block;">{(Text?Text:id).replace(/\n/g,"&lt;br>")}</span>
+         </size>
+      </D>
+
+      <!-- Multi line Text with editing in <textarea> -->
+      <D Name="EditLines" Save="R,Text" EditAttr="Text" EditClass="Edit" EditType="Lines" Color="inherit" EditedClass="SVGBlock,SVGBlockEdit">
+         <div class='None' style="width:{Width-PaddingRight}px;overflow:hidden;height:{Height}px;">
+            <div class="Abs Lines" part="Text" style="left:{Width/2-(AutoWidth>Width?Width/2:AutoWidth/2)+PaddingLeft}px;top:{Height/2-(AutoHeight>Height?Height/2:AutoHeight/2)+PaddingTop}px;width:{Width}px;white-space:normal;color:{Color};">
+               {(Text?Text:id).replace(/\n/g,"&lt;br>")}
+            </div>
+            <div class="Abs" part="None" style="left:{PaddingLeft-1}px;top:{PaddingTop-1}px"><div class="Edit" style="width:{Width-PaddingLeft-PaddingRight+1}px;height:{Height-PaddingTop-PaddingBottom+1}px;overflow:hidden;">&#160;</div></div>
+         </div>
+      </D>
+
+      <!-- Final boxes definition -->
+      <D Name="Ellipse" Def="SizeWidth,ShapeRect,EditSingle" R="1000"/>
+      <D Name="Rect" Def="SizeWidth,ShapeRect,EditSingle"/>
+      <D Name="Hexagon" Def="SizeWidth,ShapeOctagon,EditSingle" R="10,0.5"/>
+      <D Name="Octagon" Def="SizeWidth,ShapeOctagon,EditSingle"/>
+      <D Name="Diamond" Def="SizeWidth,ShapeDiamond,EditSingle"/>
+      <D Name="Trapezoid" Def="SizeWidth,ShapeTrapezoid,EditSingle"/>
+      <D Name="Cloud" Def="SizeWidth,ShapeCloud,EditSingle"/>
+
+      <D Name="EllipseCheck" Def="SizeWidth,ShapeRect,CheckLeft,EditSingle" R="1000"/>
+      <D Name="RectCheck" Def="SizeWidth,ShapeRect,CheckLeft,EditSingle"/>
+      <D Name="HexagonCheck" Def="SizeWidth,ShapeOctagon,CheckLeft,EditSingle" R="10,0.5"/>
+      <D Name="OctagonCheck" Def="SizeWidth,ShapeOctagon,CheckLeft,EditSingle"/>
+      <D Name="DiamondCheck" Def="SizeWidth,ShapeDiamond,CheckLeft,EditSingle"/>
+      <D Name="TrapezoidCheck" Def="SizeWidth,ShapeTrapezoid,CheckLeft,EditSingle"/>
+      <D Name="CloudCheck" Def="SizeWidth,ShapeCloud,CheckLeft,EditSingle"/>
+
+      <D Name="EllipseLines" Def="SizeHeight,ShapeRect,EditLines" R="1000"/>
+      <D Name="RectLines" Def="SizeHeight,ShapeRect,EditLines"/>
+      <D Name="HexagonLines" Def="SizeHeight,ShapeOctagon,EditLines" R="10,0.5"/>
+      <D Name="OctagonLines" Def="SizeHeight,ShapeOctagon,EditLines"/>
+      <D Name="DiamondLines" Def="SizeHeight,ShapeDiamond,EditLines"/>
+      <D Name="TrapezoidLines" Def="SizeHeight,ShapeTrapezoid,EditLines"/>
+      <D Name="CloudLines" Def="SizeHeight,ShapeCloud,EditLines"/>
+
+   </DefBoxes>
+</Designer>

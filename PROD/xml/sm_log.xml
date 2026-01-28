@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation id="sm_log" ismobile="false" mboname="COMMLOG" resultstableid="results_showlist" version="6.0.0" whereclause="ownertable IN ('PO','RFQ') ">
+    <page id="mainrec" scroll="false">
+        <include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="List" type="list">
+                    <menubar event="search" id="actiontoolbar1" sourcemethod="getAppSearchOptions"/>
+                    <table datasrc="results_showlist" id="results_showlist" inputmode="readonly" label="Communication Logs" mboname="COMMLOG" startempty="false">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol filterable="false" id="polfffffffffablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                            <tablecol id="results_showlist_column_link">
+                                <textbox applink="po" dataattribute="sm_PO.ponum" id="results_showdddddlist_column_link" inputmode="readonly" menutype="normal"/>
+                            </tablecol>
+                            <tablecol dataattribute="sm_PO.status" id="1666710157846"/>
+                            <tablecol id="1666709951162">
+                                <textbox applink="rfq" dataattribute="SM_RFQ.rfqnum" id="result1666709951162lumn_link" inputmode="readonly" menutype="normal"/>
+                            </tablecol>
+                            <tablecol dataattribute="SM_RFQ.STATUS" id="results_showlist_column1"/>
+                            <tablecol dataattribute="createdate" id="1635165768935"/>
+                            <tablecol dataattribute="createby" id="1635165766482"/>
+                            <tablecol dataattribute="sendfrom" id="1635165761232"/>
+                            <tablecol dataattribute="sendto" id="1635165758700"/>
+                            <tablecol dataattribute="sm_PO.siteid" id="1635165774341" lookup="valuelist"/>
+                            <tablecol id="1635167049924" inputmode="readonly" mxevent="show_docs" mxevent_desc="Show attachments" mxevent_icon="modimg_plans.gif" type="event"/>
+                        </tablebody>
+                        <tabledetails id="commlog_tabledetails">
+                            <section id="commlog_grid1" label="Details">
+                                <sectionrow id="commlog_grid1_r1">
+                                    <sectioncol id="commlog_grid_r1_c1">
+                                        <section id="commlog_grid_r1_c1_1">
+                                            <textbox dataattribute="orgapp" id="ORGOBJECT" inputmode="readonly"/>
+                                            <textbox dataattribute="orgname" id="orgname" inputmode="readonly" menutype="normal"/>
+                                            <checkbox dataattribute="ticket.isglobal" id="ticketisglobal" inputmode="readonly" sigoption="TKCOMMLOG" sigoptiondatasrc="MAINRECORD"/>
+                                            <textbox dataattribute="createby" id="createdby" inputmode="readonly"/>
+                                            <textbox dataattribute="createdate" id="createdate" inputmode="readonly"/>
+                                            <textbox dataattribute="sendto" id="to" inputmode="readonly"/>
+                                            <textbox dataattribute="cc" id="cc" inputmode="readonly"/>
+                                            <textbox dataattribute="bcc" id="bcc" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="commlog_grid_r1_c2">
+                                        <section id="commlog_grid_r1_c2_1">
+                                            <textbox dataattribute="subject" id="subject" inputmode="readonly"/>
+                                            <richtextviewer dataattribute="message" id="commmessage"/>
+                                            <checkbox dataattribute="inbound" id="inbound" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <table id="main_grid3_1_1_linkdocs_table" label="Attachments" orderby="docinfoid" relationship="COMMLOGDOCS">
+                                <tablebody displayrowsperpage="3" id="main_grid3_1_1_linkdocs_table_tablebody">
+                                    <tablecol dataattribute="doclinks.document" id="main_grid3_1_1_linkdocs_table_tablebody_1" inputmode="readonly" type="openurl" urlattribute="weburl"/>
+                                    <tablecol dataattribute="DOCLINKS.DOCINFO.description" id="main_grid3_1_1_linkdocs_table_tablebody_2" inputmode="readonly"/>
+                                </tablebody>
+                            </table>
+                        </tabledetails>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
+    </page>
+    <dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+        <section border="false" id="searchmore_1">
+            <sectionrow id="1635179004394">
+                <sectioncol id="1635179007769">
+                    <textbox dataattribute="sm_po.ponum" id="1635179315762"/>
+                    <textbox dataattribute="SM_PO.status" id="1635179312074"/>
+                    <textbox dataattribute="sendfrom" id="1635179388221"/>
+                </sectioncol>
+                <sectioncol id="1635179004409">
+                    <textbox dataattribute="subject" id="1635179057572"/>
+                    <textbox dataattribute="CREATEBY" id="searchmore_attr2"/>
+                    <textbox dataattribute="sendto" id="1635179392955"/>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="1635179165683">
+            <sectionrow id="qbe_date_s1_r1">
+                <sectioncol id="qbe_date_s1_r1_c1">
+                    <section id="qbe_date_s1_r1_c1_s1">
+                        <statictext align="center" id="qbe_date_s1_r1_c1_s1_st1"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_date_s1_r1_c2">
+                    <section id="qbe_date_s1_r1_c2_s1">
+                        <statictext align="left" cssclass="prependheader" id="qbe_date_s1_r1_c2_s1_st1" label="From"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_date_s1_r1_c3">
+                    <section id="qbe_date_s1_r1_c3_s1">
+                        <statictext align="left" cssclass="prependheader" id="qbe_date_s1_r1_c3_s1_st1" label="To"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+            <sectionrow id="qbe_date_s1_r3">
+                <sectioncol id="qbe_date_s1_r3_c1">
+                    <section id="qbe_date_s1_r3_c1_s1">
+                        <statictext align="left" id="qbe_date_s1_r3_c1_s1_t1" label="Creation Date" span="right"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_date_s1_r3_c2">
+                    <section id="qbe_date_s1_r3_c2_s1">
+                        <textbox dataattribute="CREATEDATE" hidelabel="true" id="qbe_grid2_1_1_grid5_7" inputmode="query" label="from" lookup="datelookup" prepend="&gt;="/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_date_s1_r3_c3">
+                    <section id="qbe_date_s1_r3_c3_s1">
+                        <textbox dataattribute="CREATEDATE" hidelabel="true" id="qbe_grid2_1_1_grid5_8" inputmode="query" label="To" lookup="datelookup" prepend="&lt;="/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="searchmore_buttongroup">
+            <pushbutton default="true" id="searchmore_buttongroup_1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+            <pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+            <pushbutton id="searchmore_buttongroup_3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="COMMLOG">
+        <table id="bookmarks_table" inputmode="readonly" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+                <tablecol dataattribute="COMMLOGID" id="bookmarks_tablecolumn_1" mxevent="selectrecord" type="link"/>
+                <tablecol dataattribute="description" id="bookmarks_tablecolumn_2"/>
+                <tablecol filterable="false" id="bookmarks_tablecolumn_3" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmarks_2">
+            <pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="show_docs" label="Attachments" relationship="DOCLINKS">
+        <table id="main_grid3_1_1_show_docslinkdocs_table" label="Attachments" orderby="docinfoid">
+            <tablebody displayrowsperpage="3" id="main_grid3_1_1_show_docslinkdocs_table_tablebody">
+                <tablecol dataattribute="document" id="main_grid3_1_show_docs1_linkdocs_table_tablebody_1" inputmode="readonly" type="openurl" urlattribute="weburl"/>
+                <tablecol dataattribute="DOCINFO.description" id="main_gshow_docsrid3_1_1_linkdocs_table_tablebody_2" inputmode="readonly"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmashow_docsrks_2">
+            <pushbutton default="true" id="bookmarshow_docsks_2_1" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <configurationblock id="datastore_configurationblock">
+    </configurationblock>
+</presentation>

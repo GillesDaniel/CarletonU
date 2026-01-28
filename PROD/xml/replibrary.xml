@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemlib id="replibrary" version="7.1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nonamespaceschemalocation="../../../applications/maximo/properties/systemlib.xsd">
+    <dialog id="reportdDOV" label="Request Page" mboname="REPORT" beanclass="psdi.webclient.beans.report.ReportDialogBean" reportnum="DOV" reporttype="QUERYDOV" width="550" height="300" hidehelp="true">
+        <section id="reportdDOV_grid0" border="false">
+            <sectionrow id="reportdDOV_grid0_r1">
+                <sectioncol id="reportdDOV_grid0_r1_c1">
+                    <tabgroup id="reportdDOV_tg">
+                        <tab id="reportdDOV_tg_tab3" default="true" label="Schedule">
+                            <helpgrid id="reportdDOV_help3" innerhtml="Indicate when you would like to run this report.  Please note that if you select recurring reports, copies of each report will be e-mailed to any recipients you have indicated in the E-mail section.">
+                            </helpgrid>
+                            <datasrc id="reportdDOV_ds1" mboname="reportparameter" beanclass="psdi.webclient.beans.report.ReportDialogBean"/>
+                            <section id="reportdDOV_grid3_1">
+                                <sectionrow id="reportdDOV_grid3_2">
+                                    <sectioncol id="reportdDOV_grid3_3">
+                                        <section id="reportdDOV_grid3_4">
+                                            <radiobuttongroup id="reportdDOV_schedrbg" height="125" border="false" hidelabel="true" dataattribute="scheduletype" datasrc="reportdDOV_ds1">
+                                                <radiobutton id="reportdDOV_schedrb3" value="immediate" label="Immediate"/>
+                                                <radiobutton id="reportdDOV_schedrb1" value="once" label="At this Time"/>
+                                                <radiobutton id="reportdDOV_schedrb2" value="recurring" label="Recurring"/>
+                                            </radiobuttongroup>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="reportdDOV_grid3_5">
+                                        <section id="reportdDOV_grid3_6">
+                                            <sectionrow id="reportdDOV_grid3_7">
+                                                <sectioncol id="reportdDOV_grid3_8">
+                                                    <section id="reportdDOV_grid3_9">
+                                                        <image id="reportdDOV_blanktext1" imagename="blank.gif" width="10" height="25"/>
+                                                    </section>
+                                                </sectioncol>
+                                                <sectioncol id="reportdDOV_grid3_10">
+                                                    <section id="reportdDOV_grid3_11">
+                                                    </section>
+                                                </sectioncol>
+                                                <sectioncol id="reportdDOV_grid3_12">
+                                                    <section id="reportdDOV_grid3_13">
+                                                        <statictext id="reportdDOV_blanktext" label=" " align="left"/>
+                                                    </section>
+                                                </sectioncol>
+                                            </sectionrow>
+                                            <sectionrow id="reportdDOV_grid3_14">
+                                                <sectioncol id="reportdDOV_grid3_15">
+                                                    <section id="reportdDOV_grid3_16">
+                                                        <textbox id="reportdDOV_mroonceDate_param" hidelabel="true" dataattribute="oncedatetime" lookup="datelookup" datasrc="reportdDOV_ds1" synchronous="true"/>
+                                                    </section>
+                                                </sectioncol>
+                                            </sectionrow>
+                                            <sectionrow id="reportdDOV_grid3_21">
+                                                <sectioncol id="reportdDOV_grid3_22">
+                                                    <section id="reportdDOV_grid3_23">
+                                                        <multilinetextbox id="reportdDOV_mroschedulePeriod_param" hidelabel="true" dataattribute="scheduleperiod" lookup="valuelist" datasrc="reportdDOV_ds1" columns="10" rows="1"/>
+                                                    </section>
+                                                </sectioncol>
+                                                <sectioncol id="reportdDOV_grid3_24">
+                                                    <section id="reportdDOV_grid3_25">
+                                                        <textbox id="reportdDOV_mrorecurringTime_param" dataattribute="recurringtime" datasrc="reportdDOV_ds1"/>
+                                                    </section>
+                                                </sectioncol>
+                                                <sectioncol id="reportdDOV_grid3_26">
+                                                    <section id="reportdDOV_grid3_27">
+                                                        <statictext id="reportdDOV_mrorecurringTime_text" label="(HH:MM AM or PM)" align="left"/>
+                                                    </section>
+                                                </sectioncol>
+                                            </sectionrow>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tab>
+                    </tabgroup>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="reportdDOV_buttons">
+            <pushbutton id="reportdDOV_runbtn" label="Submit" default="true" mxevent="requestdovrun" reporttype="QUERYDOV"/>
+            <pushbutton id="reportdDOV_cancelbtn" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="reportFilesPO" label="Reports and Schedules" hidehelp="true" mboname="REPORTLIST" beanclass="psdi.webclient.beans.report.ReportListBean">
+        <tabgroup id="reportFilesPO_tg">
+            <tab id="reportFilesPO_tg2_tab1" default="true" label="Reports">
+                <table label=" " id="reportFilesPO_table" mboname="REPORT" whereclause="appname='PO' and runtype&lt;&gt;'QUERY' and norequestpage=0" beanclass="psdi.webclient.beans.report.ReportDialogListBean" startrow="0" displayrowsperpage="5" inputmode="readonly" hidehelp="true">
+                    <tablebody id="reportFilesPO_table_tablebody" filterexpanded="true" filterable="true">
+                        <tablecol id="reportFilesPO_table_tablebody_c2" dataattribute="description" mxevent="runrequestpage" sortable="true" type="link"/>
+                        <tablecol id="reportFilesPO_table_tablebody_c4" type="event" sigoption="EDITREPT" mxevent="editadhocreport" mxevent_icon="btn_edit.gif" mxevent_desc="Edit Ad Hoc Report" sortable="false" filterable="false" hidden="false"/>
+                        <tablecol id="reportFilesPO_table_tablebody_c3" type="event" sigoption="DELETEREPT" mxevent="toggledeleterow" mxevent_icon="btn_garbage.gif" mxevent_desc="Mark Row for Delete" sortable="false" filterable="false" hidden="false"/>
+                    </tablebody>
+                </table>
+            </tab>
+            <tab id="reportFilesPO_tg_tab3" label="Schedules">
+                <table label=" " id="reportFilesPO_table6" mboname="REPORTSCHED" startrow="0" displayrowsperpage="5" beanclass="psdi.webclient.beans.report.ReportSchedBean" reportapp="PO">
+                    <tablebody id="reportFilesPO_table6_tablebody" filterexpanded="false" filterable="true" displayrowsperpage="5">
+                        <tablecol id="reportFilesPO_table6_tablebody_c1" type="event" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" filterable="false" hidden="false"/>
+                        <tablecol id="reportFilesPO_table6_tablebody_c3" label="Report Name" inputmode="readonly" dataattribute="report.description" defaultfocus="true"/>
+                        <tablecol id="reportFilesPO_table6_tablebody_c5" label="Type" dataattribute="alndomain.description" inputmode="readonly"/>
+                        <tablecol id="reportFilesPO_table6_tablebody_c7" label="Next Run Time" inputmode="readonly" dataattribute="nextruntime" sortable="false"/>
+                        <tablecol id="reportFilesPO_table6_tablebody_c9" type="event" mxevent="toggledeleterow" mxevent_icon="btn_garbage.gif" mxevent_desc="Mark Row for Delete" sortable="false" filterable="false" hidden="false"/>
+                    </tablebody>
+                    <tabledetails id="reportFilesPO_report_sched_details">
+                        <section id="reportFilesPO_report_sched_details_sec1" label="Schedule">
+                            <section id="sec_reportnamePO_report_sched_details" inputmode="readonly">
+                                <sectionrow id="innersec_row1PO_report_sched_details">
+                                    <sectioncol id="outersec1_row1_col1PO_report_sched_details">
+                                        <section id="reportFilesPO_report_sched_details_sec1_2">
+                                            <multiparttextbox id="reportFilesPO_report_sched_details_sec1_1" dataattribute="report.description" descdataattribute="reportname" label="Report Name" inputmode="readonly" defaultfocus="true" descinputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <section id="sec_reporttype_rbPO_report_sched_details">
+                                <sectionrow id="innersec_row2PO_report_sched_details">
+                                    <sectioncol id="reportdPO_seccol_reporttype_rb">
+                                        <radiobuttongroup id="reportFilesPO_report_sched_details_rbg1" height="125" width="550" border="false" dataattribute="type" hidelabel="true">
+                                            <radiobutton id="reportFilesPO_report_sched_details_sec1_rb1" value="once" label="At this Time">
+                                                <sectionrow id="innersec_row2PO_report_sched_detailsaaa">
+                                                    <sectioncol id="reportdPO_seccol_oncedatetime">
+                                                        <section id="reportFilesPO_sec_oncedatetime">
+                                                            <textbox id="reportsPO_onceDate_textbox" hidelabel="true" dataattribute="oncedatetime" lookup="datelookup" synchronous="true"/>
+                                                        </section>
+                                                    </sectioncol>
+                                                </sectionrow>
+                                            </radiobutton>
+                                            <radiobutton id="reportFilesPO_report_sched_details_sec1_rb2" value="recurring" label="Recurring">
+                                                <sectionrow id="innersec_row3PO_report_sched_details">
+                                                    <sectioncol id="reportdPO_seccol_recursrepeatval">
+                                                        <section id="reportdPO_sec_recursrepeatval">
+                                                            <textbox id="reportsPO_recursrepeatval" hidelabel="true" dataattribute="scheduledisp" lookup="report_recurring" width="113"/>
+                                                        </section>
+                                                    </sectioncol>
+                                                </sectionrow>
+                                            </radiobutton>
+                                        </radiobuttongroup>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <section id="outersec2PO_report_sched_details" label="Email">
+                                <sectionrow id="outersec2_row1PO_report_sched_details">
+                                    <sectioncol id="outersec2_row1_col1PO_report_sched_details">
+                                        <section id="reportFilesPO_report_sched_details_sec2">
+                                            <textbox id="reportFilesPO_report_sched_details_sec2_1" dataattribute="emailusers" lookup="emailrpt" inputmode="required" defaultfocus="true" label="To"/>
+                                            <textbox id="reportFilesPO_report_sched_details_sec2_2" dataattribute="emailsubject" label="Subject"/>
+                                            <multilinetextbox id="reportFilesPO_report_sched_details_sec2_3" dataattribute="emailcomments" label="Comments"/>
+                                            <sectioncol id="reportFilesPO_blankline1">
+                                                <section id="reportFilesPO_blankline2">
+                                                    <image id="reportFilesPO_blankline_image" imagename="blank.gif" width="10" height="25"/>
+                                                </section>
+                                            </sectioncol>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <section id="reportFilesPO_formatsec3">
+                                <sectionrow id="reportFilesPO_formatsec3_row1">
+                                    <sectioncol id="reportFilesPO_formatsec3_col1">
+                                        <section id="reportFilesPO_formatsec3_r1c1s1">
+                                            <multiparttextbox id="reportFilesPO_dispfmt" dataattribute="FILEDISPFORMAT" lookup="fileformatdisplay" descdataattribute="REPORTDISPFMT.dispname" descinputmode="readonly"/>
+                                            <multiparttextbox id="reportFilesPO_deltype" dataattribute="EMAILTYPE" label="File delivery format" lookup="emailtype" descdataattribute="REPORTDELIVERY.dispname" descinputmode="readonly"/>
+                                            <multiparttextbox id="reportFilesPO_filetype" dataattribute="EMAILFILETYPE" label="File type" lookup="emailfiletype" descdataattribute="REPORTEMAILFILE.label" descinputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </section>
+                    </tabledetails>
+                </table>
+            </tab>
+        </tabgroup>
+    </dialog>
+</systemlib>

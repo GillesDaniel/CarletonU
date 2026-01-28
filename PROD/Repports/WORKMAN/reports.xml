@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="amcrewdaily_format.rptdesign">
+    <attribute name="filename">amcrewdaily_format.rptdesign</attribute>
+    <attribute name="description">Assignment Manager Daily Crew</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="recordlimit">50</attribute>
+    <attribute name="reportfolder">WORKMAN</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="amcrew">
+        <attribute name="attributename">AMCREW</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Crew</attribute>
+        <attribute name="lookupname">amcrews</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>workman.properties</reference>
+        <filename>./amcrewdaily_format/workman.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="amdaily_format.rptdesign">
+    <attribute name="filename">amdaily_format.rptdesign</attribute>
+    <attribute name="description">Assignment Manager Daily Format</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">WORKMAN</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="laborcode">
+        <attribute name="attributename">LABOR.LABORCODE</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Labor</attribute>
+        <attribute name="lookupname">labor</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>workman.properties</reference>
+        <filename>./amdaily_format/workman.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="ammonthly_format.rptdesign">
+    <attribute name="filename">ammonthly_format.rptdesign</attribute>
+    <attribute name="description">Assignment Manager Monthly Format</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">WORKMAN</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="laborcode">
+        <attribute name="attributename">LABOR.LABORCODE</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Labor</attribute>
+        <attribute name="lookupname">labor</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="month">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Month</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="year">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Year</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>workman.properties</reference>
+        <filename>./ammonthly_format/workman.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

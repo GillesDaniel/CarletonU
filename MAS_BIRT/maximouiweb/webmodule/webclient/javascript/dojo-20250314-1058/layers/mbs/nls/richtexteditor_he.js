@@ -1,0 +1,11 @@
+define('layers/mbs/nls/richtexteditor_he',{
+'dijit/_editor/nls/commands':{"removeFormat":"סילוק עיצוב","copy":"העתקה","paste":"הדבקה","selectAll":"בחירת הכל","insertOrderedList":"רשימה ממסופרת","insertTable":"הוספת/עריכת טבלה","print":"הדפסה","underline":"קו תחתון","foreColor":"צבע חזית","htmlToggle":"מקור HTML","formatBlock":"סגנון פיסקה","newPage":"דף חדש","insertHorizontalRule":"קו אופקי","delete":"מחיקה","appleKey":"⌘${0}","insertUnorderedList":"רשימה עם תבליטים","tableProp":"תכונת טבלה","insertImage":"הוספת תמונה","superscript":"כתב עילי","subscript":"כתב תחתי","createLink":"יצירת קישור","undo":"ביטול פעולה","fullScreen":"מיתוג מסך מלא","italic":"נטוי","fontName":"שם גופן","justifyLeft":"יישור לימין","unlink":"סילוק הקישור","toggleTableBorder":"מיתוג גבול טבלה","viewSource":"הצגת מקור HTML","ctrlKey":"ctrl+${0}","fontSize":"גודל גופן","systemShortcut":"הפעולה \"${0}\" זמינה בדפדפן רק באמצעות קיצור דרך במקלדת.  השתמשו בקיצור ${1}.","indent":"הגדלת כניסה","redo":"שחזור פעולה","strikethrough":"קו חוצה","justifyFull":"יישור דו-צדדי","justifyCenter":"יישור למרכז","hiliteColor":"צבע רקע","deleteTable":"מחיקת טבלה","outdent":"הקטנת כניסה","cut":"גזירה","_localized":{},"plainFormatBlock":"סגנון פיסקה","toggleDir":"מיתוג כיוון","bold":"מודגש","tabIndent":"כניסת טאב","justifyRight":"יישור לשמאל"}
+,
+'dijit/_editor/nls/FontChoice':{"noFormat":"ללא ","1":"קטן ביות","2":"קטן מאוד","formatBlock":"עיצוב","3":"קטן","4":"בינוני","5":"גדול","6":"גדול מאוד","7":"גדול ביותר","_localized":{},"fantasy":"fantasy","serif":"serif","p":"פיסקה","pre":"מעוצב מראש","sans-serif":"sans-serif","fontName":"גופן","h1":"כותרת","h2":"תת-כותרת","h3":"תת-תת-כותרת","monospace":"monospace","fontSize":"גודל","cursive":"cursive"}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"האפשרויות הקודמות","_localized":{},"nextMessage":"אפשרויות נוספות"}
+,
+'dijit/form/nls/validate':{"invalidMessage":"הערך שצוין אינו חוקי.","rangeMessage":"הערך מחוץ לטווח.","_localized":{},"missingMessage":"זהו ערך דרוש."}
+,
+'dojox/editor/plugins/nls/PasteFromWord':{"pasteFromWord":"הדבקה מתוך Word","instructions":"הדביקו את התוכן מתוך Word לתוך תיבת התמליל למטה. לאחר שתהיו מרוצים מהתוכן להוספה, לחצו על לחצן ההדבקה. כדי לבטל את הוספת התמליל, לחצו על לחצן הביטול. ","_localized":{}}
+});

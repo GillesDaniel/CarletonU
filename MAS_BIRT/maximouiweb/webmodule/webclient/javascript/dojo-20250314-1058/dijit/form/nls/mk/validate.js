@@ -1,0 +1,20 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define("dijit/form/nls/mk/validate", {      
+//begin v1.x content
+	invalidMessage: "Внесената вредност не е важечка.",
+	missingMessage: "Вредноста е задолжителна.",
+	rangeMessage: "Вредноста е надвор од опсегот."
+//end v1.x content
+});
+

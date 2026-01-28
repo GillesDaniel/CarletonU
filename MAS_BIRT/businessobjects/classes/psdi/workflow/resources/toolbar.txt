@@ -1,0 +1,4 @@
+node,1,0,0,Start,start
+node,2,0,0,Task,task
+node,3,0,0,Condition,condition
+node,4,0,0,Stop,stop

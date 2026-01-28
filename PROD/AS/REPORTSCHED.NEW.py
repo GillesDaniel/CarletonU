@@ -5,3 +5,12 @@ mbo.setValue("userid","MAXADMIN",MboConstants.NOACCESSCHECK|MboConstants.NOVALID
 #userinfo =mbo.getUserInfo()
 #if userinfo.getEmail() and not userinfo.getEmail() == "":
 #    mbo.setValue('REPLYTO',userinfo.getEmail(), MboConstants.NOACCESSCHECK)
+
+scriptConfig="""{
+    "autoscript": "REPORTSCHED.NEW",
+    "description": "initialize REPORTSCHED userid",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+}"""

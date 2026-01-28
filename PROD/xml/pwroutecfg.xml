@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation id="pwroutecfg" mboname="PWROUTINGCFG" version="6.0.0" cgversion="7.5.0.0">
+    <page id="mainrec">
+        <include id="single_pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup format="carddeck" id="maintabs" style="form">
+                <tab default="true" id="results" label="List">
+                    <section id="config1">
+                        <helpgrid id="pwroutingcfg_help" innerhtml="In this application you can create rules that will route reports to specific printers based on the data in the object.&lt;br&gt;    						For each application you can define rules based on an attribute and value.&lt;br&gt;   						Additionally you can create rules that only apply to specific sites.&lt;br&gt;&lt;br&gt;  						The list of available printers are printers that are defined on the EasySend Server."/>
+                        <table id="resultsTable" label="Printer Routing Rules (EasyRoute)">
+                            <tablebody displayrowsperpage="20" filterable="true" filterexpanded="false" id="resultsTablebody">
+                                <tablecol filterable="false" id="results_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                                <tablecol dataattribute="APPLICATIONNAME" id="routing_tb_col1" inputmode="REQUIRED" lookup="maxapps" width="120"/>
+                                <tablecol dataattribute="ATTRIBUTENAME" id="1313684637838" inputmode="REQUIRED" width="120"/>
+                                <tablecol dataattribute="VALUE" id="1313684642604" inputmode="REQUIRED" width="140"/>
+                                <tablecol dataattribute="SITEID" id="results_col_details_1" lookup="site" width="100"/>
+                                <tablecol dataattribute="PRINTER" id="1313684769493" inputmode="REQUIRED" lookup="pwprinters"/>
+                                <tablecol filterable="false" id="results_col_delete" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                            </tablebody>
+                            <tabledetails id="resultsTabledetails">
+                                <section id="resultsTable_section_1" label="Details">
+                                    <sectionrow id="Detail_section_row_1">
+                                        <sectioncol id="Detail_section_row_1_column_1">
+                                            <section id="Detail_section_row_1_column_1_section_1">
+                                                <multiparttextbox dataattribute="APPLICATIONNAME" id="details_applicationname_multi" inputmode="REQUIRED" lookup="maxapps" descdataattribute="OBJECTNAME" descinputmode="readonly"/>
+                                                <textbox dataattribute="ATTRIBUTENAME" id="details_attributename" inputmode="REQUIRED" lookup="pwmaxattribute"/>
+                                                <textbox dataattribute="VALUE" id="details_value" inputmode="REQUIRED"/>
+                                                <textbox dataattribute="PRINTER" id="details_printer" inputmode="REQUIRED" lookup="pwprinters"/>
+                                            </section>
+                                        </sectioncol>
+                                        <sectioncol id="main_section_4_row_1_column_2">
+                                            <section id="main_section_4_r1c2_s1">
+                                                <textbox dataattribute="SITEID" id="details_siteid" lookup="site"/>
+                                            </section>
+                                        </sectioncol>
+                                    </sectionrow>
+                                </section>
+                            </tabledetails>
+                            <buttongroup id="resultsButtongroup">
+                                <pushbutton default="true" id="results_button_1" label="New Row" mxevent="addrow"/>
+                            </buttongroup>
+                        </table>
+                    </section>
+                    <section id="config2">
+                        <table collapsed="false" id="resultsTable_2" label="Available Printers" mboname="PWPRINTERS">
+                            <tablebody displayrowsperpage="10" filterable="false" id="resultsTablebody_2">
+                                <tablecol dataattribute="PRINTER" id="resultsTablebody_2_col1" inputmode="readonly" usefieldsizegroup="false"/>
+                                <tablecol dataattribute="DESCRIPTION" id="resultsTablebody_2_col2" inputmode="readonly"/>
+                            </tablebody>
+                        </table>
+                    </section>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include id="pageFooter"/>
+    </page>
+    <dialog id="enabsite" label="Sites Enabled for Auto-Print" mboname="PWAUTOPRINTSITE" savemode="ONUNLOAD">
+        <table id="table1" label="Sites" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+                <tablecol dataattribute="siteid" id="tablebody_1" inputmode="REQUIRED" lookup="site"/>
+                <tablecol dataattribute="enabled" id="tablebody_2"/>
+                <tablecol dataattribute="whereclause" id="tablebody_3"/>
+                <tablecol filterable="false" hidden="false" id="tablebody_delete" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmarks_2">
+            <pushbutton default="true" id="autoprintsites_button_1" label="New Row" mxevent="addrow"/>
+            <pushbutton default="true" id="autoprintsites_button_2" label="OK" mxevent="dialogok"/>
+            <pushbutton default="true" id="autoprintsites_button_3" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+</presentation>

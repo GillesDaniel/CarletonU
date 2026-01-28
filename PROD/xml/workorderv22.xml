@@ -1,0 +1,1372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation apphelp="com.ibm.spr.doc,pluspwo/c_wo_tracking_application.html" beanclass="psdi.plusp.webclient.beans.pluspwo.PlusPWorkorderAppBean" id="workorderv22" ismobile="false" mboname="WORKORDER" resultstableid="results_showlist" version="6.2.3">
+    <page id="mainrec" scroll="false">
+        <include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="List" type="list">
+                    <menubar event="search" id="actiontoolbar" sourcemethod="getAppSearchOptions"/>
+                    <table datasrc="results_showlist" id="results_showlist" inputmode="readonly" label="Work Orders" mboname="WORKORDER" orderby="reportdate desc" selectmode="multiple">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol dataattribute="wonum" filterable="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol dataattribute="wonum" id="results_showlist_tablebody_2" inputmode="readonly" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+                            <tablecol dataattribute="description" id="results_showlist_tablebody_3"/>
+                            <tablecol dataattribute="worktype" id="1354223911300" inputmode="readonly" label="Type" sortable="true">
+                                <textbox dataattribute="worktype" id="13542239113002" inputmode="readonly"/>
+                            </tablecol>
+                            <tablecol dataattribute="location" id="1354223797639" inputmode="readonly" label="Location" lookup="plusplocations" menutype="locations" rechover="LOCATION_RECORDHOVER" sortable="true"/>
+                            <tablecol dataattribute="cutrade" id="1354224255527" inputmode="readonly" label="Trade" sortable="true"/>
+                            <tablecol dataattribute="WPLABOR.LABORCODE" id="1354217875630" label="Assigned" sortable="true"/>
+                            <tablecol dataattribute="status" id="results_showlist_tablebody_6" linkedcontrolid="qbe_s1_sr1_sc2_s2_tb1"/>
+                            <tablecol dataattribute="CU_SCHEDDATE" id="1354217984238" label="Scheduled Date" sortable="true"/>
+                            <tablecol dataattribute="reportdate" id="results_showlist_tablebody_7" label="Reported Date" lookup="datelookup"/>
+                            <tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="main" label="Work Order" type="insert">
+                    <section id="LH1-S" label="Details">
+                        <sectionrow id="1648750734471">
+                            <sectioncol id="1648750871190"/>
+                            <sectioncol id="1648750808752">
+                                <section border="false" id="1648751086471">
+                                    <attachments id="1648751298097"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="1648750801939"/>
+                        </sectionrow>
+                        <sectionrow id="1637263969841">
+                            <sectioncol id="1637265584709">
+                                <multiparttextbox dataattribute="WONUM" descdataattribute="DESCRIPTION" id="1637265077561" inputmode="readonly"/>
+                                <multilinetextbox columns="40" dataattribute="DESCRIPTION_LONGDESCRIPTION" id="1637265325565" inputmode="readonly" label="More Details" rows="6"/>
+                                <multiparttextbox dataattribute="LOCATION" descdataattribute="location.DESCRIPTION" descinputmode="readonly" id="1637265152218" inputmode="readonly"/>
+                                <multiparttextbox applink="pluspcust" dataattribute="pluspcustomer" descdataattribute="pluspcustomer.name" descinputmode="readonly" id="1454424816217" inputmode="readonly" longdescreadonly="true" lookup="pluspcustomer" menutype="normal"/>
+                                <textbox dataattribute="CU_ROOM" id="1637267828087" inputmode="readonly" label="Room"/>
+                                <multiparttextbox dataattribute="ASSETNUM" descdataattribute="asset.description" descinputmode="readonly" id="1638893547457" inputmode="readonly"/>
+                                <multilinetextbox columns="40" dataattribute="location.description_longdescription" id="1467110037164" inputmode="readonly" label="Safety" rows="6"/>
+                            </sectioncol>
+                            <sectioncol id="1637263969856">
+                                <textbox dataattribute="CUTRADE" id="1637267936761" inputmode="readonly" label="Trade"/>
+                                <textbox dataattribute="worktype" id="1467109980831" inputmode="readonly" lookup="worktype"/>
+                                <textbox dataattribute="CUPRIORITY" id="1467110047741" inputmode="readonly" label="Priority" lookup="valuelist"/>
+                                <textbox dataattribute="WOJO1" id="1637268018324" inputmode="readonly" label="Project Number"/>
+                                <textbox dataattribute="status" id="1467292824065" inputmode="readonly" moreinformation="com.ibm.mbs.doc,mbs_common/c_wo_status.html"/>
+                                <textbox dataattribute="PARENT" id="1638893105528" inputmode="readonly"/>
+                                <textbox dataattribute="SUPERVISOR" id="1638894689037" inputmode="readonly"/>
+                            </sectioncol>
+                            <sectioncol id="1637266120202">
+                                <textbox dataattribute="reportdate" id="14544399182412" inputmode="readonly" lookup="datelookup" size="12"/>
+                                <textbox applink="person" dataattribute="reportedby" id="1454424879570" inputmode="readonly" label="Created By" lookup="personname" menutype="normal" size="12"/>
+                                <textbox applink="person" dataattribute="ONBEHALFOF" id="1454424864859" inputmode="readonly" label="Who Called" lookup="PERSONid" menutype="normal" size="20"/>
+                                <textbox dataattribute="cu_email" id="1645726774462" inputmode="readonly" label="Customer email"/>
+                                <textbox dataattribute="phone" id="1467108788250" inputmode="readonly" label="Phone"/>
+                                <textbox dataattribute="CU_DATEREQUIRED" id="1474375022139" inputmode="readonly" label="Customer's Preferred Date"/>
+                                <textbox dataattribute="CU_SCHEDDATE" id="1467109992282" label="Scheduled Date" lookup="datelookup" size="12"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="headerA_1">
+                        <table beanclass="psdi.webclient.beans.workorder.PlanLaborBean" id="1467109729385" label="Assign Labor" relationship="SHOWPLANLABOR">
+                            <tablebody displayrowsperpage="6" filterable="true" id="14671097293852">
+                                <tablecol filterable="false" id="1467109729401" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                <tablecol applink="LABOR" dataattribute="laborcode" id="14671097294012" linkedcontrolid="copy_copy_plans_pl_a_copy_plans_plans_plans_labor_labor_table_1_grid7_6" lookup="LABORONLY" menutype="NORMAL" smartfilloff="false" sortable="true"/>
+                                <tablecol applink="person" dataattribute="labor.person.displayname" filterable="true" id="1579185110367" label="Name" lookup="laborcraft" menutype="Normal" sortable="true"/>
+                                <tablecol filterable="false" id="1467109729417" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                            </tablebody>
+                            <buttongroup id="14671097294172">
+                                <pushbutton default="true" id="14671097294173" label="Assign Worker" mxevent="addrow"/>
+                            </buttongroup>
+                        </table>
+                    </section>
+                    <section border="true" id="1454426313509">
+                        <sectionrow id="1454426313525">
+                            <sectioncol id="14544263135252">
+                                <tabgroup id="1454426360965">
+                                    <tab default="true" id="1454426360980" label="Labor">
+                                        <table beanclass="psdi.webclient.beans.workorder.ActualLaborBean" id="14537324182002" label="Labor" relationship="SHOWACTUALLABOR">
+                                            <tablebody displayrowsperpage="16" filterable="true" id="14537324182003">
+                                                <tablecol filterable="false" id="1453732418216" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                                <tablecol applink="labor" dataattribute="laborcode" id="14537324182162" lookup="laborcraftrate" menutype="laborcraftrate" smartfilloff="false"/>
+                                                <tablecol dataattribute="labor.person.displayname" id="14537324182163" label="Display Name">
+                                                    <textbox dataattribute="labor.person.displayname" id="14537324182164" inputmode="readonly"/>
+                                                </tablecol>
+                                                <tablecol dataattribute="craft" id="14537324182165" label="Trade/Meal/CB">
+                                                    <textbox applink="craft" dataattribute="craft" id="1453732418231" lookup="laborcraftrate" menutype="craftrate" smartfilloff="true"/>
+                                                </tablecol>
+                                                <tablecol dataattribute="startdate" id="14537324182314" lookup="datelookup"/>
+                                                <tablecol dataattribute="regularhrs" id="1453732418247"/>
+                                                <tablecol dataattribute="PAYRATE" id="1648484155814"/>
+                                                <tablecol dataattribute="premiumpaycode" id="14537324182472" label="OT Pay Code"/>
+                                                <tablecol dataattribute="PREMIUMPAYHOURS" id="14537324182473" label="OT Hours"/>
+                                                <tablecol dataattribute="MEMO" id="14537324182312" label="Description"/>
+                                                <tablecol dataattribute="PLUSPLINEPRICE" id="14537324182475" inputmode="readonly"/>
+                                                <tablecol filterable="false" id="1453732418262" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                            </tablebody>
+                                            <tabledetails id="1453732418309">
+                                                <section id="14537324183092" label="Labor">
+                                                    <section id="14537324183095">
+                                                        <multiparttextbox applink="labor" dataattribute="laborcode" descdataattribute="labor.person.displayname" descinputmode="readonly" id="1453732418325" lookup="laborcraftrate" menutype="laborcraftrate" smartfilloff="false"/>
+                                                        <textbox applink="craft" dataattribute="craft" id="14537324183252" label="Trade/Meal/CB" lookup="laborcraftrate" menutype="craftrate" smartfilloff="true"/>
+                                                        <textbox dataattribute="startdate" id="14537324183253" lookup="datelookup"/>
+                                                        <textbox dataattribute="regularhrs" id="14537324183254"/>
+                                                        <textbox dataattribute="PAYRATE" id="1648474710413"/>
+                                                        <textbox dataattribute="premiumpaycode" id="14537324183255" label="OT Pay Code" lookup="ppcraftrate"/>
+                                                        <textbox dataattribute="PREMIUMPAYHOURS" id="14537324183256" label="OT Hours"/>
+                                                        <multilinetextbox dataattribute="memo" id="1453732418340" label="Description"/>
+                                                    </section>
+                                                </section>
+                                                <section collapsed="true" id="14537324183562" label="Details">
+                                                    <sectionrow id="14537324183563">
+                                                        <sectioncol id="14537324183564">
+                                                            <section id="14537324183565">
+                                                                <textbox dataattribute="skilllevel" id="1453732418372" lookup="laborcraftrate" menutype="craftrate" smartfilloff="true"/>
+                                                                <textbox applink="amcrew" dataattribute="amcrew" id="14537324183722" inputmode="masked" licensekey="CREW" lookup="amcrews" menutype="normal" smartfilloff="true"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14537324183723">
+                                                            <section id="14537324183724">
+                                                                <textbox dataattribute="starttime" id="14537324183725"/>
+                                                                <textbox dataattribute="payrate" id="14537324183726"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="1453732418387">
+                                                            <section id="14537324183872" label="Premium Pay">
+                                                                <textbox dataattribute="premiumpayrate" id="14537324183873" inputmode="readonly"/>
+                                                                <textbox dataattribute="premiumpayratetype" id="14537324183874" lookup="valuelist"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14537324183875">
+                                                            <section id="1453732418403">
+                                                                <textbox dataattribute="transtype" id="14537324184032" lookup="valuelist"/>
+                                                                <textbox dataattribute="timerstatus" id="14537324184033"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                    </sectionrow>
+                                                </section>
+                                                <section collapsed="true" id="14537324184034">
+                                                    <sectionrow id="14537324184035">
+                                                        <sectioncol id="1453732418418">
+                                                            <section id="14537324184182" label="Outside Labor">
+                                                                <checkbox dataattribute="outside" id="14537324184183"/>
+                                                                <textbox applink="company" dataattribute="vendor" id="14537324184184" lookup="laborcraftrate" menutype="craftrate" smartfilloff="true"/>
+                                                                <textbox applink="contlabor" dataattribute="contractnum" id="14537324184185" lookup="laborcraftrate" menutype="craftrate" smartfilloff="true"/>
+                                                                <textbox dataattribute="revisionnum" id="1453732418434" inputmode="readonly"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14537324184342">
+                                                            <section id="14537324184343">
+                                                                <textbox dataattribute="finishdate" id="14537324184344" lookup="datelookup"/>
+                                                                <textbox dataattribute="finishtime" id="14537324184345"/>
+                                                                <textbox dataattribute="linecost" id="1453732418450"/>
+                                                                <textbox dataattribute="plusplineprice" id="14537324184502" inputmode="readonly"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14537324184503">
+                                                            <section id="14537324184504" label="Charge Information">
+                                                                <textbox dataattribute="gldebitacct" id="14537324184505" lookup="glnavigator" size="20"/>
+                                                                <textbox dataattribute="glcreditacct" id="1453732418465" lookup="glnavigator" size="20"/>
+                                                                <textbox applink="location,ipc" dataattribute="location" descinputmode="readonly" id="14537324184652" lookup="plusplocations" menutype="locations"/>
+                                                                <textbox applink="asset,ipc" dataattribute="assetnum" descinputmode="readonly" id="14537324184653" lookup="pluspasset" menutype="assetmain"/>
+                                                                <textbox dataattribute="memo" displaytype="description" id="14537324184654"/>
+                                                                <textbox dataattribute="paymenttransdate" id="14537324184655"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                    </sectionrow>
+                                                </section>
+                                            </tabledetails>
+                                            <buttongroup id="1453732418481">
+                                                <pushbutton id="14537324184812" label="Enter Time By Crew" licensekey="CREW" mxevent="enterbycrew"/>
+                                                <pushbutton id="14537324184813" label="Select Labor" mxevent="selectlaboronactuals"/>
+                                                <pushbutton id="1453732418496" label="Select Planned Labor" mxevent="aclabor"/>
+                                                <pushbutton default="true" id="14537324184962" label="New Row" mxevent="addrow"/>
+                                            </buttongroup>
+                                        </table>
+                                    </tab>
+                                    <tab id="14544263611685" label="Materials">
+                                        <table beanclass="psdi.webclient.beans.workorder.ActualMaterialBean" id="1454426361183" label="Materials" relationship="SHOWACTUALMATERIAL">
+                                            <tablebody displayrowsperpage="6" id="14544263611832">
+                                                <tablecol filterable="false" id="14544263611833" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                                <tablecol applink="item,inventor" dataattribute="itemnum" id="14544263611834" lookup="item" menutype="ITEM"/>
+                                                <tablecol dataattribute="description" id="1454426361199" lookup="longdesc"/>
+                                                <tablecol dataattribute="issuetype" id="14544263611992" linkedcontrolid="actuals_actuals_acmaterials_acmaterials_table_1_grid8_10"/>
+                                                <tablecol dataattribute="positivequantity" id="14544263611993" linkedcontrolid="actuals_actuals_acmaterials_acmaterials_table_1_grid8_5"/>
+                                                <tablecol dataattribute="linecost" id="14544263611994" label="Line Cost" linkedcontrolid="actuals_actuals_acmaterials_acmaterials_table_1_grid8_7"/>
+                                                <tablecol dataattribute="plusplineprice" id="14544263611995" label="Line Price" linkedcontrolid="actuals_actuals_acmaterials_acmaterials_table_1_grid8_19"/>
+                                                <tablecol filterable="false" id="1454426361214" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                            </tablebody>
+                                            <tabledetails id="14544263612142">
+                                                <section id="14544263612143" label="Details">
+                                                    <sectionrow id="14544263612144">
+                                                        <sectioncol id="14544263612145">
+                                                            <section id="1454426361230">
+                                                                <textbox dataattribute="actualstaskid" defaultfocus="true" id="14544263612302" lookup="wptask" sizeintable="4"/>
+                                                                <multiparttextbox applink="item,inventor" dataattribute="itemnum" descdataattribute="description" dynamic="true" id="14544263612303" lookup="item" menutype="ITEM" sizeintable="10"/>
+                                                                <combobox dataattribute="linetype" id="14544263612304"/>
+                                                                <textbox applink="storeroom,ipc" dataattribute="storeloc" dynamic="true" id="14544263612305" lookup="storeroom" menutype="normal"/>
+                                                                <textbox dataattribute="siteid" id="1454426361246" lookup="site"/>
+                                                                <textbox dataattribute="positivequantity" dynamic="true" id="14544263612462" sizeintable="9"/>
+                                                                <textbox dataattribute="unitcost" dynamic="true" id="14544263612463"/>
+                                                                <textbox dataattribute="linecost" dynamic="true" id="14544263612464"/>
+                                                                <textbox dataattribute="PLUSPLISTPRICE" id="14544263612465" inputmode="readonly"/>
+                                                                <textbox dataattribute="plusplineprice" id="1454426361261" inputmode="readonly"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14544263612612">
+                                                            <section id="14544263612613">
+                                                                <textbox dataattribute="binnum" dynamic="true" id="14544263612614" lookup="binnum"/>
+                                                                <textbox dataattribute="lotnum" dynamic="true" id="1454426361277" lookup="invballot"/>
+                                                                <textbox dataattribute="invlot.useby" id="14544263612772" inputmode="readonly"/>
+                                                                <textbox dataattribute="item.lottype" dynamic="true" id="14544263612773" lookup="valuelist" sizeintable="8"/>
+                                                                <textbox dataattribute="conditioncode" dynamic="true" id="14544263612774" lookup="invconditioncode"/>
+                                                                <textbox dataattribute="condrate" id="14544263612775" inputmode="readonly"/>
+                                                                <checkbox dataattribute="item.conditionenabled" id="1454426361292" inputmode="readonly"/>
+                                                                <textbox dataattribute="inventory.itemorginfo.category" dynamic="true" id="14544263612922" inputmode="readonly"/>
+                                                                <textbox dataattribute="enterby" dynamic="true" id="14544263612923"/>
+                                                                <textbox dataattribute="actualdate" dynamic="true" id="14544263612924" lookup="datelookup"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                    </sectionrow>
+                                                </section>
+                                                <section id="14544263612925" label="Charge Information">
+                                                    <sectionrow id="1454426361308">
+                                                        <sectioncol id="14544263613082">
+                                                            <section id="14544263613083">
+                                                                <textbox dataattribute="mrnum" dynamic="true" id="14544263613084"/>
+                                                                <textbox dataattribute="mrlinenum" dynamic="true" id="1454426361324"/>
+                                                                <multiparttextbox applink="location,ipc" dataattribute="location" descdataattribute="location.description" descinputmode="readonly" dynamic="true" id="14544263613242" longdescreadonly="true" lookup="plusplocations" menutype="locations"/>
+                                                                <multiparttextbox applink="asset,ipc" dataattribute="assetnum" descdataattribute="asset.description" descinputmode="readonly" dynamic="true" id="14544263613243" longdescreadonly="true" lookup="pluspasset" menutype="assetmain"/>
+                                                                <textbox applink="asset,ipc" dataattribute="rotassetnum" dynamic="true" id="14544263613244" lookup="pluspasset" menutype="assetmain"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14544263613245">
+                                                            <section id="1454426361339">
+                                                                <textbox dataattribute="gldebitacct" dynamic="true" id="14544263613392" lookup="glnavigator" size="20"/>
+                                                                <textbox dataattribute="glcreditacct" dynamic="true" id="14544263613393" lookup="glnavigator" size="20"/>
+                                                                <textbox dataattribute="issuetype" dynamic="true" id="14544263613394" lookup="valuelist"/>
+                                                                <checkbox dataattribute="outside" id="1454426361355"/>
+                                                                <textbox applink="person" dataattribute="issueto" dynamic="true" id="14544263613552" lookup="person" menutype="normal"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                    </sectionrow>
+                                                </section>
+                                            </tabledetails>
+                                            <buttongroup id="14544263613553">
+                                                <pushbutton id="14544263613554" label="Select Materials" mxevent="selectmaterialsonactuals"/>
+                                                <pushbutton id="1454426361370" label="Select Reserved Items" mxevent="acmaterials"/>
+                                                <pushbutton id="14544263613702" label="Select Asset Spare Parts" mxevent="pluspselasparts"/>
+                                                <pushbutton default="true" id="14544263613703" label="New Row" mxevent="addrow"/>
+                                            </buttongroup>
+                                        </table>
+                                    </tab>
+                                    <tab id="14544263613704" label="Services">
+                                        <table id="1454426361386" label="Services" relationship="SHOWACTUALSERVICE">
+                                            <tablebody displayrowsperpage="6" filterable="true" id="14544263613862">
+                                                <tablecol filterable="false" id="14544263613863" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                                <tablecol dataattribute="actualstaskid" id="1454426361402" linkedcontrolid="actuals_actuals_acservices_acservices_table_1_grid7_1" sortable="false"/>
+                                                <tablecol dataattribute="itemnum" id="14544263614022" label="Service"/>
+                                                <tablecol dataattribute="description" id="14544263614023" lookup="longdesc"/>
+                                                <tablecol dataattribute="quantity" id="14544263614024" linkedcontrolid="actuals_actuals_acservices_acservices_table_1_grid8_1"/>
+                                                <tablecol dataattribute="unitcost" id="1454426361417" linkedcontrolid="actuals_actuals_acservices_acservices_table_1_grid8_2"/>
+                                                <tablecol dataattribute="loadedcost" id="14544263614172" linkedcontrolid="actuals_actuals_acservices_acservices_table_1_grid8_3"/>
+                                                <tablecol filterable="false" id="14544263614173" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                            </tablebody>
+                                            <tabledetails id="14544263614174">
+                                                <section id="14544263614175" label="Details">
+                                                    <sectionrow id="1454426361433">
+                                                        <sectioncol id="14544263614332">
+                                                            <section id="14544263614333">
+                                                                <textbox dataattribute="actualstaskid" id="14544263614334" inputmode="readonly" sizeintable="4"/>
+                                                                <combobox dataattribute="linetype" id="1454426361448"/>
+                                                                <multiparttextbox dataattribute="itemnum" descdataattribute="description" id="14544263614482" inputmode="readonly" label="Service" longdescreadonly="true"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14544263614483">
+                                                            <section id="14544263614484">
+                                                                <textbox dataattribute="quantity" dynamic="true" id="14544263614485" inputmode="readonly" sizeintable="9"/>
+                                                                <textbox dataattribute="unitcost" dynamic="true" id="1454426361464" inputmode="readonly"/>
+                                                                <textbox dataattribute="poline.orderunit" dynamic="true" id="14544263614642" inputmode="readonly"/>
+                                                                <textbox dataattribute="loadedcost" dynamic="true" id="14544263614643" inputmode="readonly"/>
+                                                                <textbox dataattribute="PLUSPLISTPRICE" id="14544263614644" inputmode="readonly"/>
+                                                                <textbox dataattribute="plusplineprice" id="14544263614645" inputmode="readonly"/>
+                                                                <textbox dataattribute="transdate" dynamic="true" id="1454426361480" inputmode="readonly"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                        <sectioncol id="14544263614802">
+                                                            <section id="14544263614803">
+                                                                <textbox dataattribute="gldebitacct" dynamic="true" id="14544263614804" inputmode="readonly" lookup="glnavigator" size="20"/>
+                                                                <textbox dataattribute="glcreditacct" dynamic="true" id="14544263614805" inputmode="readonly" lookup="glnavigator" size="20"/>
+                                                                <textbox applink="po" dataattribute="ponum" dynamic="true" id="1454426361495" inputmode="readonly" menutype="normal"/>
+                                                                <textbox dataattribute="polinenum" dynamic="true" id="14544263614952" inputmode="readonly"/>
+                                                                <textbox dataattribute="enterby" dynamic="true" id="14544263614953" inputmode="readonly"/>
+                                                                <textbox dataattribute="enterdate" dynamic="true" id="14544263614954" inputmode="readonly"/>
+                                                            </section>
+                                                        </sectioncol>
+                                                    </sectionrow>
+                                                </section>
+                                            </tabledetails>
+                                        </table>
+                                    </tab>
+                                </tabgroup>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </tab>
+                <tab id="log" label="Scheduling" type="insert">
+                    <section border="true" id="headerG_1">
+                        <sectionrow id="headerG_2">
+                            <sectioncol id="headerG_3">
+                                <section id="headerG_7">
+                                    <textbox dataattribute="TARGSTARTDATE" id="1638897164575"/>
+                                    <textbox dataattribute="TARGCOMPDATE" id="1638897156543"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="headerG_9">
+                                <section id="headerG_4">
+                                    <textbox dataattribute="SCHEDSTART" id="1638897159637"/>
+                                    <textbox dataattribute="SCHEDFINISH" id="1638897162043"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="headerG_6">
+                                <section id="headerG_10">
+                                    <textbox dataattribute="CU_DATEREQUIRED" id="1638897607269" label="Client Preferred Date"/>
+                                    <textbox dataattribute="SNECONSTRAINT" id="1638897332843"/>
+                                    <textbox dataattribute="FNLCONSTRAINT" id="1638897343952"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
+    </page>
+    <dialog beanclass="psdi.webclient.system.beans.MultiselectDataBean" hidehelp="true" id="selectFeesCharges" label="Select Planned Fees and Charges" parentdatasrc="MAINRECORD" relationship="PLUSPSHOWPLANFEECHARGE">
+        <table id="selectFeesCharges_select_table" inputmode="readonly" label="Fees and Charges" selectmode="multiple">
+            <tablebody displayrowsperpage="15" filterable="true" id="selectFeesCharges_select_table_tablebody">
+                <tablecol filterable="false" id="selectFeesCharges_select_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+                <tablecol dataattribute="taskid" id="selectFeesCharges_select_table_tablebody_2"/>
+                <tablecol dataattribute="type" id="selectFeesCharges_select_table_tablebody_3"/>
+                <tablecol dataattribute="description" id="selectFeesCharges_select_table_tablebody_4" sortable="false"/>
+                <tablecol dataattribute="lineprice" id="selectFeesCharges_select_table_tablebody_5"/>
+            </tablebody>
+        </table>
+        <buttongroup id="selectFeesCharges_2">
+            <pushbutton default="true" id="selectFeesCharges_2_1" label="OK" mxevent="dialogok" value="copyPlanFeeChargeToGBTransSet"/>
+            <pushbutton id="selectFeesCharges_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.workorder.AssignLaborBean" hidehelp="true" id="assignlabor" label="Available Labor" relationship="ASSIGNLABOR">
+        <helpgrid id="assignlabor_help" innerhtml="To find labor available during a specific date range, enter the dates in the From and To fields.  To include labor who are already assigned to other jobs, select Include Fully Assigned."/>
+        <section border="true" id="assignlabor_grid1">
+            <sectionrow id="assignlabor_grid1_1">
+                <sectioncol id="assignlabor_grid1_1_1">
+                    <section id="assignlabor_grid1_1_1_grid2">
+                        <textbox dataattribute="fromdate" id="assignlabor_grid1_1_1_grid2_1" lookup="datelookup"/>
+                        <textbox dataattribute="todate" id="assignlabor_grid1_1_1_grid2_2" lookup="datelookup"/>
+                        <textbox dataattribute="location" id="assignlabor_grid1_1_1_grid2_3sp" lookup="plusplocations"/>
+                        <checkbox dataattribute="assigned" id="assignlabor_grid1_1_1_grid2_3"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="assignlabor_grid1_1_2">
+                    <section id="assignlabor_grid1_1_2_grid3">
+                        <textbox dataattribute="location" id="assignlabor_grid1_1_2_grid3_1" lookup="locations"/>
+                        <textbox dataattribute="vendor" id="assignlabor_grid1_1_2_grid3_3" lookup="vendors" smartfilloff="true"/>
+                        <textbox dataattribute="contractnum" id="assignlabor_grid1_1_2_grid3_4" lookup="contract" smartfilloff="true"/>
+                    </section>
+                    <buttongroup id="assignlabor_grid1_1_2_Tblbuttons2">
+                        <pushbutton default="true" id="assignlabor_grid1_1_2_Tblbuttons2_1" label="Refresh" mxevent="refreshlabor"/>
+                    </buttongroup>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <table beanclass="psdi.webclient.beans.workorder.AssignLaborLaborBean" id="assignlabor_assign_table" inputmode="readonly">
+            <tablebody displayrowsperpage="8" filterable="true" filterexpanded="true" id="assignlabor_assign_table_tablebody">
+                <tablecol dataattribute="laborcode" id="assignlabor_assign_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Select %1" type="link"/>
+                <tablecol dataattribute="person.displayname" id="assignlabor_assign_table_tablebody_3"/>
+                <tablecol dataattribute="laborcraftratedefault.craft" id="assignlabor_assign_table_tablebody_4"/>
+                <tablecol dataattribute="laborcraftratedefault.skilllevel" id="assignlabor_assign_table_tablebody_4a"/>
+                <tablecol dataattribute="worklocation" id="assignlabor_assign_table_tablebody_5"/>
+                <tablecol dataattribute="person.personcal.shiftnum" id="assignlabor_assign_table_tablebody_8" sortable="false"/>
+                <tablecol dataattribute="StartTime" id="assignlabor_assign_table_tablebody_7" sortable="false"/>
+                <tablecol dataattribute="type" id="assignlabor_assign_table_tablebody_9"/>
+                <tablecol dataattribute="availability" id="assignlabor_assign_table_tablebody_10" sortable="false"/>
+                <tablecol dataattribute="assigned" id="assignlabor_assign_table_tablebody_11" sortable="false"/>
+            </tablebody>
+        </table>
+        <buttongroup id="assignlabor_2">
+            <pushbutton id="assignlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.workorder.WorkPackMaterialsBean" id="showwpstatus" inputmode="READONLY" label="Work Package Materials">
+        <table id="workpackstatus_table1" label="Work Package Materials">
+            <tablebody displayrowsperpage="15" filterable="true" id="workpackstatus_grid1" sortable="true">
+                <tablecol dataattribute="WORKORDER.WOGROUP" id="workpackstatus_table1_wonum" label="Work Order" sortable="true"/>
+                <tablecol dataattribute="WORKORDER.TASKID" id="workpackstatus_table1_taskid" label="Task ID"/>
+                <tablecol dataattribute="ITEMNUM" id="workpackstatus_table1_itemnum" label="Item" sortable="true"/>
+                <tablecol dataattribute="DESCRIPTION" id="workpackstatus_table1_description" inputmode="READONLY" sortable="true"/>
+                <tablecol dataattribute="ITEMQTY" id="workpackstatus_table1_reqqty" inputmode="READONLY" label="Required Quantity" sortable="true"/>
+                <tablecol dataattribute="INVENTORY.STAGEDQTY" id="workpack_table1_stagedqty" inputmode="READONLY" label="Staged Quantity" sortable="true"/>
+                <tablecol dataattribute="INVENTORYSTATUS.AVBLBALANCE" id="workpackstatus_table1_availqty" inputmode="READONLY" label="Available Quantity" sortable="true"/>
+                <tablecol dataattribute="LOCATION" id="workpackstatus_table1_store" inputmode="READONLY" label="Storeroom"/>
+                <tablecol dataattribute="STORELOCSITE" id="workpackstatus_table1_store_site" inputmode="READONLY" label="Storeroom Site"/>
+                <tablecol dataattribute="INVRESERVE.RESTYPE" id="workpackstatus_table1_store_restype" inputmode="READONLY" label="Reservation Type" sortable="true"/>
+                <tablecol dataattribute="DIRECTREQ" id="workpackstatus_table1_directreq" inputmode="READONLY" label="Direct Issue"/>
+                <tablecol dataattribute="PRLINE.PONUM" id="workpackstatus_table1_ponum" inputmode="READONLY" label="PO" sortable="true" type="LINK"/>
+                <tablecol dataattribute="POLINE.PO.STATUS" id="workpackstatus_table1_postatus" inputmode="READONLY" label="PO Status"/>
+                <tablecol dataattribute="POLINE.PO.VENDOR" id="workpackstatus_table1_vendor" inputmode="READONLY" label="PO Vendor" sortable="true"/>
+                <tablecol dataattribute="POLINE.VENDELIVERYDATE" id="workpackstatus_table1_antdeliverydate" inputmode="READONLY" label="Anticipated Delivery" sortable="true"/>
+                <tablecol dataattribute="DIMATUSETRANS.ACTUALDATE" id="workpackstatus_table1_actualdeliverydate" inputmode="READONLY" label="Delivery Date"/>
+            </tablebody>
+        </table>
+        <buttongroup id="workpackstatus_view_buttons">
+            <pushbutton default="true" id="workpackstatus_view_buttons_1" label="Close" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog hidehelp="true" id="viewcostpr" label="View Costs and Prices" parentdatasrc="MAINRECORD" savemode="ONUNLOAD">
+        <section id="viewcostpr_section_1">
+            <sectionrow id="viewcostpr_sectionrow_1_1">
+                <sectioncol id="viewcostpr_sectioncol_1_1">
+                    <helpgrid id="viewcostpr_helpgrid" innerhtml="The first table displays Price and Cost information for the current Work Order and all of its tasks. The second table displays Price and Cost information for the entire Work Order hierarchy starting from the current Work Order."/>
+                    <helpgrid id="viewcostpr_helpgrid_2" innerhtml="The Total Bill Price can be a projected price it does not mean that the work order has been attached to a Bill Batch. The Labor and Service Actual Costs include unapproved transactions. The View Costs dialogue box shows only approved transactions."/>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="viewcostpr_section_2">
+            <sectionrow id="viewcostpr_sectionrow_2_1">
+                <sectioncol id="viewcostpr_sectioncol_2_1">
+                    <section id="viewcostpr_section_3">
+                        <sectionrow id="viewcostpr_sectionrow_3_1">
+                            <sectioncol id="viewcostpr_sectioncol_3_1">
+                                <section border="true" id="viewcostpr_section_3_1">
+                                    <statictext align="center" id="viewcostpr_statictext_1" label="Work Order Totals"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="viewcostpr_sectionrow_3_2">
+                            <sectioncol id="viewcostpr_sectioncol_3_2">
+                                <table id="viewcostpr_table_1" inputmode="readonly" label="WO" relationship="PLUSPWOTOTALS">
+                                    <tablebody displayrowsperpage="6" filterable="false" filterexpanded="false" id="viewcostpr_tablebody_1">
+                                        <tablecol dataattribute="resource" id="viewcostpr_tablecol_1"/>
+                                        <tablecol dataattribute="estimatedcost" id="viewcostpr_tablecol_2"/>
+                                        <tablecol dataattribute="estimatedprice" id="viewcostpr_tablecol_3"/>
+                                        <tablecol dataattribute="actualcost" id="viewcostpr_tablecol_4"/>
+                                        <tablecol dataattribute="actualprice" id="viewcostpr_tablecol_5"/>
+                                        <tablecol dataattribute="billprice" id="viewcostpr_tablecol_12"/>
+                                    </tablebody>
+                                </table>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="viewcostpr_sectionrow_3_3">
+                            <sectioncol id="viewcostpr_sectioncol_3_3">
+                                <section id="viewcostpr_section_3_2">
+                                    <sectionrow id="viewcostpr_sectionrow_3_4">
+                                        <sectioncol id="viewcostpr_sectioncol_3_4">
+                                            <blankline id="viewcostpr_blankline_3_1"/>
+                                        </sectioncol>
+                                        <sectioncol id="viewcostpr_sectioncol_3_5">
+                                            <section id="viewcostpr_section_3_3">
+                                                <textbox dataattribute="plusptotalbillpr" id="viewcostpr_textbox_3_1" inputmode="readonly"/>
+                                            </section>
+                                        </sectioncol>
+                                    </sectionrow>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+                <sectioncol id="viewcostpr_sectioncol_2_2">
+                    <section id="viewcostpr_section_4">
+                        <sectionrow id="viewcostpr_sectionrow_4_1">
+                            <sectioncol id="viewcostpr_sectioncol_4_1">
+                                <section border="true" id="viewcostpr_section_4_1">
+                                    <statictext align="center" id="viewcostpr_statictext_2" label="Hierarchy Grand Totals"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="viewcostpr_sectionrow_4_2">
+                            <sectioncol id="viewcostpr_sectioncol_4_2">
+                                <table id="viewcostpr_table_2" inputmode="readonly" label="Hierarchy" relationship="PLUSPWOGRTOTALS">
+                                    <tablebody displayrowsperpage="6" filterable="false" filterexpanded="false" id="viewcostpr_tablebody_2">
+                                        <tablecol dataattribute="resource" id="viewcostpr_tablecol_6"/>
+                                        <tablecol dataattribute="estimatedcost" id="viewcostpr_tablecol_7"/>
+                                        <tablecol dataattribute="estimatedprice" id="viewcostpr_tablecol_8"/>
+                                        <tablecol dataattribute="actualcost" id="viewcostpr_tablecol_9"/>
+                                        <tablecol dataattribute="actualprice" id="viewcostpr_tablecol_10"/>
+                                        <tablecol dataattribute="billprice" id="viewcostpr_tablecol_11"/>
+                                    </tablebody>
+                                </table>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="viewcostpr_sectionrow_4_3">
+                            <sectioncol id="viewcostpr_sectioncol_4_3">
+                                <section id="viewcostpr_section_4_2">
+                                    <sectionrow id="viewcostpr_sectionrow_4_4">
+                                        <sectioncol id="viewcostpr_sectioncol_4_4">
+                                            <blankline id="viewcostpr_blankline_4_1"/>
+                                        </sectioncol>
+                                        <sectioncol id="viewcostpr_sectioncol_4_5">
+                                            <section id="viewcostpr_section_4_3">
+                                                <textbox dataattribute="pluspgrtotalbillpr" id="viewcostpr_textbox_4_1" inputmode="readonly"/>
+                                            </section>
+                                        </sectioncol>
+                                    </sectionrow>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="viewcostpr_section_5">
+            <sectionrow id="viewcostpr_sectionrow_5_1">
+                <sectioncol id="viewcostpr_sectioncol_5_1">
+                    <section border="true" id="viewcostpr_section_5_1">
+                        <statictext align="center" id="viewcostpr_statictext_3" label="Work Order Pricing"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="viewcostpr_section_6">
+            <sectionrow id="viewcostpr_sectionrow_6_1">
+                <sectioncol id="viewcostpr_sectioncol_6_1">
+                    <section id="viewcostpr_section_7" label="Pricing Agreements">
+                        <sectionrow id="viewcostpr_sectionrow_7_1">
+                            <sectioncol id="viewcostpr_sectioncol_7_1">
+                                <section id="viewcostpr_section_8">
+                                    <checkbox dataattribute="pluspporeq" id="viewcostpr_checkbox_8_1" inputmode="readonly"/>
+                                    <blankline id="viewcostpr_blankline_10_1"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="viewcostpr_sectioncol_7_2">
+                                <section id="viewcostpr_section_9">
+                                    <textbox dataattribute="pluspcustponum" id="viewcostpr_textbox_9_1"/>
+                                    <textbox dataattribute="pluspmaxprice" id="viewcostpr_textbox_11_1" inputmode="readonly"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+                <sectioncol id="viewcostpr_sectioncol_6_2">
+                    <section id="viewcostpr_section_12" label="Current Quote">
+                        <sectionrow id="viewcostpr_sectionrow_12_1">
+                            <sectioncol id="viewcostpr_sectioncol_12_1">
+                                <section id="viewcostpr_section_13">
+                                    <textbox dataattribute="pluspquotetype" id="viewcostpr_textbox_13_1" inputmode="readonly"/>
+                                    <textbox dataattribute="pluspquotedprice" id="viewcostpr_textbox_14_1" inputmode="readonly"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="plusp_pricing_section">
+            <sectionrow id="plusp_pricing_section_r1">
+                <sectioncol id="plusp_incprice_column">
+                    <section id="plusp_incprice_section_1" label="Included Pricing">
+                        <sectionrow id="plusp_incprice_r1">
+                            <sectioncol id="plusp_incprice_r1_c1">
+                                <textbox dataattribute="PLUSPGBTRANSINCLUDE.INCTOTAL" id="plusp_incprice_t1_c1_i1" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSINCLUDE.INCLABOR" id="plusp_incprice_t1_c1_i2" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSINCLUDE.INCMATERIAL" id="plusp_incprice_t1_c1_i3" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSINCLUDE.INCSERVICES" id="plusp_incprice_t1_c1_i4" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSINCLUDE.INCTOOL" id="plusp_incprice_t1_c1_i5" inputmode="readonly"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+                <sectioncol id="plusp_minprice_column">
+                    <section id="plusp_minprice_section_1" label="Minimum Pricing">
+                        <sectionrow id="plusp_minprice_r1">
+                            <sectioncol id="plusp_minprice_r1_c1">
+                                <textbox dataattribute="PLUSPGBTRANSMINIMUM.MINTOTAL" id="plusp_minprice_t1_c1_i1" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSMINIMUM.MINLABOR" id="plusp_minprice_t1_c1_i2" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSMINIMUM.MINMATERIAL" id="plusp_minprice_t1_c1_i3" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSMINIMUM.MINSERVICES" id="plusp_minprice_t1_c1_i4" inputmode="readonly"/>
+                                <textbox dataattribute="PLUSPGBTRANSMINIMUM.MINTOOL" id="plusp_minprice_t1_c1_i5" inputmode="readonly"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="viewcostpr_buttongroup">
+            <pushbutton default="true" id="viewcostpr_pushbutton" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <action id="CREATEINCT" method="createIncident" savemode="ONLOAD"/>
+    <dialog beanclass="psdi.webclient.beans.workorder.SafetyPlanBean" hidehelp="true" icon="img_lookup.gif" id="lookup_selectsp" label="Select Safety Plan">
+        <section border="true" datasrc="MAINRECORD" id="selsafety_grid3">
+            <sectionrow id="selsafety_grid3_1">
+                <sectioncol id="selsafety_grid3_1_1">
+                    <section id="selsafety_a">
+                        <radiobuttongroup dataattribute="SAFETYPLAN_LOOKUP_LIST_TYPE" id="selsafety_grid3_1_1_rbg1" hidelabel="true"/>
+                    </section>
+                    <buttongroup id="selsafety_grid3_1_1_Tblbuttons1">
+                        <pushbutton id="selsafety_grid3_1_1_Tblbuttons1_1" label="Refresh" mxevent="REFRESHLIST"/>
+                    </buttongroup>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <table id="selsafety_select_table" inputmode="readonly" selectmode="single">
+            <tablebody displayrowsperpage="5" filterable="true" filterexpanded="true" id="selsafety_select_table_tablebody">
+                <tablecol dataattribute="safetyplanid" id="selsafety_select_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+                <tablecol dataattribute="description" id="selsafety_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+            </tablebody>
+        </table>
+        <buttongroup id="selsafety_2">
+            <pushbutton default="true" id="selsafety_2_1" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="chgmtlstsb" label="Change Work Order Options" savemode="ONLOADUNLOAD">
+        <helpgrid id="createcont_help" innerhtml="You can apply your changes to the current work order, or select Apply to Work Pack to change the values on the current work order and on all related records."/>
+        <section id="chgmtlstsb_grid_s1">
+            <checkbox dataattribute="IGNORESRMAVAIL" id="chgmtlstsb_grid_s1_1"/>
+            <checkbox dataattribute="IGNOREDIAVAIL" id="chgmtlstsb_grid_s1_2"/>
+        </section>
+        <buttongroup id="chgmtlstsb_2">
+            <pushbutton id="chgmtlstsb_2_1" label="Apply to Work Package" mxevent="updateworkpackflags"/>
+            <pushbutton default="true" id="chgmtlstsb_2_2" label="Apply to Current Work Order" mxevent="dialogok"/>
+            <pushbutton id="chgmtlstsb_2_3" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <action id="CREATECHG" method="createChange" savemode="ONLOAD"/>
+    <dialog hidehelp="true" id="updtquote" label="View / Update Price Quote" parentdatasrc="MAINRECORD" savemode="ONUNLOAD">
+        <section id="updtquote_section_1">
+            <sectionrow id="updtquote_sectionrow_1_1">
+                <sectioncol id="updtquote_sectioncol_1_1">
+                    <section border="true" id="updtquote_section_1_1">
+                        <multiparttextbox dataattribute="wonum" descdataattribute="description" descinputmode="readonly" id="updtquote_multiparttextbox_1_1_1" inputmode="readonly"/>
+                        <multiparttextbox dataattribute="pluspcustomer" descdataattribute="PLUSPCUSTOMER.name" descinputmode="readonly" id="updtquote_multiparttextbox_1_1_2" inputmode="readonly"/>
+                        <textbox dataattribute="status" id="updtquote_textbox_1_1_1" inputmode="readonly"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="updtquote_section_2" label="Customer Agreement">
+            <sectionrow id="updtquote_sectionrow_2_1">
+                <sectioncol id="updtquote_sectioncol_2_1">
+                    <section id="updtquote_section_2_1">
+                        <textbox applink="pluspagree" dataattribute="pluspagreement" id="updtquote_textbox_2_1_1" inputmode="readonly" lookup="pluspagreement" menutype="normal"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="updtquote_sectioncol_2_2">
+                    <section id="updtquote_section_2_2">
+                        <textbox applink="pluspagree" dataattribute="plusppricesched" id="updtquote_textbox_2_2_1" inputmode="readonly" lookup="pluspagreement" menutype="normal"/>
+                        <checkbox dataattribute="pluspallowquote" id="updtquote_checkbox_2_2_1" inputmode="readonly"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="updtquote_section_3" label="Current Quote">
+            <sectionrow id="updtquote_sectionrow_3_1">
+                <sectioncol id="updtquote_sectioncol_3_1">
+                    <section id="updtquote_section_3_1">
+                        <textbox dataattribute="QUOTE.quotetype" id="updtquote_textbox_3_1_1" lookup="valuelist"/>
+                        <textbox dataattribute="QUOTE.quotedprice" id="updtquote_textbox_3_1_2"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="updtquote_sectioncol_3_2">
+                    <section id="updtquote_section_3_2">
+                        <textbox dataattribute="QUOTE.updatedby" id="updtquote_textbox_3_2_1" inputmode="readonly"/>
+                        <textbox dataattribute="QUOTE.updatedate" id="updtquote_textbox_3_2_2" inputmode="readonly"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="updtquote_section_4" label="Original Quote">
+            <sectionrow id="updtquote_sectionrow_4_1">
+                <sectioncol id="updtquote_sectioncol_4_1">
+                    <section id="updtquote_section_4_1">
+                        <textbox dataattribute="QUOTE.origquotetype" id="updtquote_textbox_4_1_1" inputmode="readonly" lookup="valuelist"/>
+                        <textbox dataattribute="QUOTE.origquotedprice" id="updtquote_textbox_4_1_2" inputmode="readonly"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="updtquote_sectioncol_4_2">
+                    <section id="updtquote_section_4_2">
+                        <textbox dataattribute="QUOTE.origquoteby" id="updtquote_textbox_4_2_1" inputmode="readonly"/>
+                        <textbox dataattribute="QUOTE.origquotedate" id="updtquote_textbox_4_2_2" inputmode="readonly"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="updtquote_buttongroup">
+            <pushbutton default="true" id="updtquote_pushbutton_1" label="OK" mxevent="dialogok" value="copyQuoteFields"/>
+            <pushbutton id="updtquote_pushbutton_2" label="Cancel" mxevent="dialogok" value="undoQuoteChanges"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.common.ClassificationBean" hidehelp="true" id="searchmore" inputmode="query" label="More Search Fields">
+        <datasrc beanclass="psdi.webclient.beans.common.RepairFacilityConditionalUIBean" id="repfacilitysrc"/>
+        <section id="qbe_s1">
+            <sectionrow id="qbe_s1_sr1">
+                <sectioncol id="qbe_s1_sr1_sc1">
+                    <section id="qbe_s1_sr1_sc1_s1">
+                        <textbox dataattribute="wonum" id="qbe_s1_sr1_sc1_s1_tb1" inputmode="query"/>
+                        <textbox dataattribute="description" id="qbe_s1_sr1_sc1_s1_tb1a" inputmode="query"/>
+                        <textbox applink="location,ipc" dataattribute="ALLMULTIASSETLOCCI.location" id="qbe_s1_sr1_sc1_s1_tb2" inputmode="query" lookup="plusplocations" menutype="locations"/>
+                        <textbox dataattribute="CU_ROOM" id="1648486546799"/>
+                        <textbox dataattribute="parent" id="qbe_s1_sr1_sc1_s1_tb9" inputmode="query" lookup="workorder" menutype="workorder"/>
+                        <textbox applink="location,ipc" dataattribute="ALLMULTIASSETLOCCI.MALOCPRIMARYSYSLOC.ancestor" id="qbe_s1_sr1_sc2_s2_tb8" inputmode="query" lookup="plusplocations" menutype="locations"/>
+                        <textbox applink="asset,ipc" dataattribute="ALLMULTIASSETLOCCI.assetnum" id="qbe_s1_sr1_sc1_s1_tb3" inputmode="query" lookup="pluspasset" menutype="assetmain"/>
+                        <textbox applink="ci" dataattribute="ALLMULTIASSETLOCCI.cinum" id="qbe_s1_sr1_sc2_s1_tb11" inputmode="query" lookup="pluspci" menutype="normal"/>
+                        <textbox dataattribute="CUTRADE" id="1648486367673" label="Trade" lookup="valuelist"/>
+                        <textbox dataattribute="CU_PMMGR" id="1648486606190"/>
+                        <textbox applink="pm" dataattribute="pmnum" id="qbe_s1_sr1_sc2_s1_tb9" inputmode="query" lookup="pm" menutype="normal"/>
+                        <textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_s1_sr1_sc2_s2_tb10" inputmode="query" menutype="classificationqbe"/>
+                        <textbox applink="location,ipc" dataattribute="REPAIRFACILITY" id="qbe_s1_sr1_sc2_s2_tb12" inputmode="query" lookup="repfacility" menutype="repfacility" sigoption="REPFACILITY" sigoptiondatasrc="repfacilitysrc"/>
+                        <textbox dataattribute="REPFACSITEID" id="qbe_s1_sr1_sc2_s2_tb13" inputmode="query" lookup="site" sigoption="REPFACILITY" sigoptiondatasrc="repfacilitysrc"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_s1_sr1_sc4">
+                    <section id="qbe_s1_sr1_sc4_s2">
+                        <textbox dataattribute="problemcode" id="qbe_s1_sr1_sc2_s2_tb7" inputmode="query" lookup="failurecode"/>
+                        <textbox applink="failure" applinkreturn="failurecode" dataattribute="failurecode" id="qbe_s1_sr1_sc2_s2_tb6" inputmode="query" lookup="failurecode" menutype="normal"/>
+                        <textbox applink="srvcommod" dataattribute="commoditygroup" id="qbe_s1_sr1_sc2_s1_tb5" inputmode="query" lookup="servicegroup" menutype="SRVVIEWRELATEDGRP"/>
+                        <textbox dataattribute="commodity" id="qbe_s1_sr1_sc2_s1_tb4" inputmode="query" lookup="service"/>
+                        <textbox applink="company" dataattribute="vendor" id="qbe_s1_sr1_sc2_s1_tb6" inputmode="query" lookup="companies" menutype="normal"/>
+                        <textbox dataattribute="origrecordid" id="qbe_s1_sr1_sc2_s2_tb4" inputmode="query" menutype="normal"/>
+                        <textbox dataattribute="origrecordclass" id="qbe_s1_sr1_sc2_s2_tb5" inputmode="query" lookup="valuelist"/>
+                        <textbox applink="PLUSPSR" dataattribute="relatedrecord.RELATEDRECKEY" id="1454535307649" inputmode="query" label="Original SR" lookup="TICKET" menutype="normal"/>
+                        <textbox dataattribute="risk" id="qbe_s1_sr1_sc2_s2_tb9" inputmode="query"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_s1_sr1_sc3">
+                    <section id="qbe_s1_sr1_sc3_s2">
+                        <textbox applink="persongr" dataattribute="crewworkgroup" id="qbe_s1_sr1_sc2_s1_tb3_crew_1" inputmode="masked" licensekey="CREW" lookup="persongroup" menutype="normal"/>
+                        <textbox dataattribute="worktype" id="qbe_s1_sr1_sc2_s1_tb3" inputmode="query" lookup="worktype"/>
+                        <textbox dataattribute="status" id="qbe_s1_sr1_sc2_s2_tb1" inputmode="query" lookup="valuelist"/>
+                        <textbox dataattribute="woclass" id="qbe_s1_sr1_sc2_s1_tb2" inputmode="query" lookup="valuelist"/>
+                        <textbox dataattribute="siteid" id="qbe_s1_sr1_sc2_s1_tb1" inputmode="query" lookup="site"/>
+                        <textbox dataattribute="historyflag" id="qbe_s1_sr1_sc2_s2_tb2" inputmode="query"/>
+                        <textbox dataattribute="wopriority" id="qbe_s1_sr1_sc1_s1_tb8" inputmode="query"/>
+                        <textbox dataattribute="istask" id="qbe_s1_sr1_sc2_s2_tb3" inputmode="query"/>
+                        <textbox applink="pluspcust" dataattribute="pluspcustomer" id="qbe_s1_sr1_sc2_s2_tb3_p1" inputmode="query" lookup="pluspcustomer" menutype="normal"/>
+                        <textbox applink="pluspagree" dataattribute="pluspagreement" id="qbe_s1_sr1_sc2_s2_tb3_p2" inputmode="query" lookup="pluspagreement" menutype="normal"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_s1_cal" label="Calibration Details" licensekey="CALIBRATION">
+            <sectionrow id="qbe_s2_sr1_cal">
+                <sectioncol id="qbe_s2_sr1_sc1_cal">
+                    <section id="qbe_s2_sr1_sc1_s1_cal">
+                        <sectionrow id="qbe_s2_sr1_sc1_s1_r1_cal">
+                            <sectioncol id="qbe_s2_sr1_sc1_s1_r1_c1_cal">
+                                <section id="qbe_s2_sr1_sc1_s1_r1_c1_s1_cal">
+                                    <textbox dataattribute="pluscloop" id="qbe_s1_sr1_sc2_s2_tb3a_cal" inputmode="masked"/>
+                                    <textbox applink="plusdsplan" dataattribute="PLUSCWODS.dsplannum" id="qbe_s1_sr1_sc2_s2_tb18_cal" inputmode="masked" label="Data Sheet" lookup="plusdsplanswo" menutype="normal"/>
+                                    <textbox dataattribute="pluscwods.certificatenum" id="qbe_s1_sr1_sc2_s2_tb11a_cal" inputmode="masked"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_s2_sr1_sc1_s1_r1_c2_cal">
+                                <section id="qbe_s2_sr1_sc1_s1_r1_c2_s1_cal">
+                                    <textbox dataattribute="PLUSCWODSINSTR.description" id="qbe_s1_sr1_sc2_s2_tb17_cal" inputmode="masked" label="Asset Function Description" sizeintable="40"/>
+                                    <textbox dataattribute="PLUSCWODS.asleftcalstatus" id="qbe_s1_sr1_sc2_s2_tb13_cal" inputmode="masked" label="As Left Status" lookup="valuelist"/>
+                                    <textbox dataattribute="PLUSCWODS.asfoundcalstatus" id="qbe_s1_sr1_sc2_s2_tb11_cal" inputmode="masked" label="As Found Status" lookup="valuelist"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_s2">
+            <sectionrow id="qbe_s2_sr1">
+                <sectioncol id="qbe_s2_sr1_sc1">
+                    <section id="qbe_s2_sr1_sc1_s1" label="Plan Details">
+                        <sectionrow id="qbe_s2_sr1_sc1_s1_r1">
+                            <sectioncol id="qbe_s2_sr1_sc1_s1_r1_c1">
+                                <section id="qbe_s2_sr1_sc1_s1_r1_c1_s1">
+                                    <textbox applink="jobplan" dataattribute="jpnum" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb1" inputmode="query" lookup="jobplan" menutype="normal"/>
+                                    <textbox applink="safeplan" dataattribute="wosafetyplan.safetyplanid" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb2" inputmode="query" lookup="safetyplan" menutype="normal"/>
+                                    <textbox applink="labor" dataattribute="ASSIGNMENT_QBE.laborcode" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb7" inputmode="query" label="Assigned Labor" lookup="laborcraftrate" menutype="normal"/>
+                                    <textbox applink="amcrewt" dataattribute="WPLABOR_QBE.amcrewtype" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb7_crew_1" inputmode="masked" label="Plan Crew Type" licensekey="CREW" lookup="amcrewtype" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_s2_sr1_sc1_s1_r1_c2">
+                                <section id="qbe_s2_sr1_sc1_s1_r1_c2_s1">
+                                    <textbox applink="amcrew" dataattribute="ASSIGNMENT_QBE.amcrew" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb7_crew_2" inputmode="masked" label="Assigned Crew" licensekey="CREW" lookup="amcrews" menutype="normal"/>
+                                    <textbox applink="craft" dataattribute="WPLABOR_QBE.craft" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb3" inputmode="query" label="Plan Craft" lookup="craft" menutype="normal"/>
+                                    <textbox applink="item,inventor" dataattribute="WPMATERIAL_QBE.itemnum" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb4" inputmode="query" label="Plan Materials" lookup="item" menutype="item"/>
+                                    <textbox applink="srvitem" dataattribute="WPSERVICE_QBE.itemnum" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb5" inputmode="query" label="Plan Services" lookup="serviceitem" menutype="normal"/>
+                                    <textbox applink="tool" dataattribute="WPTOOL_QBE.itemnum" id="qbe_s2_sr1_sc1_s1_sr1_sc1_s1_tb6" inputmode="query" label="Plan Tools" lookup="tools" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_s1_sr1_sc2">
+                    <section id="qbe_s1_sr1_sc2_s1" label="User Information">
+                        <sectionrow id="qbe_s1_sr1_sc2_s1_r1">
+                            <sectioncol id="qbe_s1_sr1_sc2_s1_r1_c1">
+                                <section id="qbe_s1_sr1_sc2_s1_r1_c1_s1">
+                                    <textbox applink="person" dataattribute="reportedby" id="qbe_s1_sr1_sc1_s1_tb4" inputmode="query" lookup="person" menutype="normal"/>
+                                    <textbox applink="person" dataattribute="onbehalfof" id="qbe_s1_sr1_sc1_s1_tb5" inputmode="query" lookup="person" menutype="normal"/>
+                                    <textbox applink="person" dataattribute="supervisor" id="qbe_s1_sr1_sc1_s1_tb6" inputmode="query" lookup="person" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_s1_sr1_sc2_s1_r1_c2">
+                                <section id="qbe_s1_sr1_sc2_s1_r1_c2_s1">
+                                    <textbox applink="person" dataattribute="lead" id="qbe_s1_sr1_sc1_s1_tb7" inputmode="query" lookup="person" menutype="normal"/>
+                                    <textbox applink="person" dataattribute="owner" id="qbe_s1_sr1_sc2_s1_tb7" inputmode="query" lookup="person" menutype="normal"/>
+                                    <textbox applink="person" dataattribute="ownergroup" id="qbe_s1_sr1_sc2_s1_tb8" inputmode="query" lookup="persongroup" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_date_s1" label="Dates">
+            <sectionrow id="qbe_date_r1">
+                <sectioncol id="qbe_date_r1_c1">
+                    <section id="qbe_date_r1_c1_s1">
+                        <sectionrow id="qbe_date_s1_r1">
+                            <sectioncol id="qbe_date_s1_r1_c1">
+                                <section id="qbe_date_s1_r1_c1_s1">
+                                    <statictext align="center" id="qbe_date_s1_r1_c1_s1_st1"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r1_c2">
+                                <section id="qbe_date_s1_r1_c2_s1">
+                                    <statictext align="center" id="qbe_date_s1_r1_c2_s1_st1" label="From"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r1_c3">
+                                <section id="qbe_date_s1_r1_c3_s1">
+                                    <statictext align="center" id="qbe_date_s1_r1_c3_s1_st1" label="To"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r2">
+                            <sectioncol id="qbe_date_s1_r2_c1">
+                                <section id="qbe_date_s1_r2_c1_s1">
+                                    <statictext id="qbe_date_s1_r2_c1_s1_t1" label="Reported Date" span="right"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r2_c2">
+                                <section id="qbe_date_s1_r2_c2_s1">
+                                    <textbox dataattribute="reportdate" hidelabel="true" id="qbe_grid2_1_1_grid5_3" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r2_c3">
+                                <section id="qbe_date_s1_r2_c3_s1">
+                                    <textbox dataattribute="reportdate" hidelabel="true" id="qbe_grid2_1_1_grid5_4" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r3">
+                            <sectioncol id="qbe_date_s1_r3_c1">
+                                <section id="qbe_date_s1_r3_c1_s1">
+                                    <statictext id="qbe_date_s1_r3_c1_s1_t1" label="Target Start" span="right"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r3_c2">
+                                <section id="qbe_date_s1_r3_c2_s1">
+                                    <textbox dataattribute="targstartdate" hidelabel="true" id="qbe_grid2_1_1_grid5_7" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r3_c3">
+                                <section id="qbe_date_s1_r3_c3_s1">
+                                    <textbox dataattribute="targstartdate" hidelabel="true" id="qbe_grid2_1_1_grid5_8" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r4">
+                            <sectioncol id="qbe_date_s1_r4_c1">
+                                <section id="qbe_date_s1_r4_c1_s1">
+                                    <statictext id="qbe_date_s1_r4_c1_s1_t1" label="Target Finish" span="right"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r4_c2">
+                                <section id="qbe_date_s1_r4_c2_s1">
+                                    <textbox dataattribute="targcompdate" hidelabel="true" id="qbe_grid2_1_1_grid5_9" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r4_c3">
+                                <section id="qbe_date_s1_r4_c3_s1">
+                                    <textbox dataattribute="targcompdate" hidelabel="true" id="qbe_grid2_1_1_grid5_10" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_caldate_s1_r5" licensekey="CALIBRATION">
+                            <sectioncol id="qbe_caldate_s1_r5_c1">
+                                <section id="qbe_caldate_s1_r5_c1_s1">
+                                    <statictext id="qbe_caldate_s1_r5_c1_s1_t1" label="Calibration Due Date" span="right"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_caldate_s1_r5_c2">
+                                <section id="qbe_caldate_s1_r5_c2_s1">
+                                    <textbox dataattribute="pluscnextdate" hidelabel="true" id="qbe_caldate_s1_r5_c2_s1_t1" inputmode="masked" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_caldate_s1_r5_c3">
+                                <section id="qbe_caldate_s1_r5_c3_s1">
+                                    <textbox dataattribute="pluscnextdate" hidelabel="true" id="qbe_caldate_s1_r5_c3_s1_t2" inputmode="masked" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_date_r1_c2">
+                    <section id="qbe_date_r1_c2_s1">
+                        <sectionrow id="qbe_date_s1_r7">
+                            <sectioncol id="qbe_date_s1_r7_c1">
+                                <section id="qbe_date_s1_r7_c1_s1">
+                                    <statictext align="center" id="qbe_date_s1_r7_c1_s1_st1"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r7_c2">
+                                <section id="qbe_date_s1_r7_c2_s1">
+                                    <statictext align="center" id="qbe_date_s1_r7_c2_s1_st1" label="From"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r7_c3">
+                                <section id="qbe_date_s1_r7_c3_s1">
+                                    <statictext align="center" id="qbe_date_s1_r7_c3_s1_st1" label="To"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r8">
+                            <sectioncol id="qbe_date_s1_r8_c1">
+                                <blankline id="qbe_blkline"/>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r5">
+                            <sectioncol id="qbe_date_s1_r5_c1">
+                                <section id="qbe_date_s1_r5_c1_s1">
+                                    <statictext id="qbe_date_s1_r5_c1_s1_t1" label="Scheduled Start" span="right"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r5_c2">
+                                <section id="qbe_date_s1_r5_c2_s1">
+                                    <textbox dataattribute="schedstart" hidelabel="true" id="qbe_grid2_1_1_grid5_11" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r5_c3">
+                                <section id="qbe_date_s1_r5_c3_s1">
+                                    <textbox dataattribute="schedstart" hidelabel="true" id="qbe_grid2_1_1_grid5_12" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r6">
+                            <sectioncol id="qbe_date_s1_r6_c1">
+                                <section id="qbe_date_s1_r6_c1_s1">
+                                    <statictext id="qbe_date_s1_r6_c1_s1_t1" label="Scheduled Finish" span="right"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r6_c2">
+                                <section id="qbe_date_s1_r6_c2_s1">
+                                    <textbox dataattribute="schedfinish" hidelabel="true" id="qbe_grid2_1_1_grid5_13" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r6_c3">
+                                <section id="qbe_date_s1_r6_c3_s1">
+                                    <textbox dataattribute="schedfinish" hidelabel="true" id="qbe_grid2_1_1_grid5_14" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_serviceaddress_s1" label="Address Information" licensekey="SERVICEADDRESS">
+            <sectionrow id="qbe_serviceaddress_r1">
+                <sectioncol id="qbe_serviceaddress_r1_c1">
+                    <section id="qbe_serviceaddress_r1_c1_s1">
+                        <sectionrow id="qbe_serviceaddress_s1_r2">
+                            <sectioncol id="qbe_serviceaddress_s1_r2_c2">
+                                <section id="qbe_serviceaddress_s1_r2_c2_s1">
+                                    <textbox applink="srvad" dataattribute="SERVICEADDRESS.SADDRESSCODE" id="qbe_serviceaddress_1_1_grid3_00" label="Service Address" lookup="locations_saadvsearch" menutype="SERVICEADDRESS_SEARCH"/>
+                                    <textbox dataattribute="SERVICEADDRESS.FORMATTEDADDRESS" id="qbe_serviceaddress_1_1_grid3_01_1" inputmode="query"/>
+                                    <textbox dataattribute="SERVICEADDRESS.streetaddress" id="qbe_serviceaddress_1_1_grid3_01" inputmode="query"/>
+                                    <textbox dataattribute="SERVICEADDRESS.city" id="qbe_serviceaddress_1_1_grid3_02" inputmode="query"/>
+                                    <textbox dataattribute="SERVICEADDRESS.REGIONDISTRICT" id="qbe_serviceaddress_1_1_grid3_04" inputmode="query"/>
+                                    <textbox dataattribute="SERVICEADDRESS.county" id="qbe_serviceaddress_1_1_grid3_03" inputmode="query"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_serviceaddress_s1_r2_c3">
+                                <section id="qbe_serviceaddress_s1_r2_c3_s1">
+                                    <textbox dataattribute="SERVICEADDRESS.stateprovince" id="qbe_serviceaddress_1_1_grid3_10" inputmode="query" lookup="valuelist"/>
+                                    <textbox dataattribute="SERVICEADDRESS.postalcode" id="qbe_serviceaddress_1_1_grid3_11" inputmode="query"/>
+                                    <textbox dataattribute="SERVICEADDRESS.country" id="qbe_serviceaddress_1_1_grid3_12" inputmode="query" lookup="valuelist"/>
+                                    <textbox dataattribute="SERVICEADDRESS.geocode" id="qbe_row1_col2_sec_5" inputmode="query"/>
+                                    <textbox dataattribute="SERVICEADDRESS.timezone" id="qbe_row1_col2_sec_4" inputmode="query" lookup="valuelist"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="qbe_bg1">
+            <pushbutton default="true" id="qbe_bg1_pb1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+            <pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+            <pushbutton id="qbe_bg1_pb3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.workorder.StoreroomMaterialsBean" id="showsrmstatus" inputmode="READONLY" label="Current Work Order Storeroom Materials">
+        <table id="storeroomstatus_table1" label="Storeroom Materials">
+            <tablebody displayrowsperpage="15" filterable="true" id="storeroomstatus_grid1" sortable="true">
+                <tablecol dataattribute="ITEMNUM" id="storeroomstatus_table1_itemnum" label="Item" sortable="true"/>
+                <tablecol dataattribute="DESCRIPTION" id="storeroomstatus_table1_description" inputmode="READONLY" sortable="true"/>
+                <tablecol dataattribute="ITEMQTY" id="storeroomstatus_table1_reqqty" inputmode="READONLY" label="Required Quantity" sortable="true"/>
+                <tablecol dataattribute="INVENTORY.STAGEDQTY" id="storeroomstatus_table1_stagedqty" inputmode="READONLY" label="Staged Quantity" sortable="true"/>
+                <tablecol dataattribute="INVENTORYSTATUS.AVBLBALANCE" id="storeroomstatus_table1_availqty" inputmode="READONLY" label="Available Quantity" sortable="true"/>
+                <tablecol dataattribute="LOCATION" id="storeroomstatus_table1_storeroom" label="Storeroom" sortable="true"/>
+                <tablecol dataattribute="STORELOCSITE" id="storeroomstatus_table1_storeroomsite" label="Storeroom Site" sortable="true"/>
+                <tablecol dataattribute="INVRESERVE.RESTYPE" id="storeroomstatus_table1_restype" inputmode="READONLY" label="Reservation Type" sortable="true"/>
+            </tablebody>
+        </table>
+        <buttongroup id="storeroomstatus_view_buttons">
+            <pushbutton default="true" id="storeroomstatus_view_buttons_1" label="Close" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.workorder.ReschedAssignBean" id="RESCHDASSN" label="Reschedule/Unassign Assignments" mboname="reschedassign">
+        <section border="true" id="reschedassign_grid1">
+            <sectionrow id="reschedassign_grid1_1">
+                <sectioncol id="reschedassign_grid1_1_1">
+                    <section id="reschedassign_grid1_1_1_grid2">
+                        <textbox dataattribute="rescheddate" id="reschedassign_grid1_1_1_grid2_1" lookup="datelookup"/>
+                        <checkbox dataattribute="resched" id="reschedassign_grid1_1_1_grid2_3"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="reschedassign_2">
+            <pushbutton id="reschedassign_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="reschedassign_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.workorder.PMAlertBean" hidehelp="true" id="pmalert" label="View PM Alert Information">
+        <helpgrid id="pmalert_help" innerhtml="This table displays a list of PMs that require alerting. Select PMs to create Work Orders."/>
+        <section border="true" id="pmalert_grid1">
+            <sectionrow id="pmalert_grid1_1">
+                <sectioncol id="pmalert_grid1_1_1">
+                    <table id="pmalert_grid1_1_1_pmalert_table" label="PMs" selectmode="multiple" startrow="0">
+                        <tablebody displayrowsperpage="6" filterable="true" filterexpanded="true" id="pmalert_grid1_1_1_pmalert_table_tablebody">
+                            <tablecol filterable="false" id="pmalert_grid1_1_1_pmalert_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+                            <tablecol dataattribute="pmnum" id="pmalert_grid1_1_1_pmalert_table_tablebody_2" inputmode="readonly"/>
+                            <tablecol dataattribute="description" id="pmalert_grid1_1_1_pmalert_table_tablebody_3" inputmode="readonly"/>
+                            <tablecol dataattribute="ERLSTWOGENDATE" id="pmalert_grid1_1_1_pmalert_table_tablebody_4" inputmode="readonly"/>
+                            <tablecol dataattribute="assetnum" id="pmalert_grid1_1_1_pmalert_table_tablebody_5" inputmode="readonly"/>
+                            <tablecol dataattribute="location" id="pmalert_grid1_1_1_pmalert_table_tablebody_6" inputmode="readonly"/>
+                            <tablecol dataattribute="haschildren" id="pmalert_grid1_1_1_pmalert_table_tablebody_7" inputmode="readonly"/>
+                            <tablecol dataattribute="parent" id="pmalert_grid1_1_1_pmalert_table_tablebody_8" inputmode="readonly"/>
+                        </tablebody>
+                    </table>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="pmalert_2">
+            <pushbutton default="true" id="pmalert_2_1" label="OK" mxevent="doWork"/>
+            <pushbutton id="pmalert_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <action id="CREATEREL" method="createRelease" savemode="ONLOAD"/>
+    <dialog hidehelp="true" id="selectsh" label="Select Safety Hazards">
+        <helpgrid id="selecthaz_help" innerhtml="The following assets and locations are safety-related assets for the current work order.  Each asset might have safety hazards that affect the work environment of the current work order. Select hazards to Apply to Work Order. To finish, click Done."/>
+        <section id="selecthaz_grid2">
+            <sectionrow id="selecthaz_grid2_1">
+                <sectioncol id="selecthaz_grid2_1_1">
+                    <table id="selecthaz_grid2_1_1_relassets_table" inputmode="readonly" label="Safety Related Assets" relationship="SPRELATEDASSET">
+                        <tablebody displayrowsperpage="10" filterable="true" id="selecthaz_grid2_1_1_relassets_table_tablebody">
+                            <tablecol dataattribute="relatedasset" id="selecthaz_grid2_1_1_relassets_table_tablebody_1"/>
+                            <tablecol dataattribute="relatedlocation" id="selecthaz_grid2_1_1_relassets_table_tablebody_2"/>
+                            <tablecol dataattribute="relassetdescription" id="selecthaz_grid2_1_1_relassets_table_tablebody_3" sortable="false"/>
+                        </tablebody>
+                    </table>
+                    <table beanclass="psdi.webclient.beans.workorder.WOHazardsBean" id="selecthaz_grid2_1_1_hazards_table" inputmode="readonly" label="Hazards for {0}" parentdatasrc="selecthaz_grid2_1_1_relassets_table" parentemptylabel="Hazards" relationship="SELECTHAZARD" selectmode="multiple" titleattributes="relatedassetloc">
+                        <sectionheader id="selecthaz_grid2_1_1_hazards_table_h">
+                            <paramvalues id="selecthaz_grid2_1_1_hazards_table_h_1" property="label">
+                                <paramvalue dataattribute="relatedassetloc" id="selecthaz_grid2_1_1_hazards_table_h_2" position="0"/>
+                            </paramvalues>
+                        </sectionheader>
+                        <tablebody displayrowsperpage="10" filterable="true" id="selecthaz_grid2_1_1_hazards_table_tablebody" label="Hazards">
+                            <tablecol filterable="false" id="selecthaz_grid2_1_1_hazards_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+                            <tablecol dataattribute="hazardid" id="selecthaz_grid2_1_1_hazards_table_tablebody_2"/>
+                            <tablecol dataattribute="description" id="selecthaz_grid2_1_1_hazards_table_tablebody_3"/>
+                            <tablecol dataattribute="precautionenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_4"/>
+                            <tablecol dataattribute="hazmatenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_5"/>
+                            <tablecol dataattribute="tagoutenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_6"/>
+                        </tablebody>
+                        <buttongroup id="selecthaz_grid2_1_1_hazards_table_1">
+                            <pushbutton default="true" id="selecthaz_grid2_1_1_hazards_table_1_1" label="Apply to Work Order" mxevent="AddHazardsToWOActionHandler"/>
+                        </buttongroup>
+                    </table>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="selecthaz_2">
+            <pushbutton default="true" id="selecthaz_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="selecthaz_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" hidehelp="true" id="searchbook" label="My Bookmarks" mboname="WORKORDER">
+        <table id="bookmarks_table" inputmode="readonly" label="Work Orders" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+                <tablecol dataattribute="wonum" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
+                <tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
+                <tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmarks_2">
+            <pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="modifyps" label="Select / Deselect Price Schedule" savemode="ONUNLOAD" width="900">
+        <table beanclass="psdi.plusp.webclient.beans.pluspwo.PlusPModifyPSBean" id="pluspmodifyps_table" label="Price Schedule" relationship="PLUSPPRICESCHED">
+            <tablebody displayrowsperpage="1" filterable="true" id="pluspmoidfyps_tablebody">
+                <tablecol filterable="false" id="pluspmodifyps_tablecol_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol dataattribute="priceschedule" id="pluspmodifyps_tablecol_2" inputmode="readonly" label="Price Schedule"/>
+                <tablecol dataattribute="agreement" id="pluspmodifyps_tablecol_3">
+                    <textbox applink="pluspagree" id="pluspmodifyps_tablecol_3a" inputmode="readonly" lookup="pluspagreement" menutype="normal"/>
+                </tablecol>
+                <tablecol dataattribute="description" id="pluspmodifyps_tablecol_4">
+                    <textbox id="pluspmodifyps_tablecol_4a" inputmode="readonly" label="Price Schedule Description" lookup="longdesc"/>
+                </tablecol>
+                <tablecol dataattribute="revisionnum" id="pluspmodifyps_tablecol_5" inputmode="readonly" label="Revision"/>
+                <tablecol dataattribute="ranking" id="pluspmodifyps_tablecol_6" inputmode="readonly"/>
+                <tablecol filterable="false" id="pluspmodifyps_tablecol_7" mxevent="removePS" mxevent_desc="Remove Price Schedule" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <tabledetails id="pluspmodifyps_tabledetails">
+                <section id="pluspmodifyps_tabledetails_section_1" inputmode="readonly" label="Details">
+                    <sectionrow id="pluspmodifyps_sectionrow">
+                        <sectioncol id="pluspmodifyps_sectioncol_1">
+                            <section id="pluspmodifyps_tabledetails_section_1_1">
+                                <multiparttextbox dataattribute="priceschedule" descdataattribute="description" descinputmode="readonly" id="pluspmodifyps_multiparttextbox_1" label="Price Schedule" lookup="plusppricesched"/>
+                                <multiparttextbox applink="pluspagree" dataattribute="agreement" descdataattribute="PLUSPAGREEMENT.description" descinputmode="readonly" id="pluspmodifyps_multiparttextbox_2" lookup="pluspagreement" menutype="normal"/>
+                                <multiparttextbox dataattribute="revisionnum" descdataattribute="PLUSPAGREEMENT_revision.REVISIONCOMMENTS" descinputmode="readonly" id="pluspmodifyps_multiparttextbox_3" inputmode="readonly" label="Revision"/>
+                                <textbox dataattribute="objectname" id="pluspmodifyps_textbox_1"/>
+                                <textbox dataattribute="ranking" id="pluspmodifyps_textbox_2"/>
+                                <multiparttextbox dataattribute="CLASSSTRUCTURE.hierarchypath" descdataattribute="CLASSSTRUCTURE.description" descinputmode="readonly" id="pluspmodifyps_multiparttextbox_4" inputmode="readonly"/>
+                            </section>
+                        </sectioncol>
+                        <sectioncol id="pluspmodifyps_sectioncol_2">
+                            <section id="pluspmodifyps_tabledetails_section_2_1">
+                                <textbox dataattribute="muexternallabor" id="pluspmodifyps_textbox_3" label="Mark Up Ext. Labor"/>
+                                <textbox dataattribute="muinternallabor" id="pluspmodifyps_textbox_4" label="Mark Up Int. Labor"/>
+                                <textbox dataattribute="calcmaterials" id="pluspmodifyps_textbox_5" label="Markup / Discount Materials"/>
+                                <textbox dataattribute="mutools" id="pluspmodifyps_textbox_6" label="Markup / Discount Tools"/>
+                                <textbox dataattribute="calcservices" id="pluspmodifyps_textbox_7" label="Markup / Discount Services"/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+            </tabledetails>
+            <buttongroup id="pluspmodifyps_table_buttongroup">
+                <pushbutton default="true" id="pluspmodifyps__table_pushbutton_1" label="New Row" mxevent="associatePS"/>
+            </buttongroup>
+        </table>
+        <buttongroup id="pluspmodifyps_buttongroup">
+            <pushbutton default="true" id="pluspmodifyps_pushbutton_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="pluspmodifyps_pushbutton_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog hidehelp="true" id="viewhist" label="View Work Order History">
+        <table id="viewhist_table" label="Status History" orderby="changedate desc" relationship="WOSTATUS">
+            <tablebody displayrowsperpage="5" filterable="true" id="viewhist_tablebody">
+                <tablecol dataattribute="status" id="viewhist_tablebody_1"/>
+                <tablecol dataattribute="changedate" id="viewhist_tablebody_2"/>
+                <tablecol dataattribute="changeby" id="viewhist_tablebody_3"/>
+                <tablecol dataattribute="memo" id="viewhist_tablebody_4"/>
+                <tablecol dataattribute="glaccount" id="viewhist_tablebody_5"/>
+            </tablebody>
+        </table>
+        <table id="viewhist_viewhist_history_ownerStatustbl" label="Ownership History" orderby="owndate desc" relationship="OWNERHISTORY">
+            <tablebody displayrowsperpage="5" filterable="true" filterexpanded="false" id="viewhist_viewhist_history_ownerStatustbl_tablebody">
+                <tablecol dataattribute="owndate" id="viewhist_viewhist_history_ownerStatustbl_tablebody_1"/>
+                <tablecol dataattribute="owner" id="viewhist_viewhist_history_ownerStatustbl_tablebody_2"/>
+                <tablecol dataattribute="ownergroup" id="viewhist_viewhist_history_ownerStatustbl_tablebody_3"/>
+                <tablecol dataattribute="ownerchangeby" id="viewhist_viewhist_history_ownerStatustbl_tablebody_4"/>
+            </tablebody>
+        </table>
+        <buttongroup id="viewhist_2">
+            <pushbutton default="true" id="viewhist_2_1" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog hidehelp="true" id="displaywopm" label="Display Work Orders Generated">
+        <section border="true" id="displaywopm_grid1">
+            <sectionrow id="displaywopm_grid1_1">
+                <sectioncol id="displaywopm_grid1_1_1">
+                    <section id="displaywopm_grid1_1_1_grid22"/>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="displaywopm_2">
+            <pushbutton default="true" id="displaywopm_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.plusp.webclient.beans.pluspwo.PlusPSelectPSBean" id="associatePS" label="Select Price Schedule">
+        <section border="true" id="pluspassociatePS_section">
+            <radiobuttongroup dataattribute="plusppsfilter" datasrc="MAINRECORD" id="pluspassociatePS_radiobuttongroup" hidelabel="true">
+                <radiobutton id="pluspassociatePS_radiobutton_1" label="Show Filtered Agreement Price Schedules for this Customer" value="FILTERED"/>
+                <radiobutton id="pluspassociatePS_radiobutton_2" label="Show All Agreement Price Schedules for this Customer" value="ALL"/>
+            </radiobuttongroup>
+            <buttongroup id="pluspassociatePS_buttongroup_1">
+                <pushbutton id="pluspassociatePS_pushbutton_1_1" label="Refresh" mxevent="refreshPS"/>
+            </buttongroup>
+        </section>
+        <table id="pluspassociatePS_table" inputmode="readonly" label="Price Schedules" selectmode="single">
+            <tablebody displayrowsperpage="10" filterable="true" id="pluspassociatePS_tablebody">
+                <tablecol dataattribute="agreement" id="pluspassociatePS_tablecol_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>
+                <tablecol dataattribute="priceschedule" id="pluspassociatePS_tablecol_2" label="Price Schedule"/>
+                <tablecol dataattribute="description" id="pluspassociatePS_tablecol_3"/>
+                <tablecol dataattribute="revisionnum" id="pluspassociatePS_tablecol_4" label="Revision"/>
+                <tablecol dataattribute="ranking" id="pluspassociatePS_tablecol_5"/>
+            </tablebody>
+        </table>
+        <buttongroup id="pluspassociatePS_buttongroup_2">
+            <pushbutton id="pluspassociatePS_pushbutton_2_1" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <action id="CREATEPROB" method="createProblem" savemode="ONLOAD"/>
+    <dialog hidehelp="true" id="mandwntime" label="Manage Downtime History" relationship="MODDOWNTIMEHIST" savemode="ONLOADUNLOAD">
+        <section border="true" id="mandwntime_grid1">
+            <multiparttextbox dataattribute="wonum" datasrc="MAINRECORD" descdataattribute="description" descinputmode="READONLY" id="mandwntime_grid1_1"/>
+            <textbox dataattribute="siteid" datasrc="MAINRECORD" id="mandwntime_grid1_2"/>
+        </section>
+        <table id="mandwntime_view_assetstatus">
+            <tablebody displayrowsperpage="10" filterable="true" filterexpanded="false" id="mandwntime_view_assetstatus_tablebody">
+                <tablecol filterable="false" id="mandwntime_view_assetstatus_tablebody_0" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol dataattribute="assetnum" id="mandwntime_view_assetstatus_tablebody_1"/>
+                <tablecol dataattribute="startdate" id="mandwntime_view_assetstatus_tablebody_2"/>
+                <tablecol dataattribute="startwonum" id="mandwntime_view_assetstatus_tablebody_3"/>
+                <tablecol dataattribute="enddate" id="mandwntime_view_assetstatus_tablebody_4"/>
+                <tablecol dataattribute="endwonum" id="mandwntime_view_assetstatus_tablebody_5"/>
+                <tablecol dataattribute="downtime" id="mandwntime_view_assetstatus_tablebody_6"/>
+                <tablecol filterable="false" id="mandwntime_view_assetstatus_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <tabledetails id="mandwntime_view_assetstatus_tabledetails">
+                <section id="mandwntime_view_assetstatus_tabledetails_1" label="Details">
+                    <sectionrow id="mandwntime_view_assetstatus_tabledetails_1_1">
+                        <sectioncol id="mandwntime_view_assetstatus_tabledetails_1_1_1">
+                            <section id="mandwntime_view_assetstatus_tabledetails_1_1_1_1">
+                                <textbox applink="asset" dataattribute="assetnum" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_1" menutype="hyperlink"/>
+                                <textbox dataattribute="startdate" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_2" lookup="datelookup"/>
+                                <textbox dataattribute="startwonum" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_3" lookup="workorder"/>
+                                <textbox dataattribute="startcode" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_4" lookup="valuelist"/>
+                            </section>
+                        </sectioncol>
+                        <sectioncol id="mandwntime_view_assetstatus_tabledetails_1_1_2">
+                            <section id="mandwntime_view_assetstatus_tabledetails_1_1_2_1">
+                                <textbox dataattribute="downtime" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_1"/>
+                                <textbox dataattribute="enddate" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_2" lookup="datelookup"/>
+                                <textbox dataattribute="endwonum" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_3" lookup="workorder"/>
+                                <textbox dataattribute="endcode" id="mandwntime_view_assetstatus_tabledetails_1_1_3_1_4" lookup="valuelist"/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                    <sectionrow id="mandwntime_view_assetstatus_tabledetails_1_2">
+                        <sectioncol id="mandwntime_view_assetstatus_tabledetails_1_2_1">
+                            <section id="mandwntime_view_assetstatus_tabledetails_1_2_1_1" label="Start Operational Type">
+                                <radiobuttongroup border="false" dataattribute="startoperational" id="mandwntime_downtimetype_1" hidelabel="true">
+                                    <radiobutton id="mandwntime_downtimetype_1_1" label="Operational" value="1"/>
+                                    <radiobutton id="mandwntime_downtimetype_1_2" label="Non-operational" value="0"/>
+                                </radiobuttongroup>
+                            </section>
+                        </sectioncol>
+                        <sectioncol id="mandwntime_view_assetstatus_tabledetails_1_2_2">
+                            <section id="mandwntime_view_assetstatus_tabledetails_1_2_2_1" label="End Operational Type">
+                                <radiobuttongroup border="false" dataattribute="endoperational" id="mandwntime_downtimetype_2" hidelabel="true">
+                                    <radiobutton id="mandwntime_downtimetype_2_1" label="Operational" value="1"/>
+                                    <radiobutton id="mandwntime_downtimetype_2_2" label="Non-operational" value="0"/>
+                                </radiobuttongroup>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+            </tabledetails>
+        </table>
+        <buttongroup id="mandwntime_view_buttons">
+            <pushbutton default="true" id="mandwntime_view_buttons_1" label="OK" mxevent="dialogok"/>
+            <pushbutton default="true" id="mandwntime_view_buttons_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <action id="CREATEWO" method="createWorkorder" savemode="ONLOAD"/>
+    <dialog beanclass="psdi.webclient.beans.workorder.DirectIssueMaterialsBean" id="showdirissuestatus" inputmode="READONLY" label="Current Work Order Direct Issue Materials">
+        <table id="dirissuestatus_table1" label="Direct Issue Materials">
+            <tablebody displayrowsperpage="15" filterable="true" id="dirissuestatus_grid1" sortable="true">
+                <tablecol dataattribute="ITEMNUM" id="dirissuestatus_table1_itemnum" label="Item" sortable="true"/>
+                <tablecol dataattribute="DESCRIPTION" id="dirissuestatus_table1_description" inputmode="READONLY" sortable="true"/>
+                <tablecol dataattribute="ITEMQTY" id="dirissuestatus_table1_reqqty" inputmode="READONLY" label="Required Quantity" sortable="true"/>
+                <tablecol dataattribute="POLINE.RECEIVEDQTY" id="dirissuestatus_table1_availqty" inputmode="READONLY" label="Quantity Received" sortable="true"/>
+                <tablecol dataattribute="POLINE.RECEIPTSCOMPLETE" id="dirissuestatus_table1_reciptscomplete" inputmode="READONLY" label="Receipts Complete" sortable="true"/>
+                <tablecol dataattribute="PRLINE.PRNUM" id="dirissuestatus_table1_prnum" inputmode="READONLY" label="PR" sortable="true" type="LINK"/>
+                <tablecol dataattribute="PRLINE.PR.STATUS" id="dirissuestatus_table1_prstatus" inputmode="READONLY" label="PR Status" sortable="true" type="LINK"/>
+                <tablecol dataattribute="POLINE.PONUM" id="dirissuestatus_table1_ponum" inputmode="READONLY" label="PO" sortable="true" type="LINK"/>
+                <tablecol dataattribute="POLINE.PO.STATUS" id="dirissuestatus_table1_postatus" inputmode="READONLY" label="PO Status" sortable="true" type="LINK"/>
+                <tablecol dataattribute="POLINE.PO.VENDOR" id="dirissuestatus_table1_vendor" inputmode="READONLY" label="PO Vendor" sortable="true"/>
+                <tablecol dataattribute="POLINE.VENDELIVERYDATE" id="dirissuestatus_table1_antdeliverydate" inputmode="READONLY" label="Anticipated Delivery" sortable="true"/>
+                <tablecol dataattribute="MATUSETRANS.ACTUALDATE" id="dirissuestatus_table1_actualdeliverydate" inputmode="READONLY" label="Delivery Date"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dirissuestatus_view_buttons">
+            <pushbutton default="true" id="dirissuestatus_view_buttons_1" label="Close" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog hidehelp="true" id="sqrlist" label="SQR Reports List">
+        <section border="true" id="sqrlist_reportlist">
+            <sectionrow id="sqrlist_reportlist_1">
+                <sectioncol id="sqrlist_reportlist_1_1">
+                    <buttongroup id="sqrlist_reportlist_1_1_buttons1">
+                        <pushbutton id="sqrlist_reportlist_1_1_buttons1_1" label="Close"/>
+                    </buttongroup>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="sqrlist_2">
+            <pushbutton default="true" id="sqrlist_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.LookupBean" icon="img_lookup.gif" id="lookup_wo_asset" label="Select Value">
+        <table id="lookup_wo_asset_table" inputmode="readonly" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="lookup_wo_asset_asset_lookup_tablebody">
+                <tablecol dataattribute="assetnum" id="lookup_wo_asset_asset_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+                <tablecol dataattribute="description" id="lookup_wo_asset_asset_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+                <tablecol dataattribute="location" id="lookup_wo_asset_asset_lookup_tablebody_col_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+                <tablecol dataattribute="siteid" id="lookup_wo_asset_asset_lookup_tablebody_col_4" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+                <tablecol dataattribute="status" id="lookup_wo_asset_asset_lookup_tablebody_col_5" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+                <tablecol dataattribute="pluscduedate_np" id="lookup_wo_asset_asset_lookup_tablebody_col_7" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+                <tablecol dataattribute="pluscismte" id="lookup_wo_asset_asset_lookup_tablebody_col_6" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+            </tablebody>
+        </table>
+        <buttongroup id="jobpla23n_pm_2">
+            <pushbutton default="true" id="rtasset_cancel_dialog" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <action id="CREATESREQ" method="createServiceRequest" savemode="ONLOAD"/>
+    <dialog datasrc="MAINRECORD" hidehelp="true" id="duplicate" label="Duplicate Record">
+        <section id="duplicate_grid1">
+            <radiobuttongroup border="false" dataattribute="dupflag" id="duplicate_grid1_1_1_grid6" hidelabel="true"/>
+        </section>
+        <buttongroup id="duplicate_1">
+            <pushbutton default="true" id="owner_1_1" label="OK" mxevent="DUPLICATECHECK"/>
+            <pushbutton id="owner_1_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.plusc.webclient.beans.workorder.ShowPlusCTechnicianBean" id="tool-showlabor" label="Select By Labor" mboname="LABOR">
+        <table id="showlabor_select_table" inputmode="readonly" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="showlabor_select_table_tablebody">
+                <tablecol dataattribute="laborcode" id="showlabor_select_table_tablecol_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+                <tablecol dataattribute="person.displayname" id="showlabor_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+            </tablebody>
+        </table>
+        <buttongroup id="showlabor_2">
+            <pushbutton default="true" id="showlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog hidehelp="true" id="catalogs" label="Search Catalogs">
+        <section border="true" id="cataloglist_grid4">
+            <sectionrow id="cataloglist_grid4_1">
+                <sectioncol id="cataloglist_grid4_1_1"/>
+            </sectionrow>
+        </section>
+        <buttongroup id="cataloglist_2">
+            <pushbutton default="true" id="cataloglist_2_1" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <configurationblock id="datastore_configurationblock">
+    </configurationblock>
+</presentation>

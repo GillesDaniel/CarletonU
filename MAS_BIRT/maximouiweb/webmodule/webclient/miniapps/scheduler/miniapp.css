@@ -1,0 +1,1235 @@
+/* this CSS is needed to fix rendering issues, because core ui uses border-box and not content-box */
+${id} *, ${id} *:before, ${id} *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+${id} table {
+    border-collapse: separate;
+}
+
+.GridMain *, .GridMain *:before, .GridMain *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.GridMain table {
+    border-collapse: separate;
+}
+
+.COPanelImage {
+    width: 15px!important;
+    padding-right: 3px!important;
+}
+
+/** fix TreeGrid in Maximo dialog */
+.dsc1 ${id} tr td, .dsc1 ${id} .table tr td {
+    vertical-align: top !important;
+}
+
+/*
+  You can enable this to see the 'debug' (red) lines around the various widget parts.  This can be used to 
+  help verify/troubleshoot some layout issues.
+*/
+${id} .xxdebug {
+    border: 1px solid red !important;
+}
+
+${id}.xxminiapp {
+    border: 1px solid blue !important;
+}
+
+${id} .skd-bar, ${id} .skd-bar-inner {
+    height: 100%;
+    line-height: 24px;
+    min-height: 24px;
+}
+
+${id} .skd-bar-inner {
+    padding-left: 2px;
+    padding-right: 2px;
+    vertical-align: middle;
+}
+
+
+${id} .skd-crew-bar {
+    font-weight: normal!important;
+    text-align: center;
+}
+
+
+/* NOTE these are here because they reference images... they are 'xxx'ed out in the Grid.css */
+${id} .COToolUndo {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_undo.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolUndo1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_undo.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolRedo {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_redo.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolRedo1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_redo.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolPrint {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_print.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolColumns {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/ac22_columnsSelector.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolExpandAll {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_expandAll_tree.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolCollapseAll {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_closeAll_tree.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomFit {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_expandToFit.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomToWork {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomToWork.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolReload {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_refresh.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomIn1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomIn.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomIn {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomIn.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolZoomOut1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomOut.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomOut {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomOut.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolExport {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/tb_createExcelFile.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .CODateRight, .CODatesRight {
+    padding-right: 24px;
+    background: url(${images}/img_date_time.gif) no-repeat center;
+}
+
+${id} .COEditCellInput {
+    background-color: white;
+    height: 22px!important;
+    margin-left: -1px;
+}
+
+${id} input[type=text] {
+    height: 19px!important;
+}
+
+/* remove padding on left/right html sections */
+${id} .COGanttHtmlRight0 {
+    padding-left: 0;
+}
+
+${id} .COGanttHtmlRight1 {
+    padding-left: 0;
+}
+
+${id} .COGanttHtmlLeft0 {
+    padding-right: 2px;
+}
+
+${id} .COGanttHtmlLeft1 {
+    padding-right: 2px;
+}
+
+${id} .COLeftSplitter, ${id} .CORightSplitter, ${id} .COLeftSplitterTouch, ${id} .CORightSplitterTouch {
+    background: darkgrey;
+}
+
+${id} .COSpaceRowHeight {
+    height: 23px;
+}
+
+${id} .CORowHeight {
+    height: 23px;
+}
+
+${id} .COHeaderText {
+    font: 13px Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+${id} .CORightButton {
+    height: 22px;
+    width: 22px;
+}
+
+${id} .COPanelButton {
+    height: 22px;
+    width: 22px;
+}
+
+${id} .COToolButtonButton, ${id} .COToolButtonButton1, ${id} .COToolSpaceButton, ${id} .COToolSpaceButton1 {
+    height: 30px;
+    width: 30px
+}
+
+${id} .COToolIconHtml {
+    height: 30px;
+    width: 30px
+}
+
+${id} .COToolSave, ${id} .COToolReload, ${id} .COToolRepaint, ${id} .COToolRepaint1, ${id} .COToolAdd, ${id} .COToolAddChild, ${id} .COToolJoin, ${id} .COToolSplit, ${id} .COToolSort1, ${id} .COToolSort, ${id} .COToolCalc1, ${id} .COToolCalc,
+${id} .COToolExpandAll, ${id} .COToolCollapseAll, ${id} .COToolColumns, ${id} .COToolCfg, ${id} .COToolHelp, ${id} .COToolPrint, ${id} .COToolExport, ${id} .COToolExportPDF, ${id} .COToolDebug, ${id} .COToolOutdent, ${id} .COToolIndent,
+${id} .COToolUndo, ${id} .COToolUndo1, ${id} .COToolRedo, ${id} .COToolRedo1, ${id} .COToolCorrect, ${id} .COToolCorrect1, ${id} .COToolZoomIn, ${id} .COToolZoomIn1, ${id} .COToolZoomOut, ${id} .COToolZoomOut1, ${id} .COToolZoomFit,
+${id} .COToolPagerFirst, ${id} .COToolPagerFirst1, ${id} .COToolPagerPrev, ${id} .COToolPagerPrev1, ${id} .COToolPagerNext, ${id} .COToolPagerNext1, ${id} .COToolPagerLast, ${id} .COToolPagerLast1, ${id} .COToolZoomToWork {
+    padding-left: 30px;
+    background-position: center;
+}
+
+${id} .COIconLeft {
+    background-position: left center;
+    padding-left: 27px !important;
+}
+
+${id} .COIconRight {
+    background-position: right center;
+    padding-right: 22px !important;
+}
+
+${id} .COFilter0Menu, ${id} .COFilter1Menu, ${id} .COFilter2Menu, ${id} .COFilter3Menu, ${id} .COFilter4Menu, ${id} .COFilter5Menu, ${id} .COFilter6Menu, ${id} .COFilter7Menu, ${id} .COFilter8Menu, ${id} .COFilter9Menu, ${id} .COFilter10Menu, ${id} .COFilter11Menu, ${id} .COFilter12Menu {
+    width: 22px;
+    height: 18px;
+}
+
+${id} .COCellSpaceButtonIcon {
+    padding-top: 1px;
+    padding-bottom: 0;
+    white-space: nowrap;
+}
+
+${id} .COSpaceButtonIconInner {
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    padding-left: 0 !important;
+    background-position: center;
+}
+
+${id} .COSpaceEditInner, ${id} .COSpaceSelectInner {
+    height: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border-right: 1px solid #E0E0E0;
+}
+
+${id} .COSpaceEditIconInner {
+    line-height: 22px;
+    vertical-align: middle;
+}
+
+${id} .COMenuButton {
+    height: 22px;
+}
+
+${id} .COEditNormalInput, ${id} .COEditNormalTextarea, ${id} .COEditSpaceInput, ${id} .COEditSpaceTextarea {
+    background-color: white;
+}
+
+${id} .COGantt {
+    border-bottom: none !important;
+}
+
+${id}.miniapp_IE .COGantt {
+    border-bottom: none !important;
+}
+
+${id} .COGanttBackDefault {
+    background-color: ${prop:gantt.background,#F0F0F0};
+}
+
+/* Default background color */
+${id} .COGanttBackRowDefault {
+    background-color: ${prop:gantt.background,#F0F0F0};
+}
+
+/* Default background color if shown in individual row */
+${id} .COGanttBackNonWork {
+    background-color: ${prop:gantt.background,#E0E0E0};
+}
+
+/* Non Working Background */
+
+${id} .COGanttHeaderBase {
+    font: 13px Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+${id} .COToolbarRow {
+    border-bottom: 1px solid #AAAAAA;
+    min-height: 34px;
+    height: 34px;
+}
+
+${id} .COCellSpaceEdit {
+    border: 0 solid white;
+    background: url("${images}/miniapps/scheduler/titlebar.png") repeat-x;
+}
+
+${id} .COGanttMainOut, ${id} .COGanttBoxOut, ${id} .COGanttBoxIn {
+    padding: 0;
+    border-color: transparent;
+}
+
+${id} .COPanelSelect {
+    background: url("${images}/cb_unchecked.gif") 0;
+    padding-top: 2px;
+}
+
+${id} .COPanelSelectOn {
+    background: url("${images}/cb_checked.gif") 0;
+    padding-top: 2px;
+}
+
+${id} .COPanelSelectOff {
+    background: url("${images}/cb_unchecked.gif") 0;
+    padding-top: 2px;
+}
+
+${id} .COPx1xx {
+    background: url("${images}/cb_unchecked.gif") 0;
+    padding-top: 2px;
+}
+
+${id} .COPx2xx {
+    background: url("${images}/cb_checked.gif") 0;
+    padding-top: 2px;
+}
+
+${id} .COCell, ${id} .COCellPanel, ${id} .COCellFilter, ${id} .COCellFilterPanel, ${id} .COCellHeader, ${id} .COCellHeaderPanel, ${id} .COCellHeaderEmpty, ${id} .COCellUser, ${id} .COCellEmpty {
+    border: 1px solid #E0E0E0;
+}
+
+${id} .COGanttBackNONWORK {
+    background-color: ${color:gantt.color.NONWORK, b4cdd6} !important;
+}
+
+${id} .COGanttBackWORK {
+    background-color: ${color:gantt.color.WORK, FFFFFF} !important;
+}
+
+${id} .COGanttBackWORKAlternate {
+    background-color: #F4F4F4 !important;
+}
+
+${id} .COGanttBackSHIFTBREAK {
+    background-color: ${color:gantt.color.SHIFTBREAK, D3D3D3} !important;
+}
+
+${id} .COGanttBackAssetLocationNONWORK {
+    background-color: #D3D3D3 !important;
+}
+
+${id} .COGanttBackAssetLocationOverlap {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAaElEQVQYV12PUQ2AQAxD32SADZCBDmwQbKADGWADZBwpbMvCfW1Z+9ozYABOvrcAG3D73swHiSZg9b0DLsBCIOdeSA3oRZJAx3CKdMgZJA3CZSYw1k6pjMx/pxBkZvnN20kCHStprp0eilwX0w7FFEcAAAAASUVORK5CYII=) repeat;
+}
+
+${id} .COGanttMark5 {
+    /*shaded background*/
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAE0lEQVQIW2NkYGBIY2BgYGCEMQAHvwDPt5tEogAAAABJRU5ErkJggg==) repeat !important;
+    /*hatch pattern*/
+    /*background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAaElEQVQYV12PUQ2AQAxD32SADZCBDmwQbKADGWADZBwpbMvCfW1Z+9ozYABOvrcAG3D73swHiSZg9b0DLsBCIOdeSA3oRZJAx3CKdMgZJA3CZSYw1k6pjMx/pxBkZvnN20kCHStprp0eilwX0w7FFEcAAAAASUVORK5CYII=) repeat!important;*/
+}
+
+${id} .COMenuHead {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+${id} .SKDTitle {
+    font-weight: bold;
+}
+
+${id} .SKDBOLD {
+    font-weight: bold;
+}
+
+${id} .Unassiged {
+    font-weight: bold;
+    background-color: white;
+}
+
+${id} .skd-tooltip div, ${id} .skd-tooltip label, ${id} .skd-tooltip input {
+    width: 100% !important;
+}
+
+${id} .skd-icon-left {
+    left: 6px;
+}
+
+${id} .skd-icon-right {
+}
+
+${id} .skd-icon-weatheralert, ${id} .skd-icon-worklog, ${id} .skd-icon-assignment, ${id} .skd-icon-requirement, ${id} .skd-icon-appointment, ${id} .skd-icon-from-dependencies, ${id} .skd-icon-to-dependencies, ${id} .skd-icon-resourceloc, ${id} .skd-icon-appresourceloc {
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+${id} .skd-icon-weatheralert {
+    /*right: -2px;*/
+    background-image: url("${images}/miniapps/scheduler/ac16_alert_weather.png");
+}
+
+${id} .skd-icon-worklog {
+    background-image: url("${images}/miniapps/scheduler/work_log.gif");
+}
+
+${id} .skd-icon-requirement {
+    /*right: -2px;*/
+    background-image: url("${images}/miniapps/scheduler/ac16_appointmentRequired.png");
+}
+
+${id} .skd-icon-appointment {
+    background-image: url("${images}/miniapps/scheduler/ac16_appointmentMade.png");
+}
+
+
+${id} .skd-icon-resourceloc {
+    background-image: url("${images}/miniapps/scheduler/btn_lockResourceAssignment_16.gif");
+}
+
+${id} .skd-icon-appresourceloc {
+    background-image: url("${images}/miniapps/scheduler/btn_lockScheduleDate_16.gif");
+}
+
+${id} .skd-icon-assignment {
+    background-image: url("${images}/miniapps/scheduler/tr_assignment.png");
+}
+
+${id} .skd-icon-from-dependencies {
+    background-image: url("${images}/miniapps/scheduler/ac16_dependency_bidirectional.png");
+}
+
+${id} .skd-icon-to-dependencies {
+    background-image: url("${images}/miniapps/scheduler/ac16_dependency_bidirectional.png");
+}
+
+${id} .skd-Conflict {
+    background-color: #FFEB3B !important;
+    color: black !important;
+}
+
+${id} .skd-InvalidSkillMap {
+    background-color: red !important;
+    color: white !important;
+}
+
+${id} .skd-err-schedule-window {
+    background-color: red !important;
+    color: white !important;
+}
+
+${id} .skd-err {
+    background-color: red !important;
+    color: white !important;
+}
+
+${id} .skd-CPM-highlight {
+    color: black !important;
+    background-color: ${prop:criticalpath.color,#3DDBD9} !important; 
+}
+
+${id} .skd-SecondaryAssignment {
+    background-color: #6BBC79 !important;
+    color: black !important;
+}
+
+${id} .skd-READONLY {
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+${id} .skd-READONLY_DURATION {
+    border-right: 2px solid red;
+    border-left: 2px solid red;
+}
+
+${id} .skd-READONLY_ASSIGNMENT {
+    border-right: 2px solid orange;
+    border-left: 2px solid orange;
+}
+
+${id} .skd-READONLY_STARTEND {
+    border-right: 2px solid blue;
+    border-left: 2px solid blue;
+}
+
+${id} .skd-HardResType {
+    background-color: #939393 !important;
+    color: black !important;
+}
+
+${id} .skd-FilteredAssignment {
+    background-color: #939393 !important;
+    color: black !important;
+}
+
+/*
+ workorder.wsch.background=9fB9e5
+ 
+ workorder.inprg.background=9fB9e5
+ 
+ workorder.wmatl.background=9fB9e5
+  
+ workorder.wpcond.background=9fB9e5
+
+ workorder.comp.background=afafa6
+ 
+ workorder.can.background=afafa6
+ 
+ workorder.close.background=afafa6
+ 
+ assignment.assigned.background=0e9527
+ 
+ assignment.started.background=0e9527
+ 
+ assignment.waitasgn.background=e28d00
+ 
+ assignment.interpt.background=205870
+ 
+ assignment.complete.background=afafa6
+
+ amcrew.assigned.background=0e9527
+ 
+ amcrew.assignednotqulified.background=ffff00
+ 
+ amcrew.started.background=0e9527
+ 
+ amcrew.waitasgn.background=e28d00
+
+ assignreploc.assigned.background=0e9527
+ 
+ assignreploc.started.background=0e9527
+ 
+ assignreploc.waitasgn.background=e28d00
+ 
+ assignreploc.interpt.background=205870
+ 
+ assignreploc.complete.background=afafa6
+*/
+
+
+/*ROW HOVER*/
+/*
+.COHoverRowBackground { opacity:1; filter:none; background:#888; }
+.COHoverRowBorder { z-index:1; border-top:2px solid #AAAAAA; border-bottom:2px solid #AAAAAA; cursor:default; background:white; padding:2px; padding-left:0px; }
+*/
+
+
+/** ROW FOCUS **/
+
+${id} .COFocusRowBackground {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    background: black;
+}
+
+${id} .COFocusRowBorder {
+    z-index: 2;
+    border: 2px solid #aaa;
+    background: white;
+    padding: 0;
+}
+
+/** USE BORDER to highlight box **/
+${id} .skd-Focus {
+    border-left: 5px solid blue;
+    border-right: 5px solid blue;
+    border-spacing: 0;
+}
+
+/* Resource Charts align titles offset */
+/* ${id} .COGanttAvailabilityBlue { padding-left:20px!important; } */
+
+/** compliance colors **/
+${id} .skd-compliance-scheduled, ${id} .skd-compliance-actual, ${id} .skd_compliance_target, ${id} .COGanttskd_compliance_scheduledIn, ${id} .COGanttskd_compliance_actualIn, ${id} .COGanttskd_compliance_targetIn {
+    font-weight: normal;
+}
+
+${id} .COGanttskd_compliance_scheduledOut, ${id} .COGanttskd_compliance_actualOut, ${id} .COGanttskd_compliance_targetOut {
+    border-color: white;
+}
+
+${id} .skd_compliance_scheduled, ${id} .COGanttskd_compliance_scheduledIn {
+    /*noinspection CssInvalidPropertyValue*/
+    background: ${color:compliance.scheduledate.background, D0D0F8} !important;
+    /*noinspection CssInvalidPropertyValue*/
+    color: ${color:compliance.scheduledate.foreground, 000000} !important;
+}
+
+${id} .skd_compliance_actual, ${id} .COGanttskd_compliance_actualIn {
+    /*noinspection CssInvalidPropertyValue*/
+    background: ${color:compliance.actualdate.background, D0F8D0} !important;
+    /*noinspection CssInvalidPropertyValue*/
+    color: ${color:compliance.actualdate.foreground, 000000} !important;
+}
+
+${id} .skd_compliance_target, ${id} .COGanttskd_compliance_targetIn {
+    /*noinspection CssInvalidPropertyValue*/
+    background: ${color:compliance.targetdate.background, F8D000} !important;
+    /*noinspection CssInvalidPropertyValue*/
+    color: ${color:compliance.targetdate.foreground,000000} !important;
+}
+
+${id} .COGanttskd_compliance_scheduledCompleteGauge {
+    background-color: ${color:compliance.scheduledate.background, D0D0F8, 1};
+}
+
+${id} .COGanttskd_compliance_targetCompleteGauge {
+    background-color: ${color:compliance.targetdate.background, F8D000, 1};
+}
+
+${id} .COGanttskd_compliance_actualCompleteGauge {
+    background-color: ${color:compliance.actualdate.background, D0F8D0, 1};
+}
+
+${id} .skd_compliance_physical, ${id} .COGanttskd_compliance_physicalIn {
+    /*noinspection CssInvalidPropertyValue*/
+    background: ${color:compliance.physical.background, d37aff} !important;
+    /*noinspection CssInvalidPropertyValue*/
+    color: ${color:compliance.physical.foreground,000000} !important;
+}
+
+${id} .COGanttskd_compliance_physicalCompleteGauge {
+    background-color: ${color:compliance.physical.background, d37aff, 1};
+}
+
+${id} .Compliance .COGanttMainOut {
+    border-color: white;
+}
+
+${id} .COClassSelected .COGanttMainOut {
+    border-style: dashed;
+    border-color: blue !important;
+    border-width: 2px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+${id} .COGanttSKDFocusOut, ${id} .COGanttSKDFocusSummaryOut {
+    border-style: dashed;
+    border-color: blue !important;
+    border-width: 2px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+${id}.miniapp_IE .COClassSelected .COGanttMainOut, ${id}.miniapp_IE .COGanttSKDFocusOut {
+    border-style: solid!important;
+}
+
+${id} .COClassFound1, ${id} .COClassFound2, ${id} .COClassFound3, ${id} .COColorFound3, ${id} .COColorFound2, ${id} .COColorFound1, ${id} .COColorFill {
+    background-color: #40D1AD!important;
+}
+
+/* begin compare view stuff */
+
+${id} .COGanttCompModSameOut {
+    /* not being picked up for some reason */
+    border-style: solid;
+    border-color: #A0C8FF !important;
+    border-width: 2px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+${id} .COGanttCompModSameOutHover {
+    border: 2px dashed #A0C8FF;
+}
+
+${id} .COGanttCompModSameIn {
+    background-color: #6581A7;
+}
+
+${id} .COGanttCompModRightOut {
+    border-style: dashed;
+    border-color: red !important;
+    border-width: 2px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+${id} .COGanttCompModRightOut span {
+    font-style: italic;
+}
+
+${id} .COGanttCompModRightOutHover {
+    border-style: dashed;
+    border-color: red !important;
+    border-width: 2px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+${id} .COGanttCompModLeftOut {
+    border-style: dashed;
+    border-color: red !important;
+    border-width: 2px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+${id} .COGanttCompModLeftOutHover {
+    border-style: dashed;
+    border-color: red !important;
+    border-width: 2px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+
+/** IE STUFF **/
+${id}.miniapp_IE .COGanttCompModSameOutHover {
+    border: 2px solid #A0C8FF;
+}
+
+${id}.miniapp_IE .COGanttCompModRightOut {
+    border-style: solid;
+}
+
+${id}.miniapp_IE .COGanttCompModRightOutHover {
+    border-style: solid;
+}
+
+${id}.miniapp_IE .COGanttCompModLeftOut {
+    border-style: solid;
+}
+
+${id}.miniapp_IE .COGanttCompModLeftOutHover {
+    border-style: solid;
+}
+
+
+/** end compare view stuff **/
+
+body.skd-waiting * {
+    cursor: progress;
+}
+
+/* shows current time in the gantt */
+${id} .COGanttLineOrange { background:white; width:0; border-left: 1px dashed red }
+${id}.miniapp_IE .COGanttLineOrange { border-left: 1px solid orangered }
+
+/* gant header*/
+${id} .COGanttHeaderBase {
+    font-weight: normal!important;
+    border-bottom: 1px solid #E0E0E0!important;
+    border-right: 1px solid #E0E0E0!important;
+}
+
+/*
+${id} .COGanttAvailabilityYellow {
+	color: #000000!important;
+	background-color: #4d9900!important;
+	border-color: #4d9900!important;
+	opacity:0.3; filter:alpha(opacity=10);
+}
+*/
+
+/** Dispatching CSS stuff **/
+${id} .COGanttPoint1 {
+    background:url("${images}/miniapps/scheduler/ac16_start.png") no-repeat; width:17px; height:17px; overflow:hidden;
+    position: relative;
+    left: -8px;
+    top: 5px;
+}
+${id} .COGanttPoint2 {
+    background:url("${images}/miniapps/scheduler/ac16_stop.png") no-repeat; width:17px; height:17px; overflow:hidden;
+    position: relative;
+    right: -8px;
+    top: 5px;
+}
+
+${id} .COGanttTravelTimeOut, ${id} .COGanttTravelTimeOutHover, ${id} .COGanttTravelTimeOut .COGanttTravelTimeIn {
+    border: none!important;
+    background-color: black!important;
+    /*height: 5px!important;*/
+    /*top: 5px!important;*/
+    /*position: relative;*/
+}
+
+/*travel time */
+${id} .COGanttMark13 { background:black; margin-top:11px!important; height:6px!important; margin-bottom:-17px!important; }
+
+${id} .COToolbarRow {
+    background: url("${images}/miniapps/scheduler/titlebar.png") repeat-x;
+}
+
+/* crews */
+${id} .crews-ASSIGNED {
+    background: ${color:amcrew.assigned.background, 0e9527} !important;
+}
+
+${id} .crews-ASSIGNED_NOTQUALIFIED {
+    background: ${color:amcrew.assignednotqulified.background, ffff00} !important;
+}
+
+${id} .crews-WAITASSIGN {
+    background: ${color:amcrew.waitasgn.background, e28d00} !important;
+}
+
+${id} .SKDOTHERASSIGNMENT {
+    background-color: grey!important;
+}
+
+/* availability: Load */
+${id} .COGanttAvailabilityBlue {
+   background: ${color:load.back.color, 33B1FF};
+   color: ${color:load.text.color, 003A6D};
+   border-color: ${color:load.back.color, 33B1FF};
+}
+
+/* availability: Available */
+${id} .COGanttAvailabilityYellow {
+   background-color: ${color:avail.back.color, E8DAFF} ;
+   color: ${color:avail.text.color, 491D8B};
+   border-color: ${color:avail.back.color, E8DAFF}; /*Only for default Values*/
+}
+
+/* availability: Overload */
+${id} .COGanttAvailabilityRed {
+   background-color: ${color:overload.back.color, FF8389} ;
+   color: ${color:overload.text.color, 740937};
+   border-color: ${color:overload.back.color, FF8389};
+}
+
+.skd-tt-iconclose {
+    display: block;
+    text-align: right;
+}
+
+.skd-modified {
+    color: blue!important;
+    font-style: italic!important;
+}
+
+/*
+.skd-modified::before {
+    content: "* ";
+}
+*/
+
+.COGanttMainOutHover,.COGanttBoxOutHover,.COGanttSolidOutHover,.COGanttLeftOutHover,.COGanttRightOutHover,.COGanttFixedOutHover,
+.COGanttBoundOutHover,.COGanttBoundStartOutHover,.COGanttEndOutHover,.COGanttEndStartOutHover,.COGanttNbspOutHover,.COGanttEmptyOutHover {
+    border:2px solid blue;
+}
+
+/** summary bars - prevents bars from turning red, etc **/
+${id} .COGanttSKDSummaryOut, ${id} .COGanttSKDSummaryIn, ${id} .COGanttSKDSummaryFocusOut, ${id} .COGanttSKDSummaryFocusIn, ${id} .COGanttSKDFocusOutErr, ${id} .COGanttSKDFocusInErr, ${id} .COGanttSKDFocusSummaryOut, ${id} .COGanttSKDFocusSummaryIn {
+	background-color: ${color:workorder.summary.background, CAC5C4} !important;
+	background: linear-gradient(to bottom left,transparent 50%, #736F6F 0) bottom left/10px 10px no-repeat,transparent;
+	color: ${color:workorder.summary.start, black} !important;
+	line-height: 24px;
+	min-height: 24px;
+}
+
+/** percent complete bar color */
+${id} .COGanttOut100, ${id} .COGanttOut100Err, ${id} .COGanttOut100Crit,  ${id} .COGanttIn100, ${id} .COGanttIn100Err,  ${id} .COGanttIn100Crit,  ${id} .COGanttCompleteGauge,  ${id} .comp100, ${id} .COGanttSKDSummaryOut100, ${id} .COGanttSKDSummaryIn100, ${id} .COGanttSKDSummaryOut100Err, ${id} .COGanttSKDSummaryIn100Err {
+    background:#7E7!important; color: black!important;
+}
+
+${id} .COGanttCompleteText {
+    color: black!important;
+}
+
+${id} .skd-RELATED {
+    background-color: #1e889b !important;
+    color: black !important;
+}
+
+/** Milestones */
+${id} .COGanttMilestone { background-position: -1700px 0px; }
+${id} .COGanttSelMilestone { background-position: -1725px 0px; }
+${id} .COGanttMilestoneHover { background-position: -1750px 0px; }
+${id} .COGanttSelMilestoneHover { background-position: -1775px 0px; }
+
+${id} .COGanttWAPPRMilestone { 
+	background-image: url("${images}/miniapps/scheduler/wappr_milestone.gif");
+	background-position: 0px 0px;
+}
+${id} .COGanttWAPPRSelMilestone { background-image: url("${images}/miniapps/scheduler/wappr_sel_milestone.gif"); }
+${id} .COGanttWAPPRMilestoneHover { background-image: url("${images}/miniapps/scheduler/wappr_milestone_hover.gif"); }
+${id} .COGanttWAPPRSelMilestoneHover { background-image: url("${images}/miniapps/scheduler/wappr_sel_milestone_hover.gif"); }
+
+${id} .COGanttINPRGMilestone {
+	background-image: url("${images}/miniapps/scheduler/inprg_milestone.gif");
+	background-position: 0px 0px;
+}
+${id} .COGanttINPRGSelMilestone { background-image: url("${images}/miniapps/scheduler/inprg_sel_milestone.gif"); }
+${id} .COGanttINPRGMilestoneHover { background-image: url("${images}/miniapps/scheduler/inprg_milestone_hover.gif"); }
+${id} .COGanttINPRGSelMilestoneHover { background-image: url("${images}/miniapps/scheduler/inprg_sel_milestone_hover.gif"); }
+
+${id} .COGanttCOMPMilestone { background-position: -1600px 0px; }
+${id} .COGanttCOMPSelMilestone { background-position: -1625px 0px; }
+${id} .COGanttCOMPMilestoneHover { background-position: -1650px 0px; }
+${id} .COGanttCOMPSelMilestoneHover { background-position: -1675px 0px; }
+
+/** how to change summary end icons
+${id} .COGanttOutLeft {
+    background:url("${images}/miniapps/scheduler/end.png") no-repeat;
+    background-position-x: 5px;
+}
+*/
+
+/** IE PERF **/
+${id}.miniapp_IE .COHScrollLeftResize { border-right-style:solid!important; }
+${id}.miniapp_IE .COHScrollRightResize { border-left-style:solid!important; }
+${id}.miniapp_IE .COHScrollMidLeftResize { border-left-style: solid!important; }
+${id}.miniapp_IE .COHScrollMidRightResize { border-right-style: solid!important; }
+${id}.miniapp_IE .COHScrollLeftResizeTouch { border-right-style:solid!important; }
+${id}.miniapp_IE .COHScrollRightResizeTouch { border-left-style: solid!important; }
+${id}.miniapp_IE .COHScrollMidLeftResizeTouch { border-left-style:solid!important; }
+${id}.miniapp_IE .COHScrollMidRightResizeTouch { border-right-style:solid!important; }
+${id}.miniapp_IE .COCell,${id}.miniapp_IE .COCellPanel,${id}.miniapp_IE .COCellFilter,${id}.miniapp_IE .COCellFilterPanel,${id}.miniapp_IE .COCellHeader,${id}.miniapp_IE .COCellHeaderPanel,${id}.miniapp_IE .COCellHeaderEmpty,${id}.miniapp_IE .COCellUser,${id}.miniapp_IE .COCellEmpty,${id}.miniapp_IE .COCellIndex,${id}.miniapp_IE .COCellIndexPanel,${id}.miniapp_IE .COCellRowPanel {
+    border-bottom-style: solid!important;
+}
+${id}.miniapp_IE .COPagesLinkActive { border-style:solid; }
+${id}.miniapp_IE .COToolLine4 { border-bottom-style:solid; }
+${id}.miniapp_IE .COToolLine5 { border-bottom-style:solid; }
+${id}.miniapp_IE .COToolLine6 { border-bottom-style:solid; }
+${id}.miniapp_IE .COToolLine7 { border-bottom-style:solid; }
+${id}.miniapp_IE .COPagerHeader { border-bottom-style:solid; }
+${id}.miniapp_IE .COPagerItem {
+    border-bottom-style:solid!important;
+}
+${id}.miniapp_IE .COMenuItemBorder4 { border-bottom-style:solid; }
+${id}.miniapp_IE .COMenuItemBorder5 { border-bottom-style:solid; }
+${id}.miniapp_IE .COMenuItemBorder6 { border-bottom-style:solid; }
+${id}.miniapp_IE .COMenuItemBorder7 { border-bottom-style:solid; }
+${id}.miniapp_IE .COPickHover,${id}.miniapp_IE .COPickSelHover,${id}.miniapp_IE .COPickWD,${id}.miniapp_IE .COPickSa,${id}.miniapp_IE .COPickSu,${id}.miniapp_IE .COPickSel,${id}.miniapp_IE .COPickNow,${id}.miniapp_IE .COPickWDNE,${id}.miniapp_IE .COPickSaNE,${id}.miniapp_IE .COPickSuNE,${id}.miniapp_IE .COPickSelNE,${id}.miniapp_IE .COPickNowNE,${id}.miniapp_IE .COPickOM,${id}.miniapp_IE .COPickOMNE,${id}.miniapp_IE .COPickWN,${id}.miniapp_IE .COPickWNE {
+    border-bottom-style: solid!important;
+}
+${id}.miniapp_IE .COPick2M,${id}.miniapp_IE .COPick2Y,${id}.miniapp_IE .COPick2MSel,${id}.miniapp_IE .COPick2YSel,${id}.miniapp_IE .COPick2MHover,${id}.miniapp_IE .COPick2YHover,${id}.miniapp_IE .COPick2MSelHover,${id}.miniapp_IE .COPick2YSelHover {
+    border-bottom-style:solid!important;
+}
+${id}.miniapp_IE .COHintMain {
+    border-style: solid!important;
+}
+${id}.miniapp_IE .COResizeBorder { border:1px solid black!important; }
+
+.COSpaceWidthInner {
+	height: 28px!important;
+}
+
+/** Graphical Work Week */
+
+${id} .SKDCRAFT {
+    text-align: center;
+    background-color: #7fc8fd !important;
+    color: #00008B !important;
+}
+
+${id} .SKDCRAFT_FULLYBOOKED {
+    background-color: #f2f2f2 !important;
+    color: #777677 !important;
+    text-align: center;
+}
+
+${id} .SKDCRAFT_OVERBOOKED {
+    background-color: #f2f2f2 !important;
+    color: red !important;
+    text-align: center;
+}
+
+${id} .SKDCRAFT_NONWORKTIME {
+    background-color: #777677 !important;
+    color: white !important;
+    text-align: center;
+}
+
+${id} .SKDAMCREWT {
+    text-align: center;
+    background-color: #7fc8fd !important;
+    color: #00008B !important;
+}
+
+${id} .SKDAMCREWT_FULLYBOOKED {
+    background-color: #f2f2f2 !important;
+    color: #777677 !important;
+    text-align: center;
+}
+
+${id} .SKDAMCREWT_OVERBOOKED {
+    background-color: #f2f2f2 !important;
+    color: red !important;
+    text-align: center;
+}
+
+${id} .SKDAMCREWT_NONWORKTIME {
+    background-color: #777677 !important;
+    color: white !important;
+    text-align: center;
+}
+
+${id} .SKDLABOR_FULLYBOOKED {
+    background-color: #f2f2f2 !important;
+    color: #777677 !important;
+    text-align: center;
+}
+
+${id} .SKDLABOR_OVERBOOKED {
+    background-color: #f2f2f2 !important;
+    color: red !important;
+    text-align: center;
+}
+
+${id} .SKDLABOR_AVAIL {
+	background-color: #CCE6AA !important;
+	color: #0a3c02 !important;
+	text-align: center;
+}
+
+${id} .SKDLABOR_NONWORKTIME {
+    background-color: #777677 !important;
+    color: white !important;
+    text-align: center;
+}
+
+${id} .SKDAMCREW_FULLYBOOKED {
+    background-color: #f2f2f2 !important;
+    color: #777677 !important;
+    text-align: center;
+}
+
+${id} .SKDAMCREW_OVERBOOKED {
+    background-color: #f2f2f2 !important;
+    color: red !important;
+    text-align: center;
+}
+
+${id} .SKDAMCREW_AVAIL {
+	background-color: #CCE6AA !important;
+	color: #0a3c02 !important;
+	text-align: center;
+}
+
+${id} .SKDAMCREW_NONWORKTIME {
+    background-color: #777677 !important;
+    color: white !important;
+    text-align: center;
+}
+
+${id} .EXTERNALASSIGNMENTS {
+    background: url("${images}/miniapps/scheduler/labor-scheduled.png") no-repeat left center;
+    background-position: 5px 5px;
+}
+
+${id} .COGanttMark2 {
+	background: red!important;
+	width: 2px!important;
+}
+
+/* CSS changes for the new Scheduler UI */
+${id} .COColorAlternate {
+	background-color: #FFFFFF;
+}
+
+${id} .CONIcon {
+    background-repeat: no-repeat!important;
+    vertical-align: middle!important;
+    background-position: right center!important;
+}
+
+${id} .COCellHeader, ${id} .COCellHeaderPanel, ${id} .COCellHeaderEmpty {
+	background: none!important;
+	padding-top: 5px;
+	border-bottom: 1px solid #E0E0E0!important;	
+}
+
+${id} .COSort0Right {
+	background-color: #FFFFFF!important;
+}
+
+${id} .COGanttOutLeft, ${id} .COGanttOutRight, ${id} .COGanttInLeft, ${id} .COGanttInRight, ${id} .COGanttOutHeightLeft, ${id} .COGanttOutHeightRight, ${id} .COGanttInHeightLeft, ${id} .COGanttInHeightRight {
+	background: none!important;	
+}
+
+${id} .CONoTreeLines1 {
+	text-align: right;
+    vertical-align: middle;
+}
+
+${id} .COClassReadOnly {
+	vertical-align: middle;
+	background-position-x: 5px;
+}
+
+${id} .COGanttMainIn {
+    font-family: "IBM Plex Sans";
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+}
+
+${id} .COClassEdit {
+    vertical-align: middle;
+    background-color: rgb(244, 244, 244);
+}
+
+${id} .COBool0 {
+    background-position: center 5px;
+}
+
+${id} .COBool1 {
+    background-position: center -245px;
+}
+
+${id} .COBool0RO {
+    background-position: center -745px!important;
+}
+
+${id} .COBool1RO {
+    background-position: center -995px!important;
+}
+
+${id} .COHeadLeft, ${id} .COHeadMid, ${id} .COHeadRight, ${id} .COHeadMidPrint {
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 0px solid white;
+}
+
+${id} .COCellBase {
+   	border-bottom: none;
+   	border-right: none;
+   	border-top: none!important;
+}
+
+#assignments_miniapp .COClassReadOnly {
+    vertical-align: middle;
+    background-position-x: 122px;
+}
+
+body[data-appid='GRESOURCE'] ${id} .COGanttInError {
+    background: #FAA;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+#viewerng_resourcetabs_rshb_gantt .COGanttMainOut, #viewerng_resourcetabs_rshb_gantt .COGanttBoxOut, #viewerng_resourcetabs_rshb_gantt .COGanttBoxIn {
+    padding: 0;
+    border-color: #888899!important;
+}
+
+body[data-appid='GWORKASSIGN'] #viewerng_resourcetabs_rshb_gantt .COClassReadOnly {
+    vertical-align: middle;
+    background-position-x: 122px;
+}

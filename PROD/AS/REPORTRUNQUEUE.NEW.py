@@ -5,3 +5,12 @@ mbo.setValue("userid","MAXADMIN",MboConstants.NOACCESSCHECK|MboConstants.NOVALID
 #userinfo =mbo.getUserInfo()
 #if userinfo.getEmail() and not userinfo.getEmail() == "":
 #    mbo.setValue('REPLYTO',userinfo.getEmail(), MboConstants.NOACCESSCHECK)
+
+scriptConfig="""{
+    "autoscript": "REPORTRUNQUEUE.NEW",
+    "description": "initialize REPORTRUNQUEUE userid",
+    "version": "",
+    "active": false,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+}"""

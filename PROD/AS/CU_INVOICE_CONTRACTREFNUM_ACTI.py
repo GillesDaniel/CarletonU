@@ -28,3 +28,23 @@ if(contractRef is not None):
         
         
         invoiceLine=invoiceLineSet.moveNext()
+
+scriptConfig="""{
+    "autoscript": "CU_INVOICE_CONTRACTREFNUM_ACTI",
+    "description": "CU: INVOICE. CONTRACTREFNUM ACTION",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "CU_INVOICE_CONTRACTREFNUM_ACTI",
+            "launchPointType": "ATTRIBUTE",
+            "active": true,
+            "description": "CU: INVOICE. CONTRACTREFNUM ACTION",
+            "objectName": "INVOICE",
+            "attributeName": "CONTRACTREFNUM",
+            "runAction": true
+        }
+    ]
+}"""

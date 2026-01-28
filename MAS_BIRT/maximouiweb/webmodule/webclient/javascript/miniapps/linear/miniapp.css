@@ -1,0 +1,144 @@
+/* this CSS is needed to fix rendering issues, because core ui uses border-box and not content-box */
+${id} *, ${id} *:before, ${id} *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+${id} table {
+    border-collapse: separate;
+}
+
+.GridMain *, .GridMain *:before, .GridMain *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.GridMain table {
+    border-collapse: separate;
+}
+
+/** overrride the default style **/
+.GSGanttFixedOut {
+    border-color: grey;
+}
+
+${id} .CGToolExpandAll {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_expandAll_tree.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .CGToolCollapseAll {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_closeAll_tree.png") no-repeat;
+    padding-right: 2px;
+}
+
+
+${id} .CGToolZoomFit {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_expandToFit.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .CGToolZoomIn1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_zoomIn.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .CGToolZoomIn {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_zoomIn.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .CGToolZoomOut1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_zoomOut.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .CGToolZoomOut {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_zoomOut.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .CGToolPrint {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/common/tb_print.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .CGToolDebug {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/debug.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .mark { 
+	background:#ff80ff!important; 
+	border-color:fuchsia;
+	animation: markSmoothPulse 5s infinite;
+    -webkit-animation: markSmoothPulse 5s infinite;
+    -moz-animation: markSmoothPulse 5s infinite;
+}
+
+${id} .milestoneMark { 
+    background: url("${images}/miniapps/common/Gantt.gif?v110") no-repeat;
+    background-position: -1350px 0px;
+	animation: milestoneSmoothPulse 5s infinite;
+    -webkit-animation: milestoneSmoothPulse 5s infinite;
+    -moz-animation: milestoneSmoothPulse 5s infinite;
+	}
+	
+	
+@keyframes milestoneSmoothPulse {
+  0% {
+     	opacity: 1.0;
+  }
+  50% {
+     	opacity: .20;
+  }
+  100% {
+     	opacity: 1.0;
+  }
+}
+
+@keyframes markSmoothPulse {
+  0% {
+     	opacity: .9;
+  }
+  50% {
+     	opacity: 1.0;
+		background:#C6E2FF; 
+  }
+  100% {
+     	opacity: .9;
+  }
+}

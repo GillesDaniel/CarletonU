@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MX5XUPGRADE>
+  <UTRANSTYPE>
+     <MX5XCOMOUT>
+    	<COMPANIES checksendersysid="0" useaction="1">C</COMPANIES>
+     </MX5XCOMOUT>
+     <MX5XWOOUT>
+    	<WORKORDER checksendersysid="1" useaction="1">W</WORKORDER>
+     </MX5XWOOUT>
+     <MX5XPOOUT>
+    	<PO checksendersysid="1" useaction="1">PO</PO>
+     </MX5XPOOUT>
+     <MX5XPROUT>
+    	<PR checksendersysid="1" useaction="1">PR</PR>
+     </MX5XPROUT>
+     <MX5XITMOUT>
+    	<ITEM checksendersysid="0" useaction="1">I</ITEM>
+    	<INVENTORY checksendersysid="0" useaction="1">S</INVENTORY>
+    	<INVBALANCES checksendersysid="0" useaction="1">B</INVBALANCES>
+    	<INVVENDOR checksendersysid="0" useaction="1">V</INVVENDOR>
+     </MX5XITMOUT>
+     <MX5XAPOUT>
+    	<INVOICE checksendersysid="1" useaction="1">AP</INVOICE>
+     </MX5XAPOUT>
+     <MX5XRSVOUT>
+    	<INVRESERVE checksendersysid="0" useaction="1">RSV</INVRESERVE>
+     </MX5XRSVOUT>
+     <MX5XSRLOUT>
+    	<LOCATIONS checksendersysid="0" useaction="1">SL</LOCATIONS>
+     </MX5XSRLOUT>
+     <MX5XLPYOUT>
+    	<LABTRANS checksendersysid="0" useaction="1">LPY</LABTRANS>
+     </MX5XLPYOUT>
+     <MX5XISUOUT>
+    	<MATUSETRANS checksendersysid="0" useaction="0">MATUSE</MATUSETRANS>
+     </MX5XISUOUT>
+     <MX5XRCVOUT>
+    	<MATRECTRANS checksendersysid="0" useaction="0">MATREC</MATRECTRANS>
+    	<SERVRECTRANS checksendersysid="0" useaction="0">SERVREC</SERVRECTRANS>
+     </MX5XRCVOUT>
+     <MX5XJRNLOUT>
+    	<MATRECTRANS checksendersysid="0" useaction="0">MATREC</MATRECTRANS>
+    	<SERVRECTRANS checksendersysid="0" useaction="0">SERVREC</SERVRECTRANS>
+    	<MATUSETRANS checksendersysid="0" useaction="0">MATUSE</MATUSETRANS>
+    	<INVTRANS checksendersysid="0" useaction="0">INV</INVTRANS>
+    	<TOOLTRANS checksendersysid="0" useaction="0">TOOL</TOOLTRANS>
+    	<LABORTRANS checksendersysid="0" useaction="0">LABOR</LABORTRANS>
+    	<INVOICETRANS checksendersysid="0" useaction="0">INVOICE</INVOICETRANS>
+     </MX5XJRNLOUT>
+  </UTRANSTYPE>
+</MX5XUPGRADE>

@@ -1,0 +1,26 @@
+# HTML element events for Mozilla Firefox
+#  https://developer.mozilla.org/en/DOM/element
+oncopy
+oncut
+onpaste
+onbeforeunload
+onblur
+onchange
+onclick
+oncontextmenu
+ondblclick
+onfocus
+onkeydown
+onkeypress
+onkeyup
+onmousedown
+onmousemove
+onmouseout
+onmouseover
+onmouseup
+onresize
+onscroll
+
+# https://developer.mozilla.org/en/Online_and_offline_events
+ononline
+onoffline

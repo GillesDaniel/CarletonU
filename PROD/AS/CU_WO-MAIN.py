@@ -40,3 +40,31 @@ if launchPoint  == 'CU_WOINPRGWOFIN':
 
 elif launchPoint == 'CU_WOCHANGEDSTS':
     changeStsSRToResolvedWhenWOStsIsWorkFin()
+
+scriptConfig="""{
+    "autoscript": "CU_WO-MAIN",
+    "description": "Automation Script Main for WO",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "CU_WOCHANGEDSTS",
+            "launchPointType": "ATTRIBUTE",
+            "active": true,
+            "description": "WorkOrder Changed Status",
+            "objectName": "WORKORDER",
+            "attributeName": "STATUS",
+            "validate": true
+        },
+        {
+            "launchPointName": "CU_WOINPRGWOFIN",
+            "launchPointType": "ACTION",
+            "active": false,
+            "description": "Change status to INPRG (Work Fin)",
+            "actionName": "CU_WOINPRGWOFIN",
+            "objectName": "WORKORDER"
+        }
+    ]
+}"""

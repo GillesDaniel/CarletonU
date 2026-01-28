@@ -1,0 +1,1740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation apphelp="com.ibm.msc.doc,scheddm/c_sched_data_mgr_application.html" beanclass="com.ibm.tivoli.maximo.skd.beans.SKDProjectDMAppBean" id="scheddm" inputmode="readonly" mboname="SKDPROJECT" orderby="NAME" resultstableid="results_showlist" version="7.1.0.0">
+    <page id="mainrec">
+        <include id="pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="List" type="list">
+                    <menubar event="search" id="actiontoolbar" sourcemethod="getAppSearchOptions"/>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDProjectDMResultsBean" datasrc="results_showlist" id="results_showlist" inputmode="readonly" label="Schedules" mboname="SKDPROJECT" selectmode="multiple">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol dataattribute="skdprojectid" filterable="false" hidden="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol dataattribute="name" id="results_showlist_tablebody_2" label="Schedule" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+                            <tablecol dataattribute="maxapps.description" id="results_showlist_tablebody_31" inputmode="readonly" label="Application"/>
+                            <tablecol dataattribute="description" id="results_showlist_tablebody_3" label="Description"/>
+                            <tablecol dataattribute="projecttype" id="results_showlist_tablebody_301"/>
+                            <tablecol dataattribute="status" id="results_showlist_tablebody_32" licensekey="SCHEDULER_OPT" lookup="valuelist"/>
+                            <tablecol dataattribute="savetime" id="results_showlist_tablebody_8" label="Last Saved Date" lookup="datelookup"/>
+                            <tablecol dataattribute="committime" id="results_showlist_tablebody_9" label="Last Committed Date" lookup="datelookup"/>
+                            <tablecol applink="calendr,ipc" dataattribute="calnum" id="results_showlist_tablebody_4" lookup="calendar" menutype="calendar"/>
+                            <tablecol dataattribute="orgid" id="results_showlist_tablebody_10" lookup="org"/>
+                            <tablecol dataattribute="rolling" id="results_showlist_tablebody_311"/>
+                            <tablecol dataattribute="createby" id="results_showlist_tablebody_7" linkedcontrolid="qbe_grid3_1_3"/>
+                            <tablecol filterable="false" hidden="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="main" inputmode="readonly" label="Schedule" type="insert">
+                    <tabgroup id="innermain">
+                        <tab id="innermaintab" label="Details">
+                            <section border="true" id="headerA_1">
+                                <sectionrow id="headerA_2">
+                                    <sectioncol id="headerA_3">
+                                        <section id="headerA_4">
+                                            <multiparttextbox dataattribute="name" descdataattribute="description" id="headerA_5" label="Schedule" menutype="normal"/>
+                                            <textbox dataattribute="maxapps.description" id="headerA_151" inputmode="readonly" label="Application" licensekey="SCHEDULER_OPT"/>
+                                            <textbox applink="calendr,ipc" dataattribute="calnum" id="headerA_6" inputmode="readonly" lookup="calendar" menutype="calendar"/>
+                                            <textbox dataattribute="shiftnum" id="headerA_7" inputmode="readonly" menutype="SKDPROJECTSHIFTS"/>
+                                            <textbox dataattribute="orgid" id="headerA_15" inputmode="readonly" lookup="org"/>
+                                            <textbox dataattribute="durationthreshold" id="headerA_16"/>
+                                            <textbox dataattribute="travelthreshold" id="headerA_17" sigoption="SHOWTABGA"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="headerA_3110">
+                                        <section id="headerA_31101">
+                                            <textbox dataattribute="projecttype" id="headerA_31102" inputmode="readonly" lookup="valuelist" ondatachange="resetchildren"/>
+                                            <textbox dataattribute="status" id="main_grid1_30" inputmode="readonly" licensekey="SCHEDULER_OPT" sigoption="ENABLESTATUS"/>
+                                            <checkbox dataattribute="toplevelonly" id="headerA_8" inputmode="readonly"/>
+                                            <textbox dataattribute="systemid" id="redesign_1_1_2_5" inputmode="readonly" lookup="system" sigoption="ENABLELOC" sigoptiondatasrc="mainrecord"/>
+                                            <textbox dataattribute="valschedule" id="skdvalidation_61" label="Validation Frequency" lookup="skdval_date_selector"/>
+                                            <checkbox dataattribute="VALFREQACTIVE" id="skdvalidation_62"/>
+                                            <checkbox dataattribute="VALREFRESHBEFORE" id="skdvalidation_63"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="headerA_30">
+                                        <section id="headerA_40" label="Rolling Schedule Parameters">
+                                            <checkbox dataattribute="rolling" id="headerA_111" inputmode="readonly" synchronous="true"/>
+                                            <textbox dataattribute="schedule" id="headerA_1701" inputmode="readonly" label="Roll Date Schedule" lookup="report_recurring" width="113"/>
+                                            <textbox dataattribute="duration" id="headerA_1711" inputmode="readonly"/>
+                                            <textbox dataattribute="rolloffset" id="headerA_1711b" inputmode="readonly"/>
+                                            <textbox dataattribute="startdateacm" id="headerA_170" inputmode="readonly" lookup="datelookup"/>
+                                            <textbox dataattribute="enddateacm" id="headerA_17011" inputmode="readonly" lookup="datelookup"/>
+                                            <checkbox dataattribute="daterestrict" id="redesign_1_1_2_3" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="headerA_51">
+                                        <section id="headerA_52">
+                                            <attachments id="doclinks"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDQueryDataBean" id="ass_qryrelated_activity" inputmode="readonly" label="Asset Queries" relationship="SKDASSETACTQUERY" sigoption="ENABLEASSET" sigoptiondatasrc="mainrecord">
+                                <tablebody displayrowsperpage="10" filterable="true" id="ass_qry_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="ass_qry_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="objectname" id="ass_qry_tablebody_2" inputmode="readonly" linkedcontrolid="ass_qry_1_grid7_1" sortable="false"/>
+                                    <tablecol dataattribute="queryname" id="ass_qry_tablebody_3" linkedcontrolid="ass_qry_1_grid7_2"/>
+                                    <tablecol dataattribute="description" id="ass_qry_tablebody_4" linkedcontrolid="ass_qry_1_grid7_3"/>
+                                    <tablecol dataattribute="whereclause" id="ass_qry_tablebody_5" linkedcontrolid="ass_qry_1_grid7_4"/>
+                                    <tablecol filterable="false" hidden="false" id="ass_qry_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="ass_qry_1">
+                                    <section id="ass_qry_1_grid7" label="Details">
+                                        <sectionrow id="ass_qry_rel_a">
+                                            <sectioncol id="ass_qry_rel_b">
+                                                <section id="ass_qry_rel_c">
+                                                    <multiparttextbox dataattribute="objectname" descdataattribute="maxobjectone.description" descinputmode="readonly" id="ass_qry_1_grid7_1" inputmode="readonly"/>
+                                                    <textbox dataattribute="queryname" id="ass_qry_1_grid7_2"/>
+                                                    <textbox dataattribute="description" id="ass_qry_1_grid7_3" lookup="longdesc"/>
+                                                    <multilinetextbox columns="40" dataattribute="listobject" id="ass_ass_qry_1_grid7_40" inputmode="readonly" menutype="skdqueryobjects" rows="3"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="ass_qry_rel_bb">
+                                                <section id="ass_qry_rel_cc">
+                                                    <multilinetextbox columns="40" dataattribute="listwhere" id="ass_qry_1_grid7_40" inputmode="readonly" menutype="skdprojectassets" rows="3"/>
+                                                    <multilinetextbox columns="40" dataattribute="whereclause" id="ass_qry_1_grid7_4" menutype="skdexpbuilder" rows="3"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                            </table>
+                            <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDQueryDataBean" id="loc_qryrelated_activity" inputmode="readonly" label="Location Queries" relationship="SKDLOCACTQUERY" sigoption="ENABLELOC" sigoptiondatasrc="mainrecord">
+                                <tablebody displayrowsperpage="10" filterable="true" id="loc_qry_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="loc_qry_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="objectname" id="loc_qry_tablebody_2" inputmode="readonly" linkedcontrolid="loc_qry_1_grid7_1" sortable="false"/>
+                                    <tablecol dataattribute="queryname" id="loc_qry_tablebody_3" linkedcontrolid="loc_qry_1_grid7_2"/>
+                                    <tablecol dataattribute="description" id="loc_qry_tablebody_4" linkedcontrolid="loc_qry_1_grid7_3"/>
+                                    <tablecol dataattribute="whereclause" id="loc_qry_tablebody_5" linkedcontrolid="loc_qry_1_grid7_4"/>
+                                    <tablecol filterable="false" hidden="false" id="loc_qry_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="loc_qry_1">
+                                    <section id="loc_qry_1_grid7" label="Details">
+                                        <sectionrow id="loc_qry_rel_a">
+                                            <sectioncol id="loc_qry_rel_b">
+                                                <section id="loc_qry_rel_c">
+                                                    <textbox dataattribute="objectname" id="loc_qry_1_grid7_1" inputmode="readonly"/>
+                                                    <textbox dataattribute="queryname" id="loc_qry_1_grid7_2"/>
+                                                    <textbox dataattribute="description" id="loc_qry_1_grid7_3" lookup="longdesc"/>
+                                                    <multilinetextbox columns="40" dataattribute="listobject" id="lo_ass_qry_1_grid7_40" inputmode="readonly" menutype="skdqueryobjects" rows="3"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="loc_qry_rel_bb">
+                                                <section id="loc_qry_rel_cc">
+                                                    <multilinetextbox columns="40" dataattribute="listwhere" id="loc_qry_1_grid7_40" inputmode="readonly" label="Locations" menutype="skdprojectlocs" rows="3"/>
+                                                    <multilinetextbox columns="40" dataattribute="whereclause" id="loc_qry_1_grid7_4" menutype="skdexpbuilder" rows="3"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                            </table>
+                            <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDQueryDataBean" id="activityqryrelated_activity" inputmode="readonly" label="Work Queries" relationship="SKDACTQUERY" sigoption="ENABLEWORK" sigoptiondatasrc="mainrecord">
+                                <tablebody displayrowsperpage="10" filterable="true" id="w_activityqry_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="w_activityqry_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="objectname" id="w_activityqry_tablebody_2" linkedcontrolid="w_activityqry__grid7_1" sortable="false"/>
+                                    <tablecol dataattribute="queryname" id="w_activityqry_tablebody_3" linkedcontrolid="w_activityqry__grid7_2"/>
+                                    <tablecol dataattribute="description" id="w_activityqry_tablebody_4" linkedcontrolid="w_activityqry__grid7_3"/>
+                                    <tablecol dataattribute="whereclause" id="w_activityqry_tablebody_5" linkedcontrolid="w_activityqry__grid7_4" sigoption="BMXSQLWHER" sigoptiondatasrc="mainrecord"/>
+                                    <tablecol filterable="false" hidden="false" id="w_activityqry_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sigoption="COMMITNOTPRG" sigoptiondatasrc="MAINRECORD" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="w_activityqry_">
+                                    <section id="w_activityqry__grid7" label="Details">
+                                        <sectionrow id="w_activityqry_rel_a">
+                                            <sectioncol id="w_activityqry_rel_b">
+                                                <section id="w_activityqry_rel_c">
+                                                    <textbox dataattribute="objectname" id="w_activityqry__grid7_1" lookup="objectname"/>
+                                                    <textbox dataattribute="queryname" id="w_activityqry__grid7_2"/>
+                                                    <textbox dataattribute="description" id="w_activityqry__grid7_3" lookup="longdesc"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="w_activityqry_rel_bb">
+                                                <section id="w_activityqry_rel_cc">
+                                                    <multilinetextbox columns="40" dataattribute="whereclause" id="w_activityqry__grid7_4" menutype="skdexpbuilder" rows="3" sigoption="BMXSQLWHER" sigoptiondatasrc="mainrecord"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                            </table>
+                            <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDQueryDataBean" id="labor_resources" inputmode="readonly" label="Restrict Resource Availability" relationship="SKDLABORQUERY">
+                                <tablebody displayrowsperpage="10" filterable="true" id="labor_resources_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="labor_resources_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="objectname" id="labor_resources_tablebody_2" linkedcontrolid="resourceqry_1_grid7_1" sortable="false"/>
+                                    <tablecol dataattribute="queryname" id="labor_resources_tablebody_3" linkedcontrolid="resourceqry_1_grid7_2"/>
+                                    <tablecol dataattribute="description" id="labor_resources_tablebody_4" linkedcontrolid="resourceqry_1_grid7_3"/>
+                                    <tablecol dataattribute="whereclause" id="labor_resources_tablebody_5" linkedcontrolid="resourceqry_1_grid7_4" sigoption="BMXSQLWHER" sigoptiondatasrc="mainrecord"/>
+                                    <tablecol filterable="false" hidden="false" id="labor_resources_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sigoption="ENABLEBUTTON" sigoptiondatasrc="MAINRECORD" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="labor_resources_1">
+                                    <section id="labor_resources_1_grid7" label="Details">
+                                        <sectionrow id="labor_resources_rel_a">
+                                            <sectioncol id="labor_resources_rel_b">
+                                                <section id="labor_resources_rel_c">
+                                                    <textbox dataattribute="objectname" id="labor_resources_1_grid7_1" lookup="objectname"/>
+                                                    <textbox dataattribute="queryname" id="labor_resourcesy_1_grid7_2"/>
+                                                    <textbox dataattribute="description" id="labor_resources_1_grid7_3" lookup="longdesc"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="labor_resources_rel_bb">
+                                                <section id="labor_resources_rel_cc">
+                                                    <multilinetextbox columns="40" dataattribute="whereclause" id="labor_resources_1_grid7_4" menutype="skdexpbuilder" rows="3" sigoption="BMXSQLWHER" sigoptiondatasrc="mainrecord"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                            </table>
+                        </tab>
+                        <tab id="innermoreinfo" label="More Information" sigoption="HIDETABSGWW">
+                            <section id="redesign_0">
+                                <sectionrow id="redesign_0_1">
+                                    <sectioncol id="redesign_0_1_1">
+                                        <multiparttextbox dataattribute="name" descdataattribute="description" descinputmode="readonly" id="redesign_0_1_1_10" inputmode="readonly" label="Schedule" menutype="normal"/>
+                                    </sectioncol>
+                                </sectionrow>
+                                <sectionrow id="redesign_0_2">
+                                    <sectioncol id="redesign_0_2_1">
+                                        <textbox dataattribute="maxapps.description" id="redesign_0_2_1_10" inputmode="readonly" label="Application"/>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <section id="redesign_1">
+                                <sectionrow id="redesign_1_1">
+                                    <sectioncol id="redesign_1_1_1">
+                                        <checkbox dataattribute="preservestartdate" id="redesign_1_1_1_1" inputmode="readonly"/>
+                                        <checkbox dataattribute="scenarioallowed" id="redesign_1_1_1_2" inputmode="readonly" licensekey="SCHEDULER_OPT" sigoption="ENABLESTATUS"/>
+                                        <textbox dataattribute="skdodmappdata.description" id="redesign_1_1_1_3" inputmode="readonly" label="Scenario Type" licensekey="SCHEDULER_OPT" sigoption="RESCAP"/>
+                                        <textbox dataattribute="projectscenario.reslevelparam.inputdescription" id="redesign_1_1_1_4" inputmode="readonly" label="Parameters Template" licensekey="SCHEDULER_OPT" sigoption="RESLEVEL"/>
+                                        <textbox dataattribute="projectscenario.capacityplanparam.inputdescription" id="redesign_1_1_1_5" inputmode="readonly" label="Parameters Template" licensekey="SCHEDULER_OPT" sigoption="CAPPLAN"/>
+                                        <checkbox dataattribute="ispublic" id="redesign_1_1_1_6" inputmode="readonly"/>
+                                        <checkbox dataattribute="preserveskddata" id="redesign_1_1_1_7" inputmode="readonly"/>
+                                        <checkbox dataattribute="autorefreshgview" id="redesign_1_1_1_8" inputmode="readonly"/>
+                                        <checkbox dataattribute="showmaintoper" id="headerA_31104" inputmode="readonly"/>
+                                    </sectioncol>
+                                    <sectioncol id="redesign_1_1_2">
+                                        <checkbox dataattribute="alternateavail" id="redesign_1_1_2_4" inputmode="readonly"/>
+                                        <checkbox dataattribute="allowpastload" id="redesign_1_1_2_6" inputmode="readonly"/>
+                                        <combobox dataattribute="startweekday" id="redesign_1_1_2_1" inputmode="readonly"/>
+                                        <combobox dataattribute="RESOURCEDISPLAY" id="redesign_1_1_2_2" inputmode="readonly"/>
+                                        <section id="redesign_1_1_1_9">
+                                            <sectionrow id="redesign_1_1_1_9_1">
+                                                <sectioncol id="redesign_1_1_1_9_1_1">
+                                                    <textbox dataattribute="SDAYOFFSET" id="headerB_offset_1_1_1_9111" inputmode="readonly"/>
+                                                </sectioncol>
+                                                <sectioncol id="redesign_1_1_1_9_2_1">
+                                                    <textbox dataattribute="EDAYOFFSET" id="headerB_offset_1_1_1_9121" inputmode="readonly"/>
+                                                </sectioncol>
+                                            </sectionrow>
+                                        </section>
+                                        <checkbox dataattribute="enablerelated" id="redesign_1_3a_11" inputmode="readonly"/>
+                                    </sectioncol>
+                                    <sectioncol id="redesign_1_1_3">
+                                        <textbox dataattribute="PROJECALCMETHOD" id="redesign_1_1_31" inputmode="readonly" licensekey="SCHEDULER_PLUS" lookup="valuelist"/>
+                                        <textbox dataattribute="PCACTHRS" id="redesign_1_1_32" inputmode="readonly" sigoption="PCACTCOND"/>
+                                        <textbox dataattribute="PCACTHRSLM" id="redesign_1_1_33" inputmode="readonly" sigoption="PCACTCOND"/>
+                                        <textbox dataattribute="PCTASKCOMP" id="redesign_1_1_34" inputmode="readonly" sigoption="PCTASCOND"/>
+                                        <textbox dataattribute="PCTASKCOMPLM" id="redesign_1_1_35" inputmode="readonly" sigoption="PCTASCOND"/>
+                                        <textbox dataattribute="PCPHYS" id="redesign_1_1_36" inputmode="readonly" sigoption="PCPHYCOND"/>
+                                        <textbox dataattribute="PCPHYSLM" id="redesign_1_1_37" inputmode="readonly" sigoption="PCPHYCOND"/>
+                                    </sectioncol>
+                                    <sectioncol id="redesign_1_1_4">
+                                        <textbox dataattribute="savetime" id="redesign_1_1_41" inputmode="readonly" label="Last Saved Date"/>
+                                        <textbox dataattribute="committime" id="redesign_1_1_42" inputmode="readonly" label="Last Committed Date"/>
+                                        <textbox dataattribute="publishby" id="redesign_1_1_43" inputmode="readonly" licensekey="SCHEDULER_OPT"/>
+                                        <textbox dataattribute="lastpublishdate" id="redesign_1_1_44" inputmode="readonly" licensekey="SCHEDULER_OPT"/>
+                                        <textbox dataattribute="createby" id="redesign_1_1_45" inputmode="readonly"/>
+                                        <textbox dataattribute="createdate" id="redesign_1_1_46" inputmode="readonly"/>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDQueryDataBean" collapsable="true" collapsed="false" id="resourceqryrelated_activity" inputmode="readonly" label="Additional Resources" relationship="SKDRESQUERY">
+                                <tablebody displayrowsperpage="10" filterable="true" id="resourceqry_tablebody">
+                                    <tablecol filterable="false" hidden="false" id="resourceqry_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="objectname" id="resourceqry_tablebody_2" linkedcontrolid="resourceqry_1_grid7_1" sortable="false"/>
+                                    <tablecol dataattribute="queryname" id="resourceqry_tablebody_3" linkedcontrolid="resourceqry_1_grid7_2"/>
+                                    <tablecol dataattribute="description" id="resourceqry_tablebody_4" linkedcontrolid="resourceqry_1_grid7_3"/>
+                                    <tablecol dataattribute="whereclause" id="resourceqry_tablebody_5" linkedcontrolid="resourceqry_1_grid7_4" sigoption="BMXSQLWHER" sigoptiondatasrc="mainrecord"/>
+                                    <tablecol filterable="false" hidden="false" id="resourceqry_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sigoption="ENABLEBUTTON" sigoptiondatasrc="MAINRECORD" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="resourceqry_1">
+                                    <section id="resourceqry_1_grid7" label="Details">
+                                        <sectionrow id="resourceqry_rel_a">
+                                            <sectioncol id="resourceqry_rel_b">
+                                                <section id="resourceqry_rel_c">
+                                                    <textbox dataattribute="objectname" id="resourceqry_1_grid7_1" lookup="objectname"/>
+                                                    <textbox dataattribute="queryname" id="resourceqry_1_grid7_2"/>
+                                                    <textbox dataattribute="description" id="resourceqry_1_grid7_3" lookup="longdesc"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="resourceqry_rel_bb">
+                                                <section id="resourceqry_rel_cc">
+                                                    <multilinetextbox columns="40" dataattribute="whereclause" id="resourceqry_1_grid7_4" menutype="skdexpbuilder" rows="3" sigoption="BMXSQLWHER" sigoptiondatasrc="mainrecord"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                            </table>
+                        </tab>
+                    </tabgroup>
+                </tab>
+                <tab id="skdshifts" label="Calendar" tabchangeevent="DMTabChanged">
+                    <section border="true" id="skdshifts_1">
+                        <sectionrow id="skdshifts_2a">
+                            <sectioncol id="skdshifts_3a">
+                                <section border="false" id="calender_0a">
+                                    <multiparttextbox dataattribute="name" descdataattribute="description" id="calender_5" label="Schedule" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdshifts_3b">
+                                <section border="false" id="skdshifts_0a">
+                                    <textbox dataattribute="orgid" id="calender_15" inputmode="readonly" lookup="org"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="calender_3d">
+                                <section id="calender_4d">
+                                    <textbox dataattribute="SKDDATAVALOPTION.valdate" id="calender_18" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="calender_1a">
+                        <sectionrow id="calender_2a">
+                            <sectioncol id="calender_3b_c">
+                                <section id="calender_4b_c">
+                                    <textbox applink="calendr,ipc" dataattribute="calnum" id="calender_6a" inputmode="readonly" lookup="calendar" menutype="calendar"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="calender_3b">
+                                <section id="calender_4b">
+                                    <textbox dataattribute="startdateacm" id="calender_17" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="calender_3c">
+                                <section id="calender_4c">
+                                    <textbox dataattribute="enddateacm" id="calender_171" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="calender_3c_c">
+                                <section id="calender_4c_c">
+                                    <textbox dataattribute="duration" id="header_1711" inputmode="readonly"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="calender_1b">
+                        <sectionrow id="calender_2b">
+                            <sectioncol id="calender_3d_4">
+                                <checkbox dataattribute="SKDDATAVALOPTION.schedule" id="calender_2b_4"/>
+                            </sectioncol>
+                            <sectioncol id="calender_3d_1">
+                                <checkbox dataattribute="SKDDATAVALOPTION.workperiod" id="calender_2b_1"/>
+                            </sectioncol>
+                            <sectioncol id="calender_3d_2">
+                                <checkbox dataattribute="SKDDATAVALOPTION.shift" id="calender_2b_2"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <buttongroup align="LEFT" id="calender_6" labelalign="LEFT" width="260">
+                        <pushbutton default="true" id="calender_6_1" label="Validate Calendar/Shifts" mxevent="validateCalendar"/>
+                    </buttongroup>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDBaseRecordsBean" id="projectdataval_table" label="Schedule" relationship="SKDPROJECTDATAVALRESULT">
+                        <tablebody displayrowsperpage="12" filterable="true" id="projectdataval_table_tablebody">
+                            <tablecol dataattribute="valmsg" filterable="true" id="projectdataval_table_tablebody_3" inputmode="readonly" sortable="true"/>
+                            <tablecol dataattribute="SKDDATAVALMSG.description" id="projectdataval_table_tablebody_31a" inputmode="readonly"/>
+                            <tablecol dataattribute="SKDDATAVALMSG.fixoption" id="projectdataval_table_tablebody_31b" inputmode="readonly"/>
+                            <tablecol dataattribute="SKDDATAVALMSG.msgtype" id="projectdataval_table_tablebody_31c" inputmode="readonly"/>
+                        </tablebody>
+                    </table>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDWorkPeriodRecordsBean" id="wp_table" label="Work Shifts" relationship="SKDPROJECTSHIFTS">
+                        <tablebody displayrowsperpage="12" filterable="true" id="wp_tablebody">
+                            <tablecol dataattribute="shiftnum" filterable="true" id="wp_tablebody_3" inputmode="readonly" sortable="true"/>
+                            <tablecol dataattribute="SKDPROJECTSHIFTSINFO.description" id="wp_tablebody_31" inputmode="readonly"/>
+                            <tablecol dataattribute="SKDPROJECTSHIFTSINFO.startday" id="wp_tablebody_4" inputmode="readonly"/>
+                            <tablecol dataattribute="TOTALWP" id="wp_tablebody_5" inputmode="readonly"/>
+                            <tablecol dataattribute="valmsg" id="wp_tablebody_7" inputmode="readonly" sortable="false"/>
+                            <tablecol filterable="false" hidden="false" id="wp_tablebody_12" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWVALSMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="wp_tablebody_13" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALSWMSG" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="wp_table_displayrule1">
+                                <exact classname="rowcolor_sdm_red" id="wp_table_exactrule0" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="wp_table_displayrule2">
+                                <exact classname="rowcolor_sdm_yellow" id="wp_table_exactrule1" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="mapprovider" label="Map Provider" sigoption="SHOWTABGA" tabchangeevent="DMTabChanged">
+                    <section border="true" id="mapprovider_1">
+                        <sectionrow id="mapprovider_2a">
+                            <sectioncol id="mapprovider_3a">
+                                <section border="false" id="mapprovider_0a">
+                                    <multiparttextbox dataattribute="name" descdataattribute="description" id="mapprovider_5" label="Schedule" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="mapprovider_3b">
+                                <section border="false" id="mapprovider_0b">
+                                    <textbox dataattribute="orgid" id="mapprovider_15" inputmode="readonly" lookup="org"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="mapprovider_3d">
+                                <section id="mapprovider_4d">
+                                    <textbox dataattribute="SKDDATAVALOPTION.valdate" id="mapprovider_18" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="mapprovider_1b">
+                        <sectionrow id="mapprovider_2b">
+                            <sectioncol id="mapprovider_3d_4">
+                                <checkbox dataattribute="SKDDATAVALOPTION.ONEDEFMAPPROVIDER" id="mapprovider_2b_4"/>
+                            </sectioncol>
+                            <sectioncol id="mapprovider_3d_1">
+                                <checkbox dataattribute="SKDDATAVALOPTION.ROUTEAPIKEYEXISTS" id="mapprovider_2b_1"/>
+                            </sectioncol>
+                            <sectioncol id="mapprovider_3d_2">
+                                <checkbox dataattribute="SKDDATAVALOPTION.MATRXAPIKEYEXISTS" id="mapprovider_2b_2"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <buttongroup align="LEFT" id="mapprovider_6" labelalign="LEFT" width="260">
+                        <pushbutton default="true" id="mapprovider_6_1" label="Validate Map Provider" mxevent="validateMapProvider"/>
+                    </buttongroup>
+                    <section id="main_grid3" label="Map Provider Options" relationship="MAPMANAGER" sigoption="GMAP">
+                        <sectionrow id="main_grid3_row1">
+                            <section id="main_grid3_row1_col1_sec00">
+                                <sectioncol id="main_grid3_row1_col1_sec00_col1">
+                                    <multiparttextbox applink="mpman" applinkkey="mapname" dataattribute="mapname" descdataattribute="description" descinputmode="readonly" id="main_grid3_row1_col1_sec00_1" inputmode="readonly" menutype="hyperlink"/>
+                                </sectioncol>
+                                <sectioncol id="main_grid3_row1_col1_sec00_col2">
+                                    <textbox dataattribute="mapprovider" id="main_grid3_row1_col2_sec00_1" inputmode="readonly"/>
+                                </sectioncol>
+                            </section>
+                            <sectioncol id="main_grid3_row1_col1">
+                                <combobox dataattribute="GMAPAUTHMETHOD" id="main_grid3_row1_col1_sec0" smartfilloff="true"/>
+                                <section id="main_grid3_row1_col1_sec1" sigoption="CLIENTID">
+                                    <helpgrid id="main_grid3_help" innerhtml="You create a Google client identifier when you register with Google Maps API for Business. Specify a client identifier to use Google Map services."/>
+                                    <textbox dataattribute="gmapslicense" id="main_grid3_row1_col1_sec1_1" inputmode="password"/>
+                                    <textbox dataattribute="gmapsclientsecret" id="main_grid_3_row1_col1_sec1_4" inputmode="password"/>
+                                </section>
+                                <section id="main_grid3_row1_col1_sec2" sigoption="APIKEY">
+                                    <helpgrid id="main_grid3_help_2" innerhtml="Insert API-Key to use Google Map services."/>
+                                    <textbox dataattribute="gmapsapikey" id="main_grid3_row1_col1_sec1_1_2" inputmode="password"/>
+                                </section>
+                                <section id="main_grid3_row1_col1_sec3">
+                                    <textbox dataattribute="gmapsdistancematrix" id="main_grid3_row1_col1_sec1_3_2" licensekey="SCHEDULER_OPT"/>
+                                    <checkbox dataattribute="gmapshttps" id="main_grid3_row1_col1_sec1_2_2"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section id="main_grid4" label="Map Provider Options" relationship="MAPMANAGER" sigoption="BMAP">
+                        <helpgrid id="main_grid4_help" innerhtml="You create a Bing Maps key by using the Bing Maps Account Center. Specify a Bing Maps key to use Bing Maps services."/>
+                        <sectionrow id="main_grid4_row1">
+                            <section id="main_grid4_row1_col1_sec00">
+                                <sectioncol id="main_grid4_row1_col1_sec00_col1">
+                                    <multiparttextbox applink="mpman" applinkkey="mapname" dataattribute="mapname" descdataattribute="description" descinputmode="readonly" id="main_grid4_row1_col1_sec00_1" inputmode="readonly" menutype="hyperlink"/>
+                                </sectioncol>
+                                <sectioncol id="main_grid4_row1_col1_sec00_col2">
+                                    <textbox dataattribute="mapprovider" id="main_grid4_row1_col2_sec00_1" inputmode="readonly"/>
+                                </sectioncol>
+                            </section>
+                            <sectioncol id="main_grid4_row1_col1">
+                                <section id="main_grid4_row1_col1_sec1">
+                                    <textbox dataattribute="bmapslicense" id="main_grid4_row1_col1_sec1_1"/>
+                                    <textbox dataattribute="bmapsroute" id="main_grid4_row1_col1_sec1_3"/>
+                                    <textbox dataattribute="bmapsgeocode" id="main_grid4_row1_col1_sec1_4"/>
+                                    <textbox dataattribute="bmapsdistancematrix" id="main_grid4_row1_col1_sec1_5" licensekey="SCHEDULER_OPT"/>
+                                    <checkbox dataattribute="bmapshttps" id="main_grid4_row1_col1_sec1_2"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table id="mapmanager_table" label="Map Managers" relationship="MAPMANAGERALL">
+                        <tablebody displayrowsperpage="12" filterable="true" id="mapmanager_tablebody" sortable="true">
+                            <tablecol applink="mpman" applinkkey="mapname" dataattribute="mapname" id="mapmanager_tablebody_3" menutype="hyperlink"/>
+                            <tablecol dataattribute="description" id="mapmanager_tablebody_3a" inputmode="readonly"/>
+                            <tablecol dataattribute="active" id="mapmanager_tablebody_4" inputmode="readonly"/>
+                            <tablecol dataattribute="mapprovider" id="mapmanager_tablebody_5" inputmode="readonly"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="skdquery" label="Queries" tabchangeevent="DMTabChanged">
+                    <section border="true" id="skdquery_1">
+                        <sectionrow id="skdquery_2aa">
+                            <sectioncol id="skdquery_3aa">
+                                <section border="false" id="skdquery_0aa">
+                                    <multiparttextbox dataattribute="name" descdataattribute="description" id="skdquery_5" label="Schedule" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdquery_3ab">
+                                <section border="false" id="skdquery_0ab">
+                                    <textbox dataattribute="orgid" id="skdquery_15" inputmode="readonly" lookup="org"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdquery_3d">
+                                <section id="skdquery_4d">
+                                    <textbox dataattribute="SKDDATAVALOPTION.valdate" id="skdquer_18" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="skdquery_1a">
+                        <sectionrow id="skdquery_2ab">
+                            <sectioncol id="skdquery_3b">
+                                <section id="skdquery_4b">
+                                    <textbox applink="calendr,ipc" dataattribute="calnum" id="skdquery_6a" inputmode="readonly" lookup="calendar" menutype="calendar"/>
+                                    <textbox dataattribute="shiftnum" id="skdquery_7a" inputmode="readonly" menutype="SKDPROJECTSHIFTS"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdquery_3c">
+                                <section id="skdquery_4c">
+                                    <textbox dataattribute="startdateacm" id="skdquery_17" inputmode="readonly" lookup="datelookup"/>
+                                    <textbox dataattribute="enddateacm" id="skdquery_171" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="skdquery_1b">
+                        <sectionrow id="skdquery_2b">
+                            <sectioncol id="skdquery_3d_1">
+                                <checkbox dataattribute="SKDDATAVALOPTION.SQLBESTPRCTICE" id="skdquery_2b_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdquery_3d_5">
+                                <checkbox dataattribute="SKDDATAVALOPTION.RECORD" id="skdquery_2b_5"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <buttongroup align="LEFT" id="skdquery_6" labelalign="LEFT" width="260">
+                        <pushbutton default="true" id="skdquery_6_1" label="Validate Queries" mxevent="validateQuery"/>
+                    </buttongroup>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDBaseRecordsBean" id="skdquery_table" label="Queries" relationship="SKDQUERY">
+                        <tablebody displayrowsperpage="12" filterable="true" id="skdquery_tablebody">
+                            <tablecol dataattribute="objectname" filterable="true" id="skdquery_tablebody_3" inputmode="readonly" sortable="true"/>
+                            <tablecol dataattribute="queryname" id="skdquery_tablebody_3a" inputmode="readonly"/>
+                            <tablecol dataattribute="whereclause" id="skdquery_tablebody_4" inputmode="readonly"/>
+                            <tablecol dataattribute="RECORDCOUNTS" id="skdquery_tablebody_5" inputmode="readonly"/>
+                            <tablecol dataattribute="valmsg" id="skdquery_tablebody_7" inputmode="readonly" sortable="false"/>
+                            <tablecol filterable="false" hidden="false" id="skdquery_tablebody_12" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWVALQMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="skdquery_tablebody_13" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALQWMSG" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="skdquery_table_displayrule1">
+                                <exact classname="rowcolor_sdm_red" id="skdquery_table_exactrule0" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="skdquery_table_displayrule2">
+                                <exact classname="rowcolor_sdm_yellow" id="skdquery_table_exactrule1" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="WORKORDER" label="Work" sigoption="HIDETABSGWW" tabchangeevent="DMTabChanged">
+                    <section border="true" id="skdactivity_0">
+                        <section border="true" id="skdactivity_1">
+                            <sectionrow id="skdactivity_2a">
+                                <sectioncol id="skdactivity_3a">
+                                    <section id="skdactivity_4a">
+                                        <multiparttextbox dataattribute="name" descdataattribute="description" id="skdactivity_5" label="Schedule" menutype="normal"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="skdactivity_3b">
+                                    <section id="skdactivity_4b">
+                                        <textbox dataattribute="SKDDATAVALOPTION.selvaldate" id="skdactivity_6_2" lookup="datelookup"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="skdactivity_3c">
+                                    <section id="skdactivity_4c">
+                                        <textbox dataattribute="SKDDATAVALOPTION.valdate" id="skdactivity_6_2_1" inputmode="readonly" lookup="datelookup"/>
+                                    </section>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                        <section border="true" id="skdactivity_1b">
+                            <sectionrow id="skdactivity_2a_1">
+                                <sectioncol id="skdactivity_3a_1">
+                                    <section border="true" id="skdactivity_1b_1a">
+                                        <sectionrow id="skdactivity_2b">
+                                            <sectioncol id="skdactivity_3d_1">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.ZERODURATION" id="skdactivity_2b_1"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_2">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.NONINTERRUPTIBLE" id="skdactivity_2b_2"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_3">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.INTERRUPTIBLE" id="skdactivity_2b_3"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_4">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.SNE" id="skdactivity_2b_4"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_5">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.FNL" id="skdactivity_2b_5"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_6" licensekey="AVIATIONMRO">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.ZONE" id="skdactivity_2b_6"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_7">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.MILESTONE" id="skdactivity_2b_7"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_8">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.VALIDATEWOGEOLOC" id="skdactivity_2b_8"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_9">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.TRAVTIMEOUTSIDESA" id="skdactivity_2b_9"/>
+                                            </sectioncol>
+                                        </sectionrow>
+                                        <sectionrow id="skdactivity_2C">
+                                            <sectioncol id="skdactivity_3d_1c">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.LOCAASSIGN" id="skdactivity_2b_1c"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_2c">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.NOPLANNEDRESOURCE" id="skdactivity_2b_2c"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_3c">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.PRIORITY" id="skdactivity_2b_3c"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_4c">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.MISSINGPARENTWO" id="skdactivity_2b_4c"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_5c">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.CRAFTQTY" id="skdactivity_2b_5c"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_6c">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.AMCREWTYPEQTY" id="skdactivity_2b_6c"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdactivity_3d_7c">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.TOOLQTY" id="skdactivity_2b_7c"/>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="skdactivity_3a_2_empty"/>
+                                <sectioncol id="skdactivity_3a_2_empty2"/>
+                            </sectionrow>
+                        </section>
+                        <buttongroup align="LEFT" id="skdactivity_6" labelalign="LEFT" width="100">
+                            <pushbutton default="true" id="skdactivity_6_1" label="Validate Work" mxevent="validateWork"/>
+                            <pushbutton id="skdactivity_6_3" label="Show All Work Errors/Warnings" mxevent="showallworkvalresult" sigoption="SHOWALLWORKVALMSG"/>
+                        </buttongroup>
+                        <section id="combobox_work_filter_section">
+                            <sectionrow id="combobox_work_filter_section_1">
+                                <sectioncol id="combobox_work_filter_section_1_1">
+                                    <combobox dataattribute="VALMSG" displayattribute="DESCRIPTION" id="combobox_work_filter" label="Filter By Error/Warning" ondatachange="filterWorkByErrorType"/>
+                                </sectioncol>
+                                <sectioncol id="comboboxwork_filter_section_1_3">
+                                    <checkbox dataattribute="SKDDATAVALOPTION.SHOWERRORSONLY" id="checkbox_work_errorsonly" synchronous="true"/>
+                                </sectioncol>
+                                <sectioncol id="comboboxwork_filter_section_1_2"/>
+                            </sectionrow>
+                        </section>
+                    </section>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDWORecordsBean" id="work_showlist" label="Work" orderby="valmsg desc, wogroup, taskid asc" relationship="WORKORDER" selectmode="multiple" width="100">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="work_showlist_tablebody">
+                            <tablecol dataattribute="wonum" filterable="false" hidden="false" id="work_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol applink="wotrack" dataattribute="wogroup" id="work_showlist_tablebody_2" menutype="normal"/>
+                            <tablecol dataattribute="taskid" id="work_showlist_tablebody_2a"/>
+                            <tablecol dataattribute="description" id="work_showlist_tablebody_3"/>
+                            <tablecol dataattribute="estdur" id="work_showlist_tablebody_7"/>
+                            <tablecol dataattribute="sneconstraint" id="work_showlist_tablebody_7c" lookup="datelookup"/>
+                            <tablecol dataattribute="fnlconstraint" id="work_showlist_tablebody_7d" lookup="datelookup"/>
+                            <tablecol dataattribute="wopriority" id="work_showlist_tablebody_8"/>
+                            <tablecol dataattribute="interruptible" id="work_showlist_tablebody_8a" value="interruptible"/>
+                            <tablecol dataattribute="intshift" id="work_showlist_tablebody_8b" lookup="shift"/>
+                            <tablecol dataattribute="valmsg" id="work_showlist_tablebody_11" inputmode="readonly"/>
+                            <tablecol filterable="false" hidden="false" id="work_showlist_tablebody_12" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWVALMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="work_showlist_tablebody_13" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALWMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="work_showlist_tablebody_14" mxevent="showworkplan" mxevent_desc="Show Work Plan" mxevent_icon="btn_edit_record.gif" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="displayrule1">
+                                <exact classname="rowcolor_sdm_red" id="exactrule0" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="displayrule2">
+                                <exact classname="rowcolor_sdm_yellow" id="exactrule1" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="WOTASKRELATION" label="Dependencies" sigoption="HIDETABSGWW" tabchangeevent="DMTabChanged">
+                    <section border="true" id="skdconstrain_1">
+                        <sectionrow id="skdconstrain_2a">
+                            <sectioncol id="skdconstrain_3a">
+                                <section id="skdconstrain_4a">
+                                    <multiparttextbox dataattribute="name" descdataattribute="description" id="skdconstrain_5" label="Schedule" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdconstrain_3b">
+                                <section id="skdconstrain_4b">
+                                    <textbox dataattribute="SKDDATAVALOPTION.selvaldate" id="skdconstrain_6_2" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdconstrain_3c">
+                                <section id="skdconstrain_4c">
+                                    <textbox dataattribute="SKDDATAVALOPTION.valdate" id="skdconstrain_valdate" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="skdconstrain_1b">
+                        <sectionrow id="skdconstrain_2b">
+                            <sectioncol id="skdconstrain_3d_1">
+                                <checkbox dataattribute="SKDDATAVALOPTION.CIRCULARDEPENDENCY" id="skdconstrain_2b_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdconstrain_3d_2">
+                                <checkbox dataattribute="SKDDATAVALOPTION.ACTUALDATESCONFLICT" id="skdconstrain_2b_2"/>
+                            </sectioncol>
+                            <sectioncol id="skdconstrain_3d_3">
+                                <checkbox dataattribute="SKDDATAVALOPTION.STATUSCONFLICT" id="skdconstrain_2b_3"/>
+                            </sectioncol>
+                            <sectioncol id="skdconstrain_3d_4">
+                                <checkbox dataattribute="SKDDATAVALOPTION.MISSINGTARGET" id="skdconstrain_2b_4"/>
+                            </sectioncol>
+                            <sectioncol id="skdconstrain_3d_5">
+                                <checkbox dataattribute="SKDDATAVALOPTION.MISSINGORIGIN" id="skdconstrain_2b_5"/>
+                            </sectioncol>
+                            <sectioncol id="skdconstrain_3d_6">
+                                <checkbox dataattribute="SKDDATAVALOPTION.LEADLAGINCORRECT" id="skdconstrain_2b_6"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <buttongroup align="LEFT" id="skdconstrain_6" labelalign="LEFT" width="260">
+                        <pushbutton default="true" id="skdconstrain_6_1" label="Validate Constraints" mxevent="validateConstraints"/>
+                        <pushbutton id="skdconstrain_6_3" label="Show All Constraint Errors/Warnings" mxevent="showallconsvalresult" sigoption="SHOWALLCONSVALMSG"/>
+                    </buttongroup>
+                    <section id="combobox_constraint_filter_section">
+                        <sectionrow id="combobox_constraint_filter_section_1">
+                            <sectioncol id="combobox_constraint_filter_section_1_1">
+                                <combobox dataattribute="VALMSG" displayattribute="DESCRIPTION" id="combobox_constraint_filter" label="Filter By Error/Warning" ondatachange="filterConstraintByErrorType"/>
+                            </sectioncol>
+                            <sectioncol id="comboboxconstraint_filter_section_1_3">
+                                <checkbox dataattribute="SKDDATAVALOPTION.SHOWERRORSONLY" id="checkbox_constraint_errorsonly" synchronous="true"/>
+                            </sectioncol>
+                            <sectioncol id="comboboxconstraint_filter_section_1_2"/>
+                        </sectionrow>
+                    </section>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDWOTaskRelationRecordsBean" id="constraint_showlist" label="Constraints" orderby="valmsg desc, predwonum, predtaskid asc" relationship="WOTASKRELATION">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="constraint_showlist_tablebody">
+                            <tablecol dataattribute="wonum" filterable="false" hidden="false" id="constraint_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol applink="wotrack" dataattribute="predwonum" id="constraint_showlist_tablebody_4" label="Predecessor" menutype="PREDWORKORDER_WOTASKRELATION"/>
+                            <tablecol dataattribute="predtaskid" id="constraint_showlist_tablebody_5" inputmode="readonly" label="Predecessor Task"/>
+                            <tablecol applink="wotrack" dataattribute="displaywonum" id="constraint_showlist_tablebody_2" label="Successor" menutype="WORKORDER_WOTASKRELATION"/>
+                            <tablecol dataattribute="succtaskid" id="constraint_showlist_tablebody_3" inputmode="readonly" label="Successor Task"/>
+                            <tablecol dataattribute="reltype" id="constraint_showlist_tablebody_6" lookup="valuelist"/>
+                            <tablecol dataattribute="leadlaghours" id="constraint_showlist_tablebody_7"/>
+                            <tablecol dataattribute="optimize" id="constraint_showlist_tablebody_8"/>
+                            <tablecol dataattribute="valmsg" id="constraint_showlist_tablebody_9" inputmode="readonly"/>
+                            <tablecol filterable="false" hidden="false" id="constraint_showlist_tablebody_10" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWCVALMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="constraint_showlist_tablebody_11" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALCWMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="constraint_showlist_tablebody_12" mxevent="ShowCircularDependency" mxevent_desc="Show Circular Dependency" mxevent_icon="btn_circularDependency.gif" sigoption="CIRCULARDEPS" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="constraint_showlist_tablebody_13" mxevent="showactuals" mxevent_desc="Show Actuals" mxevent_icon="btn_edit_record.gif" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="constraint_showlist_tablebody_14" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="displayrule3">
+                                <exact classname="rowcolor_sdm_red" id="exactrule2" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="displayrule4">
+                                <exact classname="rowcolor_sdm_yellow" id="exactrule3" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                        <buttongroup id="constraint_showlist_table_buttongroup">
+                            <pushbutton id="constraint_showlist_button1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+                <tab id="SKDPROJECTRESOURCE" label="Resources" sigoption="SHOWRESOURCETAB" tabchangeevent="DMTabChanged">
+                    <section border="true" id="skdresource_1">
+                        <sectionrow id="skdresource_2a">
+                            <sectioncol id="skdresource_3a">
+                                <section id="skdresource_4a">
+                                    <multiparttextbox dataattribute="name" descdataattribute="description" id="skdresource_5" label="Schedule" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdresource_3b">
+                                <section id="skdresource_4b">
+                                    <textbox dataattribute="SKDDATAVALOPTION.selvaldate" id="skdresource_5_2" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdresource_3c">
+                                <section id="skdresource_4c">
+                                    <textbox dataattribute="SKDDATAVALOPTION.valdate" id="skdresource_valdate" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="skdresource_1b">
+                        <sectionrow id="skdresource_2b">
+                            <sectioncol id="skdresource_3d_2">
+                                <checkbox dataattribute="SKDDATAVALOPTION.CRAFTQTY" id="skdresource_3d_2_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdresource_3d_3">
+                                <checkbox dataattribute="SKDDATAVALOPTION.AMCREWTYPEQTY" id="skdresource_3d_3_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdresource_3d_4">
+                                <checkbox dataattribute="SKDDATAVALOPTION.TOOLQTY" id="skdresource_3d_4_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdresource_3d_5" licensekey="AVIATIONMRO">
+                                <checkbox dataattribute="SKDDATAVALOPTION.ZONE" id="skdresource_3d_5_1"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <buttongroup align="LEFT" id="skdresource_6" labelalign="LEFT" width="260">
+                        <pushbutton default="true" id="skdresource_6_1" label="Validate Resources" mxevent="validateResource"/>
+                        <pushbutton id="skdresource_6_2" label="Show All Resource Errors/Warnings" mxevent="showallresvalresult" sigoption="SHOWALLRESVALMSG"/>
+                    </buttongroup>
+                    <section id="combobox_resource_filter_section">
+                        <sectionrow id="combobox_resource_filter_section_1">
+                            <sectioncol id="combobox_resource_filter_section_1_1">
+                                <combobox dataattribute="VALMSG" displayattribute="DESCRIPTION" id="combobox_resource_filter" label="Filter By Error/Warning" ondatachange="filterResourceByErrorType"/>
+                            </sectioncol>
+                            <sectioncol id="comboboxresource_filter_section_1_2">
+                                <pushbutton id="combobox_resource_refresh" label="Refresh" mxevent="filterResourceByErrorType"/>
+                            </sectioncol>
+                            <sectioncol id="comboboxresource_filter_section_1_3">
+                                <checkbox dataattribute="SKDDATAVALOPTION.SHOWERRORSONLY" id="checkbox_resource_errorsonly" synchronous="true"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDProjectResourceRecordsBean" id="resource_showlist" label="Resources" orderby="valmsg desc, craft, amcrewtype, itemnum, zone asc" relationship="SKDPROJECTRESOURCE">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="resource_showlist_tablebody">
+                            <tablecol dataattribute="craft" filterable="false" hidden="false" id="resource_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol applink="craft" dataattribute="craft" id="resource_showlist_tablebody_2" menutype="normal"/>
+                            <tablecol applink="amcrewt" dataattribute="amcrewtype" id="resource_showlist_tablebody_3" menutype="normal"/>
+                            <tablecol applink="tool" dataattribute="itemnum" id="resource_showlist_tablebody_4" menutype="normal"/>
+                            <tablecol applink="plusazone" dataattribute="zone" id="resource_showlist_tablebody_5" licensekey="AVIATIONMRO" menutype="normal"/>
+                            <tablecol dataattribute="availhours" id="resource_showlist_tablebody_6"/>
+                            <tablecol dataattribute="loadhours" id="resource_showlist_tablebody_7"/>
+                            <tablecol dataattribute="valmsg" id="resource_showlist_tablebody_8" inputmode="readonly"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlist_tablebody_9" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWRVALMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlist_tablebody_10" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALRWMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlist_tablebody_11" mxevent="OVERRIDEAVAILIDALOG" mxevent_desc="Override Availability" mxevent_icon="btn_modifylaboravail.gif" sigoption="ALTAVAILRES" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="displayrule5">
+                                <exact classname="rowcolor_sdm_red" id="exactrule4" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="displayrule6">
+                                <exact classname="rowcolor_sdm_yellow" id="exactrule5" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="SKDPROJECTGARESOURCE" label="Resources" sigoption="SHOWTABGA" tabchangeevent="DMTabChanged">
+                    <section border="true" id="skdresourcega_1">
+                        <sectionrow id="skdresourcega_2a">
+                            <sectioncol id="skdresourcega_3a">
+                                <section id="skdresourcega_4a">
+                                    <multiparttextbox dataattribute="name" descdataattribute="description" id="skdresourcega_5" label="Schedule" menutype="normal"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdresourcega_3b">
+                                <section id="skdresourcega_4b">
+                                    <textbox dataattribute="SKDDATAVALOPTION.selvaldate" id="skdresourcega_5_2" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="skdresourcega_3c">
+                                <section id="skdresourcega_4c">
+                                    <textbox dataattribute="SKDDATAVALOPTION.valdate" id="skdresourcega_valdate" inputmode="readonly" lookup="datelookup"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <section border="true" id="skdresourcega_1b">
+                        <sectionrow id="skdresourcega_2b">
+                            <sectioncol id="skdresourcega_3d_2">
+                                <checkbox dataattribute="SKDDATAVALOPTION.CRAFTQTY" id="skdresourcega_3d_2_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdresourcega_3d_3">
+                                <checkbox dataattribute="SKDDATAVALOPTION.AMCREWTYPEQTY" id="skdresourcega_3d_3_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdresourcega_3d_4">
+                                <checkbox dataattribute="SKDDATAVALOPTION.STRTSTPAVAILFORALLRES" id="skdresourcega_3d_4_1"/>
+                            </sectioncol>
+                            <sectioncol id="skdresourcega_3d_5">
+                                <textbox applink="location" dataattribute="startlocation" id="skdactivity_5b" label="Start Location" lookup="locations" menutype="normal"/>
+                            </sectioncol>
+                            <sectioncol id="skdresourcega_3d_6">
+                                <textbox applink="location" dataattribute="endlocation" id="skdactivity_5d" label="End Location" lookup="locations" menutype="normal"/>
+                            </sectioncol>
+                            <sectioncol id="skdresourcega_3d_7">
+                                <checkbox dataattribute="FLEXLOCATION" id="skdvalidation_65" synchronous="true"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <buttongroup align="LEFT" id="skdresourcega_6" labelalign="LEFT" width="260">
+                        <pushbutton default="true" id="skdresourcega_6_1" label="Validate Resources" mxevent="validateResource"/>
+                        <pushbutton id="skdresourcega_6_2" label="Show All Resource Errors/Warnings" mxevent="showallresvalresultGA"/>
+                    </buttongroup>
+                    <section id="combobox_resourcega_filter_section">
+                        <sectionrow id="combobox_resourcega_filter_section_1">
+                            <sectioncol id="combobox_resourcega_filter_section_1_1">
+                                <combobox dataattribute="VALMSG" displayattribute="DESCRIPTION" id="combobox_resourcega_filter" label="Filter By Error/Warning" ondatachange="filterResourcegaByErrorType"/>
+                            </sectioncol>
+                            <sectioncol id="comboboxresourcega_filter_section_1_2">
+                                <pushbutton id="combobox_resourcega_refresh" label="Refresh" mxevent="filterResourceByErrorType"/>
+                            </sectioncol>
+                            <sectioncol id="comboboxresourcega_filter_section_1_3">
+                                <checkbox dataattribute="SKDDATAVALOPTION.SHOWERRORSONLY" id="checkbox_resourcega_errorsonly" synchronous="true"/>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDProjectResourceRecordsBean" id="resource_showlistGA" label="Resources" orderby="valmsg desc, craft, amcrewtype, itemnum, zone asc" relationship="SKDPROJECTRESOURCE">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="resource_showlistGA_tablebody">
+                            <tablecol dataattribute="craft" filterable="false" hidden="false" id="resource_showlistGA_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol applink="craft" dataattribute="craft" id="resource_showlistGA_tablebody_2" menutype="normal"/>
+                            <tablecol applink="amcrewt" dataattribute="amcrewtype" id="resource_showlistGA_tablebody_3" menutype="normal"/>
+                            <tablecol applink="tool" dataattribute="itemnum" id="resource_showlistGA_tablebody_4" menutype="normal"/>
+                            <tablecol applink="plusazone" dataattribute="zone" id="resource_showlistGA_tablebody_5" licensekey="AVIATIONMRO" menutype="normal"/>
+                            <tablecol dataattribute="availhours" id="resource_showlistGA_tablebody_6"/>
+                            <tablecol dataattribute="loadhours" id="resource_showlistGA_tablebody_7"/>
+                            <tablecol dataattribute="valmsg" id="resource_showlistGA_tablebody_8" inputmode="readonly"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlistGA_tablebody_9" mxevent="showworkvalresultga" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWRVALMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlistGA_tablebody_10" mxevent="showworkvalresultga" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALRWMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlistGA_tablebody_11" mxevent="OVERRIDEAVAILIDALOG" mxevent_desc="Override Availability" mxevent_icon="btn_modifylaboravail.gif" sigoption="ALTAVAILRES" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="resource_showlistGA_displayrule5">
+                                <exact classname="rowcolor_sdm_red" id="resource_showlistGA_exactrule4" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="resource_showlistGA_displayrule6">
+                                <exact classname="rowcolor_sdm_yellow" id="resource_showlistGA_exactrule5" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                    </table>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDProjectResourceGARecordsBean" id="resource_showlistGA1" label="Resources" orderby="valmsg desc, amcrew, laborcode asc" relationship="SKDPROJECTRESOURCEGA">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="resource_showlistGA1_tablebody">
+                            <tablecol dataattribute="craft" filterable="false" hidden="false" id="resource_showlistGA1_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol applink="amcrew" dataattribute="amcrew" id="resource_showlistGA1_tablebody_2" menutype="normal"/>
+                            <tablecol applink="labor" dataattribute="laborcode" id="resource_showlistGA1_tablebody_3" menutype="normal"/>
+                            <tablecol applink="location" dataattribute="labor.startlocation" id="resource_showlistGA1_tablebody_4" license_key="MAPCONTROL" lookup="locations" menutype="normal"/>
+                            <tablecol applink="location" dataattribute="labor.endlocation" id="resource_showlistGA1_tablebody_5" license_key="MAPCONTROL" lookup="locations" menutype="normal"/>
+                            <tablecol dataattribute="LBSINTERVAL" id="resource_showlistGA1_tablebody_6"/>
+                            <tablecol dataattribute="LBSDATAFROMWO" id="resource_showlistGA1_tablebody_7"/>
+                            <tablecol dataattribute="LASTUPDATE" id="resource_showlistGA1_tablebody_71"/>
+                            <tablecol dataattribute="valmsg" id="resource_showlistGA1_tablebody_8" inputmode="readonly"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlistGA1_tablebody_9" mxevent="showworkvalresultlocga" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWRVALMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlistGA1_tablebody_10" mxevent="showworkvalresultlocga" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALRWMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="resource_showlistGA1_tablebody_11" mxevent="OVERRIDEAVAILIDALOG" mxevent_desc="Override Availability" mxevent_icon="btn_modifylaboravail.gif" sigoption="ALTAVAILRES" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="resource_showlistGA1_displayrule5">
+                                <exact classname="rowcolor_sdm_red" id="resource_showlistGA1_exactrule4" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="resource_showlistGA1_displayrule6">
+                                <exact classname="rowcolor_sdm_yellow" id="resource_showlistGA1_exactrule5" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="ASSIGNMENT" label="Assignments" sigoption="SHOWASSIGNTAB" tabchangeevent="DMTabChanged">
+                    <section border="true" id="skdassign_0">
+                        <section border="true" id="skdassign_1">
+                            <sectionrow id="skdassign_2a">
+                                <sectioncol id="skdassign_3a">
+                                    <section id="skdassign_4a">
+                                        <multiparttextbox dataattribute="name" descdataattribute="description" id="skdassign_5" label="Schedule" menutype="normal"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="skdassign_3b">
+                                    <section id="skdassign_4b">
+                                        <textbox dataattribute="SKDDATAVALOPTION.valdate" id="skdassign_6_2_1" inputmode="readonly" lookup="datelookup"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="skdassign_3c">
+                                    <section id="skdassign_4c"/>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                        <section border="true" id="skdassign_1b">
+                            <sectionrow id="skdassign_2a_1">
+                                <sectioncol id="skdassign_3a_1">
+                                    <section border="true" id="skdassign_1b_1a">
+                                        <sectionrow id="skdassign_2b">
+                                            <sectioncol id="skdassign_3d_1">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.ASSIGNDURATION" id="skdassign_2b_1"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdassign_3d_2">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.SCHEDULEDATE" id="skdassign_2b_2"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdassign_3d_3">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.CRAFTCREWTYPE" id="skdassign_2b_3"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdassign_3d_4">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.WORKZONE" id="skdassign_2b_4"/>
+                                            </sectioncol>
+                                            <sectioncol id="skdassign_3d_5">
+                                                <checkbox dataattribute="SKDDATAVALOPTION.WORKGROUP" id="skdassign_2b_5"/>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="skdassign_3a_2_empty"/>
+                                <sectioncol id="skdassign_3a_2_empty2"/>
+                            </sectionrow>
+                        </section>
+                        <buttongroup align="LEFT" id="skdassign_6" labelalign="LEFT" width="100">
+                            <pushbutton default="true" id="skdassign_6_1" label="Validate Assignments" mxevent="validateAssign"/>
+                            <pushbutton id="skdassign_6_3" label="Show All Assignment Errors/Warnings" mxevent="showallassignvalresult" sigoption="SHOWALLASSIGNVALMSG"/>
+                        </buttongroup>
+                        <section id="combobox_assign_filter_section">
+                            <sectionrow id="combobox_assign_filter_section_1">
+                                <sectioncol id="combobox_assign_filter_section_1_1">
+                                    <combobox dataattribute="VALMSG" displayattribute="DESCRIPTION" id="combobox_assign_filter" label="Filter By Error/Warning" ondatachange="filterAssignByErrorType"/>
+                                </sectioncol>
+                                <sectioncol id="comboboxassign_filter_section_1_3">
+                                    <checkbox dataattribute="SKDDATAVALOPTION.SHOWERRORSONLY" id="checkbox_assign_errorsonly" synchronous="true"/>
+                                </sectioncol>
+                                <sectioncol id="comboboxassign_filter_section_1_2"/>
+                            </sectionrow>
+                        </section>
+                    </section>
+                    <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDAssignRecordsBean" id="assign_showlist" label="Assignment" orderby="valmsg desc, wonum asc" relationship="ASSIGNMENT" selectmode="multiple" width="100">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="assign_showlist_tablebody">
+                            <tablecol dataattribute="assignmentid" filterable="false" hidden="false" id="assign_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol applink="wotrack" dataattribute="workorder.wogroup" id="assign_showlist_tablebody_2" menutype="normal"/>
+                            <tablecol dataattribute="workorder.taskid" id="assign_showlist_tablebody_3"/>
+                            <tablecol dataattribute="workorder.description" id="assign_showlist_tablebody_4" inputmode="readonly"/>
+                            <tablecol applink="craft" dataattribute="craft" id="assign_showlist_tablebody_5" lookup="craftratestatus" menutype="normal"/>
+                            <tablecol dataattribute="skilllevel" id="assign_showlist_tablebody_6"/>
+                            <tablecol applink="amcrewt" dataattribute="amcrewtype" id="assign_showlist_tablebody_7" lookup="amcrewtype" menutype="normal"/>
+                            <tablecol applink="amcrew" dataattribute="amcrew" id="assign_showlist_tablebody_8" lookup="amcrews" menutype="normal"/>
+                            <tablecol applink="labor" dataattribute="laborcode" id="assign_showlist_tablebody_9" lookup="laborcraftrate" menutype="normal" synchronous="true"/>
+                            <tablecol dataattribute="laborhrs" id="assign_showlist_tablebody_10"/>
+                            <tablecol dataattribute="status" id="assign_showlist_tablebody_11"/>
+                            <tablecol dataattribute="scheduledate" id="assign_showlist_tablebody_12" lookup="datelookup"/>
+                            <tablecol dataattribute="crewworkgroup" id="assign_showlist_tablebody_13"/>
+                            <tablecol applink="workzone" dataattribute="workzone" id="assign_showlist_tablebody_14" menutype="normal"/>
+                            <tablecol dataattribute="valmsg" id="assign_showlist_tablebody_15" inputmode="readonly"/>
+                            <tablecol filterable="false" hidden="false" id="assign_showlist_tablebody_16" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="error.gif" sigoption="SHOWAVALMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="assign_showlist_tablebody_17" mxevent="showworkvalresult" mxevent_desc="Show Errors/warnings" mxevent_icon="exclamation.gif" sigoption="SHOWVALAWMSG" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="assign_showlist_tablebody_18" mxevent="showworkplan" mxevent_desc="Show Work Plan" mxevent_icon="btn_edit_record.gif" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="assign_showlist_tablebody_19" mxevent="ASSIGNDLG" mxevent_desc="Modify Assignment" mxevent_icon="btn_availableLabor.gif" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="assign_showlist_tablebody_20" mxevent="MODIFYSCHEDULEDATES" mxevent_desc="Modify Schedule Dates" mxevent_icon="img_date_time.gif" sortable="false" type="event"/>
+                            <displayrule dataattribute="validationerror" id="displayrule7">
+                                <exact classname="rowcolor_sdm_red" id="exactrule6" value="Y"/>
+                            </displayrule>
+                            <displayrule dataattribute="validationwarn" id="displayrule8">
+                                <exact classname="rowcolor_sdm_yellow" id="exactrule7" value="Y"/>
+                            </displayrule>
+                        </tablebody>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include id="pageFooter"/>
+    </page>
+    <dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+        <section id="qbe_grid2">
+            <sectionrow id="qbe_grid2_r1">
+                <sectioncol id="qbe_grid2_r1_c1">
+                    <section id="qbe_grid2_r1_c1_s1">
+                        <textbox dataattribute="name" id="qbe_grid2_1_1" inputmode="query" label="Schedule"/>
+                        <textbox dataattribute="description" id="qbe_grid2_1_2" inputmode="query" label="Description"/>
+                        <textbox applink="calendr,ipc" dataattribute="calnum" id="qbe_grid2_1_3" inputmode="query" lookup="calendar" menutype="calendar"/>
+                        <textbox dataattribute="orgid" id="qbe_grid2_1_5" inputmode="query" lookup="org"/>
+                        <textbox dataattribute="status" id="qbe_grid2_1_6" inputmode="query" lookup="valuelist"/>
+                        <textbox dataattribute="historyflag" id="qbe_grid2_1_7" inputmode="query"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid3_r2_c2">
+                    <section id="qbe_grid3_r1_c1_s1">
+                        <textbox dataattribute="savetime" id="qbe_grid3_1_1" inputmode="query" label="Last Saved Date" lookup="datelookup"/>
+                        <textbox dataattribute="committime" id="qbe_grid3_1_2" inputmode="query" label="Last Committed Date" lookup="datelookup"/>
+                        <textbox dataattribute="lastpublishdate" id="qbe_grid3_1_21" inputmode="query" lookup="datelookup"/>
+                        <textbox applink="user" dataattribute="publishby" id="qbe_grid3_1_22" inputmode="query" lookup="maxuser" menutype="normal"/>
+                        <textbox applink="user" dataattribute="createby" id="qbe_grid3_1_3" inputmode="query" lookup="maxuser" menutype="normal"/>
+                        <textbox dataattribute="createdate" id="qbe_grid3_1_4" inputmode="query" lookup="datelookup"/>
+                        <textbox applink="user" dataattribute="changeby" id="qbe_grid3_1_5" inputmode="query" lookup="maxuser" menutype="normal"/>
+                        <textbox dataattribute="changedate" id="qbe_grid3_1_6" inputmode="query" lookup="datelookup"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="qbe_grid5_1_1_grid6">
+            <pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_2" label="Clear" mxevent="qbeclear"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDWorkPlanBean" id="showworkplan" label="Work Plan">
+        <tabgroup id="plans_plans_res">
+            <tab default="true" id="plans_plans_labor_res" label="Labor">
+                <table beanclass="psdi.webclient.beans.workorder.PlanLaborBean" datasrc="plans_plans_labor_labor_table_res" defaultbutton="plans_plans_labor_labor_table_2_2n-pushbutton_pushbutton" id="plans_plans_labor_labor_table_res" label="Labor" relationship="SHOWPLANLABOR">
+                    <tablebody displayrowsperpage="6" filterable="true" id="plans_plans_labor_labor_table_tablebody_n">
+                        <tablecol filterable="false" id="plans_plans_labor_labor_table_tablebody_1n" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                        <tablecol dataattribute="taskid" id="plans_plans_labor_labor_table_tablebody_2n" linkedcontrolid="plans_plans_labor_labor_table_1_grid7_1" sortable="false"/>
+                        <tablecol applink="amcrewt" dataattribute="amcrewtype" id="plans_plans_labor_labor_table_tablebody_crew_1" licensekey="CREW" lookup="amcrewtype" menutype="NORMAL"/>
+                        <tablecol dataattribute="craft" id="plans_plans_labor_labor_table_tablebody_3n" linkedcontrolid="plans_plans_labor_labor_table_1_grid7_2"/>
+                        <tablecol dataattribute="skilllevel" id="plans_plans_labor_labor_table_tablebody_4n" linkedcontrolid="plans_plans_labor_labor_table_1_grid7_3"/>
+                        <tablecol dataattribute="vendor" id="plans_plans_labor_labor_table_tablebody_5n" linkedcontrolid="plans_plans_labor_labor_table_1_grid7_4"/>
+                        <tablecol dataattribute="quantity" id="plans_plans_labor_labor_table_tablebody_6n" linkedcontrolid="plans_plans_labor_labor_table_1_grid8_1"/>
+                        <tablecol dataattribute="laborcode" id="plans_plans_labor_labor_table_tablebody_7n" linkedcontrolid="plans_plans_labor_labor_table_1_grid7_6"/>
+                        <tablecol applink="amcrew" dataattribute="amcrew" id="plans_plans_labor_labor_table_tablebody_crew_2" licensekey="CREW" lookup="amcrews" menutype="normal"/>
+                        <tablecol dataattribute="laborhrs" id="plans_plans_labor_labor_table_tablebody_8n" linkedcontrolid="plans_plans_labor_labor_table_1_grid8_2"/>
+                        <tablecol dataattribute="displayrate" id="plans_plans_labor_labor_table_tablebody_9n" linkedcontrolid="plans_plans_labor_labor_table_1_grid8_3"/>
+                        <tablecol dataattribute="linecost" id="plans_plans_labor_labor_table_tablebody_10n" linkedcontrolid="plans_plans_labor_labor_table_1_grid8_4" sortable="false"/>
+                        <tablecol filterable="false" id="plans_plans_labor_labor_table_tablebody_11n" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <tabledetails id="plans_plans_labor_labor_table_1n">
+                        <section id="pl_an" label="Details">
+                            <sectionrow id="pl_bn">
+                                <sectioncol id="pl_cn" width="33%">
+                                    <section id="plans_plans_labor_labor_table_1_grid7n">
+                                        <textbox applink="persongr" dataattribute="crewworkgroup" id="plans_plans_labor_labor_table_1_grid7_crew_1" licensekey="CREW" lookup="persongroup" menutype="normal" smartfilloff="true"/>
+                                        <textbox applink="amcrewt" dataattribute="amcrewtype" id="plans_plans_labor_labor_table_1_grid7_crew_2" licensekey="CREW" lookup="amcrewtype" menutype="NORMAL"/>
+                                        <textbox applink="craft" dataattribute="craft" id="plans_plans_labor_labor_table_1_grid7_2n" lookup="craftstandardrate" menutype="normal" smartfilloff="true"/>
+                                        <textbox dataattribute="skilllevel" id="plans_plans_labor_labor_table_1_grid7_3n" lookup="craftstandardrate" smartfilloff="true"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="pl_dn" width="33%">
+                                    <section id="plans_plans_labor_labor_table_1_grid8n">
+                                        <textbox applink="company" dataattribute="vendor" id="plans_plans_labor_labor_table_1_grid7_4n" lookup="craftstandardrate" menutype="normal" smartfilloff="true"/>
+                                        <textbox applink="contlabor" dataattribute="contractnum" id="plans_plans_labor_labor_table_1_grid7_5n" lookup="craftstandardrate" menutype="normal" smartfilloff="true"/>
+                                        <textbox dataattribute="quantity" id="plans_plans_labor_labor_table_1_grid8_1n"/>
+                                        <textbox applink="amcrew" dataattribute="amcrew" id="plans_plans_labor_labor_table_1_grid8_crew_1" licensekey="CREW" lookup="amcrews" menutype="normal"/>
+                                        <textbox applink="labor" dataattribute="laborcode" id="plans_plans_labor_labor_table_1_grid7_6n" lookup="laboronly" menutype="normal" smartfilloff="true"/>
+                                        <checkbox dataattribute="outside" id="plans_plans_labor_labor_table_1_grid7_7"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="pl_e" width="33%">
+                                    <section id="pl_f">
+                                        <textbox dataattribute="laborhrs" id="plans_plans_labor_labor_table_1_grid8_2n"/>
+                                        <textbox dataattribute="displayrate" id="plans_plans_labor_labor_table_1_grid8_3n"/>
+                                        <textbox dataattribute="linecost" id="plans_plans_labor_labor_table_1_grid8_4n" inputmode="readonly"/>
+                                        <checkbox dataattribute="ratehaschanged" id="plans_plans_labor_labor_table_1_grid8_5n"/>
+                                    </section>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                    </tabledetails>
+                    <buttongroup id="plans_plans_labor_labor_table_2n">
+                        <pushbutton default="true" id="plans_plans_labor_labor_table_2_2n" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+            <tab default="false" id="plans_plans_materials_res" label="Materials">
+                <table beanclass="psdi.webclient.beans.workorder.PlanMaterialBean" datasrc="plans_plans_materials_materials_table_res" defaultbutton="plans_plans_materials_materials_table_2_4n-pushbutton_pushbutton" id="plans_plans_materials_materials_table_res" label="Materials" relationship="SHOWPLANMATERIAL">
+                    <tablebody displayrowsperpage="6" filterable="true" id="plans_plans_materials_materials_table_tablebody_res">
+                        <tablecol filterable="false" id="plans_plans_materials_materials_table_tablebody_1n" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                        <tablecol applink="item,inventor" dataattribute="itemnum" id="plans_plans_materials_materials_table_tablebody_3n" lookup="item" menutype="ITEM"/>
+                        <tablecol dataattribute="description" id="plans_plans_materials_materials_table_tablebody_4n" lookup="longdesc"/>
+                        <tablecol dataattribute="itemqty" id="plans_plans_materials_materials_table_tablebody_5n" linkedcontrolid="plans_plans_materials_materials_table_1_grid7_9"/>
+                        <tablecol dataattribute="unitcost" id="plans_plans_materials_materials_table_tablebody_6n" linkedcontrolid="plans_plans_materials_materials_table_1_grid8_1"/>
+                        <tablecol dataattribute="linecost" id="plans_plans_materials_materials_table_tablebody_7n" linkedcontrolid="plans_plans_materials_materials_table_1_grid8_2" sortable="false"/>
+                        <tablecol dataattribute="location" id="plans_plans_materials_materials_table_tablebody_8n" linkedcontrolid="plans_plans_materials_materials_table_1_grid8_3"/>
+                        <tablecol dataattribute="directreq" id="plans_plans_materials_materials_table_tablebody_9n" linkedcontrolid="plans_plans_materials_materials_table_1_grid8_4"/>
+                        <tablecol filterable="false" id="plans_plans_materials_materials_table_tablebody_10n" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <tabledetails id="plans_plans_materials_materials_table_1n">
+                        <section id="plans_plans_materials_materials_table_1_sec1n" label="Details">
+                            <sectionrow id="plans_plans_materials_materials_table_1_secrow1n">
+                                <sectioncol id="plans_plans_materials_materials_table_1_secrow1_1n" width="33%">
+                                    <section id="plans_plans_materials_materials_table_1_grid7n">
+                                        <combobox dataattribute="linetype" id="plans_plans_materials_materials_table_1_grid7_2n"/>
+                                        <multiparttextbox applink="item,inventor" dataattribute="itemnum" descdataattribute="description" desclookup="longdesc" id="plans_plans_materials_materials_table_1_grid7_3n" lookup="item" menutype="ITEM"/>
+                                        <textbox dataattribute="itemqty" id="plans_plans_materials_materials_table_1_grid7_9n"/>
+                                        <textbox dataattribute="orderunit" id="plans_plans_materials_materials_table_1_grid7_10n" lookup="measureunit"/>
+                                        <textbox dataattribute="unitcost" id="plans_plans_materials_materials_table_1_grid8_1n"/>
+                                        <textbox dataattribute="linecost" id="plans_plans_materials_materials_table_1_grid8_2n" inputmode="readonly"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="plans_plans_materials_materials_table_1_secrow1_2n" width="33%">
+                                    <section id="plans_mat_a">
+                                        <textbox applink="storeroom,ipc" dataattribute="location" id="plans_plans_materials_materials_table_1_grid8_3n" lookup="storelocsite" menutype="normal"/>
+                                        <textbox dataattribute="storelocsite" id="plans_plans_materials_materials_table_1_grid8_13n" lookup="storelocsite"/>
+                                        <checkbox dataattribute="directreq" id="plans_plans_materials_materials_table_1_grid8_4n"/>
+                                        <textbox applink="company" dataattribute="vendor" id="plans_plans_materials_materials_table_1_grid8_5n" lookup="companies" menutype="normal"/>
+                                        <textbox dataattribute="inventory.category" dynamic="true" id="plans_plans_materials_materials_table_1_grid8_6n" inputmode="readonly" lookup="valuelist"/>
+                                        <textbox dataattribute="conditioncode" dynamic="true" id="plans_plans_materials_materials_table_1_grid7_7n" lookup="conditioncode"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="plans_plans_materials_materials_table_1_secrow1_3n" width="33%">
+                                    <section id="plans_plans_materials_materials_table_1_grid8n">
+                                        <textbox applink="pr" dataattribute="pr" id="plans_plans_materials_materials_table_1_grid8_7n" lookup="pr" menutype="normal"/>
+                                        <textbox dataattribute="prlinenum" id="plans_plans_materials_materials_table_1_grid8_8n"/>
+                                        <textbox applink="person" dataattribute="issueto" id="plans_plans_materials_materials_table_1_grid8_9n" lookup="person" menutype="normal"/>
+                                        <textbox dataattribute="requiredate" id="plans_plans_materials_materials_table_1_grid8_10n" lookup="datelookup"/>
+                                        <textbox dataattribute="requestby" id="plans_plans_materials_materials_table_1_grid8_11n" lookup="person"/>
+                                        <checkbox dataattribute="item.conditionenabled" id="plans_plans_materials_materials_table_1_grid7_6n" inputmode="readonly"/>
+                                        <textbox dataattribute="itemcondition.condrate" id="plans_plans_materials_materials_table_1_grid7_8n" inputmode="readonly"/>
+                                    </section>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                    </tabledetails>
+                    <buttongroup id="plans_plans_materials_materials_table_2n">
+                        <pushbutton default="true" id="plans_plans_materials_materials_table_2_4n" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+            <tab default="false" id="plans_plans_services_res" label="Services">
+                <table datasrc="plans_plans_services_services_table_res" defaultbutton="plans_plans_services_services_table_2_1n-pushbutton_pushbutton" id="plans_plans_services_services_table_res" label="Services" relationship="SHOWPLANSERVICE">
+                    <tablebody displayrowsperpage="6" filterable="true" id="plans_plans_services_services_table_tablebody_res">
+                        <tablecol filterable="false" id="plans_plans_services_services_table_tablebody_1n" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                        <tablecol applink="srvitem" dataattribute="itemnum" id="plans_plans_services_services_table_tablebody_3n" lookup="serviceitem" menutype="normal"/>
+                        <tablecol dataattribute="description" id="plans_plans_services_services_table_tablebody_4n" lookup="longdesc"/>
+                        <tablecol dataattribute="itemqty" id="plans_plans_services_services_table_tablebody_5n" linkedcontrolid="plans_plans_services_services_table_1_grid18_1"/>
+                        <tablecol dataattribute="unitcost" id="plans_plans_services_services_table_tablebody_6n" linkedcontrolid="plans_plans_services_services_table_1_grid18_3"/>
+                        <tablecol dataattribute="linecost" id="plans_plans_services_services_table_tablebody_7n" linkedcontrolid="plans_plans_services_services_table_1_grid18_4" sortable="false"/>
+                        <tablecol filterable="false" id="plans_plans_services_services_table_tablebody_8n" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <tabledetails id="plans_plans_services_services_table_1n">
+                        <section id="plans_plans_services_services_table_1_secn" label="Details">
+                            <sectionrow id="plans_plans_services_services_table_1_secrown">
+                                <sectioncol id="plans_plans_services_services_table_1_secrow_1n" width="33%">
+                                    <section id="plans_plans_services_services_table_1_grid17n">
+                                        <combobox dataattribute="linetype" id="plans_plans_services_services_table_1_grid17_2n"/>
+                                        <multiparttextbox applink="srvitem" dataattribute="itemnum" descdataattribute="description" desclookup="longdesc" id="plans_plans_services_services_table_1_grid17_3n" lookup="serviceitem" menutype="normal"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="plans_plans_services_services_table_1_secrow_2n" width="33%">
+                                    <section id="plans_plans_services_services_table_1_grid18n">
+                                        <textbox dataattribute="itemqty" id="plans_plans_services_services_table_1_grid18_1n"/>
+                                        <textbox dataattribute="orderunit" id="plans_plans_services_services_table_1_grid18_2n" lookup="measureunit"/>
+                                        <textbox dataattribute="unitcost" id="plans_plans_services_services_table_1_grid18_3n"/>
+                                        <textbox dataattribute="linecost" id="plans_plans_services_services_table_1_grid18_4n"/>
+                                        <textbox applink="person" dataattribute="issueto" id="plans_plans_services_services_table_1_grid18_5n" lookup="person" menutype="normal"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="plans_plans_services_services_table_1_secrow_3n" width="33%">
+                                    <section id="plans_plans_services_services_table_1_grid19n">
+                                        <textbox dataattribute="requiredate" id="plans_plans_services_services_table_1_grid18_6n" lookup="datelookup"/>
+                                        <textbox dataattribute="requestby" id="plans_plans_services_services_table_1_grid18_7n" lookup="person"/>
+                                        <textbox applink="company" dataattribute="vendor" id="plans_plans_services_services_table_1_grid18_8n" lookup="companies" menutype="normal"/>
+                                        <textbox applink="pr" dataattribute="pr" id="plans_plans_services_services_table_1_grid18_9n" lookup="pr" menutype="normal"/>
+                                        <textbox dataattribute="prlinenum" id="plans_plans_services_services_table_1_grid18_10n"/>
+                                    </section>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                    </tabledetails>
+                    <buttongroup id="plans_plans_services_services_table_2n">
+                        <pushbutton default="true" id="plans_plans_services_services_table_2_1n" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+            <tab default="false" id="plans_plans_tools_res" label="Tools">
+                <table datasrc="plans_plans_tools_tool_table_res" defaultbutton="plans_plans_tools_tool_table_2_2n-pushbutton_pushbutton" id="plans_plans_tools_tool_table_res" label="Tools" relationship="SHOWPLANTOOL">
+                    <tablebody displayrowsperpage="6" filterable="true" id="plans_plans_tools_tool_table_tablebody_res">
+                        <tablecol filterable="false" id="plans_plans_tools_tool_table_tablebody_1n" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                        <tablecol applink="tool" dataattribute="Itemnum" id="plans_plans_tools_tool_table_tablebody_3n" lookup="tools" menutype="normal"/>
+                        <tablecol dataattribute="description" id="plans_plans_tools_tool_table_tablebody_4n" lookup="longdesc"/>
+                        <tablecol dataattribute="itemqty" id="plans_plans_tools_tool_table_tablebody_5n" linkedcontrolid="plans_plans_tools_tool_table_1_grid8_1"/>
+                        <tablecol dataattribute="hours" id="plans_plans_tools_tool_table_tablebody_6n" linkedcontrolid="plans_plans_tools_tool_table_1_grid8_2"/>
+                        <tablecol dataattribute="rate" id="plans_plans_tools_tool_table_tablebody_7n" linkedcontrolid="plans_plans_tools_tool_table_1_grid8_3"/>
+                        <tablecol dataattribute="linecost" id="plans_plans_tools_tool_table_tablebody_8n" linkedcontrolid="plans_plans_tools_tool_table_1_grid8_4"/>
+                        <tablecol filterable="false" id="plans_plans_tools_tool_table_tablebody_9n" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <tabledetails id="plans_plans_tools_tool_table_1n">
+                        <section id="plans_plans_tools_tool_table_1_secn" label="Details">
+                            <sectionrow id="plans_plans_tools_tool_table_1_secrown">
+                                <sectioncol id="plans_plans_tools_tool_table_1_secrow_1n" width="33%">
+                                    <section id="plans_plans_tools_tool_table_1_grid7n">
+                                        <multiparttextbox applink="tool" dataattribute="itemnum" descdataattribute="description" desclookup="longdesc" id="plans_plans_tools_tool_table_1_grid7_2n" longdescreadonly="true" lookup="tools" menutype="normal"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="plans_plans_tools_tool_table_1_secrow_2n" width="33%">
+                                    <section id="plans_plans_tools_tool_table_1_grid8n">
+                                        <textbox dataattribute="itemqty" id="plans_plans_tools_tool_table_1_grid8_1n"/>
+                                        <textbox dataattribute="hours" id="plans_plans_tools_tool_table_1_grid8_2n"/>
+                                        <textbox dataattribute="rate" id="plans_plans_tools_tool_table_1_grid8_3n"/>
+                                        <textbox dataattribute="linecost" id="plans_plans_tools_tool_table_1_grid8_4n" inputmode="readonly"/>
+                                    </section>
+                                </sectioncol>
+                                <sectioncol id="plans_plans_tools_tool_table_1_secrow_3n" width="33%">
+                                    <section id="plans_plans_tools_tool_table_1_grid9n">
+                                        <checkbox dataattribute="reservereq" id="plans_plans_tools_tool_table_1_grid9_1n"/>
+                                        <textbox applink="storeroom,ipc" dataattribute="location" id="plans_plans_tools_tool_table_1_grid9_2n" lookup="storelocsite" menutype="normal"/>
+                                        <textbox dataattribute="storelocsite" id="plans_plans_tools_tool_table_1_grid9_3n" lookup="storelocsite"/>
+                                        <textbox applink="person" dataattribute="issueto" id="plans_plans_tools_tool_table_1_grid9_4n" lookup="person" menutype="normal"/>
+                                        <checkbox dataattribute="ratehaschanged" id="plans_plans_tools_tool_table_1_grid9_5n" inputmode="readonly"/>
+                                    </section>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                    </tabledetails>
+                    <buttongroup id="plans_plans_tools_tool_table_2n">
+                        <pushbutton default="true" id="plans_plans_tools_tool_table_2_2n" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+            <tab default="false" id="plusm_res_plans_fees_charges" label="Fees and Charges" licensekey="AVIATIONMRO">
+                <table id="plusm_res_plans_fees_charges_table" label="Fees and Charges" relationship="PLUSPSHOWPLANFEECHARGE">
+                    <tablebody displayrowsperpage="6" filterable="true" id="plusm_res_plans_fees_charges_table_tablebody">
+                        <tablecol dataattribute="type" id="plusm_res_plans_fees_charges_table_tablebody_3" lookup="valuelist"/>
+                        <tablecol dataattribute="description" id="plusm_res_plans_fees_charges_table_tablebody_4" lookup="longdesc"/>
+                        <tablecol dataattribute="lineprice" id="plusm_res_plans_fees_charges_table_tablebody_8"/>
+                        <tablecol filterable="false" hidden="false" id="plusm_res_plans_fees_charges_table_tablebody_9" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <buttongroup id="plusm_res_plans_fees_charges_table_btngrp">
+                        <pushbutton default="true" id="plusm_res_plans_fees_charges_table_btn1" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+            <tab default="false" id="plusm_res_wo_plan_access" label="Access" licensekey="AVIATIONMRO">
+                <table id="plusm_res_wo_plan_accesspanel_table" label="Access Part Number" parentemptylabel="Access Part Number" relationship="PLUSAWOPLANACCESS">
+                    <tablebody displayrowsperpage="6" filterable="true" id="plusm_res_wo_plan_accesspanel_table_tablebody">
+                        <tablecol dataattribute="accesspanel" id="plusm_res_wo_plan_accesspanel_table_tablebody_0" lookup="plusaaccess" ondatachange="refreshtable"/>
+                        <tablecol dataattribute="plusacmaccess.description" id="plusm_res_wo_plan_accesspanel_table_tablebody_1" inputmode="readonly"/>
+                        <tablecol dataattribute="zone" id="plusm_res_wo_plan_accesspanel_table_tablebody_2" inputmode="readonly"/>
+                        <tablecol dataattribute="opentime" id="plusm_res_wo_plan_accesspanel_table_tablebody_3" inputmode="readonly"/>
+                        <tablecol dataattribute="closetime" id="plusm_res_wo_plan_accesspanel_table_tablebody_4" inputmode="readonly"/>
+                        <tablecol dataattribute="totaltime" id="plusm_res_wo_plan_accesspanel_table_tablebody_5" inputmode="readonly"/>
+                        <tablecol filterable="false" id="plusm_res_wo_plan_accesspanel_table_tablebody_6" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <buttongroup id="plusm_res_wo_plan_accesspanel_table_btngrp">
+                        <pushbutton default="true" id="plusm_res_wo_plan_accesspanel_table_btn1" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+            <tab default="false" id="plusm_res_wo_plan_zone" label="Zones" licensekey="AVIATIONMRO">
+                <table id="plusm_res_wo_plan_zone_table" label="Zones" parentemptylabel="Zone" relationship="PLUSAWOPLANZONE">
+                    <tablebody displayrowsperpage="6" filterable="true" id="plusm_res_wo_plan_zone_table_tablebody">
+                        <tablecol applink="plusazone" dataattribute="zone" id="plusm_res_wo_plan_zone_table_tablebody_1" lookup="plusazonedetailed" menutype="plusazonemenu"/>
+                        <tablecol dataattribute="plusazone.description" id="plusm_res_wo_plan_zone_table_tablebody_2" inputmode="readonly"/>
+                        <tablecol dataattribute="plusazone.capacity" id="plusm_res_wo_plan_zonecapacity" inputmode="readonly" label="Zone Capacity"/>
+                        <tablecol dataattribute="isprimaryzone" id="plusm_res_wo_plan_zone_table_tablebody_isprimaryzone" ondatachange="refreshtable" synchronous="true"/>
+                        <tablecol filterable="false" id="plusm_res_wo_plan_zone_table_tablebody_3" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <buttongroup id="plusm_res_wo_plan_zone_table_btngrp">
+                        <pushbutton default="true" id="plusm_res_wo_plan_zone_table_btn1" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+            </tab>
+        </tabgroup>
+        <buttongroup id="optsplit_2">
+            <pushbutton default="true" id="optsplit_2_1" label="OK" mxevent="dolongop"/>
+            <pushbutton id="optsplit_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showworkvalresult" label="Work Errors/Warnings" relationship="SKDDATAVALRESULT">
+        <table id="showworkvalresult_table" label="Errors/Warnings">
+            <tablebody displayrowsperpage="15" filterable="true" id="showworkvalresult_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="VALMSG" id="showworkvalresult_table_tablebody_1"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showworkvalresult_table_tablebody_2"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showworkvalresult_table_tablebody_3"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showworkvalresult_table_tablebody_4"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dialogclose_2">
+            <pushbutton default="true" id="dialogclose_2_1" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showworkvalresultga" label="Work Errors/Warnings" relationship="SKDDTRESERRWARRE">
+        <table id="showworkvalresultga_table" label="Errors/Warnings">
+            <tablebody displayrowsperpage="15" filterable="true" id="showworkvalresultga_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="VALMSG" id="showworkvalresultga_table_tablebody_1"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showworkvalresultga_table_tablebody_2"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showworkvalresultga_table_tablebody_3"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showworkvalresultga_table_tablebody_4"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dialogclose_20">
+            <pushbutton default="true" id="dialogclose_20_1" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showworkvalresultlocga" label="Work Errors/Warnings" relationship="SKDDTRESGAERRWARRE">
+        <table id="showworkvalresultlocga_table" label="Errors/Warnings">
+            <tablebody displayrowsperpage="15" filterable="true" id="showworkvalresultlocga_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="VALMSG" id="showworkvalresultlocga_table_tablebody_1"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showworkvalresultlocga_table_tablebody_2"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showworkvalresultlocga_table_tablebody_3"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showworkvalresultlocga_table_tablebody_4"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dialogclose_21">
+            <pushbutton default="true" id="dialogclose_21_1" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showallworkvalresult" label="All Work Errors/Warnings">
+        <table id="showallworkvalresult_table" label="Errors/Warnings" relationship="SKDWORKDATAVALRESULT">
+            <tablebody displayrowsperpage="15" filterable="true" id="showallworkvalresult_table_tablebody" inputmode="readonly" sortable="true">
+                <tablecol dataattribute="WORKORDER.WOGROUP" id="showallworkvalresult_table_tablebody_1"/>
+                <tablecol dataattribute="WORKORDER.TASKID" id="showallworkvalresult_table_tablebody_1a"/>
+                <tablecol dataattribute="VALMSG" id="showallworkvalresult_table_tablebody_1b"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showallworkvalresult_table_tablebody_2"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showallworkvalresult_table_tablebody_3"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showallworkvalresult_table_tablebody_4"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dialogclose_3">
+            <pushbutton default="true" id="dialogclose_31" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showallassignvalresult" label="All Assignment Errors/Warnings" relationship="SKDASSIGNDATAVALRESULT">
+        <table id="showallassignvalresult_table" label="Errors/Warnings">
+            <tablebody displayrowsperpage="15" filterable="true" id="showallassignvalresult_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="ASSIGNMENT.WORKORDER.WOGROUP" id="showallassignvalresult_table_tablebody_1"/>
+                <tablecol dataattribute="ASSIGNMENT.WORKORDER.TASKID" id="showallassignvalresult_table_tablebody_1a"/>
+                <tablecol dataattribute="ASSIGNMENT.CRAFT" id="showallassignvalresult_table_tablebody_2"/>
+                <tablecol dataattribute="ASSIGNMENT.SKILLLEVEL" id="showallassignvalresult_table_tablebody_3"/>
+                <tablecol dataattribute="ASSIGNMENT.AMCREWTYPE" id="showallassignvalresult_table_tablebody_4"/>
+                <tablecol dataattribute="VALMSG" id="showallassignvalresult_table_tablebody_5"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showallassignvalresult_table_tablebody_6"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showallassignvalresult_table_tablebody_7"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showallassignvalresult_table_tablebody_8"/>
+            </tablebody>
+        </table>
+        <buttongroup id="assigndialogclose_3">
+            <pushbutton default="true" id="assigndialogclose_31" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showallconsvalresult" label="All Constraint Errors/Warnings" relationship="SKDCONSTRAINTDATAVALRESULT">
+        <table id="showallconsvalresult_table" label="Errors/Warnings">
+            <tablebody displayrowsperpage="15" filterable="true" id="showallconsvalresult_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="WOTASKRELATION.predwonum" id="showallconsvalresult_table_tablebody_1" label="Predecessor"/>
+                <tablecol dataattribute="WOTASKRELATION.predtaskid" id="showallconsvalresult_table_tablebody_2"/>
+                <tablecol dataattribute="WOTASKRELATION.displaywonum" id="showallconsvalresult_table_tablebody_3" label="Successor"/>
+                <tablecol dataattribute="WOTASKRELATION.succtaskid" id="showallconsvalresult_table_tablebody_4" label="Successor Task"/>
+                <tablecol dataattribute="VALMSG" id="showallconsvalresult_table_tablebody_5"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showallconsvalresult_table_tablebody_6"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showallconsvalresult_table_tablebody_7"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showallconsvalresult_table_tablebody_8"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dialogclose_4">
+            <pushbutton default="true" id="dialogclose_41" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showallresvalresult" label="All Resource Errors/Warnings" relationship="SKDRESOURCEDATAVALRESULT">
+        <table id="showallresvalresult_table" label="Errors/Warnings">
+            <tablebody displayrowsperpage="15" filterable="true" id="showallresvalresult_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="SKDCRAFTDATAVALRESULT.CRAFT" id="showallresvalresult_table_tablebody_1"/>
+                <tablecol dataattribute="SKDAMCREWTDATAVALRESULT.AMCREWTYPE" id="showallresvalresult_table_tablebody_2"/>
+                <tablecol dataattribute="SKDTOOLITEMDATAVALRESULT.ITEMNUM" id="showallresvalresult_table_tablebody_3"/>
+                <tablecol dataattribute="SKDZONEDATAVALRESULT.ZONE" id="showallresvalresult_table_tablebody_4" licensekey="AVIATIONMRO"/>
+                <tablecol dataattribute="VALMSG" id="showallresvalresult_table_tablebody_5"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showallresvalresult_table_tablebody_6"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showallresvalresult_table_tablebody_7"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showallresvalresult_table_tablebody_8"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dialogclose_5">
+            <pushbutton default="true" id="dialogclose_51" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="showallresvalresultGA" label="All Resource Errors/Warnings">
+        <table id="showallresvalresultGA_table" label="Resources Errors/Warnings" relationship="SKDRESOURCEDATAVALRESULT">
+            <tablebody displayrowsperpage="15" filterable="true" id="showallresvalresultGA_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="SKDCRAFTDATAVALRESULT.CRAFT" id="showallresvalresultGA_table_tablebody_1"/>
+                <tablecol dataattribute="SKDAMCREWTDATAVALRESULT.AMCREWTYPE" id="showallresvalresultGA_table_tablebody_2"/>
+                <tablecol dataattribute="SKDTOOLITEMDATAVALRESULT.ITEMNUM" id="showallresvalresultGA_table_tablebody_3"/>
+                <tablecol dataattribute="SKDZONEDATAVALRESULT.ZONE" id="showallresvalresultGA_table_tablebody_4" licensekey="AVIATIONMRO"/>
+                <tablecol dataattribute="VALMSG" id="showallresvalresultGA_table_tablebody_5"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showallresvalresultGA_table_tablebody_6"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showallresvalresultGA_table_tablebody_7"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showallresvalresultGA_table_tablebody_8"/>
+            </tablebody>
+        </table>
+        <table id="showallresvalresultGAlocloc_table" label="Locations Errors/Warnings" orderby="objectname desc" relationship="SKDRESOURCECLDATAVALRESULT">
+            <tablebody displayrowsperpage="15" filterable="true" id="showallresvalresultGAloc_table_tablebody" inputmode="readonly">
+                <tablecol dataattribute="SKDAMCREWDATAVALRESULT.AMCREW" id="showallresvalresultGAloc_table_tablebody_31"/>
+                <tablecol dataattribute="SKDLABORDATAVALRESULT.LABORCODE" id="showallresvalresultGAloc_table_tablebody_32"/>
+                <tablecol dataattribute="SKDZONEDATAVALRESULT.ZONE" id="showallresvalresultGAloc_table_tablebody_4" licensekey="AVIATIONMRO"/>
+                <tablecol dataattribute="VALMSG" id="showallresvalresultGAloc_table_tablebody_5"/>
+                <tablecol dataattribute="SKDDATAVALMSG.DESCRIPTION" id="showallresvalresultGAloc_table_tablebody_6"/>
+                <tablecol dataattribute="SKDDATAVALMSG.FIXOPTION" id="showallresvalresultGAloc_table_tablebody_7"/>
+                <tablecol dataattribute="SKDDATAVALMSG.MSGTYPE" id="showallresvalresultGAloc_table_tablebody_8"/>
+            </tablebody>
+        </table>
+        <buttongroup id="dialogcloseGA_5">
+            <pushbutton default="true" id="dialogcloseGA_51" label="OK" mxevent="dialogclose"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDShowCircularDependenciesBean" id="ShowCircularDependency" label="Circular Dependencies">
+        <section border="false" id="circulardependencies_grid1">
+            <miniapp appid="scheduler" beanclass="com.ibm.tivoli.maximo.miniapps.scheduler.max.ShowCircularDependenciesViewBean" height="600px" id="miniapp_circulardependencies" mainclass="gantt/ShowCircularDependenciesView" options="appname: 'SCHEDMAX'" singleinstance="true" singleinstanceid="circulardependencies" width="1000px"/>
+        </section>
+        <buttongroup id="circulardependencies_buttons">
+            <pushbutton default="true" id="circulardependencies_buttons_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDShowConstraintActualsBean" hidehelp="true" id="showactuals" label="Actuals" mboname="WOTASKRELATION" savemode="NONE">
+        <datasrc id="predwo" relationship="PREDECESSOR"/>
+        <datasrc id="succwo" relationship="WORKORDER"/>
+        <section datasrc="predwo" id="showactuals_1" label="Predecessor">
+            <sectionrow id="showactuals_1_1">
+                <sectioncol id="showactuals_1_1_1">
+                    <multiparttextbox dataattribute="wogroup" descdataattribute="description" descinputmode="readonly" id="showactuals_1_1_1_1" inputmode="readonly" label="Work Order"/>
+                </sectioncol>
+                <sectioncol id="showactuals_1_1_2">
+                    <textbox dataattribute="taskid" id="showactuals_1_1_2_1" inputmode="readonly"/>
+                </sectioncol>
+            </sectionrow>
+            <sectionrow id="showactuals_1_2">
+                <sectioncol id="showactuals_1_2_1">
+                    <textbox dataattribute="actstart" id="showactuals_1_2_1_1" lookup="datelookup"/>
+                </sectioncol>
+                <sectioncol id="showactuals_1_2_2">
+                    <textbox dataattribute="actfinish" id="showactuals_1_2_2_1" lookup="datelookup"/>
+                </sectioncol>
+            </sectionrow>
+            <sectionrow id="showactuals_1_4">
+                <section id="showactuals_1_4_1" parentdatasrc="predwo" relationship="WOCHANGESTATUS">
+                    <sectionrow id="showactuals_1_4_1_1">
+                        <sectioncol id="showactuals_1_4_1_1_1">
+                            <multiparttextbox dataattribute="wostatus" descdataattribute="statusdesc.description" descinputmode="readonly" id="showactuals_1_4_1_1_1_1" inputmode="readonly"/>
+                        </sectioncol>
+                        <sectioncol id="showactuals_1_4_1_1_2"/>
+                    </sectionrow>
+                    <sectionrow id="showactuals_1_4_1_2">
+                        <sectioncol id="showactuals_1_4_1_2_1">
+                            <combobox dataattribute="status" id="showactuals_1_4_1_2_1_1" smartfilloff="true"/>
+                        </sectioncol>
+                        <sectioncol id="showactuals_1_4_1_2_2">
+                            <textbox dataattribute="AsOfDate" id="showactuals_1_4_1_2_2_1" lookup="datelookup"/>
+                        </sectioncol>
+                    </sectionrow>
+                    <sectionrow id="showactuals_1_4_1_3">
+                        <textbox dataattribute="Memo" id="showactuals_1_4_1_3_1" sigoption="MEMOBELOWSTATUS"/>
+                    </sectionrow>
+                </section>
+            </sectionrow>
+        </section>
+        <section datasrc="succwo" id="showactuals_2" label="Successor">
+            <sectionrow id="showactuals_2_1">
+                <sectioncol id="showactuals_2_1_1">
+                    <multiparttextbox dataattribute="wogroup" descdataattribute="description" descinputmode="readonly" id="showactuals_2_1_1_1" inputmode="readonly" label="Work Order"/>
+                </sectioncol>
+                <sectioncol id="showactuals_2_1_2">
+                    <textbox dataattribute="taskid" id="showactuals_2_1_2_1" inputmode="readonly"/>
+                </sectioncol>
+            </sectionrow>
+            <sectionrow id="showactuals_2_2">
+                <sectioncol id="showactuals_2_2_1">
+                    <textbox dataattribute="actstart" id="showactuals_2_2_1_1" lookup="datelookup"/>
+                </sectioncol>
+                <sectioncol id="showactuals_2_2_2">
+                    <textbox dataattribute="actfinish" id="showactuals_2_2_2_1" lookup="datelookup"/>
+                </sectioncol>
+            </sectionrow>
+            <sectionrow id="showactuals_2_4">
+                <section id="showactuals_2_4_1" parentdatasrc="succwo" relationship="WOCHANGESTATUS">
+                    <sectionrow id="showactuals_2_4_1_1">
+                        <sectioncol id="showactuals_2_4_1_1_1">
+                            <multiparttextbox dataattribute="wostatus" descdataattribute="statusdesc.description" descinputmode="readonly" id="showactuals_2_4_1_1_1_1" inputmode="readonly"/>
+                        </sectioncol>
+                        <sectioncol id="showactuals_2_4_1_1_2"/>
+                    </sectionrow>
+                    <sectionrow id="showactuals_2_4_1_2">
+                        <sectioncol id="showactuals_2_4_1_2_1">
+                            <combobox dataattribute="status" id="showactuals_2_4_1_2_1_1" smartfilloff="true"/>
+                        </sectioncol>
+                        <sectioncol id="showactuals_2_4_1_2_2">
+                            <textbox dataattribute="AsOfDate" id="showactuals_2_4_1_2_2_1" lookup="datelookup"/>
+                        </sectioncol>
+                    </sectionrow>
+                    <sectionrow id="showactuals_2_4_1_3">
+                        <textbox dataattribute="Memo" id="showactuals_2_4_1_3_1" sigoption="MEMOBELOWSTATUS"/>
+                    </sectionrow>
+                </section>
+            </sectionrow>
+        </section>
+        <buttongroup id="showactuals_3">
+            <pushbutton default="true" id="showactuals_3_1" label="OK" mxevent="dialogok"/>
+            <pushbutton default="false" id="showactuals_3_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDValidationInPrgBean" hidehelp="true" id="validationinprogress" label="Validation Is In Progress" relationship="SKDASYNCJOBMSGREFRESH" width="400">
+        <section id="longopinprogress_grid1a">
+            <sectionrow id="longopinprogress_grid1_row0">
+                <sectioncol id="longopinprogress_grid1_row0_col1">
+                    <section id="longopinprogress_grid1_r0c1_section">
+                        <helpgrid id="longopinprogress_grid1_1" innerhtml="Validation job is in progress."/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="longopinprogress_grid1b">
+            <sectionrow id="longopinprogress_grid1b_row0">
+                <sectioncol id="longopinprogress_grid1b_row0_col1">
+                    <section id="longopinprogress_grid1b_r0c1_section">
+                        <pushbutton id="longopinprogress_grid1b_3" label="Refresh Status" mxevent="refreshStatus"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="longopinprogress_grid2">
+            <multilinetextbox columns="45" dataattribute="valmsgstatus" id="longopinprogress_grid2_1" inputmode="readonly" rows="10"/>
+        </section>
+        <buttongroup id="longopinprogress_2">
+            <pushbutton default="true" id="longopinprogress_2_1" label="OK" mxevent="dook"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDValidationStillInPrgBean" hidehelp="true" id="validationstillinprogress" label="Validation Is In Progress" mboname="SKDPROJECT" width="400">
+        <section id="longopstillinprogress_grid1a">
+            <sectionrow id="longopstillinprogress_grid1_row0">
+                <sectioncol id="longopstillinprogress_grid1_row0_col1">
+                    <section id="longopstillinprogress_grid1_r0c1_section">
+                        <helpgrid id="longopstillinprogress_grid1_1" innerhtml="The requested operation cannot be performed at the moment as the validation operation is in progress."/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="longopstillinprogress_2">
+            <pushbutton id="longopstillinprogress_grid1b_3" label="Click to see validation status" mxevent="longopstillinprogress"/>
+            <pushbutton default="true" id="longopstillinprogress_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDValidationInPrgBean" hidehelp="true" id="validationopfailed" label="Validation Status" relationship="SKDASYNCJOBMSGREFRESH" width="400">
+        <section id="validationopfailed_grid1a">
+            <sectionrow id="validationopfailed_grid1_row0">
+                <sectioncol id="validationopfailed_grid1_row0_col1">
+                    <section id="validationopfailed_grid1_r0c1_section">
+                        <helpgrid id="validationopfailed_grid1_1" innerhtml="Validation Status."/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="validationopfailed_grid2">
+            <multilinetextbox columns="45" dataattribute="valmsgstatus" id="validationopfailed_grid2_1" inputmode="readonly" rows="10"/>
+        </section>
+        <buttongroup id="validationopfailed_2">
+            <pushbutton default="true" id="validationopfailed_2_1" label="OK" mxevent="dook"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDValidationStatusBean" hidehelp="true" id="VALSTATUS" label="Validation Jobs" relationship="MAXASYNCJOB" width="800">
+        <section id="validationstatus_grid1a">
+            <sectionrow id="validationstatus_grid1_row0">
+                <sectioncol id="validationstatus_grid1_row0_col1">
+                    <section id="validationstatus_grid1_r0c1_section">
+                        <helpgrid id="validationstatus_grid1_1" innerhtml="Show Validation Job Status."/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="validationstatus_grid2">
+            <table id="validationstatus_table" label="Validation Jobs">
+                <tablebody displayrowsperpage="15" filterable="true" id="validationstatus_table_tablebody" inputmode="readonly">
+                    <tablecol dataattribute="SKDPROJECT.NAME" id="validationstatus_table_tablebody_0" label="Schedule"/>
+                    <tablecol dataattribute="JOBNUM" id="validationstatus_table_tablebody_1"/>
+                    <tablecol dataattribute="MAXASYNCJOBPARAM.VALUE" id="validationstatus_table_tablebody_1b" label="Tab"/>
+                    <tablecol dataattribute="SUBMITTIME" id="validationstatus_table_tablebody_2" label="Start Time"/>
+                    <tablecol dataattribute="STATUSDATE" id="validationstatus_table_tablebody_2a"/>
+                    <tablecol dataattribute="STATUS" id="validationstatus_table_tablebody_1c"/>
+                    <tablecol dataattribute="USERID" id="validationstatus_table_tablebody_1d"/>
+                </tablebody>
+            </table>
+        </section>
+        <buttongroup id="validationstatus_2">
+            <pushbutton id="validationstatus_grid1b_3" label="Refresh" mxevent="refreshStatus"/>
+            <pushbutton default="true" id="validationstatus_1" label="OK" mxevent="dook"/>
+        </buttongroup>
+    </dialog>
+    <dialog datasrc="MAINRECORD" id="CRAFTOVERRIDEAVAILIDALOG" label="Override Availability">
+        <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDModifyAlternateAvailBean" id="craft_override_avail_table" label="Modify Override Availability" relationship="SKDPROJECTSKDOVERRIDEAVAILS">
+            <tablebody displayrowsperpage="3" filterable="true" id="craft_override_avail_table_tablebody">
+                <tablecol dataattribute="shiftnum" id="craft_override_avail_table_tablecol_1" inputmode="readonly"/>
+                <tablecol dataattribute="craft" id="craft_override_avail_table_tablecol_2" inputmode="readonly" sortable="false"/>
+                <tablecol dataattribute="skilllevel" id="craft_override_avail_table_tablecol_3" inputmode="readonly" sortable="false"/>
+                <tablecol dataattribute="amcrewtype" id="craft_override_avail_table_tablecol_4" inputmode="readonly" sortable="false"/>
+                <tablecol dataattribute="startdate" id="craft_override_avail_table_tablecol_5" lookup="datelookup" sortable="false"/>
+                <tablecol dataattribute="enddate" id="craft_override_avail_table_tablecol_6" lookup="datelookup" sortable="false"/>
+                <tablecol dataattribute="quantity" id="craft_override_avail_table_tablecol_7"/>
+                <tablecol filterable="false" hidden="false" id="craft_override_avail_table_tablecol_8" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <buttongroup id="craft_override_avail_buttongroup">
+                <pushbutton id="craft_override_avail_buttongroup_1" label="New Row" mxevent="copytonewrow"/>
+            </buttongroup>
+        </table>
+        <buttongroup id="CRAFTOVERRIDEAVAILIDALOG_buttonclose">
+            <pushbutton default="true" id="CRAFTOVERRIDEAVAILIDALOG_buttonclose_1" label="Ok" mxevent="dialogok"/>
+            <pushbutton id="CRAFTOVERRIDEAVAILIDALOG_buttonclose_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog datasrc="MAINRECORD" id="TOOLITEMOVERRIDEAVAILIDALOG" label="Override Availability">
+        <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDModifyAlternateAvailBean" id="toolitem_override_avail_table" label="Modify Override Availability" relationship="SKDPROJECTSKDOVERRIDEAVAILS">
+            <tablebody displayrowsperpage="3" filterable="true" id="toolitem_override_avail_table_tablebody">
+                <tablecol dataattribute="itemnum" id="toolitem_override_avail_tablecol_1" inputmode="readonly"/>
+                <tablecol dataattribute="startdate" id="toolitem_override_avail_tablecol_2" lookup="datelookup" sortable="false"/>
+                <tablecol dataattribute="enddate" id="toolitem_override_avail_tablecol_3" lookup="datelookup" sortable="false"/>
+                <tablecol dataattribute="quantity" id="toolitem_override_avail_tablecol_4"/>
+                <tablecol filterable="false" hidden="false" id="toolitem_override_avail_tablecol_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <buttongroup id="toolitem_override_avail_buttongroup">
+                <pushbutton id="toolitem_override_avail_buttongroup_1" label="New Row" mxevent="copytonewrow"/>
+            </buttongroup>
+        </table>
+        <buttongroup id="TOOLITEMOVERRIDEAVAILIDALOG_buttonclose">
+            <pushbutton default="true" id="TOOLITEMOVERRIDEAVAILIDALOG_buttonclose_1" label="Ok" mxevent="dialogok"/>
+            <pushbutton id="TOOLITEMOVERRIDEAVAILIDALOG_buttonclose_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDModifyAssignmentBean" id="ASSIGNDLG" label="Assignments" mboname="ASSIGNMENT" savemode="ONUNLOAD">
+        <table beanclass="com.ibm.tivoli.maximo.skd.beans.SKDAssignmentTableBean" id="assignments_assignments_table" label="Assignments">
+            <tablebody displayrowsperpage="18" filterable="true" id="assignments_assignments_table_tablebody">
+                <tablecol filterable="false" hidden="false" id="assignments_assignments_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol dataattribute="taskid" id="assignments_assignments_table_tablebody_2" linkedcontrolid="assignments_assignments_table_1_grid1_1" sortable="false"/>
+                <tablecol dataattribute="workorder.description" id="assignments_assignments_table_tablebody_3" sortable="false"/>
+                <tablecol dataattribute="amcrewtype" id="assignments_assignments_table_tablebody_crew1" linkedcontrolid="assignments_assignments_table_1_grid1_4"/>
+                <tablecol dataattribute="craft" id="assignments_assignments_table_tablebody_4" linkedcontrolid="assignments_assignments_table_1_grid1_3"/>
+                <tablecol dataattribute="skilllevel" id="assignments_assignments_table_tablebody_5" linkedcontrolid="assignments_assignments_table_1_grid2_1"/>
+                <tablecol dataattribute="laborcode" id="assignments_assignments_table_tablebody_7" linkedcontrolid="assignments_assignments_table_1_grid1_2"/>
+                <tablecol dataattribute="amcrew" id="assignments_assignments_table_tablebody_crew2" linkedcontrolid="assignments_assignments_table_1_grid1_5"/>
+                <tablecol id="assignments_assignments_table_tablebody_8" mxevent="assignlabor" mxevent_desc="Available Labor" mxevent_icon="btn_availableLabor.gif" type="event"/>
+                <tablecol id="assignments_assignments_table_tablebody_crew3" licensekey="CREW" mxevent="crwassign" mxevent_desc="Available Crew" mxevent_icon="btn_availableCrews.gif" type="event"/>
+                <tablecol dataattribute="scheduledate" id="assignments_assignments_table_tablebody_10" linkedcontrolid="assignments_assignments_table_1_grid3_1"/>
+                <tablecol dataattribute="laborhrs" id="assignments_assignments_table_tablebody_11" linkedcontrolid="assignments_assignments_table_1_grid3_3"/>
+                <tablecol dataattribute="status" id="assignments_assignments_table_tablebody_12" linkedcontrolid="assignments_assignments_table_1_grid3_4"/>
+                <tablecol dataattribute="apptrequired" id="assignments_assignments_table_tablebody_14" licensekey="SCHEDULER_OPT" linkedcontrolid="assignments_assignments_table_1_grid1_71"/>
+                <tablecol filterable="false" hidden="false" id="assignments_assignments_table_tablebody_100" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <tabledetails id="assignments_assignments_table_1">
+                <section id="as_a" label="Details">
+                    <sectionrow id="as_b">
+                        <sectioncol id="as_c">
+                            <section id="assignments_assignments_table_1_grid1">
+                                <multiparttextbox dataattribute="taskid" descdataattribute="workorder.description" descinputmode="readonly" id="assignments_assignments_table_1_grid1_1" longdescreadonly="true" lookup="wptask" smartfilloff="true"/>
+                                <multiparttextbox applink="labor" dataattribute="laborcode" descdataattribute="labor.person.displayname" descinputmode="readonly" desclookup="longdesc" id="assignments_assignments_table_1_grid1_2" lookup="laborcraftrate" menutype="normal" smartfilloff="true" synchronous="true"/>
+                                <textbox applink="craft" dataattribute="craft" defaultfocus="true" id="assignments_assignments_table_1_grid1_3" lookup="craftratestatus" menutype="normal" smartfilloff="true"/>
+                                <textbox applink="amcrewt" dataattribute="amcrewtype" id="assignments_assignments_table_1_grid1_4" licensekey="CREW" lookup="amcrewtype" menutype="NORMAL"/>
+                                <textbox applink="amcrew" dataattribute="amcrew" id="assignments_assignments_table_1_grid1_5" licensekey="CREW" lookup="amcrews" menutype="NORMAL" synchronous="true"/>
+                                <checkbox dataattribute="apptrequired" id="assignments_assignments_table_1_grid1_71" licensekey="SCHEDULER_OPT"/>
+                            </section>
+                        </sectioncol>
+                        <sectioncol id="as_d">
+                            <section id="assignments_assignments_table_1_grid2">
+                                <textbox dataattribute="skilllevel" id="assignments_assignments_table_1_grid2_1" lookup="craftratestatus" smartfilloff="true"/>
+                                <textbox dataattribute="vendor" id="assignments_assignments_table_1_grid2_2" lookup="craftratestatus" smartfilloff="true"/>
+                                <textbox dataattribute="contractnum" id="assignments_assignments_table_1_grid2_3" lookup="craftratestatus" smartfilloff="true"/>
+                                <textbox applink="persongr" dataattribute="crewworkgroup" id="assignments_assignments_table_1_grid2_4" licensekey="CREW" lookup="persongroup" menutype="normal" smartfilloff="true"/>
+                                <checkbox dataattribute="appointment" id="assignments_assignments_table_1_grid3_6" licensekey="SCHEDULER_OPT"/>
+                            </section>
+                        </sectioncol>
+                        <sectioncol id="as_e">
+                            <section id="assignments_assignments_table_1_grid3">
+                                <textbox dataattribute="scheduledate" id="assignments_assignments_table_1_grid3_1" lookup="datelookup"/>
+                                <textbox dataattribute="laborhrs" id="assignments_assignments_table_1_grid3_3"/>
+                                <textbox dataattribute="status" id="assignments_assignments_table_1_grid3_4" inputmode="readonly"/>
+                                <textbox dataattribute="TRAVELTIMEFROMME.TRAVELTIME" id="assignments_assignments_table_1_grid3_5" inputmode="readonly" label="Estimated Travel Time to Next Assignment" licensekey="SCHEDULER_FW"/>
+                                <textbox applink="workzone" dataattribute="workzone" id="assignments_assignments_table_1_grid1_71a"/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+            </tabledetails>
+            <buttongroup id="assignments_assignments_table_2">
+                <pushbutton default="true" id="assignments_assignments_table_2_4" label="   Available Crew" licensekey="CREW" mxevent="crwassign"/>
+                <pushbutton default="true" id="assignments_assignments_table_2_1" label="   Available Labor" mxevent="assignlabor"/>
+                <pushbutton id="assignments_assignments_table_2_2" label="Complete Assignment" mxevent="complete"/>
+                <pushbutton id="assignments_assignments_table_2_3" label="New Row" mxevent="addrow"/>
+            </buttongroup>
+        </table>
+        <buttongroup id="assignments_buttons">
+            <pushbutton default="true" id="assignments_buttons_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="assignments_buttons_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.skd.beans.SKDModifyScheduleDatesBean" id="MODIFYSCHEDULEDATES" label="Work Order Schedule Dates" mboname="WORKORDER" savemode="ONUNLOAD">
+        <section id="main_grid10" label="Scheduling Information">
+            <sectionrow id="main_a">
+                <sectioncol id="main_b">
+                    <section id="main_c">
+                        <textbox dataattribute="targstartdate" id="main_grid10_1_1_grid12_1" lookup="datelookup"/>
+                        <textbox dataattribute="schedstart" id="main_grid10_1_1_grid12_3" lookup="datelookup"/>
+                        <textbox dataattribute="sneconstraint" id="main_grid10_1_1_grid12_12" lookup="datelookup"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="main_b1">
+                    <section id="main_c1">
+                        <textbox dataattribute="targcompdate" id="main_grid10_1_1_grid12_2" lookup="datelookup"/>
+                        <textbox dataattribute="schedfinish" id="main_grid10_1_1_grid12_4" lookup="datelookup"/>
+                        <textbox dataattribute="fnlconstraint" id="main_grid10_1_1_grid12_13" lookup="datelookup"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="modskddates_assignments_buttons">
+            <pushbutton default="true" id="modskddates_assignments_buttons_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="modskddates_assignments_buttons_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+</presentation>

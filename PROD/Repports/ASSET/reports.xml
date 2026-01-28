@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="asset_availability.rptdesign">
+    <attribute name="filename">asset_availability.rptdesign</attribute>
+    <attribute name="description">Asset Availability</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="assetnum">
+        <attribute name="attributename">ASSETNUM</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname">asset</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="site">
+        <attribute name="attributename">SITEID</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Site</attribute>
+        <attribute name="lookupname">site</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator">&gt;=</attribute>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator">&lt;=</attribute>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">4</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>asset.properties</reference>
+        <filename>./asset_availability/asset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_glaccount.rptdesign">
+    <attribute name="filename">asset_glaccount.rptdesign</attribute>
+    <attribute name="description">Asset by GL Account</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="glaccount">
+        <attribute name="attributename">glaccount</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">GL Account</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>asset.properties</reference>
+        <filename>./asset_glaccount/asset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_detail.rptdesign">
+    <attribute name="filename">asset_detail.rptdesign</attribute>
+    <attribute name="description">Asset Details</attribute>
+    <attribute name="dploc">ALL</attribute>
+    <attribute name="dp">true</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">2</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">1</attribute>
+    <attribute name="recordlimit">50</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="priority">2</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>asset.properties</reference>
+        <filename>./asset_detail/asset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_drift.rptdesign">
+    <attribute name="filename">asset_drift.rptdesign</attribute>
+    <attribute name="description">Asset Drift</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">6</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="assetnum">
+        <attribute name="attributename">assetnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname">asset</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>pluscasset.properties</reference>
+        <filename>./asset_drift/pluscasset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_measurehist.rptdesign">
+    <attribute name="filename">asset_measurehist.rptdesign</attribute>
+    <attribute name="description">Asset Measurement History</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="assetnum">
+        <attribute name="attributename">allwo.assetnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname">asset</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="location">
+        <attribute name="attributename">location</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Location</attribute>
+        <attribute name="lookupname">Locations</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="siteid">
+        <attribute name="attributename">siteid</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Site</attribute>
+        <attribute name="lookupname">site</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+      <parameter name="assettype">
+        <attribute name="attributename">assettype</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset Type</attribute>
+        <attribute name="lookupname">valuelist</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">4</attribute>
+      </parameter>
+      <parameter name="hasmoved">
+        <attribute name="attributename">moved</attribute>
+        <attribute name="defaultvalue">N</attribute>
+        <attribute name="labeloverride">Asset Moved</attribute>
+        <attribute name="lookupname">yornlookuplist</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">5</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>asset.properties</reference>
+        <filename>./asset_measurehist/asset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="assetmove_history.rptdesign">
+    <attribute name="filename">assetmove_history.rptdesign</attribute>
+    <attribute name="description">Asset Move History</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="assetnum">
+        <attribute name="attributename">ASSETTRANSID.ASSETNUM</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="mrosite">
+        <attribute name="attributename">SITEID</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Current Site</attribute>
+        <attribute name="lookupname">site</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="fromsite">
+        <attribute name="attributename">ASSETTRANS.SITEID</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">From Site</attribute>
+        <attribute name="lookupname">site</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+      <parameter name="fromlocation">
+        <attribute name="attributename">ASSETTRANS.FROMLOC</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">From Location</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">4</attribute>
+      </parameter>
+      <parameter name="tolocation">
+        <attribute name="attributename">ASSETTRANS.TOLOC</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">To Location</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">5</attribute>
+      </parameter>
+      <parameter name="tosite">
+        <attribute name="attributename">ASSETTRANS.TOSITEID</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">To Site</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">5</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>asset.properties</reference>
+        <filename>./assetmove_history/asset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_po.rptdesign">
+    <attribute name="filename">asset_po.rptdesign</attribute>
+    <attribute name="description">Asset Purchase Order Details</attribute>
+    <attribute name="dploc">ALL</attribute>
+    <attribute name="dp">true</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">1</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">1</attribute>
+    <attribute name="recordlimit">50</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="priority">2</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>asset.properties</reference>
+        <filename>./asset_po/asset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_reverse_traceability.rptdesign">
+    <attribute name="filename">asset_reverse_traceability.rptdesign</attribute>
+    <attribute name="description">Asset Reverse Traceability</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">7</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="assetnum">
+        <attribute name="attributename">assetnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname">rptrotasset</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>pluscasset.properties</reference>
+        <filename>./asset_reverse_traceability/pluscasset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_stability.rptdesign">
+    <attribute name="filename">asset_stability.rptdesign</attribute>
+    <attribute name="description">Asset Stability</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">4</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="assetnum">
+        <attribute name="attributename">assetnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname">asset</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="siteid">
+        <attribute name="attributename">siteid</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Site</attribute>
+        <attribute name="lookupname">site</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">4</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>pluscasset.properties</reference>
+        <filename>./asset_stability/pluscasset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_traceability.rptdesign">
+    <attribute name="filename">asset_traceability.rptdesign</attribute>
+    <attribute name="description">Asset Traceability</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">5</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="asset">
+        <attribute name="attributename">assetnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname">rptrotasset</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>pluscasset.properties</reference>
+        <filename>./asset_traceability/pluscasset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="asset_subassembly.rptdesign">
+    <attribute name="filename">asset_subassembly.rptdesign</attribute>
+    <attribute name="description">Assets by Subassembly Items</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="itemnum">
+        <attribute name="attributename">itemnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Item</attribute>
+        <attribute name="lookupname">item</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>asset.properties</reference>
+        <filename>./asset_subassembly/asset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="calibration_error.rptdesign">
+    <attribute name="filename">calibration_error.rptdesign</attribute>
+    <attribute name="description">Calibration Error</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">8</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ASSET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="assetnum">
+        <attribute name="attributename">assetnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Asset</attribute>
+        <attribute name="lookupname">asset</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="resulttype">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Result Type</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+      <parameter name="startdate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Start Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">3</attribute>
+      </parameter>
+      <parameter name="enddate">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">End Date</attribute>
+        <attribute name="lookupname">datelookup</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">4</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>pluscasset.properties</reference>
+        <filename>./calibration_error/pluscasset.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

@@ -1,0 +1,105 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define([
+	"../../main",
+	"doh/main",
+	"require"
+], function(dojo, doh, require){
+	var testParams = [
+		"sync,,src,./dojo,src,./i18n-test,legacy",
+		"sync,,src,./dojo,legacy-built,./built-i18n-test/152-build,legacy",
+		"sync,,src,./dojo,legacy-built-layer,./built-i18n-test/152-build-with-layers-and-preloads,legacy",
+		"sync,,src,./dojo,src,./i18n-test,amd",
+		"sync,,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"sync,,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"sync,,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+				
+		"sync,ab,src,./dojo,src,./i18n-test,legacy",
+		"sync,ab,src,./dojo,legacy-built,./built-i18n-test/152-build,legacy",
+		"sync,ab,src,./dojo,legacy-built-layer,./built-i18n-test/152-build-with-layers-and-preloads,legacy",
+		"sync,ab,src,./dojo,src,./i18n-test,amd",
+		"sync,ab,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,ab,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,ab,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"sync,ab,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"sync,ab,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,ab,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,ab,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		
+		"sync,ab-cd,src,./dojo,src,./i18n-test,legacy",
+		"sync,ab-cd,src,./dojo,legacy-built,./built-i18n-test/152-build,legacy",
+		"sync,ab-cd,src,./dojo,legacy-built-layer,./built-i18n-test/152-build-with-layers-and-preloads,legacy",
+		"sync,ab-cd,src,./dojo,src,./i18n-test,amd",
+		"sync,ab-cd,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,ab-cd,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,ab-cd,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"sync,ab-cd,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"sync,ab-cd,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,ab-cd,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,ab-cd,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+
+		"sync,ab-cd-ef,src,./dojo,src,./i18n-test,legacy",
+		"sync,ab-cd-ef,src,./dojo,legacy-built,./built-i18n-test/152-build,legacy",
+		"sync,ab-cd-ef,src,./dojo,legacy-built-layer,./built-i18n-test/152-build-with-layers-and-preloads,legacy",
+		"sync,ab-cd-ef,src,./dojo,src,./i18n-test,amd",
+		"sync,ab-cd-ef,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,ab-cd-ef,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,ab-cd-ef,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"sync,ab-cd-ef,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"sync,ab-cd-ef,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"sync,ab-cd-ef,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"sync,ab-cd-ef,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"async,,src,./dojo,src,./i18n-test,amd",
+		"async,,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"async,,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"async,,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		
+		"async,ab,src,./dojo,src,./i18n-test,amd",
+		"async,ab,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,ab,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,ab,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"async,ab,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"async,ab,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,ab,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,ab,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+
+		"async,ab-cd,src,./dojo,src,./i18n-test,amd",
+		"async,ab-cd,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,ab-cd,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,ab-cd,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"async,ab-cd,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"async,ab-cd,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,ab-cd,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,ab-cd,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		
+		"async,ab-cd-ef,src,./dojo,src,./i18n-test,amd",
+		"async,ab-cd-ef,src,./dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,ab-cd-ef,src,./dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,ab-cd-ef,src,./dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd",
+		"async,ab-cd-ef,rel,./built-i18n-test/rel/dojo,src,./i18n-test,amd",
+		"async,ab-cd-ef,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built/i18nTest,amd",
+		"async,ab-cd-ef,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers/i18nTest,amd",
+		"async,ab-cd-ef,rel,./built-i18n-test/rel/dojo,built,./built-i18n-test/built-with-layers-and-preloads/i18nTest,amd"];
+
+	for(var i = 0; i<testParams.length; i++){
+		doh.register("testsDOH._base.i18nExhaustive" + i, require.toUrl("dojo/main") + "/../../i18n-test/unit.html?" + testParams[i]);
+	}
+});

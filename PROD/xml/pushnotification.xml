@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation apphelp="com.ibm.mbs.doc,pushnotification/c_pushnotification_application.html" id="pushnotification" mboname="maxpushdevtype" orderby="devicetype" version="7.6.1.2">
+    <page id="mainrec">
+        <include id="single_pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup format="carddeck" id="maintabs" style="form">
+                <tab default="true" id="maxpushdevtype" label="Push Notification">
+                    <table id="maxpushdevtype_Table" label="Push Notification Providers">
+                        <tablebody displayrowsperpage="5" filterable="true" filterexpanded="false" id="maxpushdevtype_Tablebody">
+                            <tablecol dataattribute="devicetype" id="maxpushdevtype_col_1" lookup="valuelist"/>
+                            <tablecol dataattribute="providername" id="maxpushdevtype_col_2" lookup="valuelist"/>
+                            <tablecol dataattribute="active" id="maxpushdevtype_col_3">
+                                <checkbox dataattribute="active" id="maxpushdevtype_col_3_box"/>
+                            </tablecol>
+                            <tablecol filterable="false" id="maxpushdevtype_col_delete" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <buttongroup id="maxpushdevtype_Buttongroup">
+                            <pushbutton id="maxpushdevtype_button_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                    <table id="maxpushproviderdevtype_Table" label="{0} Push Notification Projects for {1}" orderby="maxpushprojectname" parentdatasrc="MAINRECORD" relationship="MAXPUSHPROVIDERDEVTYPE">
+                        <sectionheader id="rmaxpushproviderdevtype_Table_sectionheader">
+                            <paramvalues id="maxpushproviderdevtype_Table_1_sec_params" property="label">
+                                <paramvalue dataattribute="providername" datasrc="MAINRECORD" id="maxpushproviderdevtype_Table_param_1" position="0"/>
+                                <paramvalue dataattribute="devicetype" datasrc="MAINRECORD" id="maxpushproviderdevtype_Table_param_2" position="1"/>
+                            </paramvalues>
+                        </sectionheader>
+                        <tablebody displayrowsperpage="5" filterable="true" filterexpanded="false" id="maxpushproviderdevtype_Tablebody">
+                            <tablecol filterable="false" id="maxpushproviderdevtype_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                            <tablecol dataattribute="maxpushprojectname" id="maxpushproviderdevtype_col_1"/>
+                            <tablecol dataattribute="description" id="maxpushproviderdevtype_col_2"/>
+                            <tablecol dataattribute="active" id="maxpushproviderdevtype_col_4">
+                                <checkbox dataattribute="active" id="maxpushproviderdevtype_col_4_box"/>
+                            </tablecol>
+                            <tablecol filterable="false" id="maxpushproviderdevtype_col_delete" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                        </tablebody>
+                        <tabledetails id="maxpushproviderdevtype_Tabledetails">
+                            <section id="maxpushproviderdevtype_Table_section_fcm_1" label="Details" sigoption="FCMPROVIDER" sigoptiondatasrc="MAINRECORD">
+                                <sectionrow id="maxpushproviderdevtype_Table_sec1_fcm_row1">
+                                    <sectioncol id="maxpushproviderdevtype_Table_sec1_fcm_row1_col1">
+                                        <textbox dataattribute="fcmserviceacctjsonfn" detailimage="filesearch.gif" detailmessage="system#upload" id="maxpushproviderdevtype_details_fcm_1_1_1" menutype="PUSHFCMSERVICEACCT" size="45"/>
+                                    </sectioncol>
+                                    <sectioncol id="maxpushproviderdevtype_Table_sec1_fcm_row1_col2"/>
+                                    <sectioncol id="maxpushproviderdevtype_Table_sec1_fcm_row1_col3">
+                                        <textbox dataattribute="fcmprojectid" id="maxpushproviderdevtype_details_fcm_1_2_1" inputmode="readonly" size="30"/>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                            <section align="left" id="maxpushproviderdevtype_Table_section_apn_3" label="Details" sigoption="APNPROVIDER" sigoptiondatasrc="MAINRECORD">
+                                <sectionrow id="maxpushproviderdevtype_Table_sec3_apn_row1">
+                                    <sectioncol id="maxpushproviderdevtype_Table_sec3_apn_row1_col1">
+                                        <section id="maxpushproviderdevtype_Table_sec3_row1_apn_col1_sec2">
+                                            <textbox dataattribute="apncertificatefilename" detailimage="filesearch.gif" detailmessage="system#upload" id="maxpushproviderdevtype_details_apn_1_1_1" menutype="APNCERTIFICATE"/>
+                                            <textbox dataattribute="apncertificatepassword" id="maxpushproviderdevtype_details_apn_1_1_2" inputmode="password"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                        <buttongroup id="maxpushproviderdevtype_Buttongroup">
+                            <pushbutton id="maxpushproviderdevtype_button_1" label="New Row" mxevent="addrow"/>
+                        </buttongroup>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include id="pageFooter"/>
+    </page>
+    <dialog id="fcmviewservicecctkey" label="View Service Account Key">
+        <multilinetextbox columns="60" dataattribute="fcmserviceacctjsonnp" id="fcmviewserviceacctkey_1" inputmode="readonly" rows="16"/>
+        <buttongroup id="fcmserviceacctkeyview_buttongroup">
+            <pushbutton id="fcmserviceacctkeyview_buttongroup_button_1" label="Ok" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.pushnotification.beans.LoadBean" id="apnimpcertificatebrowse" label="Specify Certificate(p12) File" parentdatasr="maxpushproviderdevtype_Table">
+        <helpgrid id="pnimpcertificatebrowse_help" innerhtml="Obtain the push notification certificate from your Apple developer account."/>
+        <section id="apnimpcertificate_sec">
+            <uploadfile cancellabel="Cancel" id="apnimpcertificate_sec_1" label="Specify a File" oklabel="OK"/>
+        </section>
+    </dialog>
+    <dialog beanclass="com.ibm.tivoli.maximo.pushnotification.beans.FCMLoadBean" id="fcmimpserviceacctkeybrowse" label="Select Service Account Key (JSON) File" parentdatasr="maxpushproviderdevtype_Table">
+        <helpgrid id="serviceaccountkey_help" innerhtml="Generate and download the JSON private key file from your Firebase service account."/>
+        <section id="fcmimpprivatekeybrowse_sec2">
+            <uploadfile cancellabel="Cancel" id="fcmimpprivatekeybrows_sec_2" label="Specify a File" oklabel="OK"/>
+        </section>
+    </dialog>
+    <dialog id="PROVIDERCONFIG" label="Push Notification Provider Configuration" mboname="MAXPUSHPROVIDER" savemode="ONUNLOAD">
+        <table id="maxpushprovider_Table" label="Push Notification Providers">
+            <tablebody displayrowsperpage="5" filterable="true" filterexpanded="false" id="maxpushprovider_Table_Tablebody">
+                <tablecol filterable="false" id="maxpushprovider_Table_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                <tablecol dataattribute="providername" id="maxpushprovider_Table_col_1" inputmode="readonly"/>
+                <tablecol dataattribute="description" id="maxpushprovider_Table_col_2" inputmode="readonly"/>
+            </tablebody>
+            <tabledetails id="maxpushprovider_Table_Tabledetails">
+                <section id="maxpushprovider_Table_Table_section_fcm_1" label="Details" sigoption="FCMPROVIDER">
+                    <sectionrow id="maxpushprovider_Table_Table_sec1_fcm_row1">
+                        <sectioncol id="maxpushprovider_Table_Table_sec1_fcm_row1_col1">
+                            <textbox dataattribute="providername" id="maxpushprovider_Table_col_1_1" inputmode="readonly"/>
+                            <textbox dataattribute="endpointurl" id="maxpushprovider_Table_details_fcm_1_2"/>
+                            <textbox dataattribute="fcmprojecturi" id="maxpushprovider_Table_details_fcm_1_3"/>
+                            <textbox dataattribute="fcmmessageuri" id="maxpushprovider_Table_details_fcm_1_4"/>
+                            <textbox dataattribute="fcmmessagingscope" id="maxpushprovider_Table_details_fcm_1_5" size="100"/>
+                        </sectioncol>
+                        <sectioncol id="maxpushprovider_Table_Table_sec1_fcm_row1_col2">
+                            <textbox dataattribute="description" id="maxpushprovider_Table_col_2_1" inputmode="readonly"/>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+                <section id="maxpushprovider_Table_Table_section_ipn_1" label="Details" sigoption="IPNPROVIDER">
+                    <sectionrow id="maxpushprovider_Table_Table_sec1_ipn_row1">
+                        <sectioncol id="maxpushprovider_Table_sec1_ipn_row1_col1">
+                            <textbox dataattribute="providername" id="maxpushprovider_ipn_col_1_1" inputmode="readonly"/>
+                            <textbox dataattribute="endpointurl" id="maxpushprovider_details_ipn_1_2"/>
+                            <textbox dataattribute="ipnauthurl" id="maxpushprovider_details_ipn_1_3"/>
+                        </sectioncol>
+                        <sectioncol id="maxpushprovider_Table_sec1_ipn_row1_col2">
+                            <textbox dataattribute="description" id="maxpushprovider_ipn_col_2_1" inputmode="readonly"/>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+                <section id="maxpushprovider_Table_Table_section_apn_1" label="Details" sigoption="APNPROVIDER">
+                    <sectionrow id="maxpushprovider_Table_Table_sec1_apn_row1">
+                        <sectioncol id="maxpushprovider_Table_sec1_apn_row1_col1">
+                            <textbox dataattribute="providername" id="maxpushprovider_apn_col_1_1" inputmode="readonly"/>
+                            <textbox dataattribute="endpointurl" id="maxpushprovider_details_apn_1_2"/>
+                        </sectioncol>
+                        <sectioncol id="maxpushprovider_Table_sec1_apn_row1_col2">
+                            <textbox dataattribute="description" id="maxpushprovider_details_apn_col_2" inputmode="readonly"/>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+            </tabledetails>
+        </table>
+        <buttongroup id="maxpushprovider_Buttongroup">
+            <pushbutton default="true" id="maxpushprovider_but_2_1" label="Ok" mxevent="dialogok"/>
+            <pushbutton id="maxpushprovider_but_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="VIEWREGISTEREDDEVICE" inputmode="readonly" label="View Registered Devices" mboname="USERDEVICE">
+        <table id="userdevice_Table" label="View Devices">
+            <tablebody displayrowsperpage="5" filterable="true" filterexpanded="false" id="userdevice_Tablebody">
+                <tablecol filterable="false" id="userdevice_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                <tablecol dataattribute="username" id="userdevice_col_1" readonly="true"/>
+                <tablecol dataattribute="changedate" id="userdevice_col_2"/>
+                <tablecol dataattribute="active" id="userdevice_col_3">
+                    <checkbox dataattribute="active" id="userdevice_tablebody_col_3_box"/>
+                </tablecol>
+            </tablebody>
+            <tabledetails id="userdevice_Tabledetails">
+                <section id="userdevice_Table_section_1" label="Details">
+                    <sectionrow id="userdevice_Table_sec1_row1">
+                        <sectioncol id="userdevice_Table_sec1_fcm_row1_col1">
+                            <textbox dataattribute="username" id="userdevice_col_1_1"/>
+                            <textbox dataattribute="devicetype" id="userdevice_details_1_2"/>
+                            <textbox dataattribute="deviceid" id="userdevice_details_1_3"/>
+                            <textbox dataattribute="eventname" id="userdevice_details_1_4"/>
+                            <textbox dataattribute="changedate" id="userdevice_details_1_5"/>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+            </tabledetails>
+        </table>
+        <buttongroup id="userdevice_Buttongroup">
+            <pushbutton id="userdevice_but_1_1" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+</presentation>

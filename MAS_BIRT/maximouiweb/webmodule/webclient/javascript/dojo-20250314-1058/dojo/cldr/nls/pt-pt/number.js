@@ -1,0 +1,24 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define(
+"dojo/cldr/nls/pt-pt/number", //begin v1.x content
+{
+	"group": " ",
+	"decimalFormat-long": "000 biliões",
+	"currencyFormat": "#,##0.00 ¤;(#,##0.00 ¤)",
+	"decimalFormat-short": "000 Bi",
+	"currencyFormat-short": "000 B ¤",
+	"approximatelySign": "~"
+}
+//end v1.x content
+);

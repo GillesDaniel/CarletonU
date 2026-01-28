@@ -1,0 +1,21 @@
+<ruleset version="1.0+">
+	<!-- Applets that need to call javascript, need to have the explicit URL -->
+	<rule>
+		<id location="192.168.56.1" />
+		<action permission="run" />
+	</rule>	
+
+	<rule>
+		<id location="localhost" />
+		<action permission="run" />
+	</rule>	
+	
+	<rule>
+		<!-- IBM Maximo/SCCD Applets -->
+		<id>
+			<certificate algorithm="SHA-256"
+				hash="5B4A8C121A1278584855DD1BF4F15BAFEAE58A8343034EC7994AAFF22DE652A2" />
+		</id>
+		<action permission="run" />
+	</rule>	
+</ruleset>

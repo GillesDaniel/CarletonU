@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation apprestrictions="iserror = 1" beanclass="psdi.webclient.beans.moberrhnd.MobileErrorManagement" id="moberrhnd" mboname="MOBILETXNQ" resultstableid="results_showlist" version="6.0.0">
+    <page id="mainrec">
+        <include id="pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="List" type="list">
+                    <menubar event="search" id="actiontoolbar" sourcemethod="getAppSearchOptions"/>
+                    <table datasrc="results_showlist" id="results_showlist" inputmode="readonly" label="Errors" mboname="MOBILETXNQ" orderby="txnposttime" selectmode="multiple">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol filterable="false" id="results_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                            <tablecol dataattribute="txnposttime" filterable="false" hidden="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol dataattribute="txnposttime" id="results_showlist_tablebody_4" inputmode="readonly" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+                            <tablecol dataattribute="errormessage" id="results_showlist_tablebody_5" sortable="true"/>
+                            <tablecol dataattribute="userid" id="results_showlist_tablebody_3" inputmode="readonly" sortable="true"/>
+                            <tablecol dataattribute="app" id="results_showlist_tablebody_2" inputmode="readonly" sortable="true"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="main" label="Transaction Details" type="insert">
+                    <section border="true" id="headerA_1">
+                        <sectionrow id="headerA_2">
+                            <sectioncol id="headerA_3">
+                                <section id="headerA_4">
+                                    <textbox dataattribute="txnposttime" id="main_grid4_11" inputmode="readonly" label="Date/Time"/>
+                                    <textbox dataattribute="app" id="main_grid4_12" inputmode="readonly" label="Application"/>
+                                    <multilinetextbox columns="40" dataattribute="errormessage" id="main_grid1_99" inputmode="readonly" rows="3"/>
+                                    <textbox dataattribute="txnmethod" id="main_grid5_1"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="headerA_31">
+                                <section id="headerA_41">
+                                    <textbox dataattribute="mobiledeviceid" id="specifications_grid3_1_1_3a" inputmode="readonly" length="55"/>
+                                    <textbox dataattribute="userid" id="specifications_grid3_1_1_3" inputmode="readonly"/>
+                                    <textbox dataattribute="mobperson.firstname" id="specifications_grid3_1_1_4" inputmode="readonly"/>
+                                    <textbox dataattribute="mobperson.lastname" id="specifications_grid3_1_1_5" inputmode="readonly"/>
+                                    <textbox dataattribute="mobpersonphone.phonenum" id="specifications_grid3_1_1_6" inputmode="readonly"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                    <table id="main_mtxnq_table" inputmode="readonly" label="Parameters" parentdatasrc="MAINRECORD" relationship="MOBILETXNPARAM">
+                        <tablebody displayrowsperpage="20" filterable="false" filterexpanded="false" id="main_mtxnq_table_tablebody">
+                            <tablecol dataattribute="paramtype" id="main_mtxnq_table_tablebody_1"/>
+                            <tablecol dataattribute="complex" id="main_mtxnq_table_tablebody_3" label="Complex Data Type"/>
+                        </tablebody>
+                    </table>
+                    <section border="false" id="blankline">
+                        <blankline id="blkline1"/>
+                    </section>
+                    <table id="main_mparamdata_table" inputmode="readonly" label="Parameter Data" parentdatasrc="main_mtxnq_table" relationship="MOBILETXNPDATA">
+                        <tablebody displayrowsperpage="60" filterable="false" filterexpanded="false" id="main_mparamdata_table_tablebody">
+                            <tablecol dataattribute="attribute" id="main_mparamdata_table_tablebody_1"/>
+                            <tablecol dataattribute="attributevalue" id="main_mparamdata_table_tablebody_2"/>
+                        </tablebody>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+    </page>
+    <dialog beanclass="psdi.webclient.beans.moberrhnd.MobileErrorManagementRedMobUser" id="redirect" label="Redirect Error Transaction" relationship="MOBREDMOBUSR">
+        <section id="redtomobusr_grid3">
+            <sectionrow id="redtomobusr_col1">
+                <sectioncol id="redtomobusr_tab_col1">
+                    <helpgrid id="redtomobusr_help" innerhtml="You can choose a user to redirect the error to and customize the error message the mobile user sees by modifying the text below."/>
+                </sectioncol>
+            </sectionrow>
+            <sectioncol id="redtomobusr_tab_col2">
+                <section id="redtomobusr_tab_section12">
+                    <textbox dataattribute="userid" id="redusername" lookup="maxuser" menutype="normal"/>
+                    <multilinetextbox columns="40" dataattribute="errormessage" id="redmobusr_grid1_1_1_grid3_4" rows="3"/>
+                </section>
+            </sectioncol>
+        </section>
+        <buttongroup id="redtomobusr_2">
+            <pushbutton default="true" id="redtomobusr_2_1" label="OK" mxevent="OK"/>
+            <pushbutton id="redtomobusr_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.moberrhnd.MobileErrorManagementRetMobUser" id="rettomobusr" label="Return to Mobile User" relationship="MOBRETMOBUSR">
+        <section id="rettomobusr_grid3">
+            <sectionrow id="rettomobusr_col1">
+                <sectioncol id="rettomobusr_tab_col1">
+                    <helpgrid id="rettomobusr_help" innerhtml="You can customize the error message the mobile user sees by modifying the text below."/>
+                </sectioncol>
+            </sectionrow>
+            <sectioncol id="rettomobusr_tab_col2">
+                <section id="rettomobusr_tab_section12">
+                    <multilinetextbox columns="40" dataattribute="errormessage" id="rettomobusr_grid1_1_1_grid3_4" rows="3"/>
+                </section>
+            </sectioncol>
+        </section>
+        <buttongroup id="rettomobusr_2">
+            <pushbutton default="true" id="rettomobusr_2_1" label="OK" mxevent="OK"/>
+            <pushbutton id="rettomobusr_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.moberrhnd.MobileErrorManagement" id="wfprocess" label="Workflow Process" mboname="WFPROCESSNP">
+        <section id="wfprocess_grid3">
+            <sectionrow id="wfprocess_col1">
+                <sectioncol id="wfprocess_tab_col1">
+                    <helpgrid id="wfprocess_help" innerhtml="Select a Workflow process to apply to this transaction."/>
+                </sectioncol>
+            </sectionrow>
+            <sectioncol id="wfprocess_tab_col2">
+                <section id="wfprocess_tab_section12">
+                    <textbox dataattribute="processname" id="wfprocess_grid1_1_1_grid3_4" lookup="wfprocess"/>
+                    <textbox dataattribute="objectname" id="wfprocess_grid1_1_1_grid3_5" inputmode="readonly"/>
+                    <textbox dataattribute="processrev" id="wfprocess_grid1_1_1_grid3_6" inputmode="readonly"/>
+                </section>
+            </sectioncol>
+        </section>
+        <buttongroup id="wfprocess_2">
+            <pushbutton default="true" id="wfprocess_2_1" label="OK" mxevent="OK"/>
+            <pushbutton id="wfprocess_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+</presentation>

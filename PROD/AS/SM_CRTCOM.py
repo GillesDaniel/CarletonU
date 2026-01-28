@@ -214,3 +214,20 @@ if(True):
 else:
         errorgroup = "sm"
         errorkey = "purchaseagentrequired"
+
+scriptConfig="""{
+    "autoscript": "SM_CRTCOM",
+    "description": "SM: Send Po Email from main record",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_CRTCOM",
+            "launchPointType": "ACTION",
+            "active": true,
+            "actionName": "SM_CRTCOM"
+        }
+    ]
+}"""

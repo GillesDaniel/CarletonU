@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="calibration_datasheet.rptdesign">
+    <attribute name="filename">calibration_datasheet.rptdesign</attribute>
+    <attribute name="description">Calibration Data Sheet</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">PLUSDSPLAN</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="dsplannum">
+        <attribute name="attributename">dsplannum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Data Sheet</attribute>
+        <attribute name="lookupname">plusdsplanswo</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+      <parameter name="revisionnum">
+        <attribute name="attributename">revisionnum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Revision Number</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">2</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>plusdsplan.properties</reference>
+        <filename>./calibration_datasheet/plusdsplan.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

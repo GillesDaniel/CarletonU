@@ -20,3 +20,12 @@ if(owner is not None and owner.getName()=="INVOICELINE"):
                         workOrderRef=invoiceCostOwner.getMboSet("WORKORDER").moveFirst()
                         if(workOrderRef is not None and not workOrderRef.isNull("WOJO1") ):
                             workOrderRef.setValue("WOJO1",contractRef.getString("REFWO"),2L)
+
+scriptConfig="""{
+    "autoscript": "INVOICECOST.NEW",
+    "description": "CU: INVOICECOST SET DEFAULT VALUE",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+}"""

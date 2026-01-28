@@ -1,0 +1,45 @@
+/* --------------------------------------------------- Custom CSS classes referenced from the Shapes.xml ----------------------------------------------------- */
+
+/* Line definition */
+.SVGLine, .SVGLineHover { stroke-opacity:0.8; }
+.SVGLineHover { stroke:#F80; }
+.SVGLineLocked { stroke-dasharray:6 2 6 2; stroke-linecap:butt; }
+.SVGLineDisabled { stroke-dasharray:2 2 2 2; stroke-linecap:butt; stroke-opacity:0.3; }
+
+/* Line text */
+.SVGLineTextRect { opacity:0.8; }
+.SVGLineTextRectHover { fill:#F80; }
+.LineText { font:11px/12px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; white-space:nowrap; }
+
+/* Box definition */
+.SVGBlock { opacity:0.8; stroke-opacity:0.8; stroke-linejoin:round; }
+.SVGBlockLocked { stroke-dasharray:4 4 4 4; }
+.SVGBlockDisabled { stroke-dasharray:2 2 2 2; opacity:0.3; stroke-opacity:1; }
+.SVGBlockSelect { stroke:#0AD; stroke-width:3; }
+.SVGBlockSelect.SVGBlockHover { stroke:#069; }
+.SVGBlockHover { stroke:red; }
+
+/* Box resizing tag */
+.SVGResize { stroke:transparent; stroke-width:10px; fill:none; }
+
+/* Checkbox left to the box text */
+.SVGIcon { fill:#AFEEFF; stroke:blue; stroke-width:1; }
+.SVGIcon:hover { stroke:red;}
+.SVGCross { stroke:blue; stroke-width:1; pointer-events:none; }
+
+/* The icons for dependencies in Special box */
+.SVGIcon2 { fill:#FFEEAF; stroke:brown; stroke-width:1; }
+.SVGIcon2:hover { stroke:blue; }
+
+/* Universal class to hide some item */
+.Hidden { display:none; }
+
+/* The box text. Modifies also the editor tag */
+.Lines, .Text, .Edit input, .Edit textarea, .EditTextarea { font:10px/20px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; }
+.Edit input, .Edit textarea, .InputTextarea { border:1px solid #DDD; border-radius:5px; height:20px; }
+
+/* The four small edits in the Special box */
+.TextFixed { 
+   height:14px; white-space:nowrap; overflow:hidden; background:#FFB; padding:2px 5px 2px 5px; border:1px solid #ccc; border-radius:10px; 
+   font:12px/14px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; 
+   }

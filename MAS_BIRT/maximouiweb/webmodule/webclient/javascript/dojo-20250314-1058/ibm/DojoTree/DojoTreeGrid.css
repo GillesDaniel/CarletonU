@@ -1,0 +1,100 @@
+.DojoTreeGrid {
+	width: 100%;
+	display: table;
+	
+}
+.DojoTreeGrid .header {
+	display:table-header-group;
+}
+.DojoTreeGrid .body {
+	display:table-row-group;
+}
+.DojoTreeGrid .header .row,
+.DojoTreeGrid .body .row {
+	display:table-row;
+}
+.DojoTreeGrid .header .row {
+	background-color:  #CCCCCC;	
+}
+.DojoTreeGrid .header .row .cell:not(:last-child) {
+	border-right: 1px solid #ABABAB;
+}
+.DojoTreeGrid .header .row .cell {
+	font-size: medium;
+}
+	
+.DojoTreeGrid .body .row .cell .cellContentWrapper {
+	display: flex;
+	align-items: center;
+}
+.DojoTreeGrid .body .row .cell:first-of-type {
+	padding: 0px;
+}
+.DojoTreeGrid .body .row .cell .cellContentWrapper .indenter {
+	background: url('images/descendant.png') ;
+	margin: 0px;
+	width: 24px;
+	height: 24px;
+	background-size: cover;
+}
+.DojoTreeGrid .body .row .cell .cellContentWrapper .indenter.last {
+	background: url('images/leaf.png') ;
+}
+.DojoTreeGrid .body .row.hasSibling .cell .cellContentWrapper .indenter.last {
+	background: url('images/sibling.png') ;
+}
+.DojoTreeGrid .body .row .cell,
+.DojoTreeGrid .header .row .cell {
+	display: table-cell;
+	padding: 3px;
+	vertical-align: middle;
+	text-overflow: ellipsis;
+}
+.DojoTreeGrid .body .row .cell .expandText {
+	flex: 1 1 auto;
+	margin: auto;
+}
+.DojoTreeGrid .body .row .cell .icon {
+	width: 16px;
+	height: 16px;
+	margin-right: 2px;
+}
+.DojoTreeGrid .body .row .cell .additionalAction {
+	width: 18px;
+	height: 18px;
+	margin: auto;
+	background-image: url('./images/action_get_info.png');
+	background-size: contain;
+}
+.DojoTreeGrid .body .row[opened="true"] .cell .expandNode {
+	background: url('./images/treeExpand_minus.png');
+}
+.DojoTreeGrid .body .row[opened="false"] .cell .expandNode {
+	background: url('./images/treeExpand_plus.png');
+}
+.DojoTreeGrid .body .row.fetching .cell .expandNode {
+	background: url('./images/treeExpand_loading.gif');
+}
+.DojoTreeGrid .body .row .cell .expandNode {
+	margin-right: 3px;
+	background: url('./images/treeExpand_leaf.png');
+	background-size: contain;
+	width: 24px;
+	height: 24px;
+}
+.DojoTreeGrid .body .row .cell .event,
+.DojoTreeGrid .body .row .cell .image {
+	margin: 0px;
+}
+.DojoTreeGrid .body .row:nth-child(odd) {
+	background-color: #EEEEEE;
+}
+.DojoTreeGrid .body .row:nth-child(even) {
+	background-color: #FEFEFE;
+}
+.DojoTreeGrid .body .row:hover {
+	background-color:  #DDCCCC;	
+}
+.DojoTreeGrid .body .row.selected {
+	background-color:  #DDCCEE;	
+}

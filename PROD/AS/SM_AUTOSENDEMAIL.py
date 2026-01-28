@@ -72,3 +72,21 @@ elif(mbo.getName()=="RFQ" and mbo.getBoolean("SM_AUTOSENDEMAIL")):
             manageException(sendMbo);
             rfqvendor=rfqvendorSet.moveNext()
 sendMboSet.save()
+
+scriptConfig="""{
+    "autoscript": "SM_AUTOSENDEMAIL",
+    "description": "Automatically send email",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_AUTOSENDEMAIL",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Automatically send email",
+            "actionName": "SM_AUTOSENDEMAIL"
+        }
+    ]
+}"""

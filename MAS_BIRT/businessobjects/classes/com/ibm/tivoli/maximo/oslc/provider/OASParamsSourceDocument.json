@@ -1,0 +1,883 @@
+{
+	"PostOS": {
+		"parameters": [
+			"x-method-override",
+			"x-allow-events",
+			"transactionid",
+			"properties",
+			"content-type",
+			"apikey",
+			"ignorecollectionref",
+			"patchtype",
+			"allornothing"
+		],
+		"responses": [
+			"201",
+			"204",
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetOSResourceChildObjectSet": {
+		"parameters": [
+			"id",
+			"oslc.properties",
+			"apikey",
+			"ignorecollectionref",
+			"inlinedoc",
+			"_dropnulls"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetOSResourceChildObject": {
+		"parameters": [
+			"id",
+			"childObjectID",
+			"accept",
+			"apikey",
+			"ignorecollectionref",
+			"inlinedoc",
+			"_dropnulls"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetOSResourceAttahchmentMeta": {
+		"parameters": [
+			"id",
+			"x-document-meta",
+			"x-document-description",
+			"x-document-encdescription",
+			"accept",
+			"apikey",
+			"inlinedoc",
+			"ignorecollectionref",
+			"_dropnulls"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetOS": {
+		"parameters": [
+			"oslc.where",
+			"oslc.select",
+			"oslc.orderBy",
+			"oslc.pageSize",
+			"oslc.paging",
+			"oslc.searchTerms",
+			"stablepaging",
+			"collectioncount",
+			"opmodeor",
+			"accept",
+			"gbcols",
+			"gbsortby",
+			"gbrange",
+			"apikey",
+			"ignorecollectionref",
+			"inlinedoc",
+			"_dropnulls"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetSystemAPIResource": {
+		"parameters": [
+			"apikey"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"PostSystemAPIResource": {
+		"parameters": [
+			"apikey"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetSystemAPI": {
+		"parameters": [
+			"accept",
+			"apikey"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"PostSystemAPI": {
+		"parameters": [
+			"content-type",
+			"apikey"
+		],
+		"responses": [
+			"201",
+			"204",
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetOSResourceAttahchment": {
+		"parameters": [
+			"id",
+			"docid",
+			"apikey",
+			"ignorecollectionref",
+			"inlinedoc",
+			"_dropnulls"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"DeleteOSResourceAttahchment": {
+		"parameters": [
+			"id",
+			"docid",
+			"apikey"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"GetOSResource": {
+		"parameters": [
+			"id",
+			"oslc.properties",
+			"accept",
+			"apikey",
+			"ignorecollectionref",
+			"inlinedoc",
+			"_dropnulls"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"PostOSResourceAttahchment": {
+		"parameters": [
+			"id",
+			"x-document-meta",
+			"x-document-description",
+			"x-document-encdescription",
+			"slug",
+			"encslug",
+			"content-type",
+			"apikey"
+		],
+		"responses": [
+			"201",
+			"204",
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"PostOSResource": {
+		"parameters": [
+			"id",
+			"x-method-override",
+			"x-allow-events",
+			"transactionid",
+			"patchtype",
+			"content-type",
+			"apikey",
+			"ignorecollectionref"
+		],
+		"responses": [
+			"201",
+			"204",
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	},
+	"paramsObject": {
+		"content-type": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The mime-type of the request document.",
+				"name": "content-type",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"x-document-description": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "the description of the attachment.",
+				"name": "x-document-description",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"x-public-uri": {
+			"global": true,
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The x-public-uri",
+				"name": "x-public-uri",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"gbcols": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The comma separated group by columns.",
+				"name": "gbcols",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"gbsortby": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The order by clause for the group by query. Follows the same syntax as oslc.orderBy.",
+				"name": "gbsortby",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"gbrange": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The range clause for the group by query.",
+				"name": "gbrange",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"collectioncount": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						0,
+						1
+					],
+					"type": "integer"
+				},
+				"description": "If set to 1, it will instruct the api to include the total count of records that matched the query ( responseInfo.totalCount). By default it will not return that unless the maximo property mxe.oslc.collectioncount is set to 1. This is a recommended way to control collection count at the request level.",
+				"name": "collectioncount",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"accept": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string",
+					"default": "application\/json"
+				},
+				"description": "The mime-type of the accept document.",
+				"name": "accept",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"patchtype": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"MERGE"
+					],
+					"type": "string"
+				},
+				"description": "This request header with the value of MERGE will instruct the server to treat a PATCH request (POST with x-method-override as PATCH) processor to merge the child objects (array of child objects) in the request with the corresponding child elements in the server. If this header is not present, the server will delete the child objects that are missing from the request.",
+				"name": "patchtype",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"oslc.select": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Filter clause following the OSLC query syntax <br> (see below for more details on this)",
+				"name": "oslc.select",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"childObjectID": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Uniqic Child Object id ",
+				"name": "childObjectID",
+				"required": true,
+				"in": "path"
+			}
+		},
+		"maxauth": {
+			"global": true,
+			"onPremOnly": true,
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The maxauth header for authentication",
+				"name": "maxauth",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"id": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Unique id for object structure resource",
+				"name": "id",
+				"required": true,
+				"in": "path"
+			}
+		},
+		"x-allow-events": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						0,
+						1
+					],
+					"type": "integer"
+				},
+				"description": "For a create\/update\/delete, if the request wants to suppress the object events, this request header needs to be set to 0. By default all events are fired unless programmatically stopped.",
+				"name": "x-allow-events",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"docid": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Uniqie attachemnt id ",
+				"name": "docid",
+				"required": true,
+				"in": "path"
+			}
+		},
+		"stablepaging": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						0,
+						1
+					],
+					"type": "integer"
+				},
+				"description": "If set to true, will instruct the server to page the resource from a in session MboSet.",
+				"name": "stablepaging",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"transactionid": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "This is used to prevent de-duplication for create\/update\/delete. If this header is present then the value is compared to a list of committed transaction ids.If it has a match, then it is considered as a duplicate transaction and an HTTP conflict error is generated.",
+				"name": "transactionid",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"action": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "List of Actions that can be performed on a resource <br>",
+				"name": "action",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"oslc.paging": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "boolean"
+				},
+				"description": "Instruct the server to page the query response based on the default page size. The default page size needs to be configured on the server side for this to take effect.",
+				"name": "oslc.paging",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"x-document-encdescription": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "There is a limitation in HTTP which prevents non-ISO-8859-1 characters in any request header value. To set descriptions in other character sets,base64 encode this value and then set the value in the x-document-encdescription header.This should be used instead of x-document-description",
+				"name": "x-document-encdescription",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"oslc.where": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Where clause to filter the set of resources",
+				"name": "oslc.where",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"opmodeor": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"0",
+						"1"
+					],
+					"type": "integer"
+				},
+				"description": "if set to 1, this will cause the oslc.where clause to set the query mode to OR clause instead of AND.",
+				"name": "opmodeor",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"properties": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Select clause for selecting a partial view of the member resource.",
+				"name": "properties",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"oslc.orderBy": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Sort clause for the query.",
+				"name": "oslc.orderBy",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"oslc.searchTerms": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Record wide text search for tokens specified as this query parameter value. Example oslc.searchTerms=\"pump\",\"broken\"",
+				"name": "oslc.searchTerms",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"lean": {
+			"global": true,
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"0",
+						"1"
+					],
+					"type": "integer",
+					"default": "1"
+				},
+				"description": "If set to 1, this will instruct the api to work with the \"lean\" json format as opposed to the namespaced json that it produces by default. This option is supported only starting 7601 release of the Maximo base. Its preferred to use this format as it reduces the size of the json payload.",
+				"name": "lean",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"ignorecollectionref": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"0",
+						"1"
+					],
+					"type": "integer",
+					"default": "1"
+				},
+				"description": "IIf set to 1, it will drop all hrefs for child collections.",
+				"name": "ignorecollectionref",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"inlinedoc": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"0",
+						"1"
+					],
+					"type": "integer",
+					"default": "1"
+				},
+				"description": "Default value is 0. For attachments/doclinks, if set to 1, it will inline the attachment blob as base64 encoded string inside the json response.",
+				"name": "inlinedoc",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"_dropnulls": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"0",
+						"1"
+					],
+					"type": "integer",
+					"default": "1"
+				},
+				"description": "Default value is 1. If set to 0, the json response will include attributes with null values also.",
+				"name": "_dropnulls",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"allornothing": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"0",
+						"1"
+					],
+					"type": "integer",
+					"default": "1"
+				},
+				"description": "Default value is 0. If set to 1, all the objects in the bulk call would be committed or rolled back. No partial commit.",
+				"name": "allornothing",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"savedQuery": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Saved Query ",
+				"name": "savedQuery",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"apikey": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Set to the users apikey. This is used when the 'api' context is used (instead of 'oslc'). Do make sure that the apikey is generated for the user. You can use the Administration app to generate an apikey",
+				"name": "apikey",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"x-document-meta": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "A sample header value for OOTB Maximo is FILE\/Attachments. Do make sure that the attachments setup is completed on the Maximo server side before attempting to use this api feature. ",
+				"name": "x-document-meta",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"slug": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The name of the attached document file. An example pump.jpeg.",
+				"name": "slug",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"encslug": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "The base64 encoded name of the attached document file. This is needed when the file name has non-ascii characters. In all this one should be used instead of 'slug'",
+				"name": "encslug",
+				"required": false,
+				"in": "header"
+			}
+		},
+		
+		"x-method-override": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"enum": [
+						"PATCH",
+						"DELETE",
+						"BULK",
+						"SYNC"
+					],
+					"type": "string"
+				},
+				"description": "Due to constraints from browser the HTTP POST method is re-used for creates and updates and deletes.This request header is used to convey the specifics of the POST request. PATCH is used for update. DELETE is used for deleting the resource. BULK is used for supporting bulk operations.If this header is not present, the POST request is treated as a create request.",
+				"name": "x-method-override",
+				"required": false,
+				"in": "header"
+			}
+		},
+		"oslc.pageSize": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "integer"
+				},
+				"description": "Instruct the server to page the query result with the specified page size.",
+				"name": "oslc.pageSize",
+				"required": false,
+				"in": "query"
+			}
+		},
+		"oslc.properties": {
+			"required": false,
+			"Object": {
+				"schema": {
+					"type": "string"
+				},
+				"description": "Select clause for selecting a partial view of the member resource (like an individual workorder).",
+				"name": "oslc.properties",
+				"required": false,
+				"in": "query"
+			}
+		}
+	},
+	"DeleteResource": {
+		"parameters": [
+			"id",
+			"transactionid",
+			"x-allow-events"
+		],
+		"responses": [
+			"200",
+			"400",
+			"401",
+			"403",
+			"404",
+			"405",
+			"406",
+			"409",
+			"410",
+			"412",
+			"413",
+			"415"
+		]
+	}
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="org.eclipse.jdt.launching.javaApplet">
+<booleanAttribute key="com.ibm.debug.breakpoints.java.appendFile" value="false"/>
+<stringAttribute key="com.ibm.debug.breakpoints.java.traceFilename" value="${workspace_loc}/${launch_config_name}_${launch_timestamp}.log"/>
+<booleanAttribute key="com.ibm.debug.breakpoints.java.traceToConsole" value="true"/>
+<booleanAttribute key="com.ibm.debug.breakpoints.java.traceToFile" value="false"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/maximouiweb/src/com/ibm/tivoli/maximo/skd/applet/CASNViewerApplet.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<mapAttribute key="org.eclipse.debug.core.preferred_launchers">
+<mapEntry key="[run]" value="org.eclipse.jdt.launching.javaApplet"/>
+</mapAttribute>
+<intAttribute key="org.eclipse.jdt.launching.APPLET_HEIGHT" value="800"/>
+<stringAttribute key="org.eclipse.jdt.launching.APPLET_NAME" value=""/>
+<mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
+<mapEntry key="APPNAME" value="GRPASSIGN"/>
+<mapEntry key="ARCHIVE" value="dummyClasses.jar,skdviewerlicense.jar,skdviewer.jar,jviews-gantt.jar,jviews-framework-lib.jar,jviews-chart.jar,jhbasic-2.0_05.jar,icu4j-4_0_1.jar"/>
+<mapEntry key="CODE" value="com.ibm.tivoli.maximo.skd.applet.CASNViewerApplet"/>
+<mapEntry key="DEBUG" value="true"/>
+<mapEntry key="DEBUG_PROJECT" value="5"/>
+<mapEntry key="ISBIDION" value="false"/>
+<mapEntry key="LANGCODE" value="en"/>
+<mapEntry key="NAME" value="ASNViewer"/>
+<mapEntry key="mayscript" value="true"/>
+<mapEntry key="scriptable" value="true"/>
+</mapAttribute>
+<intAttribute key="org.eclipse.jdt.launching.APPLET_WIDTH" value="1280"/>
+<listAttribute key="org.eclipse.jdt.launching.CLASSPATH">
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry containerPath=&quot;org.eclipse.jdt.launching.JRE_CONTAINER&quot; javaProject=&quot;maximouiweb&quot; path=&quot;1&quot; type=&quot;4&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/dummyClasses.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/icu4j-4_0_1.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/jhbasic-2.0_05.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/json4j.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/jviews-chart.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/jviews-framework-lib.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/jviews-gantt.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/skdviewerlicense.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry id=&quot;org.eclipse.jdt.launching.classpathentry.defaultClasspath&quot;&gt;&#10;&lt;memento exportedEntriesOnly=&quot;false&quot; project=&quot;maximouiweb&quot;/&gt;&#10;&lt;/runtimeClasspathEntry&gt;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;runtimeClasspathEntry internalArchive=&quot;/maximouiweb/webmodule/webclient/applets/scheduler/balloontip-1.2.1.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.ibm.tivoli.maximo.skd.applet.CASNViewerApplet"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="maximouiweb"/>
+</launchConfiguration>

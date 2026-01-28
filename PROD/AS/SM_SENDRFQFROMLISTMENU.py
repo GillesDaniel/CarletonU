@@ -76,3 +76,21 @@ else:
                         clientSession.addWarning( MXApplicationException("sm", "allmessage", param))
                 else:
                     clientSession.loadDialog("SMSENDEMAIL")
+
+scriptConfig="""{
+    "autoscript": "SM_SENDRFQFROMLISTMENU",
+    "description": "SM: Send RFQ To Vendor From List: validate List count",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_SENDRFQFROMLISTMENU",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "SM: Send RFQ To Vendor From List: validate List count",
+            "actionName": "SM_SENDRFQFROMLISTMENU"
+        }
+    ]
+}"""

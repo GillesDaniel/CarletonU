@@ -28,3 +28,23 @@ if(vendor is not None):
     else:
         email=getEmailFromContact(vendor)
         mbo.setValue("EMAIL",email,2L)
+
+scriptConfig="""{
+    "autoscript": "CU_PO_VENDOR_ACTION",
+    "description": "Send BY Email get Email company",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "CU_PO_VENDOR_ACTION",
+            "launchPointType": "ATTRIBUTE",
+            "active": true,
+            "description": "Send BY Email get Email company",
+            "objectName": "PO",
+            "attributeName": "VENDOR",
+            "runAction": true
+        }
+    ]
+}"""

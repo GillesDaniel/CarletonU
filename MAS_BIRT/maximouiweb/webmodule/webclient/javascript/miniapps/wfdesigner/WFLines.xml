@@ -1,0 +1,97 @@
+<Designer>
+   <!-- inline CSS style for lines; Name is unique among all designers; included only once -->
+   <Styles>
+      <S Name="Lines">
+         /* Line definition */
+         .SVGLine, .SVGLineHover { stroke-opacity:0.8; }
+         .SVGLineHover { stroke:#F80; stroke-width:4; }
+         .SVGLineLocked { stroke-dasharray:6 2 6 2; stroke-linecap:butt; }
+         .SVGLineDisabled { stroke-dasharray:2 2 2 2; stroke-linecap:butt; stroke-opacity:0.3; }
+
+         /* Line text */
+         .SVGLineTextRect { opacity:0.8; }
+         .SVGLineTextRectHover { fill:#F80; }
+         .LineText { font:11px/12px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; white-space:nowrap; }
+      </S>
+   </Styles>
+   <!-- Lines definitions -->
+   <DefLines>
+      <D Name="BasicLine"
+         FromIndent="10" ToIndent="20" Color="#025" Thick="3"
+         HoverClass="SVGLine,SVGLineHover" DisableClass="SVGLine,SVGLineDisabled" LockClass="SVGLine,SVGLineLocked">
+         <![CDATA[
+            if(I.ArrowSize){ O.X2 = X2+ToDirX*Math.round(Thick/2); O.Y2 = Y2+ToDirY*Math.round(Thick/2); } // Shorter line if arrow
+         ]]>
+      </D>
+      <!-- Straight stroke -->
+      <D Name="LinePart" Def="BasicLine">
+         <path class="SVGLine" part="Line" stroke="{Color}" stroke-width="{Thick}" stroke-linejoin="round" fill="none"
+            d="M {X1} {Y1}
+               L {X1 + FromDirX*FromIndent} {Y1 + FromDirY*FromIndent} 
+               L {X2 + ToDirX  *ToIndent}   {Y2 + ToDirY  *ToIndent} 
+               L {X2} {Y2}"
+            />
+      </D>
+      <!-- Even straight stroke -->
+      <D Name="EvenLinePart" Path="1" Def="BasicLine">
+         <path class="SVGLine" part="Line" stroke="{Color}" stroke-width="{Thick}" stroke-linecap="square" stroke-linejoin="round" fill="none"
+            d="M {X1} {Y1}
+               L {P[0]} {P[1]} 
+               L {P[2]} {P[3]} 
+               L {P[4]} {P[5]} 
+               L {P[6]} {P[7]} 
+               L {P[8]} {P[9]} 
+               L {X2} {Y2}"
+            />
+      </D>
+      <D Name="Line" Kind="Line" action="" Text="" AutoWidth="0" AutoHeight="0" CanEdit="1"
+		 Menu="{Items:[{Name:'DeleteLine'},{Name:'PropertiesLine',OnClick:'return showProperties(this);'}]}"
+         FromDX="0" ToDX="0" FromDY="0" ToDY="0" FromEdge="Right" ToEdge="Left" FromIndent="10" ToIndent="20"
+         CanDelete="1" Color="#025" Thick="2" CanDisable="3" Disabled="0"
+         HoverClass="SVGLine,SVGLineHover, SVGLineTextRect,SVGLineTextRectHover" DisableClass="SVGLine,SVGLineDisabled" LockClass="SVGLine,SVGLineLocked">
+         <![CDATA[
+            if(I.ArrowSize){ O.X2 = X2+ToDirX*Math.round(Thick/2); O.Y2 = Y2+ToDirY*Math.round(Thick/2); } // Shorter line if arrow
+         ]]>
+      </D>
+      <D Name="ArrowToPart" ArrowColor="#025" ArrowBackground="white" ArrowThick="1" ArrowSize="5" ArrowAngle="8">
+         <if condition="{T}">
+            <path class="SVGLine" part="Arrow" stroke="{ArrowColor}" stroke-width="{ArrowThick}" stroke-linecap="round" fill="{ArrowBackground}"
+               transform="rotate( {[[315,0,45],[270,0,90],[225,180,135]][ToDirY+1][ToDirX+1]} {X2} {Y2})"
+               d="M {X2 - ArrowAngle} {Y2 - ArrowSize}
+                  L {X2}              {Y2}
+                  L {X2 + ArrowAngle} {Y2 - ArrowSize}"
+            />
+         </if>
+      </D>
+      <D Name="TextToPart" Background="#CFC" Border="#025" BorderWidth="1" Save="Text" PaddingLeft="4" PaddingRight="4" PaddingTop="2" EditAttr="Text">
+         <size width="" padding="{xPaddingLeft+PaddingRight}"><span class="LineText">{I.Text?id+' '+Text:id}</span></size>
+         <![CDATA[
+            O.TY = PaddingTop-9+Y2+ToDirY*(13+(I.ArrowSize?ArrowSize:0));
+            O.TX = -AutoWidth/2+X2+ToDirX*(AutoWidth/2+4+(I.ArrowSize?ArrowSize:0));
+         ]]>
+         <if condition="{!Designers.Drag}">
+            <svg>
+               <rect part="Line" class="SVGLineTextRect" fill="{Background}" stroke="{Border}" stroke-width="{BorderWidth}" x='{TX}' y='{TY}' width='{AutoWidth}' height='14' rx='10' ry='10'/>
+            </svg>
+            <div class="Abs LineText" part="Line" style="left:{TX+yPaddingLeft}px;top:{TY+PaddingTop}px;">{I.action?I.action:''}</div>
+         </if>
+      </D>
+      <D Name="TextFromPart" BackgroundFrom="#DDF" BorderFrom="#025" BorderFromWidth="1" Save="Text" PaddingFromLeft="25" PaddingFromRight="4" PaddingFromTop="2" EditAttr="Text">
+         <size width="1" padding="{PaddingFromLeft+PaddingFromRight}"><span class="LineText">{I.Text?id+' '+Text:id}</span></size>
+         <![CDATA[
+            O.TY = PaddingFromTop-9+FromDirY*13;
+            O.TX = -AutoWidth/2+FromDirX*(AutoWidth/2+4);
+         ]]>
+         <if condition="{!Designers.Drag}">
+            <svg>
+               <rect part="Line" class="SVGLineTextRect" fill="{BackgroundFrom}" stroke="{BorderFrom}" stroke-width="{BorderFromWidth}" x='{TX}' y='{TY}' width='{AutoWidth}' height='14' rx='2' ry='2'/>
+            </svg>
+            <div class="Abs LineText" part="Line" style="left:{TX}px;top:{TY+PaddingFromTop}px;">{I.action?'*':''}</div>
+         </if>
+      </D>
+
+      <D Name="Direct" Def="TextFromPart,LinePart,ArrowToPart" Color="#F00" ArrowColor="#F00" Use="Line"> <def name="TextFromPart"/> <svg> <def name="LinePart"/><def name="ArrowToPart"/> </svg> </D>
+      <D Name="Even" Def="TextFromPart,EvenLinePart,ArrowToPart" Use="Line"> <def name="TextFromPart"/> <svg> <def name="EvenLinePart"/><def name="ArrowToPart"/> </svg> </D>
+      <D Name="NegEven" Def="TextFromPart,EvenLinePart,ArrowToPart" Thick=".8" Color="#F00" ArrowColor="#F00" Use="Line"> <def name="TextFromPart"/> <svg> <def name="EvenLinePart"/><def name="ArrowToPart"/> </svg> </D>
+   </DefLines>
+</Designer>

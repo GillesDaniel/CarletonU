@@ -1,0 +1,111 @@
+<Designer>
+   <!-- Boxes definitions -->
+   <DefBoxes>
+      <D Name="Box" Kind="Box" Text=""
+         CanResize="3" CanMove="2" CanCopy="2" CanSelect="1" CanDelete="1" CanEdit="1" CanDisable="3" CanChange="1" Disabled="0" AutoSize="3"
+         LineOut="Curve" LineOutEdge="All" LineInEdge="All" LineIn="All"
+		 Menu="{Items:[{Name:'Delete'},{Name:'PropertiesBox',OnClick:'return showProperties(this);'}]}"
+         HoverClass="SVGBlock,SVGBlockHover" SelectClass="SVGBlock,SVGBlockSelect" FocusClass="SVGBlock,SVGBlockFocus" DisableClass="SVGBlock,SVGBlockDisabled" LockClass="SVGBlock,SVGBlockLocked"
+         MaxWidth="500" MaxHeight="200" AutoWidth="0" AutoHeight="0"
+         />
+
+      <D Name="ShapeTask" Def="Shape" R="0" PaddingLeft="1" PaddingRight="10" AutoWidth="10">
+		<!--img id="task_image" src="task.svg" part="Box" style="display: inline; " alt="Task"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="51px" height="32px" enable-background="new 0 0 51 32" xml:space="preserve">
+		<g>
+			<rect fill="#76ADE5" width="51" height="32"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></rect>
+			<path fill="#5A5A5A" d="M50,1v30H1V1H50 M51,0H0v32h51V0L51,0z"/>
+		</g>
+		</svg>		
+        <div class="Abs Text" part="Text" style="left:{Width/4}px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+      </D>
+      <D Name="ShapeSubprocess" Def="Shape" R="0" PaddingLeft="1" PaddingRight="10" AutoWidth="10">
+		<!--img id="subprocess_image" src="subprocess.svg" part="Box" style="display: inline; " alt="Subprocess"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="51px" height="32px" enable-background="new 0 0 51 32" xml:space="preserve">
+		<g>
+			<g>
+				<rect fill="#AB8FCC" width="51" height="32"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></rect>
+				<path fill="#5A5A5A" d="M50,1v30H1V1H50 M51,0H0v32h51V0L51,0z"/>
+			</g>
+			<rect x="7" y="1" fill="#FFFFFF" width="2" height="30"/>
+			<rect x="42" y="1" fill="#FFFFFF" width="2" height="30"/>
+		</g>
+		</svg>
+        <div class="Abs Text" part="Text" style="left:0px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+      </D>
+      <D Name="ShapeWait" Def="Shape" R="0" PaddingLeft="1" PaddingRight="20" AutoWidth="0">
+		<!--img id="wait_image" src="wait.svg" part="Box" style="display: inline; " alt="Task"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="54px" height="32px" enable-background="new 0 0 54 32" xml:space="preserve">
+		<g>
+			<path fill="#C4B08C" d="M37.469,0H0v32h37.469c8.825,0,16.53-7.167,16.53-16C53.999,7.165,46.294,0,37.469,0z"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></path>
+			<path fill="#777677" d="M37.469,1c8.418,0,15.53,6.869,15.53,15s-7.112,15-15.53,15H1V1h36 M37.469,0H0v32h37.469
+				c8.825,0,16.53-7.167,16.53-16C53.999,7.165,46.294,0,37.469,0L37.469,0z"/>
+		</g>
+		</svg>
+        <div class="Abs Text" part="Text" style="left:{Width/5}px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+      </D>
+      <D Name="ShapeInteraction" Def="Shape" R="0" PaddingLeft="1" PaddingRight="10" AutoWidth="10">
+		<!--img id="interaction_image" src="interaction.svg" part="Box" style="display: inline; " alt="Interaction"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="54px" height="32px" enable-background="new 0 0 54 32" xml:space="preserve">
+		<g>
+			<polygon fill="#7ACCBC" points="54,32 0,32 0,16.603 54,0.055 	"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></polygon>
+			<path fill="#5A5A5A" d="M53,1v30H1V17.342L53,1.436 M54,0.083L0,16.603V32h54V0.055V0.083z"/>
+		</g>
+		</svg>
+        <div class="Abs Text" part="Text" style="left:0px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+      </D>
+      <D Name="ShapeCondition" Def="Shape" CornerSize="0.4" R="0.5" PaddingLeft="1" PaddingRight="10" AutoWidth="10">
+		<!--img id="condition_image" src="condition.svg" part="Box" style="display: inline; " alt="Condition"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			width="46px" height="32px" enable-background="new 0 0 46 32" xml:space="preserve">
+		<g>
+ 
+			<polygon fill="#EACF60" points="23.18,32 0,16 23.18,0 46,16 	"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></polygon>
+			<path fill="#777677" d="M23.175,1.218L44.258,16L23.175,30.782L1.76,16L23.175,1.218 M23.18,0L0,16l23.18,16L46,16L23.18,0L23.18,0
+				z"/>
+		</g>
+		</svg>
+        <div class="Abs Text" part="Text" style="left:0px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+      </D>
+      <D Name="ShapeInput" Def="Shape" R="0" PaddingLeft="1" PaddingRight="10" AutoWidth="10">
+ 		<!--img id="task_input" src="input.svg" part="Box" style="display: inline; " alt="Input"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 		width="54px" height="32px" enable-background="new 0 0 54 32" xml:space="preserve">
+		<g>
+			<polygon fill="#F0F2F4" points="38.75,32 0,32 15.254,0 54,0 	"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></polygon>
+			<path fill="#5A5A5A" d="M52.482,1L38.119,31H1.584L15.885,1H53 M54,0H15.254L0,32h38.75L54,0L54,0z"/>
+		</g>
+		</svg>      
+        <div class="Abs Text" part="Text" style="left:{Width/4}px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+	  </D>
+      <D Name="ShapeStart" Def="Shape" R="10" PaddingLeft="1" PaddingRight="5" AutoWidth="10">
+		<!--img id="start_image" src="start.svg" part="Box" style="display: inline; " alt="Start"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="32px" height="32px" enable-background="new 0 0 32 32" xml:space="preserve">
+		<g>
+			<path fill="#5A5A5A" d="M16,0C7.165,0,0,7.167,0,16c0,8.834,7.164,16,16,16c8.835,0,16-7.166,16-16C32,7.167,24.836,0,16,0z
+				 M16,30.854C7.804,30.854,1.145,24.195,1.145,16C1.145,7.804,7.804,1.144,16,1.144c8.195,0,14.853,6.66,14.853,14.855
+				C30.854,24.195,24.195,30.854,16,30.854z"/>
+			<polygon fill="#5AA700" points="10.29,22.854 24,16 10.29,9.144 	"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></polygon>
+		</g>
+		</svg>
+        <div class="Abs Text" part="Text" style="left:0px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+      </D>
+      <D Name="ShapeStop" Def="Shape" R="10" PaddingLeft="1" PaddingRight="5" AutoWidth="10">
+		<!--img id="stop_image" src="stop.svg" part="Box" style="display: inline; " alt="Stop"/-->      
+		<svg part="Box" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 width="32px" height="32px" enable-background="new 0 0 32 32" xml:space="preserve">
+		<g>
+			<path fill="#5A5A5A" d="M16,0C7.164,0,0,7.164,0,16s7.164,16,16,16s16-7.164,16-16S24.836,0,16,0z M16,30.857
+				C7.809,30.857,1.144,24.191,1.144,16S7.809,1.143,16,1.143S30.856,7.809,30.856,16S24.191,30.857,16,30.857z"/>
+			<rect x="10.285" y="10.285" fill="#CC6666" width="11.43" height="11.43"><title>{D.id.indexOf('toolbar')>=0?D.Lang.Text['ToolbarBoxTip']:D.Lang.Text['CanvasBoxTip']}</title></rect>
+		</g>
+		  </svg>
+        <div class="Abs Text" part="Text" style="left:0px;top:{Height-10}px;white-space:nowrap;">{Text?Text:id}</div>
+      </D>
+   </DefBoxes>
+</Designer>

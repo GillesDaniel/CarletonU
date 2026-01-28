@@ -280,3 +280,21 @@ if(statusTo.getBoolean("ISSENT")):
 				if (laststatus==po.getString("status")):
 					po.changeStatus(newstatus, MXServer.getMXServer().getDate(), "");
 		#poSet.save();
+
+scriptConfig="""{
+    "autoscript": "SM_SENDEMAILFROMESCALADE",
+    "description": "Send by email: Send Email Action from escalade",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_SENDEMAILFROMESCALADE",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Send by email: Send Email Action from escalade",
+            "actionName": "SM_SENDEMAILFROMESCALADE"
+        }
+    ]
+}"""

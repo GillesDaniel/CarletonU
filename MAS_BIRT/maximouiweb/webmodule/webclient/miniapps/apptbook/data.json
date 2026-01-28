@@ -1,0 +1,287 @@
+{
+  "Body": [
+    {
+      "id": "root",
+      "TEXT": "root",
+      "Items": [
+        {
+          "id": "1.1",
+          "TEXT": "Morning",
+          "TEXTRowSpan": 5,
+          "Background": "#DDF2F9",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 1",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 2",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "1.2",
+          "TEXT": "",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 3",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 4",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "1.3",
+          "TEXT": "",
+          "GANTTGanttBackground":"#7/2/2016~7/3/2016#Silver;",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 5",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            }
+          ]
+        },
+        {
+          "id": "1.4",
+          "TEXT": "",
+          "GANTTGanttBackground":"#7/2/2016~7/3/2016#Silver;",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 7",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            }
+          ]
+        },
+        {
+          "id": "1.5",
+          "TEXT": "",
+          "GANTTGanttBackground":"#7/2/2016~7/3/2016#Silver;",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 9",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            }
+          ]
+        },
+        {
+          "id": "2.1",
+          "TEXT": "Afternoon",
+          "TEXTRowSpan": 5,
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 11",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 12",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "2.2",
+          "TEXT": "",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 13",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 14",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "2.3",
+          "TEXT": "",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 15",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 16",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "2.4",
+          "TEXT": "",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 17",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 18",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "2.5",
+          "TEXT": "",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 19",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 20",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "3.1",
+          "TEXT": "Evening",
+          "TEXTRowSpan": 5,
+          "Background": "#DDF2F9",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 21",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 22",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "3.2",
+          "TEXT": "",
+          "GANTTGanttColor": "#DDF2F9",
+
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 23",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 24",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "3.3",
+          "TEXT": "",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 25",
+              "START": "7/1/2016",
+              "END": "7/1/2016"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 26",
+              "START": "7/2/2016",
+              "END": "7/2/2016"
+            }
+          ]
+        },
+        {
+          "id": "3.4",
+          "TEXT": "",
+          "GANTTGanttBackground":"#7/2/2016~7/3/2016#Silver;",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 27",
+              "START": "7/1/2016",
+              "END": "7/1/2016",
+              "TYPE": "Empty"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 28",
+              "START": "7/2/2016",
+              "END": "7/2/2016",
+              "TYPE": "Empty"
+            }
+          ]
+        },
+        {
+          "id": "3.5",
+          "TEXT": "",
+          "GANTTGanttBackground":"#7/2/2016~7/3/2016#Silver;#7/1/2016~7/2/2016#Silver;",
+          "GANTTGanttColor": "#DDF2F9",
+          "Items": [
+            {
+              "Def": "Data",
+              "TEXT": "Appt 29",
+              "START": "7/1/2016",
+              "END": "7/1/2016",
+              "TYPE": "Empty"
+            },
+            {
+              "Def": "Data",
+              "TEXT": "Appt 30",
+              "START": "7/2/2016",
+              "END": "7/2/2016",
+              "TYPE": "Empty"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

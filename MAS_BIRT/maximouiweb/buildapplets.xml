@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+
+<project name="MAXIMO" default="all" basedir=".">
+	<description>
+		This file is used for building Maximo applet jar files.
+	</description>
+
+	<property name="maximo.maximouiweb.classes" value="${basedir}/webmodule/WEB-INF/classes"/>
+	<property name="maximo.maximouiweb.build" value="${basedir}/webmodule/WEB-INF/classes"/>
+	<property name="maximo.businessobjects.classes" value="${basedir}/../businessobjects/classes"/>
+	<property name="maximo.maximo.lib" value="${basedir}/../lib"/>
+	<property name="maximo.maximo.properties" value="${basedir}/../properties"/>
+	<property name="maximo.maximouiweb.image.src" value="${basedir}/webmodule/webclient"/>
+	<property name="maximo.maximouiweb.src" value="${basedir}/src"/>
+	<property name="trusted.keystore" value="${basedir}/../../../etc/keystore/maximo_keystore"/>
+	<property name="timestamp.url" value="http://timestamp.digicert.com/"/>
+	<!-- <property name="timestamp.url" value="http://sha256timestamp.ws.symantec.com/sha256/timestamp"/>  -->
+	
+	<!-- topology stuff -->
+    <property name="maximo.maximouiweb" value="${basedir}/webmodule"/>
+    <property name="maximo.topologyjar.base" value="${maximo.maximouiweb}/webclient/astilogpallette/base"/>
+    <property name="maximo.maximouiweb.topologyappletjar" value="${maximo.maximouiweb}/webclient/applets/telco/telcoapplet.jar"/>
+    <property name="maximo.maximouiweb.topologyjar" value="${maximo.maximouiweb}/webclient/astilogpallette/asttopology.jar"/>
+	
+  <macrodef name="ekm_signjar">
+      <attribute name="jar"/>
+    
+      <sequential>
+          <echo message="Signing Using ekmclient for @{jar} ..."/>
+          <!--
+            -tsa http://timestamp.digicert.com 
+            -keystore NONE 
+            -storetype PKCS11IMPLKS 
+            -storepass '&quot;&quot;' 
+            -providerClass com.ibm.crypto.pkcs11impl.provider.IBMPKCS11Impl 
+            -providerArg C:\ProgramData\Dyadic\ekm\config.txt 
+            &quot;${file}&quot; 
+            <Cert_Alias>
+          -->
+          <!-- optionally set to the physical jarsigner path but jarsigner should be in the path -->         
+          <exec executable="jarsigner">
+            <arg value="-tsa"/>
+            <arg value="http://timestamp.digicert.com"/>
+            <arg value="-keystore"/>
+            <arg value="NONE"/>
+            <arg value="-storetype"/>
+            <arg value="PKCS11IMPLKS"/>
+            <arg value="-storepass"/>
+            <arg value=""/>
+            <arg value="-providerClass"/>
+            <arg value="com.ibm.crypto.pkcs11impl.provider.IBMPKCS11Impl"/>
+            <arg value="-providerArg"/>
+            <!-- NOTE: Points to your config.txt as provided by your ekm_client package -->
+            <arg value="${basedir}/../../../etc/keystore/config.txt"/>
+            <arg value="@{jar}"/>
+            <!-- NOTE: this is the certificate Alias as found in the Code Signing Dashboard for your Certificate -->
+            <arg value="PRD0010792key"/>            
+          </exec>     
+      </sequential>
+  </macrodef>
+
+  <macrodef name="ant_signjar">
+    <attribute name="jar"/>
+  
+    <sequential>
+        <echo message="Signing Using Ant Signjar for @{jar} ..."/>
+        <signjar jar="@{jar}" 
+              keystore="${trusted.keystore}" 
+              alias="maximoks" 
+              tsaurl="${timestamp.url}" 
+              storepass="maximo" keypass="maximo"
+              verbose="false"                 
+        />
+    </sequential>      
+  </macrodef>
+  
+  <macrodef name="sign_jar">
+    <attribute name="jar"/>    
+      <sequential>
+        <local name="xjar"/>
+		<property name="xjar" location="@{jar}"/>
+        <script language="javascript"><![CDATA[
+		  var jarfile = "${xjar}";
+          var store = project.getProperty('trusted.keystore');
+          var use_ant = store && new java.io.File(store).exists();
+          var t;
+          if (!use_ant) {
+             t = project.createTask("ekm_signjar")
+          } else {
+             t = project.createTask("ant_signjar")
+          }
+          t.setDynamicAttribute("jar", jarfile)
+          t.perform()
+        ]]></script>
+      </sequential>
+  </macrodef>
+    
+	<macrodef name="maximo_signjar">
+		<attribute name="jar"/>
+		<attribute name="name" default="Maximo Applet"/>
+		<attribute name="permissions" default="all-permissions"/>
+		<sequential>
+			<jar update="true" jarfile="@{jar}">
+	            <manifest>
+	            	<!-- NOTE: applet tag must also have to define permissions as well -->
+	                <attribute name="Permissions" value="@{permissions}" />
+	                <attribute name="Codebase" value="*" />
+	            	<attribute name="Application-Name" value="@{name}"/>
+	            	<attribute name="Application-Library-Allowable-Codebase" value="*"/>
+	            	<attribute name="Caller-Allowable-Codebase" value="*"/>
+	            	
+	            	<!-- NOTE: Java 1.6 and < 1.7_45 need TrustedLibrary=true -->
+	            	<!-- NOTE: if trusted library is true, applet, needs all-permissions -->
+	            	<!-- <attribute name="Trusted-Library" value="true"/> -->
+	            	<!-- Trusted-Library conflicts with Caller-Allowable-Codebase in < 1.7.0_51 -->
+	            	<!-- <attribute name="Caller-Allowable-Codebase" value="*"/> -->
+	            	<!--
+	            	https://blogs.oracle.com/java-platform-group/entry/liveconnect_changes_in_7u45
+	            	http://stackoverflow.com/questions/19393826/java-applet-manifest-allow-all-caller-allowable-codebase
+	            	-->
+	            </manifest>				
+	        </jar>
+			<retry retrycount="5">
+			  <sign_jar jar="@{jar}"/>
+			</retry>
+		</sequential>
+	</macrodef>
+	
+	<!-- this is used mainly for topology to re-sign the dependency jar files -->
+	<!-- maximo_signlib is safer than maximo_signjar, since it strips out old signatures which could
+	     cause the applet to fail to load -->
+	<macrodef name="maximo_signlib" description="Used to re-sign a prexisting library that has existing signatures">
+		<attribute name="jar"/>
+		<attribute name="name" default="Maximo Applet"/>
+		<attribute name="permissions" default="all-permissions"/>
+		<sequential>
+			<copy file="@{jar}" tofile="@{jar}.copy.jar"/>
+			<delete file="@{jar}" failonerror="false"/>
+			<jar destfile="@{jar}">
+	            <manifest>
+	            	<!-- NOTE: applet tag must also have to define permissions as well -->
+	                <attribute name="Permissions" value="@{permissions}" />
+	                <attribute name="Codebase" value="*" />
+	            	<attribute name="Application-Name" value="@{name}"/>
+	            	<attribute name="Application-Library-Allowable-Codebase" value="*"/>
+	            	<attribute name="Caller-Allowable-Codebase" value="*"/>
+	            	
+	            	<!-- NOTE: Java 1.6 and < 1.7_45 need TrustedLibrary=true -->
+	            	<!-- NOTE: if trusted library is true, applet, needs all-permissions -->
+	            	<!-- 7.5.0.5 and above support only JRE 1.7 so no need for Trusted-Library attribute -->
+	            	<!-- <attribute name="Trusted-Library" value="true"/> --> 
+	            	<!-- Trusted-Library conflicts with Caller-Allowable-Codebase in < 1.7.0_51 -->
+	            	<!-- <attribute name="Caller-Allowable-Codebase" value="*"/> -->
+	            	<!--
+	            	https://blogs.oracle.com/java-platform-group/entry/liveconnect_changes_in_7u45
+	            	http://stackoverflow.com/questions/19393826/java-applet-manifest-allow-all-caller-allowable-codebase
+	            	-->
+	            </manifest>
+				
+				<!-- strip existing signatures -->
+			    <zipfileset src="@{jar}.copy.jar" excludes="META-INF/*.SF,META-INF/*.RSA"/>
+			</jar>
+			<delete file="@{jar}.copy.jar" failonerror="true"/>
+			<retry retrycount="5">
+        <sign_jar jar="@{jar}"/>
+			</retry>
+		</sequential>
+	</macrodef>			
+	
+	<target name="all" depends="attachimage,quickprint,topology" description="All applet jars"/>
+	
+	<target name="alltrusted" depends="trustedattachimage,trustedquickprint,trustedtopology,trustlibraries" description="Sign jars with trusted certificated"/>
+
+	<target name="topology" description="build asset topology">
+   		<delete file="${maximo.maximouiweb.topologyappletjar}" failonerror="false"/>
+        <jar destfile="${maximo.maximouiweb.topologyappletjar}">
+          <fileset dir="${maximo.businessobjects.classes}" includes="com/ibm/tivoli/maximo/util/StringUtil.class" />
+          <fileset dir="${maximo.maximouiweb.classes}" includes="com/ibm/tivoli/maximo/asset/ilog/applet/**" />
+          <fileset dir="${maximo.maximouiweb.classes}" includes="com/ibm/tivoli/maximo/asset/topology/**" excludes="**/controls/**"/>
+          <fileset dir="${maximo.maximouiweb.classes}" includes="com/ibm/tivoli/maximo/skd/ilog/lic/**"/>
+          <fileset dir="${maximo.maximouiweb.src}" includes="com/ibm/tivoli/maximo/asset/ilog/applet/**" excludes="**/*.java"/>
+          <fileset dir="${maximo.maximouiweb.src}" includes="com/ibm/tivoli/maximo/asset/topology/**" excludes="**/controls/**,**/*.java"/>
+          <fileset dir="${maximo.maximouiweb.classes}" includes="ilog/**" />
+        </jar>
+
+	   <delete file="${maximo.maximouiweb.topologyjar}" failonerror="false"/>
+       <jar destfile="${maximo.maximouiweb.topologyjar}">
+          <fileset dir="${maximo.topologyjar.base}" includes="ilog/**"/>
+       </jar>
+	</target>		
+	
+	<target name="trustedtopology" description="sign asset topology">
+		<maximo_signjar jar="${maximo.maximouiweb.topologyappletjar}" name="Maximo Asset Topology"/>
+		<maximo_signjar jar="${maximo.maximouiweb.topologyjar}" name="Maximo Telco"/>		
+	</target>
+	
+	<target name="attachimage" description="AttachImage applet jar file">
+		<delete file="${basedir}/webmodule/webclient/applets/attachimageapplet.jar"/>
+		<jar destfile="${basedir}/webmodule/webclient/applets/attachimageapplet.jar">
+			<fileset dir="${maximo.maximouiweb.classes}">
+				<include name="psdi/webclient/applet/attachimage/**/*.class"/>
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="trustedattachimage" description="AttachImage applet jar file with trusted cert">
+		<maximo_signjar jar="${basedir}/webmodule/webclient/applets/attachimageapplet.jar" name="Maximo Attach Image"/>
+	</target>
+
+	<target name="quickprint" description="Quick Print applet jar file">
+		<jar destfile="${basedir}/webmodule/webclient/applets/QuickPrint.jar">
+			<fileset dir="${maximo.maximouiweb.classes}">
+				<include name="com/ibm/tivoli/maximo/report/applet/quickprint/**/*.class"/>
+			</fileset>
+			<fileset dir="${maximo.maximouiweb.src}">
+				<include name="com/ibm/tivoli/maximo/report/applet/quickprint/**/*.*"/>
+				<exclude name="com/ibm/tivoli/maximo/report/applet/quickprint/**/*.java"/>
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="trustedquickprint" description="Quick Print applet jar file with trusted cert">
+		<maximo_signjar jar="${basedir}/webmodule/webclient/applets/QuickPrint.jar" name="Maximo Quick Print"/>
+	</target>
+
+	<target name="trustlibraries" description="Update libraries with trusted-library attribute and sign jars">
+
+		<!-- topology libraries -->
+		<property name="base.telco" value="${maximo.maximouiweb}/webclient/applets/telco/"/>
+		<maximo_signlib jar="${base.telco}/batik-jviews-svggen-8.6.jar" name="Maximo Topology Library"/>
+		<maximo_signlib jar="${base.telco}/dummyClassesDiagrammer.jar" name="Maximo Topology Library"/>
+		<maximo_signlib jar="${base.telco}/jviews-diagrammer.jar" name="Maximo Topology Library"/>
+		<maximo_signlib jar="${base.telco}/jviews-framework-lib.jar" name="Maximo Topology Library"/>
+		<maximo_signlib jar="${base.telco}/icu4j-4_0_1.jar" name="Maximo Topology Library"/>
+	</target>
+	
+	
+	<target name="clean" description="Delete all applet jar files">
+		<delete file="${basedir}/webmodule/webclient/applets/attachimageapplet.jar"/>
+		<delete file="${basedir}/webmodule/webclient/applets/QuickPrint.jar"/>
+		<delete file="${maximo.maximouiweb.topologyappletjar}" failonerror="false"/>
+		<delete file="${maximo.maximouiweb.topologyjar}" failonerror="false"/>
+	</target>	
+</project>

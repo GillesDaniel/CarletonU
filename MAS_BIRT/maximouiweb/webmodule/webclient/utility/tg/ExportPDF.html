@@ -1,0 +1,66 @@
+<!-- Prints the TreeGrid data given by parameters in url -->
+<!-- Parameters: -->
+<html>
+   <head>
+      <script src="../../javascript/miniapps/libraries/treegrid/Grid/GridE.js"> </script>
+   </head>
+   <body>
+      <div style="width:100%;height:90%;" id='GRID'>   
+         <script>
+         Grids.OnGetAvailabilityClass = function(/*TGrid*/ grid, /*TRow*/ row, /*string*/ col, /*int*/ value, /*string*/ src, /*string*/ cls, /*string*/ group) {
+         	// If Tools or Zones, check for quantity larger than availability
+         	if (row["_OBJECTNAME"] != null && row["_OBJECTNAME"] == "TOOLITEM" || row["_OBJECTNAME"] == "PLUSAZONE") {
+         		// Get row availability
+         		if (row['availcommon'] != null) {
+         			// Convert availability quantity to a number
+         			var availValues = row['availcommon'].slice(0, -1).split('#');
+         			var availQty = parseFloat(availValues[2]);
+         			// If load is higher than availability, show in resource bar in red color.
+                 	if (value > availQty) {
+                 		return "COGanttAvailabilityRed";
+                 	}
+         		}
+         	}
+         	return cls;
+         }
+         
+         Grids.OnGetAvailability = function(/*TGrid*/ grid, /*TRow*/ row, /*string*/ col, /*int*/ value, /*string*/ src, /*type[]*/ Values, /*int*/ start, /*int*/ end, /*int*/ min, /*int*/ max, /*string*/ group) {
+         	if (row["_OBJECTNAME"] !== "TOOLITEM" && row["_OBJECTNAME"] !== "PLUSAZONE") {
+         		var hoursFloat = value/60;
+         		var hours = Math.floor(hoursFloat);
+         		var minutes = Math.round((hoursFloat - hours) * 60)
+
+         		if(minutes == 60) {
+         			hours++;
+         			minutes=0;
+         		}
+
+         		var strTime;
+         		if (minutes < 10) {
+         			strTime = hours + ":" + "0" + minutes;
+         		}
+         		else {
+         			strTime = hours + ":" + minutes;
+         		}
+
+         		value = strTime;
+         		Values[0] = strTime;
+         	}
+
+         	if (this.showLoadAvailNumbers == 0) {
+         		Values[0] = '';
+         	}
+
+         	return true;
+         }
+
+		var param = location.search.slice(1).split("@");
+		var bonus = param[0] ? AjaxCall(param[0]) : null; // Reads grid configuration and changes from temporary file
+		PrintTreeGrid({Layout:{Url:param[1],Bonus:bonus}, Data:{Url:param[2],
+			Bonus:"<Grid><Cfg SafeCSS='0' PrintPaddingHeightFirst='55' PrintPaddingWidth='10' PrintVarHeight='1'/></Grid>"}},"GRID",null,
+			{Dpi:param[3],Width:param[4],Height:param[5],MarginWidth:param[6],MarginHeight:param[7],FitPage:param[8]},
+			{PrintFromPage:param[9],PrintToPage:param[10]});
+         </script>
+      </div>
+   </body>
+</html>

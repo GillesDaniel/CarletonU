@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="PLUSPCOMP_MAXADMIN_1584736044.rptdesign">
+    <attribute name="filename">PLUSPCOMP_MAXADMIN_1584736044.rptdesign</attribute>
+    <attribute name="description">Companies and their email addresses</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">PLUSPCOMP</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>PLUSPCOMP_MAXADMIN_15847360441584736200891.properties</reference>
+        <filename>./PLUSPCOMP_MAXADMIN_1584736044/PLUSPCOMP_MAXADMIN_15847360441584736200891.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

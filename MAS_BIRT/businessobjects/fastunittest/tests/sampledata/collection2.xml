@@ -1,0 +1,62 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:j.0="http://open-services.net/ns/crtv/serverType#" xmlns:j.2="http://open-services.net/ns/moduleType#" xmlns:j.1="http://open-services.net/ns/crtv/csType#" xmlns:rr="http://jazz.net/ns/ism/registry#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:crtv="http://open-services.net/ns/crtv#" xmlns:oslc_auto="http://open-services.net/ns/auto#" xmlns:oslc="http://open-services.net/ns/core#" xmlns:j.3="http://tivoli-OSLC-prototypes/ns/art#">
+  <rdfs:Container rdf:about="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/collection">
+    <rdfs:member>
+      <crtv:SoftwareModule rdf:about="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/resources/1358845425227">
+        <rr:providerRecord>
+          <rr:ProviderRecord>
+            <rr:registrationRecord rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/registration/1358845425227"/>
+            <oslc:serviceProvider rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/providers/1358845424763"/>
+            <rr:sourceRecord rdf:resource="http://aci-taddm.tivlab.austin.ibm.com:9430/cdm/oslc/configuration/F2F3DBA90C393BEC93DC6499FA05C373"/>
+          </rr:ProviderRecord>
+        </rr:providerRecord>
+        <crtv:deployedTo rdf:resource="http://aci-taddm.tivlab.austin.ibm.com:9430/cdm/oslc/configuration/42397A6F17B63C4581447E15BA7C0F12"/>
+        <crtv:name>SYSTEM.DURABLE.MODEL.QUEUE</crtv:name>
+        <crtv:observationTime>2013-01-25T12:44:18.000Z</crtv:observationTime>
+        <crtv:fileName>SYSTEM.DURABLE.MODEL.QUEUE</crtv:fileName>
+        <dcterms:description rdf:parseType="Literal">Model for managed queues for durable subscriptions</dcterms:description>
+        <dcterms:modified>2013-01-25T13:15:44.007Z</dcterms:modified>
+        <rdf:type rdf:resource="http://open-services.net/ns/moduleType#MQQueue"/>
+      </crtv:SoftwareModule>
+    </rdfs:member>
+    <rdfs:member>
+      <crtv:SoftwareModule rdf:about="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/resources/1358845424807">
+        <rr:providerRecord>
+          <rr:ProviderRecord>
+            <rr:registrationRecord rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/registration/1358845424807"/>
+            <oslc:serviceProvider rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/providers/1358845424763"/>
+            <rr:sourceRecord rdf:resource="http://aci-taddm.tivlab.austin.ibm.com:9430/cdm/oslc/configuration/895C6F96659A3D70800223F361B781CC"/>
+          </rr:ProviderRecord>
+        </rr:providerRecord>
+        <crtv:deployedTo rdf:resource="http://aci-taddm.tivlab.austin.ibm.com:9430/cdm/oslc/configuration/320E8C60744D3ED3A5B978F903CC70A3"/>
+        <crtv:observationTime>2013-01-25T12:21:10.000Z</crtv:observationTime>
+        <crtv:name>SYSTEM.BROKER.CONTROL.QUEUE</crtv:name>
+        <dcterms:description rdf:parseType="Literal">Control queue for queued Pub/Sub interface</dcterms:description>
+        <crtv:fileName>SYSTEM.BROKER.CONTROL.QUEUE</crtv:fileName>
+        <dcterms:modified>2013-01-25T12:44:29.211Z</dcterms:modified>
+        <rdf:type rdf:resource="http://open-services.net/ns/moduleType#MQQueue"/>
+      </crtv:SoftwareModule>
+    </rdfs:member>
+	<rdfs:member>
+      <crtv:ComputerSystem rdf:about="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/resources/1358845424988">
+        <rr:providerRecord>
+          <rr:ProviderRecord>
+            <rr:registrationRecord rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/registration/1358845425170"/>
+            <oslc:serviceProvider rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/providers/1358845424779"/>
+            <rr:sourceRecord rdf:resource="http://aci-taddm.tivlab.austin.ibm.com:9430/cdm/oslc/changehistory/314544606CA43E68A237C698EA4D8460"/>
+          </rr:ProviderRecord>
+        </rr:providerRecord>
+        <rr:providerRecord>
+          <rr:ProviderRecord>
+            <rr:registrationRecord rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/registration/1358845424988"/>
+            <oslc:serviceProvider rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/providers/1358845424763"/>
+            <rr:sourceRecord rdf:resource="http://aci-taddm.tivlab.austin.ibm.com:9430/cdm/oslc/configuration/314544606CA43E68A237C698EA4D8460"/>
+          </rr:ProviderRecord>
+        </rr:providerRecord>
+        <crtv:observationTime>2013-01-25T12:16:57.000Z</crtv:observationTime>
+        <crtv:fqdn>pthtiv22.perthapc.au.ibm.com</crtv:fqdn>
+        <dcterms:modified>2013-01-25T12:45:28.507Z</dcterms:modified>
+      </crtv:ComputerSystem>
+    </rdfs:member>
+
+  </rdfs:Container>
+</rdf:RDF>

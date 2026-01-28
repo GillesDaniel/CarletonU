@@ -1,0 +1,64 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define({      
+//begin v1.x content
+	'bold': 'Lodia',
+	'copy': 'Kopiatu',
+	'cut': 'Moztu',
+	'delete': 'Kendu',
+	'indent': 'Barruranzko koska',
+	'insertHorizontalRule': 'Arau horizontala',
+	'insertOrderedList': 'Zenbakidun zerrenda',
+	'insertUnorderedList': 'Buletdun zerrenda',
+	'italic': 'Etzana',
+	'justifyCenter': 'Lerrokatu erdian',
+	'justifyFull': 'Justifikatuta',
+	'justifyLeft': 'Lerrokatu ezkerrean',
+	'justifyRight': 'Lerrokatu eskuinean',
+	'outdent': 'Kanporanzko koska',
+	'paste': 'Itsatsi',
+	'redo': 'Berregin',
+	'removeFormat': 'Kendu formatua',
+	'selectAll': 'Hautatu guztia',
+	'strikethrough': 'Marratua',
+	'subscript': 'Azpi-indizea',
+	'superscript': 'Goi-indizea',
+	'underline': 'Azpimarratua',
+	'undo': 'Desegin',
+	'unlink': 'Kendu esteka',
+	'createLink': 'Sortu esteka',
+	'toggleDir': 'Txandakatu norabidea',
+	'insertImage': 'Txertatu irudia',
+	'insertTable': 'Txertatu/editatu taula',
+	'toggleTableBorder': 'Txandakatu talaren ertza',
+	'deleteTable': 'Ezabatu taula',
+	'tableProp': 'Taula-propietatea',
+	'htmlToggle': 'HTML iturria',
+	'foreColor': 'Aurreko planoaren kolorea',
+	'hiliteColor': 'Atzeko planoaren kolorea',
+	'plainFormatBlock': 'Paragrafo-estiloa',
+	'formatBlock': 'Paragrafo-estiloa',
+	'fontSize': 'Letraren tamaina',
+	'fontName': 'Letra-tipoaren izena',
+	'tabIndent': 'Fitxaren koska',
+	"fullScreen": "Txandakatu pantaila osoa",
+	"viewSource": "Ikusi HTML iturburua",
+	"print": "Inprimatu",
+	"newPage": "Orrialde berria",
+	/* Error messages */
+	'systemShortcut': '"${0}" ekintza teklatuko lasterbide baten bidez arakatzailean soilik dago erabilgarri. Erabili ${1}.',
+	'ctrlKey':'ktrl+${0}',
+	'appleKey':'\u2318${0}' // "command" or open-apple key on Macintosh
+//end v1.x content
+});
+

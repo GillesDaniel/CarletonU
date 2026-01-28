@@ -15,3 +15,12 @@ if (owner is not None and owner.getName()=="WORKORDER"):
         mbo.setValue("ICBNUM",owner.getString("ICBNUM"),2L)
         mbo.setValue("CU_REQTYPE",owner.getString("CU_REQTYPE"),2L)
         mbo.setValue("PLUSPCUSTOMER",owner.getString("PLUSPCUSTOMER"),2L)
+
+scriptConfig="""{
+    "autoscript": "WORKORDER.NEW",
+    "description": "CU: Create new WORKORDER",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+}"""

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="woprint.rptdesign">
+    <attribute name="filename">woprint.rptdesign</attribute>
+    <attribute name="description">Activity Details</attribute>
+    <attribute name="dploc">ALL</attribute>
+    <attribute name="dp">true</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">2</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">1</attribute>
+    <attribute name="recordlimit">50</attribute>
+    <attribute name="reportfolder">WOTRACK</attribute>
+    <attribute name="priority">2</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>wotrack.properties</reference>
+        <filename>./woprint/wotrack.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="wotrack.rptdesign">
+    <attribute name="filename">wotrack.rptdesign</attribute>
+    <attribute name="description">Activity List</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">ALL</attribute>
+    <attribute name="ql">true</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="toolbarsequence">1</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">WOTRACK</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>wotrack.properties</reference>
+        <filename>./wotrack/wotrack.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="calibration_wo_datasheet.rptdesign">
+    <attribute name="filename">calibration_wo_datasheet.rptdesign</attribute>
+    <attribute name="description">Calibration Work Order Data Sheet</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">WOTRACK</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="wonum">
+        <attribute name="attributename">wonum</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Work Order</attribute>
+        <attribute name="lookupname">workorder</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">1</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">1</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>pluscwt.properties</reference>
+        <filename>./calibration_wo_datasheet/pluscwt.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>
