@@ -69,3 +69,21 @@ if(success):
 clientSession.getCurrentApp().getAppBean().save() 
 clientSession.getDataBean("SM_SENDRFQ").refreshTable()
 service.closeDialog();
+
+scriptConfig="""{
+    "autoscript": "SM_SENDEMAILCOMMLOG",
+    "description": "SM:  RFQ SEND EMAIL FOR ONE VENDOR (BY COMMLOG DIALOG)",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_SENDEMAILCOMMLOG",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "SM:  RFQ SEND EMAIL FOR ONE VENDOR (BY COMMLOG DIALOG)",
+            "actionName": "SM_SENDEMAILCOMMLOG"
+        }
+    ]
+}"""

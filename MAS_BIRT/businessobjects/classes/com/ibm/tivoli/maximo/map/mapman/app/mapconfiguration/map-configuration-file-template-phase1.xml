@@ -1,0 +1,50 @@
+<map-configuration>
+	<!-- The order defines the priority of map behavior, i.e., the gps-defined is the first and it will take precedence over 
+		the point defined. When maximo is the backend, the zoom level of gps-defined statement is retrieved from the initial extent 
+		configuration -->
+	<initial-view>
+		<gps-defined zoom-level="" />
+		<point-defined x="" y="" zoom-level="" />
+	</initial-view>
+
+	<!-- Basemaps should be typified to allow different visualization mechanisms, i.e., each type should be handled differently. 
+		Besides that, the list defines the basemaps visualization in a bottom-up order, i.e., the first one defined is the first 
+		on the bottom. Basemaps defined in the webmap package are added at the bottom. -->
+
+	<basemaps>
+		<!-- Used for tiled services of type ArcgisTiledMapServiceLayer -->
+		<basemap type="esri-tile" name="" url="" transparency="" visible="" />
+		<!-- Used for vector tiled layers of type ArcGISVectorTilesLayer -->
+		<basemap type="esri-vector-tile" name="" url="" transparency="" visible="" />
+	</basemaps>
+	<!-- As the basemaps list, the esri-services list also defines the visualization in a bottom-up order. Services defined 
+		in the webmap package are added at the bottom. -->
+	<esri-services>
+		<!-- Used for map services of type ArcGISDynamicMapServiceLayer -->
+		<esri-service type="map-service" name="" url="" transparency="" visible="" />
+		<!-- Used for feature services of type ArcGISFeatureLayer -->
+		<esri-service type="feature-service" name="" url="" transparency="" visible="" />
+		<!-- Used for image services of type ArcGISImageServiceLayer -->
+		<esri-service type="image-service" name="" url="" transparency="" visible="" token-enabled="true" />
+	</esri-services>
+	<!-- The wfs service should include here the authentication mechanism (apikey, token, etc) -->
+	<web-feature-services>
+		<web-feature-service name="" url="" transparency="" visible="" />
+		<web-feature-service name="" url="" transparency="" visible="" />
+	</web-feature-services>
+	<!-- For now, as-is defined in map manager -->
+	<map-properties>
+		<!-- So far we just have the below configurations -->
+		<map-tip-move-end-delay-property>500</map-tip-move-end-delay-property>
+		<map-tip-long-press-delay-property>500</map-tip-long-press-delay-property>
+	</map-properties>
+	<!-- List only the spatial references used by the above listed basempas and services -->
+	<spatial-references>
+		<sr wkid="" definition="" />
+		<sr wkid="" definition="" />
+	</spatial-references>
+	<!-- If present, configure the map component to route all the map services requests to the below proxy path. -->
+	<proxy>
+		<path>/maximo/webclient/pluss/proxy.jsp</path>
+	</proxy>
+</map-configuration>

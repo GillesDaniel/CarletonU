@@ -11,3 +11,23 @@ if ponum =='':
 	mbo.setValueNull('CU_INVOICECATEGORY',11l)
 	mbo.setValueNull('CU_PMMGR',11l)
 	mbo.setValue('CU_RECOVERABLE',0,11l)
+
+scriptConfig="""{
+    "autoscript": "CU_PO2INVOICE",
+    "description": "Copy PO Details to Invoice",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "CU_PO2INVOICE",
+            "launchPointType": "ATTRIBUTE",
+            "active": true,
+            "description": "Copy PO information to Invoice",
+            "objectName": "INVOICE",
+            "attributeName": "PONUM",
+            "runAction": true
+        }
+    ]
+}"""

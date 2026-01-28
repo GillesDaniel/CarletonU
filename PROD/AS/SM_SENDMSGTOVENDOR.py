@@ -46,3 +46,21 @@ if(resultAction is not None):
     
 clientSession.getCurrentApp().getAppBean().save()
 service.closeDialog();
+
+scriptConfig="""{
+    "autoscript": "SM_SENDMSGTOVENDOR",
+    "description": "Send by email - Action OK Send PO",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_SENDMSGTOVENDOR",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Send by email - Action OK Send PO",
+            "actionName": "SM_SENDMSGTOVENDOR"
+        }
+    ]
+}"""

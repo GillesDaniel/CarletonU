@@ -99,3 +99,21 @@ if (appBean.onListTab()):
     
     
 service.closeDialog();
+
+scriptConfig="""{
+    "autoscript": "SM_EXECUTESENDFROMLIST",
+    "description": "SM: Execute send rfq to vendor from list tab",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_EXECUTESENDFROMLIST",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "SM: Execute send rfq to vendor from list tab",
+            "actionName": "SM_EXECUTESENDFROMLIST"
+        }
+    ]
+}"""

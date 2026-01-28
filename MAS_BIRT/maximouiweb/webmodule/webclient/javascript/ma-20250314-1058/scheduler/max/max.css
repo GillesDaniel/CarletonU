@@ -1,0 +1,27 @@
+{id} .COGanttBackA {
+    background-color: ${rgba:shift.color.0,A7FFEB,.75};
+}
+
+{id} .COGanttBackB {
+         background-color: ${rgba:shift.color.0,B2EBF2,.75};
+     }
+
+{id} .COGanttBackC {
+         background-color: ${rgba:shift.color.0,B3E5FC,.75};
+     }
+
+{id} .COGanttBackD {
+         background-color: #F0F0F0;
+     }
+
+{id} .COGanttBackE {
+         background-color: #F0F0F0;
+     }
+
+{id} .COGanttBackF {
+         background-color: #F0F0F0;
+     }
+
+{id} .COGanttBackG {
+         background-color: #F0F0F0;
+     }

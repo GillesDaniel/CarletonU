@@ -1,0 +1,30 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define(
+"dojox/editor/plugins/nls/el/SpellCheck", ({
+	widgetLabel: "Συνολικός ορθογραφικός έλεγχος",
+	unfound: "Δεν εντοπίστηκε",
+	skip: "Παράλειψη",
+	skipAll: "Παράλειψη όλων",
+	toDic: "Προσθήκη στο λεξικό",
+	suggestions: "Προτάσεις",
+	replace: "Αντικατάσταση",
+	replaceWith: "Αντικατάσταση με",
+	replaceAll: "Αντικατάσταση όλων",
+	cancel: "Ακύρωση",
+	msg: "Δεν βρέθηκαν ορθογραφικά λάθη",
+	iSkip: "Παράλειψη τρέχοντος",
+	iSkipAll: "Παράλειψη όλων των όμοιων",
+	iMsg: "Δεν υπάρχουν προτάσεις ορθογραφίας"
+})
+);

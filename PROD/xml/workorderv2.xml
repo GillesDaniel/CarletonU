@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation id="workorderv2" ismobile="false" mboname="WORKORDER" resultstableid="results_showlist" version="6.0.0">
+    <page id="mainrec" scroll="false">
+        <include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="List" type="list">
+                    <menubar event="search" id="actiontoolbar1" sourcemethod="getAppSearchOptions"/>
+                    <table id="results_showlist" inputmode="readonly" label="TABLE TITLE" mboname="WORKORDER" selectmode="multiple">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol dataattribute="WONUM" filterable="false" id="results_showlist_column_select" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol dataattribute="WONUM" id="results_showlist_column_link" mxevent="selectrecord" mxevent_desc="Go To %1" type="link" usefieldsizegroup="false"/>
+                            <tablecol dataattribute="ENVIRONMENT" id="results_showlist_column1"/>
+                            <tablecol dataattribute="BACKOUTPLAN" id="results_showlist_column2"/>
+                            <tablecol dataattribute="JUSTIFYPRIORITY" id="results_showlist_column3"/>
+                            <tablecol dataattribute="PLUSCPHYLOC" id="results_showlist_column4"/>
+                            <tablecol dataattribute="REMARKDESC" id="results_showlist_column5"/>
+                            <tablecol dataattribute="DESCRIPTION" id="results_showlist_column6"/>
+                            <tablecol dataattribute="WHOMISCHANGEFOR" id="results_showlist_column7"/>
+                            <tablecol dataattribute="TARGETDESC" id="results_showlist_column8"/>
+                            <tablecol dataattribute="VERIFICATION" id="results_showlist_column9"/>
+                            <tablecol dataattribute="REASONFORCHANGE" id="results_showlist_column10"/>
+                            <tablecol dataattribute="SITEID" id="results_showlist_column11"/>
+                            <tablecol dataattribute="WONUM" id="results_showlist_column12"/>
+                            <tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="main" label="Main" type="insert">
+                    <section id="maintab_section">
+                        <textbox dataattribute="ENVIRONMENT" id="maintab_attr1" lookup="longdesc"/>
+                        <textbox dataattribute="BACKOUTPLAN" id="maintab_attr2" lookup="longdesc"/>
+                        <textbox dataattribute="JUSTIFYPRIORITY" id="maintab_attr3" lookup="longdesc"/>
+                        <textbox dataattribute="PLUSCPHYLOC" id="maintab_attr4" lookup="longdesc"/>
+                        <textbox dataattribute="REMARKDESC" id="maintab_attr5" lookup="longdesc"/>
+                        <textbox dataattribute="DESCRIPTION" id="maintab_attr6" lookup="longdesc"/>
+                        <textbox dataattribute="WHOMISCHANGEFOR" id="maintab_attr7" lookup="longdesc"/>
+                        <textbox dataattribute="TARGETDESC" id="maintab_attr8" lookup="longdesc"/>
+                        <textbox dataattribute="VERIFICATION" id="maintab_attr9" lookup="longdesc"/>
+                        <textbox dataattribute="REASONFORCHANGE" id="maintab_attr10" lookup="longdesc"/>
+                        <textbox dataattribute="REASONFORCHANGE_LONGDESCRIPTION" id="maintab_attr11"/>
+                        <textbox dataattribute="VERIFICATION_LONGDESCRIPTION" id="maintab_attr12"/>
+                        <checkbox dataattribute="WARRANTYEXIST" id="maintab_attr13"/>
+                        <textbox dataattribute="WARRANTYEXPDATE" id="maintab_attr14" lookup="datelookup"/>
+                        <textbox dataattribute="TARGETDESC_LONGDESCRIPTION" id="maintab_attr15"/>
+                        <textbox dataattribute="TARGSTARTDATE" id="maintab_attr16" lookup="datelookup"/>
+                        <textbox dataattribute="TASKID" id="maintab_attr17"/>
+                        <checkbox dataattribute="USEMBODATA" id="maintab_attr18"/>
+                        <textbox dataattribute="VENDOR" id="maintab_attr19"/>
+                        <textbox dataattribute="WOPRIORITY" id="maintab_attr20"/>
+                        <textbox dataattribute="WORKLOCATION" id="maintab_attr21"/>
+                        <checkbox dataattribute="WORKLOG" id="maintab_attr22"/>
+                        <textbox dataattribute="WORKORDERID" id="maintab_attr23"/>
+                        <textbox dataattribute="WORKPACKMTLSTATUS" id="maintab_attr24"/>
+                        <textbox dataattribute="WORKTYPE" id="maintab_attr25"/>
+                        <textbox dataattribute="WORTS1" id="maintab_attr26"/>
+                        <textbox dataattribute="WORTS2" id="maintab_attr27"/>
+                        <textbox dataattribute="WORTS3" id="maintab_attr28"/>
+                        <textbox dataattribute="WORTS4" id="maintab_attr29" lookup="datelookup"/>
+                        <textbox dataattribute="WORTS5" id="maintab_attr30"/>
+                        <textbox dataattribute="WOSEQUENCE" id="maintab_attr31"/>
+                        <textbox dataattribute="WTALERT" id="maintab_attr32"/>
+                        <textbox dataattribute="WHOMISCHANGEFOR_LONGDESCRIPTION" id="maintab_attr33"/>
+                        <checkbox dataattribute="WOACCEPTSCHARGES" id="maintab_attr34"/>
+                        <textbox dataattribute="WOASSET" id="maintab_attr35"/>
+                        <textbox dataattribute="WOCI" id="maintab_attr36"/>
+                        <textbox dataattribute="WOCLASS" id="maintab_attr37"/>
+                        <textbox dataattribute="WOEQ1" id="maintab_attr38"/>
+                        <textbox dataattribute="WOEQ10" id="maintab_attr39"/>
+                        <textbox dataattribute="WOEQ11" id="maintab_attr40"/>
+                        <textbox dataattribute="WOEQ12" id="maintab_attr41"/>
+                        <textbox dataattribute="WOEQ13" id="maintab_attr42" lookup="datelookup"/>
+                        <textbox dataattribute="WOEQ14" id="maintab_attr43"/>
+                        <textbox dataattribute="WOEQ2" id="maintab_attr44"/>
+                        <textbox dataattribute="WOEQ3" id="maintab_attr45"/>
+                        <textbox dataattribute="WOEQ4" id="maintab_attr46"/>
+                        <textbox dataattribute="WOEQ5" id="maintab_attr47"/>
+                        <textbox dataattribute="WOEQ6" id="maintab_attr48" lookup="datelookup"/>
+                        <textbox dataattribute="WOEQ7" id="maintab_attr49"/>
+                        <textbox dataattribute="WOEQ8" id="maintab_attr50"/>
+                        <textbox dataattribute="WOEQ9" id="maintab_attr51"/>
+                        <textbox dataattribute="WOGROUP" id="maintab_attr52"/>
+                        <checkbox dataattribute="WOISSWAP" id="maintab_attr53"/>
+                        <textbox dataattribute="WOJO1" id="maintab_attr54"/>
+                        <textbox dataattribute="WOJO2" id="maintab_attr55"/>
+                        <textbox dataattribute="WOJO3" id="maintab_attr56"/>
+                        <textbox dataattribute="WOJO4" id="maintab_attr57"/>
+                        <textbox dataattribute="WOJO5" id="maintab_attr58"/>
+                        <textbox dataattribute="WOJO6" id="maintab_attr59"/>
+                        <textbox dataattribute="WOJO7" id="maintab_attr60"/>
+                        <textbox dataattribute="WOJO8" id="maintab_attr61"/>
+                        <textbox dataattribute="WOJP1" id="maintab_attr62"/>
+                        <textbox dataattribute="WOJP2" id="maintab_attr63"/>
+                        <textbox dataattribute="WOJP3" id="maintab_attr64"/>
+                        <textbox dataattribute="WOJP4" id="maintab_attr65"/>
+                        <textbox dataattribute="WOJP5" id="maintab_attr66" lookup="datelookup"/>
+                        <textbox dataattribute="WOL1" id="maintab_attr67"/>
+                        <textbox dataattribute="WOL2" id="maintab_attr68"/>
+                        <textbox dataattribute="WOL3" id="maintab_attr69"/>
+                        <textbox dataattribute="WOL4" id="maintab_attr70" lookup="datelookup"/>
+                        <textbox dataattribute="WOLABLNK" id="maintab_attr71"/>
+                        <textbox dataattribute="WOLO1" id="maintab_attr72"/>
+                        <textbox dataattribute="WOLO10" id="maintab_attr73"/>
+                        <textbox dataattribute="WOLO2" id="maintab_attr74"/>
+                        <textbox dataattribute="WOLO3" id="maintab_attr75"/>
+                        <textbox dataattribute="WOLO4" id="maintab_attr76"/>
+                        <textbox dataattribute="WOLO5" id="maintab_attr77"/>
+                        <textbox dataattribute="WOLO6" id="maintab_attr78"/>
+                        <textbox dataattribute="WOLO7" id="maintab_attr79" lookup="datelookup"/>
+                        <textbox dataattribute="WOLO8" id="maintab_attr80"/>
+                        <textbox dataattribute="WOLO9" id="maintab_attr81"/>
+                        <textbox dataattribute="WOLOC" id="maintab_attr82"/>
+                        <textbox dataattribute="DESCRIPTION_LONGDESCRIPTION" id="maintab_attr83"/>
+                        <textbox dataattribute="DIRISSUEMTLSTATUS" id="maintab_attr84"/>
+                        <checkbox dataattribute="DISABLED" id="maintab_attr85"/>
+                        <textbox dataattribute="DISPLAYTASKID" id="maintab_attr86"/>
+                        <textbox dataattribute="DISPLAYWONUM" id="maintab_attr87"/>
+                        <checkbox dataattribute="DOWNTIME" id="maintab_attr88"/>
+                        <textbox dataattribute="DUPFLAG" id="maintab_attr89"/>
+                        <textbox dataattribute="EMAIL" id="maintab_attr90"/>
+                        <textbox dataattribute="ENDFEATURELABEL" id="maintab_attr91"/>
+                        <checkbox dataattribute="SLAAPPLIED" id="maintab_attr92"/>
+                        <textbox dataattribute="SNECONSTRAINT" id="maintab_attr93" lookup="datelookup"/>
+                        <textbox dataattribute="SOURCESYSID" id="maintab_attr94"/>
+                        <checkbox dataattribute="SPASSETS" id="maintab_attr95"/>
+                        <checkbox dataattribute="SPLOCATIONS" id="maintab_attr96"/>
+                        <textbox dataattribute="STARTFEATURELABEL" id="maintab_attr97"/>
+                        <textbox dataattribute="STATUS" id="maintab_attr98"/>
+                        <textbox dataattribute="STATUSDATE" id="maintab_attr99" lookup="datelookup"/>
+                        <checkbox dataattribute="STATUSIFACE" id="maintab_attr100"/>
+                        <textbox dataattribute="STCONOFFSET" id="maintab_attr101"/>
+                        <textbox dataattribute="STOREROOMMTLSTATUS" id="maintab_attr102"/>
+                        <textbox dataattribute="SUPERVISOR" id="maintab_attr103"/>
+                        <checkbox dataattribute="SUSPENDFLOW" id="maintab_attr104"/>
+                        <textbox dataattribute="TARGCOMPDATE" id="maintab_attr105" lookup="datelookup"/>
+                        <textbox dataattribute="REMARKDESC_LONGDESCRIPTION" id="maintab_attr106"/>
+                        <textbox dataattribute="REMARKENTERDATE" id="maintab_attr107" lookup="datelookup"/>
+                        <textbox dataattribute="REMDUR" id="maintab_attr108"/>
+                        <textbox dataattribute="REPAIRFACILITY" id="maintab_attr109"/>
+                        <checkbox dataattribute="REPAIRLOCFLAG" id="maintab_attr110"/>
+                        <textbox dataattribute="REPFACSITEID" id="maintab_attr111"/>
+                        <textbox dataattribute="REPORTDATE" id="maintab_attr112" lookup="datelookup"/>
+                        <textbox dataattribute="REPORTEDBY" id="maintab_attr113"/>
+                        <textbox dataattribute="REPORTEDBYID" id="maintab_attr114"/>
+                        <textbox dataattribute="REPORTEDBYNAME" id="maintab_attr115"/>
+                        <checkbox dataattribute="REQASSTDWNTIME" id="maintab_attr116"/>
+                        <textbox dataattribute="RESPONDBY" id="maintab_attr117" lookup="datelookup"/>
+                        <textbox dataattribute="RISK" id="maintab_attr118"/>
+                        <textbox dataattribute="ROUTE" id="maintab_attr119"/>
+                        <textbox dataattribute="ROUTESTOPID" id="maintab_attr120"/>
+                        <textbox dataattribute="SAFETYPLAN_LOOKUP_LIST_TYPE" id="maintab_attr121"/>
+                        <textbox dataattribute="SAFETYPLANID" id="maintab_attr122"/>
+                        <textbox dataattribute="SCHEDFINISH" id="maintab_attr123" lookup="datelookup"/>
+                        <textbox dataattribute="SCHEDSTART" id="maintab_attr124" lookup="datelookup"/>
+                        <textbox dataattribute="SELECTSLAS_MODE" id="maintab_attr125"/>
+                        <textbox dataattribute="SENDERSYSID" id="maintab_attr126"/>
+                        <textbox dataattribute="PLUSCPHYLOC_LONGDESCRIPTION" id="maintab_attr127"/>
+                        <textbox dataattribute="PLUSPACTDELIVERYDATE" id="maintab_attr128" lookup="datelookup"/>
+                        <checkbox dataattribute="PLUSPAGMTALLSPLIT" id="maintab_attr129"/>
+                        <textbox dataattribute="PLUSPAGREEMENT" id="maintab_attr130"/>
+                        <checkbox dataattribute="PLUSPALLOWQUOTE" id="maintab_attr131"/>
+                        <checkbox dataattribute="PLUSPAPPLYPSTOCHILD" id="maintab_attr132"/>
+                        <checkbox dataattribute="PLUSPBILLAPPROVED" id="maintab_attr133"/>
+                        <textbox dataattribute="PLUSPBILLSTATE" id="maintab_attr134"/>
+                        <textbox dataattribute="PLUSPCALCCALNUM" id="maintab_attr135"/>
+                        <textbox dataattribute="PLUSPCALCORGID" id="maintab_attr136"/>
+                        <textbox dataattribute="PLUSPCALCSHIFT" id="maintab_attr137"/>
+                        <textbox dataattribute="PLUSPCOSTCENTER" id="maintab_attr138"/>
+                        <textbox dataattribute="PLUSPCUSTCHACCT" id="maintab_attr139"/>
+                        <textbox dataattribute="PLUSPCUSTOMER" id="maintab_attr140"/>
+                        <textbox dataattribute="PLUSPCUSTPONUM" id="maintab_attr141"/>
+                        <textbox dataattribute="PLUSPEXCEEDEST" id="maintab_attr142"/>
+                        <textbox dataattribute="PLUSPGRTOTALBILLPR" id="maintab_attr143"/>
+                        <textbox dataattribute="PLUSPGRTOTALBILLPRCC" id="maintab_attr144"/>
+                        <textbox dataattribute="PLUSPLINESTATUS" id="maintab_attr145"/>
+                        <textbox dataattribute="PLUSPMAXPRICE" id="maintab_attr146"/>
+                        <textbox dataattribute="PLUSPNEXTBILLMEMO" id="maintab_attr147"/>
+                        <textbox dataattribute="PLUSPNEXTBILLSTAT" id="maintab_attr148"/>
+                        <textbox dataattribute="PLUSPORIGQPRICE" id="maintab_attr149"/>
+                        <textbox dataattribute="PLUSPORIGQTYPE" id="maintab_attr150"/>
+                        <textbox dataattribute="PLUSPPERCENTCOMP" id="maintab_attr151"/>
+                        <textbox dataattribute="PLUSPPOOLITEMNUM" id="maintab_attr152"/>
+                        <textbox dataattribute="PLUSPPOOLITEMSETID" id="maintab_attr153"/>
+                        <textbox dataattribute="PLUSPPOOLNUM" id="maintab_attr154"/>
+                        <checkbox dataattribute="PLUSPPOREQ" id="maintab_attr155"/>
+                        <textbox dataattribute="PLUSPPRICESCHED" id="maintab_attr156"/>
+                        <textbox dataattribute="PLUSPPSFILTER" id="maintab_attr157"/>
+                        <textbox dataattribute="PLUSPQUOTEDPRICE" id="maintab_attr158"/>
+                        <textbox dataattribute="PLUSPQUOTEDPRICECC" id="maintab_attr159"/>
+                        <textbox dataattribute="PLUSPQUOTETYPE" id="maintab_attr160"/>
+                        <textbox dataattribute="PLUSPRESPONSEPLAN" id="maintab_attr161"/>
+                        <textbox dataattribute="PLUSPREVNUM" id="maintab_attr162"/>
+                        <textbox dataattribute="PLUSPTARGDELIVERYDATE" id="maintab_attr163" lookup="datelookup"/>
+                        <textbox dataattribute="PLUSPTOTALBILLED" id="maintab_attr164"/>
+                        <textbox dataattribute="PLUSPTOTALBILLPR" id="maintab_attr165"/>
+                        <textbox dataattribute="PLUSPTOTALBILLPRCC" id="maintab_attr166"/>
+                        <textbox dataattribute="PLUSPTOTALBILLPRICE" id="maintab_attr167"/>
+                        <textbox dataattribute="PLUSPTOTALESTPRICE" id="maintab_attr168"/>
+                        <textbox dataattribute="PLUSPTOTALOUTSTANDING" id="maintab_attr169"/>
+                        <textbox dataattribute="PLUSPTOTALPENDING" id="maintab_attr170"/>
+                        <checkbox dataattribute="PLUSPUNBILLEDTRANS" id="maintab_attr171"/>
+                        <textbox dataattribute="PMCOMBPELACTNAME" id="maintab_attr172"/>
+                        <checkbox dataattribute="PMCOMBPELENABLED" id="maintab_attr173"/>
+                        <checkbox dataattribute="PMCOMBPELINPROG" id="maintab_attr174"/>
+                        <textbox dataattribute="PMCOMSTATE" id="maintab_attr175"/>
+                        <textbox dataattribute="PMCOMTYPE" id="maintab_attr176"/>
+                        <textbox dataattribute="PMDUEDATE" id="maintab_attr177" lookup="datelookup"/>
+                        <textbox dataattribute="PMEX_ASSET_ID" id="maintab_attr178"/>
+                        <textbox dataattribute="PMEX_IS_FAIL" id="maintab_attr179"/>
+                        <textbox dataattribute="PMEX_IS_MAINTENANCE" id="maintab_attr180"/>
+                        <textbox dataattribute="PMEX_IS_REP_REPLACE" id="maintab_attr181"/>
+                        <textbox dataattribute="PMEXTDATE" id="maintab_attr182" lookup="datelookup"/>
+                        <textbox dataattribute="PMNEXTDUEDATE" id="maintab_attr183" lookup="datelookup"/>
+                        <textbox dataattribute="PMNUM" id="maintab_attr184"/>
+                        <textbox dataattribute="POINTNUM" id="maintab_attr185"/>
+                        <textbox dataattribute="PREDESSORWOS" id="maintab_attr186"/>
+                        <textbox dataattribute="PROBLEMCODE" id="maintab_attr187"/>
+                        <textbox dataattribute="PWCONTACT" id="maintab_attr188"/>
+                        <textbox dataattribute="PWPREF_TRANS" id="maintab_attr189"/>
+                        <checkbox dataattribute="PWPRINTOFFICE" id="maintab_attr190"/>
+                        <textbox dataattribute="PWREPORTNAME" id="maintab_attr191"/>
+                        <checkbox dataattribute="PWSEND" id="maintab_attr192"/>
+                        <textbox dataattribute="JUSTIFYPRIORITY_LONGDESCRIPTION" id="maintab_attr193"/>
+                        <textbox dataattribute="LANGCODE" id="maintab_attr194"/>
+                        <textbox dataattribute="LASTCOPYLINKDATE" id="maintab_attr195" lookup="datelookup"/>
+                        <textbox dataattribute="LAUNCHENTRYNAME" id="maintab_attr196"/>
+                        <textbox dataattribute="LEAD" id="maintab_attr197"/>
+                        <checkbox dataattribute="LMS" id="maintab_attr198"/>
+                        <textbox dataattribute="LOCATION" id="maintab_attr199"/>
+                        <checkbox dataattribute="LOCWARRANTYNOTICE" id="maintab_attr200"/>
+                        <checkbox dataattribute="LOS" id="maintab_attr201"/>
+                        <textbox dataattribute="MEASUREDATE" id="maintab_attr202" lookup="datelookup"/>
+                        <textbox dataattribute="MEASUREMENTVALUE" id="maintab_attr203"/>
+                        <checkbox dataattribute="NESTEDJPINPROCESS" id="maintab_attr204"/>
+                        <textbox dataattribute="NEWCHILDCLASS" id="maintab_attr205"/>
+                        <textbox dataattribute="NEWTASKPARENTPMNUM" id="maintab_attr206"/>
+                        <textbox dataattribute="NP_STATUSMEMO" id="maintab_attr207"/>
+                        <textbox dataattribute="OBJECTNAME" id="maintab_attr208"/>
+                        <textbox dataattribute="OBSERVATION" id="maintab_attr209"/>
+                        <textbox dataattribute="ONBEHALFOF" id="maintab_attr210"/>
+                        <textbox dataattribute="ONBEHALFOFID" id="maintab_attr211"/>
+                        <textbox dataattribute="ONBEHALFOFNAME" id="maintab_attr212"/>
+                        <textbox dataattribute="ORGID" id="maintab_attr213"/>
+                        <textbox dataattribute="ORIGRECORDCLASS" id="maintab_attr214"/>
+                        <textbox dataattribute="ORIGRECORDID" id="maintab_attr215"/>
+                        <textbox dataattribute="ORIGTKID" id="maintab_attr216"/>
+                        <textbox dataattribute="ORIGWOID" id="maintab_attr217"/>
+                        <textbox dataattribute="OUTLABCOST" id="maintab_attr218"/>
+                        <textbox dataattribute="OUTMATCOST" id="maintab_attr219"/>
+                        <textbox dataattribute="OUTTOOLCOST" id="maintab_attr220"/>
+                        <textbox dataattribute="OWNER" id="maintab_attr221"/>
+                        <textbox dataattribute="OWNERGROUP" id="maintab_attr222"/>
+                        <textbox dataattribute="OWNERSYSID" id="maintab_attr223"/>
+                        <textbox dataattribute="PARENT" id="maintab_attr224"/>
+                        <checkbox dataattribute="PARENTCHGSSTATUS" id="maintab_attr225"/>
+                        <textbox dataattribute="PCACTHRS" id="maintab_attr226"/>
+                        <textbox dataattribute="PCPCHANGEBY" id="maintab_attr227"/>
+                        <textbox dataattribute="PCPCHANGEDATE" id="maintab_attr228" lookup="datelookup"/>
+                        <textbox dataattribute="PCPHYS" id="maintab_attr229"/>
+                        <textbox dataattribute="PCTASKCOMP" id="maintab_attr230"/>
+                        <textbox dataattribute="PERSONGROUP" id="maintab_attr231"/>
+                        <textbox dataattribute="PHONE" id="maintab_attr232"/>
+                        <textbox dataattribute="PLUSCFREQUENCY" id="maintab_attr233"/>
+                        <textbox dataattribute="PLUSCFREQUNIT" id="maintab_attr234"/>
+                        <checkbox dataattribute="PLUSCISMOBILE" id="maintab_attr235"/>
+                        <textbox dataattribute="PLUSCJPREVNUM" id="maintab_attr236"/>
+                        <checkbox dataattribute="PLUSCLOOP" id="maintab_attr237"/>
+                        <textbox dataattribute="PLUSCNEXTDATE" id="maintab_attr238" lookup="datelookup"/>
+                        <textbox dataattribute="PLUSCNEXTDATE_NP" id="maintab_attr239" lookup="datelookup"/>
+                        <textbox dataattribute="PLUSCOVERDUEDATE" id="maintab_attr240" lookup="datelookup"/>
+                        <textbox dataattribute="BACKOUTPLAN_LONGDESCRIPTION" id="maintab_attr241"/>
+                        <textbox dataattribute="CALCCALENDAR" id="maintab_attr242"/>
+                        <textbox dataattribute="CALCORGID" id="maintab_attr243"/>
+                        <textbox dataattribute="CALCPRIORITY" id="maintab_attr244"/>
+                        <textbox dataattribute="CALCSHIFT" id="maintab_attr245"/>
+                        <textbox dataattribute="CALENDAR" id="maintab_attr246"/>
+                        <textbox dataattribute="CHANGEBY" id="maintab_attr247"/>
+                        <checkbox dataattribute="CHANGEBYPARENT" id="maintab_attr248"/>
+                        <textbox dataattribute="CHANGEDATE" id="maintab_attr249" lookup="datelookup"/>
+                        <checkbox dataattribute="CHARGESTORE" id="maintab_attr250"/>
+                        <textbox dataattribute="CINUM" id="maintab_attr251"/>
+                        <textbox dataattribute="CLASSSTRUCTUREID" id="maintab_attr252"/>
+                        <textbox dataattribute="COMMODITY" id="maintab_attr253"/>
+                        <textbox dataattribute="COMMODITYGROUP" id="maintab_attr254"/>
+                        <textbox dataattribute="CONTRACT" id="maintab_attr255"/>
+                        <textbox dataattribute="CREWID" id="maintab_attr256"/>
+                        <textbox dataattribute="CREWWORKGROUP" id="maintab_attr257"/>
+                        <textbox dataattribute="CU_BUDGET" id="maintab_attr258"/>
+                        <textbox dataattribute="CU_DATEREQUIRED" id="maintab_attr259" lookup="datelookup"/>
+                        <textbox dataattribute="CU_ESTIMATE" id="maintab_attr260"/>
+                        <textbox dataattribute="CU_MEDAID" id="maintab_attr261"/>
+                        <textbox dataattribute="CU_MEDFID" id="maintab_attr262"/>
+                        <textbox dataattribute="CU_PMMGR" id="maintab_attr263"/>
+                        <textbox dataattribute="CU_ROOM" id="maintab_attr264"/>
+                        <textbox dataattribute="CU_SCHEDDATE" id="maintab_attr265" lookup="datelookup"/>
+                        <textbox dataattribute="CUBILLEDAS" id="maintab_attr266"/>
+                        <textbox dataattribute="CUBLACTION" id="maintab_attr267"/>
+                        <textbox dataattribute="CUPRIORITY" id="maintab_attr268"/>
+                        <textbox dataattribute="CURRENTVALUE" id="maintab_attr269"/>
+                        <textbox dataattribute="CUTRADE" id="maintab_attr270"/>
+                        <textbox dataattribute="ACTFINISH" id="maintab_attr271" lookup="datelookup"/>
+                        <textbox dataattribute="ACTINTLABCOST" id="maintab_attr272"/>
+                        <textbox dataattribute="ACTINTLABHRS" id="maintab_attr273"/>
+                        <textbox dataattribute="ACTLABCOST" id="maintab_attr274"/>
+                        <textbox dataattribute="ACTLABHRS" id="maintab_attr275"/>
+                        <textbox dataattribute="ACTMATCOST" id="maintab_attr276"/>
+                        <textbox dataattribute="ACTOUTLABCOST" id="maintab_attr277"/>
+                        <textbox dataattribute="ACTOUTLABHRS" id="maintab_attr278"/>
+                        <textbox dataattribute="ACTSERVCOST" id="maintab_attr279"/>
+                        <textbox dataattribute="ACTSTART" id="maintab_attr280" lookup="datelookup"/>
+                        <textbox dataattribute="ACTTOOLCOST" id="maintab_attr281"/>
+                        <textbox dataattribute="ACTTOTALCOST" id="maintab_attr282"/>
+                        <textbox dataattribute="AMCREW" id="maintab_attr283"/>
+                        <checkbox dataattribute="AMS" id="maintab_attr284"/>
+                        <checkbox dataattribute="AOS" id="maintab_attr285"/>
+                        <checkbox dataattribute="APPTREQUIRED" id="maintab_attr286"/>
+                        <textbox dataattribute="ASSETCUST" id="maintab_attr287"/>
+                        <textbox dataattribute="ASSETFILTERBY" id="maintab_attr288"/>
+                        <textbox dataattribute="ASSETLOCPRIORITY" id="maintab_attr289"/>
+                        <textbox dataattribute="ASSETNUM" id="maintab_attr290"/>
+                        <textbox dataattribute="ASSETRECONRSTKT" id="maintab_attr291"/>
+                        <textbox dataattribute="ASSETUSER" id="maintab_attr292"/>
+                        <checkbox dataattribute="ASSETWARRANTYNOTICE" id="maintab_attr293"/>
+                        <textbox dataattribute="ASSIGNEDOWNERGROUP" id="maintab_attr294"/>
+                        <textbox dataattribute="AVAILSTATUSDATE" id="maintab_attr295" lookup="datelookup"/>
+                        <textbox dataattribute="ENVIRONMENT_LONGDESCRIPTION" id="maintab_attr296"/>
+                        <textbox dataattribute="ESTATAPPRINTLABCOST" id="maintab_attr297"/>
+                        <textbox dataattribute="ESTATAPPRINTLABHRS" id="maintab_attr298"/>
+                        <textbox dataattribute="ESTATAPPRLABCOST" id="maintab_attr299"/>
+                        <textbox dataattribute="ESTATAPPRLABHRS" id="maintab_attr300"/>
+                        <textbox dataattribute="ESTATAPPRMATCOST" id="maintab_attr301"/>
+                        <textbox dataattribute="ESTATAPPROUTLABCOST" id="maintab_attr302"/>
+                        <textbox dataattribute="ESTATAPPROUTLABHRS" id="maintab_attr303"/>
+                        <textbox dataattribute="ESTATAPPRSERVCOST" id="maintab_attr304"/>
+                        <textbox dataattribute="ESTATAPPRTOOLCOST" id="maintab_attr305"/>
+                        <textbox dataattribute="ESTATAPPRTOTALCOST" id="maintab_attr306"/>
+                        <textbox dataattribute="ESTDUR" id="maintab_attr307"/>
+                        <textbox dataattribute="ESTINTLABCOST" id="maintab_attr308"/>
+                        <textbox dataattribute="ESTINTLABHRS" id="maintab_attr309"/>
+                        <textbox dataattribute="ESTLABCOST" id="maintab_attr310"/>
+                        <textbox dataattribute="ESTLABHRS" id="maintab_attr311"/>
+                        <textbox dataattribute="ESTMATCOST" id="maintab_attr312"/>
+                        <textbox dataattribute="ESTOUTLABCOST" id="maintab_attr313"/>
+                        <textbox dataattribute="ESTOUTLABHRS" id="maintab_attr314"/>
+                        <textbox dataattribute="ESTSERVCOST" id="maintab_attr315"/>
+                        <textbox dataattribute="ESTTOOLCOST" id="maintab_attr316"/>
+                        <textbox dataattribute="ESTTOTALCOST" id="maintab_attr317"/>
+                        <textbox dataattribute="EXTERNALREFID" id="maintab_attr318"/>
+                        <textbox dataattribute="FAILDATE" id="maintab_attr319" lookup="datelookup"/>
+                        <textbox dataattribute="FAILURECODE" id="maintab_attr320"/>
+                        <textbox dataattribute="FAXPHONE" id="maintab_attr321"/>
+                        <textbox dataattribute="FCPROJECTID" id="maintab_attr322"/>
+                        <textbox dataattribute="FCTASKID" id="maintab_attr323"/>
+                        <textbox dataattribute="FEATURE" id="maintab_attr324"/>
+                        <textbox dataattribute="FEATURELABEL" id="maintab_attr325"/>
+                        <checkbox dataattribute="FILTERBYWORKZONE" id="maintab_attr326"/>
+                        <textbox dataattribute="FILTERDATE" id="maintab_attr327" lookup="datelookup"/>
+                        <textbox dataattribute="FINCNTRLID" id="maintab_attr328"/>
+                        <textbox dataattribute="FIRSTAPPRSTATUS" id="maintab_attr329"/>
+                        <textbox dataattribute="FLOWACTION" id="maintab_attr330"/>
+                        <checkbox dataattribute="FLOWACTIONASSIST" id="maintab_attr331"/>
+                        <checkbox dataattribute="FLOWCONTROLLED" id="maintab_attr332"/>
+                        <textbox dataattribute="FNCONOFFSET" id="maintab_attr333"/>
+                        <textbox dataattribute="FNLCONSTRAINT" id="maintab_attr334" lookup="datelookup"/>
+                        <textbox dataattribute="FR1CODE" id="maintab_attr335"/>
+                        <textbox dataattribute="FR2CODE" id="maintab_attr336"/>
+                        <textbox dataattribute="GENERATEDFORPO" id="maintab_attr337"/>
+                        <textbox dataattribute="GENFORPOLINEID" id="maintab_attr338"/>
+                        <textbox dataattribute="GENFORPOREVISION" id="maintab_attr339"/>
+                        <textbox dataattribute="GLACCOUNT" id="maintab_attr340" lookup="glnavigator"/>
+                        <checkbox dataattribute="HASCHILDREN" id="maintab_attr341"/>
+                        <checkbox dataattribute="HASFOLLOWUPWORK" id="maintab_attr342"/>
+                        <checkbox dataattribute="HASLD" id="maintab_attr343"/>
+                        <checkbox dataattribute="HASLINEAR" id="maintab_attr344"/>
+                        <checkbox dataattribute="HASPARENT" id="maintab_attr345"/>
+                        <checkbox dataattribute="HISTORYFLAG" id="maintab_attr346"/>
+                        <textbox dataattribute="ICBNUM" id="maintab_attr347"/>
+                        <checkbox dataattribute="IGNOREDIAVAIL" id="maintab_attr348"/>
+                        <checkbox dataattribute="IGNORESRMAVAIL" id="maintab_attr349"/>
+                        <checkbox dataattribute="INCTASKSINSCHED" id="maintab_attr350"/>
+                        <textbox dataattribute="INSPECTOR" id="maintab_attr351"/>
+                        <textbox dataattribute="INSPFORMNUM" id="maintab_attr352"/>
+                        <checkbox dataattribute="INTERRUPTIBLE" id="maintab_attr353"/>
+                        <textbox dataattribute="INTSHIFT" id="maintab_attr354"/>
+                        <checkbox dataattribute="ISTASK" id="maintab_attr355"/>
+                        <textbox dataattribute="JOBTASKID" id="maintab_attr356"/>
+                        <checkbox dataattribute="JPASSETS" id="maintab_attr357"/>
+                        <textbox dataattribute="JPCLASS" id="maintab_attr358"/>
+                        <checkbox dataattribute="JPINCLUDECLASSLESS" id="maintab_attr359"/>
+                        <textbox dataattribute="JPNUM" id="maintab_attr360"/>
+                        <textbox dataattribute="JPTASK" id="maintab_attr361"/>
+                        <textbox dataattribute="SITEID" id="maintab_attr362"/>
+                        <textbox dataattribute="WONUM" id="maintab_attr363"/>
+                    </section>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
+    </page>
+    <dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+        <section id="searchmore_1">
+            <textbox dataattribute="ENVIRONMENT" id="searchmore_attr1"/>
+            <textbox dataattribute="BACKOUTPLAN" id="searchmore_attr2"/>
+            <textbox dataattribute="JUSTIFYPRIORITY" id="searchmore_attr3"/>
+            <textbox dataattribute="PLUSCPHYLOC" id="searchmore_attr4"/>
+            <textbox dataattribute="REMARKDESC" id="searchmore_attr5"/>
+            <textbox dataattribute="DESCRIPTION" id="searchmore_attr6"/>
+            <textbox dataattribute="WHOMISCHANGEFOR" id="searchmore_attr7"/>
+            <textbox dataattribute="TARGETDESC" id="searchmore_attr8"/>
+            <textbox dataattribute="VERIFICATION" id="searchmore_attr9"/>
+            <textbox dataattribute="REASONFORCHANGE" id="searchmore_attr10"/>
+            <textbox dataattribute="REASONFORCHANGE_LONGDESCRIPTION" id="searchmore_attr11"/>
+            <textbox dataattribute="VERIFICATION_LONGDESCRIPTION" id="searchmore_attr12"/>
+            <checkbox dataattribute="WARRANTYEXIST" id="searchmore_attr13"/>
+            <textbox dataattribute="WARRANTYEXPDATE" id="searchmore_attr14" lookup="datelookup"/>
+            <textbox dataattribute="TARGETDESC_LONGDESCRIPTION" id="searchmore_attr15"/>
+            <textbox dataattribute="TARGSTARTDATE" id="searchmore_attr16" lookup="datelookup"/>
+            <textbox dataattribute="TASKID" id="searchmore_attr17"/>
+            <checkbox dataattribute="USEMBODATA" id="searchmore_attr18"/>
+            <textbox dataattribute="VENDOR" id="searchmore_attr19"/>
+            <textbox dataattribute="WOPRIORITY" id="searchmore_attr20"/>
+            <textbox dataattribute="WORKLOCATION" id="searchmore_attr21"/>
+            <checkbox dataattribute="WORKLOG" id="searchmore_attr22"/>
+            <textbox dataattribute="WORKORDERID" id="searchmore_attr23"/>
+            <textbox dataattribute="WORKPACKMTLSTATUS" id="searchmore_attr24"/>
+            <textbox dataattribute="WORKTYPE" id="searchmore_attr25"/>
+            <textbox dataattribute="WORTS1" id="searchmore_attr26"/>
+            <textbox dataattribute="WORTS2" id="searchmore_attr27"/>
+            <textbox dataattribute="WORTS3" id="searchmore_attr28"/>
+            <textbox dataattribute="WORTS4" id="searchmore_attr29" lookup="datelookup"/>
+            <textbox dataattribute="WORTS5" id="searchmore_attr30"/>
+            <textbox dataattribute="WOSEQUENCE" id="searchmore_attr31"/>
+            <textbox dataattribute="WTALERT" id="searchmore_attr32"/>
+            <textbox dataattribute="WHOMISCHANGEFOR_LONGDESCRIPTION" id="searchmore_attr33"/>
+            <checkbox dataattribute="WOACCEPTSCHARGES" id="searchmore_attr34"/>
+            <textbox dataattribute="WOASSET" id="searchmore_attr35"/>
+            <textbox dataattribute="WOCI" id="searchmore_attr36"/>
+            <textbox dataattribute="WOCLASS" id="searchmore_attr37"/>
+            <textbox dataattribute="WOEQ1" id="searchmore_attr38"/>
+            <textbox dataattribute="WOEQ10" id="searchmore_attr39"/>
+            <textbox dataattribute="WOEQ11" id="searchmore_attr40"/>
+            <textbox dataattribute="WOEQ12" id="searchmore_attr41"/>
+            <textbox dataattribute="WOEQ13" id="searchmore_attr42" lookup="datelookup"/>
+            <textbox dataattribute="WOEQ14" id="searchmore_attr43"/>
+            <textbox dataattribute="WOEQ2" id="searchmore_attr44"/>
+            <textbox dataattribute="WOEQ3" id="searchmore_attr45"/>
+            <textbox dataattribute="WOEQ4" id="searchmore_attr46"/>
+            <textbox dataattribute="WOEQ5" id="searchmore_attr47"/>
+            <textbox dataattribute="WOEQ6" id="searchmore_attr48" lookup="datelookup"/>
+            <textbox dataattribute="WOEQ7" id="searchmore_attr49"/>
+            <textbox dataattribute="WOEQ8" id="searchmore_attr50"/>
+            <textbox dataattribute="WOEQ9" id="searchmore_attr51"/>
+            <textbox dataattribute="WOGROUP" id="searchmore_attr52"/>
+            <checkbox dataattribute="WOISSWAP" id="searchmore_attr53"/>
+            <textbox dataattribute="WOJO1" id="searchmore_attr54"/>
+            <textbox dataattribute="WOJO2" id="searchmore_attr55"/>
+            <textbox dataattribute="WOJO3" id="searchmore_attr56"/>
+            <textbox dataattribute="WOJO4" id="searchmore_attr57"/>
+            <textbox dataattribute="WOJO5" id="searchmore_attr58"/>
+            <textbox dataattribute="WOJO6" id="searchmore_attr59"/>
+            <textbox dataattribute="WOJO7" id="searchmore_attr60"/>
+            <textbox dataattribute="WOJO8" id="searchmore_attr61"/>
+            <textbox dataattribute="WOJP1" id="searchmore_attr62"/>
+            <textbox dataattribute="WOJP2" id="searchmore_attr63"/>
+            <textbox dataattribute="WOJP3" id="searchmore_attr64"/>
+            <textbox dataattribute="WOJP4" id="searchmore_attr65"/>
+            <textbox dataattribute="WOJP5" id="searchmore_attr66" lookup="datelookup"/>
+            <textbox dataattribute="WOL1" id="searchmore_attr67"/>
+            <textbox dataattribute="WOL2" id="searchmore_attr68"/>
+            <textbox dataattribute="WOL3" id="searchmore_attr69"/>
+            <textbox dataattribute="WOL4" id="searchmore_attr70" lookup="datelookup"/>
+            <textbox dataattribute="WOLABLNK" id="searchmore_attr71"/>
+            <textbox dataattribute="WOLO1" id="searchmore_attr72"/>
+            <textbox dataattribute="WOLO10" id="searchmore_attr73"/>
+            <textbox dataattribute="WOLO2" id="searchmore_attr74"/>
+            <textbox dataattribute="WOLO3" id="searchmore_attr75"/>
+            <textbox dataattribute="WOLO4" id="searchmore_attr76"/>
+            <textbox dataattribute="WOLO5" id="searchmore_attr77"/>
+            <textbox dataattribute="WOLO6" id="searchmore_attr78"/>
+            <textbox dataattribute="WOLO7" id="searchmore_attr79" lookup="datelookup"/>
+            <textbox dataattribute="WOLO8" id="searchmore_attr80"/>
+            <textbox dataattribute="WOLO9" id="searchmore_attr81"/>
+            <textbox dataattribute="WOLOC" id="searchmore_attr82"/>
+            <textbox dataattribute="DESCRIPTION_LONGDESCRIPTION" id="searchmore_attr83"/>
+            <textbox dataattribute="DIRISSUEMTLSTATUS" id="searchmore_attr84"/>
+            <checkbox dataattribute="DISABLED" id="searchmore_attr85"/>
+            <textbox dataattribute="DISPLAYTASKID" id="searchmore_attr86"/>
+            <textbox dataattribute="DISPLAYWONUM" id="searchmore_attr87"/>
+            <checkbox dataattribute="DOWNTIME" id="searchmore_attr88"/>
+            <textbox dataattribute="DUPFLAG" id="searchmore_attr89"/>
+            <textbox dataattribute="EMAIL" id="searchmore_attr90"/>
+            <textbox dataattribute="ENDFEATURELABEL" id="searchmore_attr91"/>
+            <checkbox dataattribute="SLAAPPLIED" id="searchmore_attr92"/>
+            <textbox dataattribute="SNECONSTRAINT" id="searchmore_attr93" lookup="datelookup"/>
+            <textbox dataattribute="SOURCESYSID" id="searchmore_attr94"/>
+            <checkbox dataattribute="SPASSETS" id="searchmore_attr95"/>
+            <checkbox dataattribute="SPLOCATIONS" id="searchmore_attr96"/>
+            <textbox dataattribute="STARTFEATURELABEL" id="searchmore_attr97"/>
+            <textbox dataattribute="STATUS" id="searchmore_attr98"/>
+            <textbox dataattribute="STATUSDATE" id="searchmore_attr99" lookup="datelookup"/>
+            <checkbox dataattribute="STATUSIFACE" id="searchmore_attr100"/>
+            <textbox dataattribute="STCONOFFSET" id="searchmore_attr101"/>
+            <textbox dataattribute="STOREROOMMTLSTATUS" id="searchmore_attr102"/>
+            <textbox dataattribute="SUPERVISOR" id="searchmore_attr103"/>
+            <checkbox dataattribute="SUSPENDFLOW" id="searchmore_attr104"/>
+            <textbox dataattribute="TARGCOMPDATE" id="searchmore_attr105" lookup="datelookup"/>
+            <textbox dataattribute="REMARKDESC_LONGDESCRIPTION" id="searchmore_attr106"/>
+            <textbox dataattribute="REMARKENTERDATE" id="searchmore_attr107" lookup="datelookup"/>
+            <textbox dataattribute="REMDUR" id="searchmore_attr108"/>
+            <textbox dataattribute="REPAIRFACILITY" id="searchmore_attr109"/>
+            <checkbox dataattribute="REPAIRLOCFLAG" id="searchmore_attr110"/>
+            <textbox dataattribute="REPFACSITEID" id="searchmore_attr111"/>
+            <textbox dataattribute="REPORTDATE" id="searchmore_attr112" lookup="datelookup"/>
+            <textbox dataattribute="REPORTEDBY" id="searchmore_attr113"/>
+            <textbox dataattribute="REPORTEDBYID" id="searchmore_attr114"/>
+            <textbox dataattribute="REPORTEDBYNAME" id="searchmore_attr115"/>
+            <checkbox dataattribute="REQASSTDWNTIME" id="searchmore_attr116"/>
+            <textbox dataattribute="RESPONDBY" id="searchmore_attr117" lookup="datelookup"/>
+            <textbox dataattribute="RISK" id="searchmore_attr118"/>
+            <textbox dataattribute="ROUTE" id="searchmore_attr119"/>
+            <textbox dataattribute="ROUTESTOPID" id="searchmore_attr120"/>
+            <textbox dataattribute="SAFETYPLAN_LOOKUP_LIST_TYPE" id="searchmore_attr121"/>
+            <textbox dataattribute="SAFETYPLANID" id="searchmore_attr122"/>
+            <textbox dataattribute="SCHEDFINISH" id="searchmore_attr123" lookup="datelookup"/>
+            <textbox dataattribute="SCHEDSTART" id="searchmore_attr124" lookup="datelookup"/>
+            <textbox dataattribute="SELECTSLAS_MODE" id="searchmore_attr125"/>
+            <textbox dataattribute="SENDERSYSID" id="searchmore_attr126"/>
+            <textbox dataattribute="PLUSCPHYLOC_LONGDESCRIPTION" id="searchmore_attr127"/>
+            <textbox dataattribute="PLUSPACTDELIVERYDATE" id="searchmore_attr128" lookup="datelookup"/>
+            <checkbox dataattribute="PLUSPAGMTALLSPLIT" id="searchmore_attr129"/>
+            <textbox dataattribute="PLUSPAGREEMENT" id="searchmore_attr130"/>
+            <checkbox dataattribute="PLUSPALLOWQUOTE" id="searchmore_attr131"/>
+            <checkbox dataattribute="PLUSPAPPLYPSTOCHILD" id="searchmore_attr132"/>
+            <checkbox dataattribute="PLUSPBILLAPPROVED" id="searchmore_attr133"/>
+            <textbox dataattribute="PLUSPBILLSTATE" id="searchmore_attr134"/>
+            <textbox dataattribute="PLUSPCALCCALNUM" id="searchmore_attr135"/>
+            <textbox dataattribute="PLUSPCALCORGID" id="searchmore_attr136"/>
+            <textbox dataattribute="PLUSPCALCSHIFT" id="searchmore_attr137"/>
+            <textbox dataattribute="PLUSPCOSTCENTER" id="searchmore_attr138"/>
+            <textbox dataattribute="PLUSPCUSTCHACCT" id="searchmore_attr139"/>
+            <textbox dataattribute="PLUSPCUSTOMER" id="searchmore_attr140"/>
+            <textbox dataattribute="PLUSPCUSTPONUM" id="searchmore_attr141"/>
+            <textbox dataattribute="PLUSPEXCEEDEST" id="searchmore_attr142"/>
+            <textbox dataattribute="PLUSPGRTOTALBILLPR" id="searchmore_attr143"/>
+            <textbox dataattribute="PLUSPGRTOTALBILLPRCC" id="searchmore_attr144"/>
+            <textbox dataattribute="PLUSPLINESTATUS" id="searchmore_attr145"/>
+            <textbox dataattribute="PLUSPMAXPRICE" id="searchmore_attr146"/>
+            <textbox dataattribute="PLUSPNEXTBILLMEMO" id="searchmore_attr147"/>
+            <textbox dataattribute="PLUSPNEXTBILLSTAT" id="searchmore_attr148"/>
+            <textbox dataattribute="PLUSPORIGQPRICE" id="searchmore_attr149"/>
+            <textbox dataattribute="PLUSPORIGQTYPE" id="searchmore_attr150"/>
+            <textbox dataattribute="PLUSPPERCENTCOMP" id="searchmore_attr151"/>
+            <textbox dataattribute="PLUSPPOOLITEMNUM" id="searchmore_attr152"/>
+            <textbox dataattribute="PLUSPPOOLITEMSETID" id="searchmore_attr153"/>
+            <textbox dataattribute="PLUSPPOOLNUM" id="searchmore_attr154"/>
+            <checkbox dataattribute="PLUSPPOREQ" id="searchmore_attr155"/>
+            <textbox dataattribute="PLUSPPRICESCHED" id="searchmore_attr156"/>
+            <textbox dataattribute="PLUSPPSFILTER" id="searchmore_attr157"/>
+            <textbox dataattribute="PLUSPQUOTEDPRICE" id="searchmore_attr158"/>
+            <textbox dataattribute="PLUSPQUOTEDPRICECC" id="searchmore_attr159"/>
+            <textbox dataattribute="PLUSPQUOTETYPE" id="searchmore_attr160"/>
+            <textbox dataattribute="PLUSPRESPONSEPLAN" id="searchmore_attr161"/>
+            <textbox dataattribute="PLUSPREVNUM" id="searchmore_attr162"/>
+            <textbox dataattribute="PLUSPTARGDELIVERYDATE" id="searchmore_attr163" lookup="datelookup"/>
+            <textbox dataattribute="PLUSPTOTALBILLED" id="searchmore_attr164"/>
+            <textbox dataattribute="PLUSPTOTALBILLPR" id="searchmore_attr165"/>
+            <textbox dataattribute="PLUSPTOTALBILLPRCC" id="searchmore_attr166"/>
+            <textbox dataattribute="PLUSPTOTALBILLPRICE" id="searchmore_attr167"/>
+            <textbox dataattribute="PLUSPTOTALESTPRICE" id="searchmore_attr168"/>
+            <textbox dataattribute="PLUSPTOTALOUTSTANDING" id="searchmore_attr169"/>
+            <textbox dataattribute="PLUSPTOTALPENDING" id="searchmore_attr170"/>
+            <checkbox dataattribute="PLUSPUNBILLEDTRANS" id="searchmore_attr171"/>
+            <textbox dataattribute="PMCOMBPELACTNAME" id="searchmore_attr172"/>
+            <checkbox dataattribute="PMCOMBPELENABLED" id="searchmore_attr173"/>
+            <checkbox dataattribute="PMCOMBPELINPROG" id="searchmore_attr174"/>
+            <textbox dataattribute="PMCOMSTATE" id="searchmore_attr175"/>
+            <textbox dataattribute="PMCOMTYPE" id="searchmore_attr176"/>
+            <textbox dataattribute="PMDUEDATE" id="searchmore_attr177" lookup="datelookup"/>
+            <textbox dataattribute="PMEX_ASSET_ID" id="searchmore_attr178"/>
+            <textbox dataattribute="PMEX_IS_FAIL" id="searchmore_attr179"/>
+            <textbox dataattribute="PMEX_IS_MAINTENANCE" id="searchmore_attr180"/>
+            <textbox dataattribute="PMEX_IS_REP_REPLACE" id="searchmore_attr181"/>
+            <textbox dataattribute="PMEXTDATE" id="searchmore_attr182" lookup="datelookup"/>
+            <textbox dataattribute="PMNEXTDUEDATE" id="searchmore_attr183" lookup="datelookup"/>
+            <textbox dataattribute="PMNUM" id="searchmore_attr184"/>
+            <textbox dataattribute="POINTNUM" id="searchmore_attr185"/>
+            <textbox dataattribute="PREDESSORWOS" id="searchmore_attr186"/>
+            <textbox dataattribute="PROBLEMCODE" id="searchmore_attr187"/>
+            <textbox dataattribute="PWCONTACT" id="searchmore_attr188"/>
+            <textbox dataattribute="PWPREF_TRANS" id="searchmore_attr189"/>
+            <checkbox dataattribute="PWPRINTOFFICE" id="searchmore_attr190"/>
+            <textbox dataattribute="PWREPORTNAME" id="searchmore_attr191"/>
+            <checkbox dataattribute="PWSEND" id="searchmore_attr192"/>
+            <textbox dataattribute="JUSTIFYPRIORITY_LONGDESCRIPTION" id="searchmore_attr193"/>
+            <textbox dataattribute="LANGCODE" id="searchmore_attr194"/>
+            <textbox dataattribute="LASTCOPYLINKDATE" id="searchmore_attr195" lookup="datelookup"/>
+            <textbox dataattribute="LAUNCHENTRYNAME" id="searchmore_attr196"/>
+            <textbox dataattribute="LEAD" id="searchmore_attr197"/>
+            <checkbox dataattribute="LMS" id="searchmore_attr198"/>
+            <textbox dataattribute="LOCATION" id="searchmore_attr199"/>
+            <checkbox dataattribute="LOCWARRANTYNOTICE" id="searchmore_attr200"/>
+            <checkbox dataattribute="LOS" id="searchmore_attr201"/>
+            <textbox dataattribute="MEASUREDATE" id="searchmore_attr202" lookup="datelookup"/>
+            <textbox dataattribute="MEASUREMENTVALUE" id="searchmore_attr203"/>
+            <checkbox dataattribute="NESTEDJPINPROCESS" id="searchmore_attr204"/>
+            <textbox dataattribute="NEWCHILDCLASS" id="searchmore_attr205"/>
+            <textbox dataattribute="NEWTASKPARENTPMNUM" id="searchmore_attr206"/>
+            <textbox dataattribute="NP_STATUSMEMO" id="searchmore_attr207"/>
+            <textbox dataattribute="OBJECTNAME" id="searchmore_attr208"/>
+            <textbox dataattribute="OBSERVATION" id="searchmore_attr209"/>
+            <textbox dataattribute="ONBEHALFOF" id="searchmore_attr210"/>
+            <textbox dataattribute="ONBEHALFOFID" id="searchmore_attr211"/>
+            <textbox dataattribute="ONBEHALFOFNAME" id="searchmore_attr212"/>
+            <textbox dataattribute="ORGID" id="searchmore_attr213"/>
+            <textbox dataattribute="ORIGRECORDCLASS" id="searchmore_attr214"/>
+            <textbox dataattribute="ORIGRECORDID" id="searchmore_attr215"/>
+            <textbox dataattribute="ORIGTKID" id="searchmore_attr216"/>
+            <textbox dataattribute="ORIGWOID" id="searchmore_attr217"/>
+            <textbox dataattribute="OUTLABCOST" id="searchmore_attr218"/>
+            <textbox dataattribute="OUTMATCOST" id="searchmore_attr219"/>
+            <textbox dataattribute="OUTTOOLCOST" id="searchmore_attr220"/>
+            <textbox dataattribute="OWNER" id="searchmore_attr221"/>
+            <textbox dataattribute="OWNERGROUP" id="searchmore_attr222"/>
+            <textbox dataattribute="OWNERSYSID" id="searchmore_attr223"/>
+            <textbox dataattribute="PARENT" id="searchmore_attr224"/>
+            <checkbox dataattribute="PARENTCHGSSTATUS" id="searchmore_attr225"/>
+            <textbox dataattribute="PCACTHRS" id="searchmore_attr226"/>
+            <textbox dataattribute="PCPCHANGEBY" id="searchmore_attr227"/>
+            <textbox dataattribute="PCPCHANGEDATE" id="searchmore_attr228" lookup="datelookup"/>
+            <textbox dataattribute="PCPHYS" id="searchmore_attr229"/>
+            <textbox dataattribute="PCTASKCOMP" id="searchmore_attr230"/>
+            <textbox dataattribute="PERSONGROUP" id="searchmore_attr231"/>
+            <textbox dataattribute="PHONE" id="searchmore_attr232"/>
+            <textbox dataattribute="PLUSCFREQUENCY" id="searchmore_attr233"/>
+            <textbox dataattribute="PLUSCFREQUNIT" id="searchmore_attr234"/>
+            <checkbox dataattribute="PLUSCISMOBILE" id="searchmore_attr235"/>
+            <textbox dataattribute="PLUSCJPREVNUM" id="searchmore_attr236"/>
+            <checkbox dataattribute="PLUSCLOOP" id="searchmore_attr237"/>
+            <textbox dataattribute="PLUSCNEXTDATE" id="searchmore_attr238" lookup="datelookup"/>
+            <textbox dataattribute="PLUSCNEXTDATE_NP" id="searchmore_attr239" lookup="datelookup"/>
+            <textbox dataattribute="PLUSCOVERDUEDATE" id="searchmore_attr240" lookup="datelookup"/>
+            <textbox dataattribute="BACKOUTPLAN_LONGDESCRIPTION" id="searchmore_attr241"/>
+            <textbox dataattribute="CALCCALENDAR" id="searchmore_attr242"/>
+            <textbox dataattribute="CALCORGID" id="searchmore_attr243"/>
+            <textbox dataattribute="CALCPRIORITY" id="searchmore_attr244"/>
+            <textbox dataattribute="CALCSHIFT" id="searchmore_attr245"/>
+            <textbox dataattribute="CALENDAR" id="searchmore_attr246"/>
+            <textbox dataattribute="CHANGEBY" id="searchmore_attr247"/>
+            <checkbox dataattribute="CHANGEBYPARENT" id="searchmore_attr248"/>
+            <textbox dataattribute="CHANGEDATE" id="searchmore_attr249" lookup="datelookup"/>
+            <checkbox dataattribute="CHARGESTORE" id="searchmore_attr250"/>
+            <textbox dataattribute="CINUM" id="searchmore_attr251"/>
+            <textbox dataattribute="CLASSSTRUCTUREID" id="searchmore_attr252"/>
+            <textbox dataattribute="COMMODITY" id="searchmore_attr253"/>
+            <textbox dataattribute="COMMODITYGROUP" id="searchmore_attr254"/>
+            <textbox dataattribute="CONTRACT" id="searchmore_attr255"/>
+            <textbox dataattribute="CREWID" id="searchmore_attr256"/>
+            <textbox dataattribute="CREWWORKGROUP" id="searchmore_attr257"/>
+            <textbox dataattribute="CU_BUDGET" id="searchmore_attr258"/>
+            <textbox dataattribute="CU_DATEREQUIRED" id="searchmore_attr259" lookup="datelookup"/>
+            <textbox dataattribute="CU_ESTIMATE" id="searchmore_attr260"/>
+            <textbox dataattribute="CU_MEDAID" id="searchmore_attr261"/>
+            <textbox dataattribute="CU_MEDFID" id="searchmore_attr262"/>
+            <textbox dataattribute="CU_PMMGR" id="searchmore_attr263"/>
+            <textbox dataattribute="CU_ROOM" id="searchmore_attr264"/>
+            <textbox dataattribute="CU_SCHEDDATE" id="searchmore_attr265" lookup="datelookup"/>
+            <textbox dataattribute="CUBILLEDAS" id="searchmore_attr266"/>
+            <textbox dataattribute="CUBLACTION" id="searchmore_attr267"/>
+            <textbox dataattribute="CUPRIORITY" id="searchmore_attr268"/>
+            <textbox dataattribute="CURRENTVALUE" id="searchmore_attr269"/>
+            <textbox dataattribute="CUTRADE" id="searchmore_attr270"/>
+            <textbox dataattribute="ACTFINISH" id="searchmore_attr271" lookup="datelookup"/>
+            <textbox dataattribute="ACTINTLABCOST" id="searchmore_attr272"/>
+            <textbox dataattribute="ACTINTLABHRS" id="searchmore_attr273"/>
+            <textbox dataattribute="ACTLABCOST" id="searchmore_attr274"/>
+            <textbox dataattribute="ACTLABHRS" id="searchmore_attr275"/>
+            <textbox dataattribute="ACTMATCOST" id="searchmore_attr276"/>
+            <textbox dataattribute="ACTOUTLABCOST" id="searchmore_attr277"/>
+            <textbox dataattribute="ACTOUTLABHRS" id="searchmore_attr278"/>
+            <textbox dataattribute="ACTSERVCOST" id="searchmore_attr279"/>
+            <textbox dataattribute="ACTSTART" id="searchmore_attr280" lookup="datelookup"/>
+            <textbox dataattribute="ACTTOOLCOST" id="searchmore_attr281"/>
+            <textbox dataattribute="ACTTOTALCOST" id="searchmore_attr282"/>
+            <textbox dataattribute="AMCREW" id="searchmore_attr283"/>
+            <checkbox dataattribute="AMS" id="searchmore_attr284"/>
+            <checkbox dataattribute="AOS" id="searchmore_attr285"/>
+            <checkbox dataattribute="APPTREQUIRED" id="searchmore_attr286"/>
+            <textbox dataattribute="ASSETCUST" id="searchmore_attr287"/>
+            <textbox dataattribute="ASSETFILTERBY" id="searchmore_attr288"/>
+            <textbox dataattribute="ASSETLOCPRIORITY" id="searchmore_attr289"/>
+            <textbox dataattribute="ASSETNUM" id="searchmore_attr290"/>
+            <textbox dataattribute="ASSETRECONRSTKT" id="searchmore_attr291"/>
+            <textbox dataattribute="ASSETUSER" id="searchmore_attr292"/>
+            <checkbox dataattribute="ASSETWARRANTYNOTICE" id="searchmore_attr293"/>
+            <textbox dataattribute="ASSIGNEDOWNERGROUP" id="searchmore_attr294"/>
+            <textbox dataattribute="AVAILSTATUSDATE" id="searchmore_attr295" lookup="datelookup"/>
+            <textbox dataattribute="ENVIRONMENT_LONGDESCRIPTION" id="searchmore_attr296"/>
+            <textbox dataattribute="ESTATAPPRINTLABCOST" id="searchmore_attr297"/>
+            <textbox dataattribute="ESTATAPPRINTLABHRS" id="searchmore_attr298"/>
+            <textbox dataattribute="ESTATAPPRLABCOST" id="searchmore_attr299"/>
+            <textbox dataattribute="ESTATAPPRLABHRS" id="searchmore_attr300"/>
+            <textbox dataattribute="ESTATAPPRMATCOST" id="searchmore_attr301"/>
+            <textbox dataattribute="ESTATAPPROUTLABCOST" id="searchmore_attr302"/>
+            <textbox dataattribute="ESTATAPPROUTLABHRS" id="searchmore_attr303"/>
+            <textbox dataattribute="ESTATAPPRSERVCOST" id="searchmore_attr304"/>
+            <textbox dataattribute="ESTATAPPRTOOLCOST" id="searchmore_attr305"/>
+            <textbox dataattribute="ESTATAPPRTOTALCOST" id="searchmore_attr306"/>
+            <textbox dataattribute="ESTDUR" id="searchmore_attr307"/>
+            <textbox dataattribute="ESTINTLABCOST" id="searchmore_attr308"/>
+            <textbox dataattribute="ESTINTLABHRS" id="searchmore_attr309"/>
+            <textbox dataattribute="ESTLABCOST" id="searchmore_attr310"/>
+            <textbox dataattribute="ESTLABHRS" id="searchmore_attr311"/>
+            <textbox dataattribute="ESTMATCOST" id="searchmore_attr312"/>
+            <textbox dataattribute="ESTOUTLABCOST" id="searchmore_attr313"/>
+            <textbox dataattribute="ESTOUTLABHRS" id="searchmore_attr314"/>
+            <textbox dataattribute="ESTSERVCOST" id="searchmore_attr315"/>
+            <textbox dataattribute="ESTTOOLCOST" id="searchmore_attr316"/>
+            <textbox dataattribute="ESTTOTALCOST" id="searchmore_attr317"/>
+            <textbox dataattribute="EXTERNALREFID" id="searchmore_attr318"/>
+            <textbox dataattribute="FAILDATE" id="searchmore_attr319" lookup="datelookup"/>
+            <textbox dataattribute="FAILURECODE" id="searchmore_attr320"/>
+            <textbox dataattribute="FAXPHONE" id="searchmore_attr321"/>
+            <textbox dataattribute="FCPROJECTID" id="searchmore_attr322"/>
+            <textbox dataattribute="FCTASKID" id="searchmore_attr323"/>
+            <textbox dataattribute="FEATURE" id="searchmore_attr324"/>
+            <textbox dataattribute="FEATURELABEL" id="searchmore_attr325"/>
+            <checkbox dataattribute="FILTERBYWORKZONE" id="searchmore_attr326"/>
+            <textbox dataattribute="FILTERDATE" id="searchmore_attr327" lookup="datelookup"/>
+            <textbox dataattribute="FINCNTRLID" id="searchmore_attr328"/>
+            <textbox dataattribute="FIRSTAPPRSTATUS" id="searchmore_attr329"/>
+            <textbox dataattribute="FLOWACTION" id="searchmore_attr330"/>
+            <checkbox dataattribute="FLOWACTIONASSIST" id="searchmore_attr331"/>
+            <checkbox dataattribute="FLOWCONTROLLED" id="searchmore_attr332"/>
+            <textbox dataattribute="FNCONOFFSET" id="searchmore_attr333"/>
+            <textbox dataattribute="FNLCONSTRAINT" id="searchmore_attr334" lookup="datelookup"/>
+            <textbox dataattribute="FR1CODE" id="searchmore_attr335"/>
+            <textbox dataattribute="FR2CODE" id="searchmore_attr336"/>
+            <textbox dataattribute="GENERATEDFORPO" id="searchmore_attr337"/>
+            <textbox dataattribute="GENFORPOLINEID" id="searchmore_attr338"/>
+            <textbox dataattribute="GENFORPOREVISION" id="searchmore_attr339"/>
+            <textbox dataattribute="GLACCOUNT" id="searchmore_attr340" lookup="glnavigator"/>
+            <checkbox dataattribute="HASCHILDREN" id="searchmore_attr341"/>
+            <checkbox dataattribute="HASFOLLOWUPWORK" id="searchmore_attr342"/>
+            <checkbox dataattribute="HASLD" id="searchmore_attr343"/>
+            <checkbox dataattribute="HASLINEAR" id="searchmore_attr344"/>
+            <checkbox dataattribute="HASPARENT" id="searchmore_attr345"/>
+            <checkbox dataattribute="HISTORYFLAG" id="searchmore_attr346"/>
+            <textbox dataattribute="ICBNUM" id="searchmore_attr347"/>
+            <checkbox dataattribute="IGNOREDIAVAIL" id="searchmore_attr348"/>
+            <checkbox dataattribute="IGNORESRMAVAIL" id="searchmore_attr349"/>
+            <checkbox dataattribute="INCTASKSINSCHED" id="searchmore_attr350"/>
+            <textbox dataattribute="INSPECTOR" id="searchmore_attr351"/>
+            <textbox dataattribute="INSPFORMNUM" id="searchmore_attr352"/>
+            <checkbox dataattribute="INTERRUPTIBLE" id="searchmore_attr353"/>
+            <textbox dataattribute="INTSHIFT" id="searchmore_attr354"/>
+            <checkbox dataattribute="ISTASK" id="searchmore_attr355"/>
+            <textbox dataattribute="JOBTASKID" id="searchmore_attr356"/>
+            <checkbox dataattribute="JPASSETS" id="searchmore_attr357"/>
+            <textbox dataattribute="JPCLASS" id="searchmore_attr358"/>
+            <checkbox dataattribute="JPINCLUDECLASSLESS" id="searchmore_attr359"/>
+            <textbox dataattribute="JPNUM" id="searchmore_attr360"/>
+            <textbox dataattribute="JPTASK" id="searchmore_attr361"/>
+            <textbox dataattribute="SITEID" id="searchmore_attr362"/>
+            <textbox dataattribute="WONUM" id="searchmore_attr363"/>
+        </section>
+        <buttongroup id="searchmore_buttongroup">
+            <pushbutton default="true" id="searchmore_buttongroup_1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+            <pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+            <pushbutton id="searchmore_buttongroup_3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="WORKORDER">
+        <table id="bookmarks_table" inputmode="readonly" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+                <tablecol dataattribute="WONUM" id="bookmarks_tablecolumn_1" mxevent="selectrecord" type="link"/>
+                <tablecol dataattribute="description" id="bookmarks_tablecolumn_2"/>
+                <tablecol filterable="false" id="bookmarks_tablecolumn_3" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmarks_2">
+            <pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <configurationblock id="datastore_configurationblock">
+    </configurationblock>
+</presentation>

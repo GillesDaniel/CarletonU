@@ -1,0 +1,11 @@
+define('layers/mbs/nls/richtexteditor_sv',{
+'dijit/_editor/nls/commands':{"removeFormat":"Ta bort format","copy":"Kopiera","paste":"Klistra in","selectAll":"Markera allt","insertOrderedList":"Numrerad lista","insertTable":"Infoga/redigera tabell","print":"Skriv ut","underline":"Understruken","foreColor":"Förgrundsfärg","htmlToggle":"HTML-källkod","formatBlock":"Styckeformat","newPage":"Ny sida","insertHorizontalRule":"Horisontell linje","delete":"Ta bort","appleKey":"⌘${0}","insertUnorderedList":"Punktlista","tableProp":"Tabellegenskap","insertImage":"Infoga bild","superscript":"Upphöjt","subscript":"Nedsänkt","createLink":"Skapa länk","undo":"Ångra","fullScreen":"Växla helskärm","italic":"Kursiv","fontName":"Teckensnitt","justifyLeft":"Vänsterjustera","unlink":"Ta bort länk","toggleTableBorder":"Växla tabellinjer","viewSource":"Visa HTML-kod","ctrlKey":"Ctrl+${0}","fontSize":"Teckenstorlek","systemShortcut":"Åtgärden ${0} är endast tillgänglig i webbläsaren via ett tangentbordskommando. Använd ${1}.","indent":"Indrag","redo":"Gör om","strikethrough":"Genomstruken","justifyFull":"Marginaljustera","justifyCenter":"Centrera","hiliteColor":"Bakgrundsfärg","deleteTable":"Ta bort tabell","outdent":"Utdrag","cut":"Klipp ut","_localized":{},"plainFormatBlock":"Styckeformat","toggleDir":"Växla riktning","bold":"Halvfet","tabIndent":"Tabbindrag","justifyRight":"Högerjustera"}
+,
+'dijit/_editor/nls/FontChoice':{"noFormat":"Inget","1":"XXS","2":"XS","formatBlock":"Format","3":"S","4":"M","5":"L","6":"XL","7":"XXL","_localized":{},"fantasy":"fantasy","serif":"serif","p":"Stycke","pre":"Förformaterad","sans-serif":"sans-serif","fontName":"Teckensnitt","h1":"Rubrik 1","h2":"Rubrik 2","h3":"Rubrik 3","monospace":"monospace","fontSize":"Storlek ","cursive":"cursive"}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"Tidigare val","_localized":{},"nextMessage":"Fler val"}
+,
+'dijit/form/nls/validate':{"invalidMessage":"Angivet värde är inte giltigt.","rangeMessage":"Värdet ligger utanför intervallet.","_localized":{},"missingMessage":"Värdet krävs."}
+,
+'dojox/editor/plugins/nls/PasteFromWord':{"pasteFromWord":"Klistra in från Word","instructions":"Klistra in innehållet från Word i textrutan nedan. När du har valt innehåll klickar du på Klistra in. Klicka på Avbryt om du inte vill klistra in text. ","_localized":{}}
+});

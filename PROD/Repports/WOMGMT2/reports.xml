@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="WOMGMT2_MAXADMIN_1616432277.rptdesign">
+    <attribute name="filename">WOMGMT2_MAXADMIN_1616432277.rptdesign</attribute>
+    <attribute name="description">Aged Workorders</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">WOMGMT2</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="cutrade">
+        <attribute name="attributename">CUTRADE</attribute>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">LEAD TRADE</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">1</attribute>
+      </parameter>
+    </parameters>
+    <resources>
+      <resource>
+        <reference>WOMGMT2_MAXADMIN_16164322771616432391145.properties</reference>
+        <filename>./WOMGMT2_MAXADMIN_1616432277/WOMGMT2_MAXADMIN_16164322771616432391145.properties</filename>
+      </resource>
+    </resources>
+  </report>
+  <report name="WOMGMT2_STEPHENWITT_1358865425.rptdesign">
+    <attribute name="filename">WOMGMT2_STEPHENWITT_1358865425.rptdesign</attribute>
+    <attribute name="description">condensation problem</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">WOMGMT2</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>WOMGMT2_STEPHENWITT_13588654251358865502214.properties</reference>
+        <filename>./WOMGMT2_STEPHENWITT_1358865425/WOMGMT2_STEPHENWITT_13588654251358865502214.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation id="scannmax_invoice" ismobile="false" mboname="SCANNMAX" version="7.1.0.0">
+    <page id="mainrec" scroll="false">
+        <include controltoclone="selfServicePageHeader" id="INCLUDE-selfServicePageHeader"/>
+        <clientarea id="clientarea">
+            <scanNmax id="scanNmaxControl"/>
+            <textbox inputmode="default" dataattribute="SCANNMAXNPVALUE.GLACCOUNT" id="scannmax_glnavigator" lookup="glnavigator"/>
+            <textbox inputmode="default" dataattribute="SCANNMAXNPVALUE.PONUM" id="scannmax_ponum" lookup="po_scannmax"/>
+            <textbox inputmode="default" dataattribute="SCANNMAXNPVALUE.COMPANY" id="scannmax_company" lookup="companies"/>
+            <textbox inputmode="default" dataattribute="SCANNMAXNPVALUE.WONUM" id="scannmax_wonum" lookup="workorder"/>
+            <textbox inputmode="default" dataattribute="SCANNMAXNPVALUE.ITEMNUM_ITEM" id="scannmax_itemnum_item" lookup="item"/>
+            <textbox inputmode="default" dataattribute="SCANNMAXNPVALUE.ITEMNUM_STDSERVICE" id="scannmax_itemnum_stdservice" lookup="item"/>
+            <textbox inputmode="default" dataattribute="SCANNMAXNPVALUE.ITEMNUM_TOOL" id="scannmax_itemnum_tool" lookup="item"/>
+        </clientarea>
+        <include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
+    </page>
+    <configurationblock id="datastore_configurationblock"/>
+</presentation>

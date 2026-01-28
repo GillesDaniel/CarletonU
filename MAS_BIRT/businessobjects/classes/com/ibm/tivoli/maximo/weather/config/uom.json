@@ -1,0 +1,42 @@
+{
+    'e': {
+        'temp': 'f',
+        'pressure': 'hg',
+        'precip_rain': 'in',
+        'precip_snow': 'in',
+        'distance': 'mi',
+        'vis': 'mi',
+        'wnd_speed': 'mph',
+        'wave_height': 'ft'
+    },
+    'm': {
+        'temp': 'c',
+        'pressure': 'mb',
+        'precip_rain': 'mm',
+        'precip_snow': 'cm',
+        'distance': 'km',
+        'vis': 'km',
+        'wnd_speed': 'km/h',
+        'wave_height': 'm'
+    },
+    's': {
+        'temp': 'c',
+        'pressure': 'mb',
+        'precip_rain': 'mm',
+        'precip_snow': 'cm',
+        'distance': 'm',
+        'vis': 'km',
+        'wnd_speed': 'm/s',
+        'wave_height': ''
+    },
+    'h': {
+        'temp': 'c',
+        'pressure': 'mb',
+        'precip_rain': 'mm',
+        'precip_snow': 'cm',
+        'distance': 'mi',
+        'vis': 'km',
+        'wnd_speed': 'mph',
+        'wave_height': 'ft'
+    }
+}

@@ -36,3 +36,12 @@ function fixPos() {
       });
   }
 }
+
+var scriptConfig={
+    "autoscript": "GET_SCANNMAX_PO_CANDIDATES",
+    "description": "Try to find PO for the given invoice text",
+    "version": "1.0",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+};

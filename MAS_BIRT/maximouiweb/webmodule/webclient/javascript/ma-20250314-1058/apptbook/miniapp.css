@@ -1,0 +1,518 @@
+/* this CSS is needed to fix rendering issues, because core ui uses border-box and not content-box */
+${id} *, ${id} *:before, ${id} *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+${id} table {
+    border-collapse: separate;
+}
+
+.GridMain *, .GridMain *:before, .GridMain *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.GridMain table {
+    border-collapse: separate;
+}
+
+/** overrride the default style **/
+.GSGanttFixedOut {
+    border-color: grey;
+}
+
+/* NOTE these are here because they reference images... they are 'xxx'ed out in the Grid.css */
+${id} .COToolUndo {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_undo.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolUndo1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_undo.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolRedo {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_redo.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolRedo1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_redo.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolPrint {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_print.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolColumns {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/ac22_columnsSelector.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolExpandAll {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_expandAll_tree.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolCollapseAll {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_closeAll_tree.png") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomFit {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_expandToFit.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolReload {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/nav_icon_refresh.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomIn1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomIn.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomIn {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomIn.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolZoomOut1 {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomOut.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .COToolZoomOut {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/miniapps/scheduler/tb_zoomOut.gif") no-repeat;
+    padding-right: 2px;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+${id} .COToolExport {
+    height: 22px;
+    padding-left: 22px;
+    border: none;
+    background: url("${images}/tablebtn_download.gif") no-repeat;
+    padding-right: 2px;
+}
+
+${id} .CODateRight, .CODatesRight, .CODefaultsRight, .COEnumRight, .COCollapseRight, .COExpandRight {
+    padding-right: 24px;
+    background: url(${images}/img_date_time.gif) no-repeat center;
+}
+
+${id} .COEditCellInput {
+    background-color: white;
+}
+${id} input[type=text] {
+    height: 15px!important;
+}
+
+/* remove padding on left/right html sections */
+${id} .COGanttHtmlRight0 {
+    padding-left: 0;
+}
+
+${id} .COGanttHtmlRight1 {
+    padding-left: 0;
+}
+
+${id} .COGanttHtmlLeft0 {
+    padding-right: 2px;
+}
+
+${id} .COGanttHtmlLeft1 {
+    padding-right: 2px;
+}
+
+${id} .COLeftSplitter, ${id} .CORightSplitter, ${id} .COLeftSplitterTouch, ${id} .CORightSplitterTouch {
+    background: darkgrey;
+}
+
+${id} .COSpaceRowHeight {
+    height: 23px;
+}
+
+${id} .CORowHeight {
+    height: 23px;
+}
+
+${id} .COHeaderText {
+    font: 13px Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+${id} .CORightButton {
+    height: 22px;
+    width: 22px;
+}
+
+${id} .COPanelButton {
+    height: 22px;
+    width: 22px;
+}
+
+${id} .COToolButtonButton, ${id} .COToolButtonButton1, ${id} .COToolSpaceButton, ${id} .COToolSpaceButton1 {
+    height: 30px;
+    width: 30px
+}
+
+${id} .COToolIconHtml {
+    height: 30px;
+    width: 30px
+}
+
+${id} .COToolSave, ${id} .COToolReload, ${id} .COToolRepaint, ${id} .COToolRepaint1, ${id} .COToolAdd, ${id} .COToolAddChild, ${id} .COToolJoin, ${id} .COToolSplit, ${id} .COToolSort1, ${id} .COToolSort, ${id} .COToolCalc1, ${id} .COToolCalc,
+${id} .COToolExpandAll, ${id} .COToolCollapseAll, ${id} .COToolColumns, ${id} .COToolCfg, ${id} .COToolHelp, ${id} .COToolPrint, ${id} .COToolExport, ${id} .COToolExportPDF, ${id} .COToolDebug, ${id} .COToolOutdent, ${id} .COToolIndent,
+${id} .COToolUndo, ${id} .COToolUndo1, ${id} .COToolRedo, ${id} .COToolRedo1, ${id} .COToolCorrect, ${id} .COToolCorrect1, ${id} .COToolZoomIn, ${id} .COToolZoomIn1, ${id} .COToolZoomOut, ${id} .COToolZoomOut1, ${id} .COToolZoomFit,
+${id} .COToolPagerFirst, ${id} .COToolPagerFirst1, ${id} .COToolPagerPrev, ${id} .COToolPagerPrev1, ${id} .COToolPagerNext, ${id} .COToolPagerNext1, ${id} .COToolPagerLast, ${id} .COToolPagerLast1 {
+    padding-left: 30px;
+    background-position: center;
+}
+
+${id} .COIconLeft {
+    background-position: left 0;
+    padding-left: 22px !important;
+}
+
+${id} .COIconRight {
+    background-position: right 0;
+    padding-right: 22px !important;
+}
+
+${id} .COFilter0Menu, ${id} .COFilter1Menu, ${id} .COFilter2Menu, ${id} .COFilter3Menu, ${id} .COFilter4Menu, ${id} .COFilter5Menu, ${id} .COFilter6Menu, ${id} .COFilter7Menu, ${id} .COFilter8Menu, ${id} .COFilter9Menu, ${id} .COFilter10Menu, ${id} .COFilter11Menu, ${id} .COFilter12Menu {
+    width: 22px;
+    height: 18px;
+}
+
+${id} .COCellSpaceButtonIcon {
+    padding-top: 1px;
+    padding-bottom: 0;
+    white-space: nowrap;
+}
+
+${id} .COSpaceButtonIconInner {
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    padding-left: 0 !important;
+    background-position: center;
+}
+
+${id} .COSpaceEditInner, ${id} .COSpaceSelectInner {
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border-right: 1px solid #D4D4D4;
+}
+
+${id} .COMenuButton {
+    height: 22px;
+}
+
+${id} .COEditNormalInput, ${id} .COEditNormalTextarea, ${id} .COEditSpaceInput, ${id} .COEditSpaceTextarea {
+    background-color: white;
+}
+
+${id} .COGanttBackDefault {
+    
+}
+
+/* Default background color */
+${id} .COGanttBackRowDefault {
+    background-color: #F0F0F0;
+}
+
+/* Default background color if shown in individual row */
+${id} .COGanttBackNonWork {
+    background-color: #F0F0F0;
+}
+
+/* Non Working Background */
+
+${id} .COGanttHeaderBase {
+    font: 11px Arial, Helvetica, sans-serif;
+    text-align: center;
+    line-height: 32px;
+
+}
+
+${id} .COToolbarRow {
+    border-bottom: 1px solid #AAAAAA;
+    min-height: 28px;
+    height: 28px;
+}
+
+${id} .COCellSpaceEdit {
+    border: 0 solid white;
+}
+
+${id} .COGanttMainOut, ${id} .COGanttBoxOut, ${id} .COGanttBoxIn {
+    padding: 0;
+}
+
+${id} .COPanelSelect {
+    background: url("${images}/cb_unchecked.gif") 0;
+}
+
+${id} .COPanelSelectOn {
+    background: url("${images}/cb_checked.gif") 0;
+}
+
+${id} .COPanelSelectOff {
+    background: url("${images}/cb_unchecked.gif") 0;
+}
+
+${id} .COPx1xx {
+    background: url("${images}/cb_unchecked.gif") 0;
+}
+
+${id} .COPx2xx {
+    background: url("${images}/cb_checked.gif") 0;
+}
+
+${id} .COCell, ${id} .COCellPanel, ${id} .COCellFilter, ${id} .COCellFilterPanel, ${id} .COCellHeaderPanel, ${id} .COCellHeaderEmpty, ${id} .COCellUser, ${id} .COCellEmpty {
+    
+    color: #444444;
+    font-size: 11px;
+    font-family: Arial;
+    text-align: center;
+    border-bottom: 1px solid #CBCBCB !important;
+}
+
+${id} .COCellPanel {
+	border: 1px solid darkgrey !important;
+}
+
+${id} .COCellHeader {
+    border: 1px solid #cccccc;
+    color: #444444;
+    background-color: #f2f2f2,
+    font-size: 11px;
+    font-family: Arial;
+
+}
+
+${id} .COCellHeaderPanel {
+    border: 1px solid #EFEFEF;
+    color: #444444;
+    font-size: 11px;
+    font-family: Arial;
+    text-align: center;
+
+}
+
+${id} .COGanttBackAssetLocationOverlap {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAaElEQVQYV12PUQ2AQAxD32SADZCBDmwQbKADGWADZBwpbMvCfW1Z+9ozYABOvrcAG3D73swHiSZg9b0DLsBCIOdeSA3oRZJAx3CKdMgZJA3CZSYw1k6pjMx/pxBkZvnN20kCHStprp0eilwX0w7FFEcAAAAASUVORK5CYII=) repeat;
+}
+
+${id} .COGanttMark5 {
+    /*shaded background*/
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAE0lEQVQIW2NkYGBIY2BgYGCEMQAHvwDPt5tEogAAAABJRU5ErkJggg==) repeat !important;
+    /*hatch pattern*/
+    /*background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAaElEQVQYV12PUQ2AQAxD32SADZCBDmwQbKADGWADZBwpbMvCfW1Z+9ozYABOvrcAG3D73swHiSZg9b0DLsBCIOdeSA3oRZJAx3CKdMgZJA3CZSYw1k6pjMx/pxBkZvnN20kCHStprp0eilwX0w7FFEcAAAAASUVORK5CYII=) repeat!important;*/
+}
+
+${id} .COMenuHead {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+${id} .COToolbarRow {
+    background: url("${images}/miniapps/scheduler/titlebar.png") repeat-x;
+}
+
+${id} .COGanttBlockedCellIn {
+    background-color: #f2f2f2 !important;
+    color: #777677 !important;
+    line-height: 44px;
+    text-align: center;
+}
+
+${id} .COGanttBlockedCellOut {
+    border: 3px solid #f2f2f2;
+    background-color: #f2f2f2 !important;
+}
+
+${id} .COGanttAvailCellIn {
+    background-color: transparent;
+    color: #0a3c02 !important;
+    line-height: 44px;
+    text-align: center;
+} 
+
+${id} .COGanttAvailCellOut{
+	border: 3px solid #ffffff !important;
+	background-color: #CCE6AA !important;
+}
+
+${id} .COGanttAvailCellOutHover{
+	border: 3px solid #ffffff !important;
+	background-color: #9fd147 !important;
+}
+
+${id} .COGanttFullyBookedCellIn {
+    background-color: transparent;
+    color: #777677 !important;
+    line-height: 44px;
+    text-align: center;
+}
+
+${id} .COGanttFullyBookedCellOut {
+    border: 3px solid #ffffff;
+    background-color: #f4f4f4 !important;
+}
+
+${id} .COGanttFullyBookedCellOutHover{
+    border: 3px solid #ffffff !important;
+    color: #666666 !important;
+    background-color: #e8e8e8 !important;
+}
+
+
+${id} .COGanttSolidOut {
+    margin: 2px 2px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+span.DayNumber {
+	font-size: 20px;
+}
+
+div.weather {
+	text-align: center;
+	line-height: normal;
+}
+
+div.weather div {
+    padding: ${space_padding};
+}
+
+.weather img {
+	padding: ${space_padding};
+}
+
+.weather .header {
+	font-weight: bold;
+}
+
+.weather .helper {
+	display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.weather .errorHeader {
+    height: 100px;
+    text-align: center
+}
+
+.weather .errorHeader img {
+	vertical-align: middle;
+}
+
+.weather .medium > span {
+	font-size: ${medium_font};
+}
+
+.weather .large > span {
+    font-size: ${large_font};
+}
+
+.weather .large img {
+	height: ${large_image};
+    width: ${large_image};
+}
+
+.weather .medium img {
+	height: ${medium_image};
+    width: ${medium_image};
+}
+
+.weather .small img {
+	height: ${small_image};
+    width: ${small_image};
+}
+
+.weather .alert {
+	display: inline-block;
+    height: 25%;
+    vertical-align: top;
+    color: #FF0000 !important;
+}
+
+.weather .alertText {
+    height: 100px;
+    text-align: center
+    color: #FF0000 !important;
+}
+
+.WeatherAlert {
+    padding-left: 5px;
+    display: inline-block;
+}
+
+.WeatherAlert img {
+    vertical-align: baseline;
+    cursor: pointer;
+}

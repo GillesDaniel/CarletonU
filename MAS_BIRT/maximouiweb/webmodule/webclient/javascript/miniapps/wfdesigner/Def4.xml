@@ -1,0 +1,15 @@
+<Designer>
+   <Cfg StraightLine="400" StackFrom="5" StackTo="5" StackLines="5" 
+   Padding="0" InitScroll="0.8,0.8" Resizing="7" AutoSize="3" Zoom="" Grid="-50,-50,200,200,0,0,5,5"
+   BoxDef="Ellipse,Hexagon,Rect" Adding="1" Deleting="1" Copying="1" Changing="1"
+   />
+   <Actions OnRightDragBox="Front, I.LineOut = 'Even', CreateLine" OnCtrlRightDragBox="Front, I.LineOut = 'NegEven', CreateLine" OnShiftRightDragBox="Front, I.LineOut = 'NegEven', CreateLine"/>
+   <DefBoxes>
+      <D Name="Box" MinWidth="50" MaxWidth="150" MinHeight="50" MaxHeight="150"/>
+   </DefBoxes>
+   <DefLines>
+      <D Name="TextFromPart" BackgroundFrom="white" BorderFrom="transparent"/>
+      <D Name="TextToPart" Background="white" Border="transparent"/>
+      <D Name="Even" Thick="1" ArrowThick="1"/>
+   </DefLines>
+</Designer>

@@ -1,0 +1,23 @@
+/*
+ CSS for WF Designer MiniApp
+ */
+/* this CSS is needed to fix rendering issues, because core ui uses border-box and not content-box */
+${id} *, ${id} *:before, ${id} *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box !important;
+}
+
+${id} table {
+    border-collapse: separate;
+}
+
+.DesignerZoom, .DesignerZoom *, .DesignerZoom *:before, .DesignerZoom *:after {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box !important;
+}
+
+.DesignerZoom table {
+    border-collapse: separate;
+}

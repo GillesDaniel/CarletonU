@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<License>
+  <Data>
+    <LicensedTo>IBM Littleton</LicensedTo>
+    <EmailTo>subratm@us.ibm.com</EmailTo>
+    <LicenseType>Developer OEM</LicenseType>
+    <LicenseNote>1 Developer And Unlimited Deployment Locations</LicenseNote>
+    <OrderID>210319145128</OrderID>
+    <UserID>879347</UserID>
+    <OEM>This is a redistributable license</OEM>
+    <Products>
+      <Product>GroupDocs.Conversion for Java</Product>
+    </Products>
+    <EditionType>Professional</EditionType>
+    <SerialNumber>930685fa-a8cf-4526-aea8-e6b367c60812</SerialNumber>
+    <SubscriptionExpiry>20220319</SubscriptionExpiry>
+    <LicenseVersion>3.0</LicenseVersion>
+    <LicenseInstructions>https://purchase.groupdocs.com/policies/use-license</LicenseInstructions>
+  </Data>
+  <Signature>gZeAbbBGMWuF0NSuVE4EX+Pu37A6L/8n+pkDMWpo+34VZIUvrltbejsmgJffZK7DT5dOAB7huqQzWMH5Dil2JMXlKkq6AV6mvLWziWK/eWTUWrSEMgdFthqEnIr71zaskDyAOH3y9qv0pTHKhTpblXgEkyA7DKmpPOc6al4EkA8=</Signature>
+</License>

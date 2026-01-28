@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="Cu-chargeback.rptdesign">
+    <attribute name="filename">Cu-chargeback.rptdesign</attribute>
+    <attribute name="description">Chargeback</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ADMINWO</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">1</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <parameters>
+      <parameter name="Descr_transaction">
+        <attribute name="attributename"/>
+        <attribute name="defaultvalue"/>
+        <attribute name="labeloverride">Description of Transactions</attribute>
+        <attribute name="lookupname"/>
+        <attribute name="hidden">0</attribute>
+        <attribute name="lookup">0</attribute>
+        <attribute name="operator"/>
+        <attribute name="multilookup">0</attribute>
+        <attribute name="hidden">0</attribute>
+        <attribute name="required">0</attribute>
+        <attribute name="sequence">0</attribute>
+      </parameter>
+    </parameters>
+  </report>
+  <report name="ADMINWO_LANJUNCHANG_1761230186.rptdesign">
+    <attribute name="filename">ADMINWO_LANJUNCHANG_1761230186.rptdesign</attribute>
+    <attribute name="description">Closed WO with PM and Budget</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">0</attribute>
+    <attribute name="reportfolder">ADMINWO</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>ADMINWO_LANJUNCHANG_17612301861761230311202.properties</reference>
+        <filename>./ADMINWO_LANJUNCHANG_1761230186/ADMINWO_LANJUNCHANG_17612301861761230311202.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

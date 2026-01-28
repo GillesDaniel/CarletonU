@@ -18,5 +18,13 @@
     "openshiftToolkit.crcNameserver": "8.8.8.8",
     "openshiftToolkit.crcBinaryLocation": "",
     "openshiftToolkit.showChannelOnOutput": true,
-    "openshiftToolkit.searchForToolsInPath": true
+    "openshiftToolkit.searchForToolsInPath": true,
+    "naviam.maximo.allowUntrustedCerts": true,
+    "naviam.maximo.apiKey": "pdg8tmrusro0vhphtq69ikmtiatkf8hj3tbuv6u",
+    "naviam.maximo.extractDBCLocation": "C:\\mount\\Git\\client\\CarletonU\\DEV\\dbc",
+    "naviam.maximo.extractInspectionFormsLocation": "C:\\mount\\Git\\client\\CarletonU\\DEV\\inspections",
+    "naviam.maximo.extractLocation": "C:\\mount\\Git\\client\\CarletonU\\DEV\\AS",
+    "naviam.maximo.extractReportsLocation": "C:\\mount\\Git\\client\\CarletonU\\DEV\\Repports",
+    "naviam.maximo.extractScreenLocation": "C:\\mount\\Git\\client\\CarletonU\\DEV\\xml",
+    "naviam.maximo.host": "dev.manage.masdev.carleton.ca"
 }

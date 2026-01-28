@@ -1,0 +1,105 @@
+/* ------------------------------------------- Main Designer CSS classes ------------------------------------------- */
+
+/* The most of the attributes should not be changed */
+
+/* Permits all mouse events for all tags to not inherit their disabled parents */
+.Designer * { pointer-events:auto; }
+.Designer svg * { pointer-events:visiblePainted; }
+
+/* Class to inactive tag for mouse */
+.Designer .None { pointer-events:none; }
+
+/* Main class to position tag absolutely inside its parent */
+/* It is attached to every Designer's item main tag */
+/* It can be used also inside the item definition to position some content absolutely inside the item */
+.Designer .Abs { 
+   position:relative!important; height:0px!important; display:block; 
+   padding-top:0px!important; padding-bottom:0px!important; margin-top:0px!important; margin-bottom:0px!important; 
+   width:0px; text-decoration:none; pointer-events:none;
+   }
+   
+/* Every Designer's Box main tag gets class='Abs Box' */
+.Designer .Box { cursor:default; }
+
+/* Every Designer's Line main tag gets class='Abs Line' */
+.Designer .Line { cursor:default; }
+
+/* Modifies all <svg> tags in Designer to not affect anything after them. */
+.Designer svg { overflow:visible; display:block; width:1000px; height:1000px; margin-bottom:-1000px; margin-right:-1000px; pointer-events:none; }
+.Designer svg:last-child { margin-bottom:0px; }
+
+/* Class to be attached to <svg> with <svg> definitions, placed usually in beginning of document <body>. To not affect anything placed after it. */
+.DesignerDef { position:absolute; left:0px; top:0px; width:0px; height:0px; overflow:hidden; }
+
+/* Designer class is attached to every Designer's canvas and also to dragging canvas*/
+/* Suppresses text selection in the whole designer */
+.Designer { 
+   padding:0px!important; webkit-touch-callout:none; -webkit-overflow-scrolling:touch;
+   -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; 
+   }
+
+/* Inner tag with the designer's canvas parent for zoom */
+.DesignerZoom { overflow:hidden; }
+
+/* Inner tag with the designer's canvas */
+.DesignerCanvas { transform-origin: 0 0; -ms-transform-origin: 0 0; width:0px; height:0px; }
+
+
+/* Temporary tag to calculate html tag size */
+#DesignerCalcSize { position:absolute; left:0px; top:0px; width:0px; height:0px; overflow:hidden; visibility:hidden; }
+
+/* Class for selecting rectangle by mouse dragging */
+.Designer .SelectRange, .Designer .ZoomRange { border:2px dashed red; overflow:hidden; }
+.Designer .ZoomRange { border-color:green; }
+.Designer .SelectRange div, .Designer .ZoomRange div { opacity:0.2; background:silver; width:100%; height:100%; }
+
+/* Class for selecting rectangle by mouse dragging when <Cfg SVG='1'/> */
+.Designer .SVGSelectRange, .Designer .SVGZoomRange { fill:silver; stroke:red; stroke-width:2; fill-opacity:0.2; stroke-opacity:0.9; stroke-dasharray:2 2 4 2; }
+
+/* Classes for <Cfg Grid> definitions */
+.Designer .SVGGrid1 { stroke:#DDD; stroke-width:1; fill:none; }
+.Designer .SVGGrid2 { stroke:#EEE; stroke-width:1; fill:none; }
+.Designer .SVGGrid3 { stroke:#CCC; stroke-width:1; fill:none; }
+
+/* ------------------------------------------- Message CSS classes ------------------------------------------- */
+
+/* Disabled tag above the Designer */
+.DesignerDisabled { position:absolute; z-index:264; background:white; opacity:0.5; filter:alpha(opacity=50); } 
+
+/* Designer informational or progress message, absolute <div> tag */
+.DesignerMessage,.DesignerErrorMessage {
+   font:13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; white-space:nowrap; text-align:center; visibility:hidden; z-index:266;
+   position:absolute; left:0px; top:0px; background:#E2F0FF; border:1px solid #71A8D2; border-radius:5px; padding:10px;
+   }
+.DesignerErrorMessage { font-weight:bold; color:red; background:yellow; } 
+
+/* Shadow <div> tag displayed under grid message tag, on the same position and size */
+.DesignerMessageShadow {
+   position:absolute; left:0px; top:0px; margin-left:3px; margin-top:3px; z-index:265; visibility:hidden; 
+   background:#888; opacity:0.5; filter:alpha(opacity=50); border-radius:5px; 
+   }	
+
+/* Progress message 
+   ...Main is set to inner <div> of the progress message. @ Set text attributes and optionally border, margin, padding and background
+   ...Caption is set to <div> tag showing the progress message caption. @ Set border, margin, padding, background and text attributes
+   ...Text is set to <div> tag showing the progress message text. @ Set border, margin, padding, background and text attributes
+   ...Outer is set to <div> tag showing the gauge container. @ Set border, margin, padding, background and width
+   ...Inner is set to <div> tag showing the gauge indicator. @ Set border, margin, padding, background and height
+*/
+.DesignerProgressMain { font:13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; }
+.DesignerProgressCaption { font-weight:bold; margin-bottom:15px; }
+.DesignerProgressText { margin-bottom:15px; }
+.DesignerProgressOuter { text-align:left; width:200px; border:1px solid #71A8D2; border-radius:5px; padding:2px; margin-bottom:15px; }
+.DesignerProgressInner { height:10px; background:green; border-radius:5px; }
+
+/* Button in informational or progress message, <button> tag below the message inside the ...Message 
+   ...Hover is added when the <button> tag is under mouse cursor
+   @ Set border, padding, margin, background and text attributes
+*/
+.DesignerProgressButton,.GQMessageButton { 
+   border:1px solid #71A8D2; border-radius:5px; background:#C8E5FF; font:11.9px Arial,Helvetica,sans-serif; white-space:nowrap;
+   }
+.DesignerProgressButton { margin:5px 2px 0px 2px; padding-left:5px; padding-right:5px; }
+.DesignerMessageButton { margin:10px 3px 0px 3px; width: auto; min-width:60px; }
+.DesignerMessageButtonHover,.DesignerProgressButtonHover { }
+

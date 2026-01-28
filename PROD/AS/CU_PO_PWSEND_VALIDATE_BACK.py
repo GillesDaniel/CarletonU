@@ -70,3 +70,23 @@ if(po is not None and po.getName()=="PO"):
         ##else:
         ##    errorgroup = "sm"
         ##    errorkey = "purchaseagentrequired"
+
+scriptConfig="""{
+    "autoscript": "CU_PO_PWSEND_VALIDATE_BACK",
+    "description": "Validate Emails when PWSEND is checked",
+    "version": "",
+    "active": false,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "CU_PO_PWSEND_VALIDATE",
+            "launchPointType": "ATTRIBUTE",
+            "active": false,
+            "description": "Validate Emails when PWSEND is checked",
+            "objectName": "PO",
+            "attributeName": "SM_AUTOSENDEMAIL",
+            "validate": true
+        }
+    ]
+}"""

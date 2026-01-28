@@ -100,3 +100,21 @@ if(""!=allMessage):
         clientSession.addWarning( MXApplicationException("sm", "allmessage", param))
         
 service.closeDialog();
+
+scriptConfig="""{
+    "autoscript": "SM_RUNPORELANCELIST",
+    "description": "Send by email - List Tab Action Send followup",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_RUNPORELANCELIST",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Send by email - List Tab Action Send followup",
+            "actionName": "SM_RUNPORELANCELIST"
+        }
+    ]
+}"""

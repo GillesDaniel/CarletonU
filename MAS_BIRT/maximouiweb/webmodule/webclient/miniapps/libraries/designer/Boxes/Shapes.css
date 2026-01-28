@@ -1,0 +1,28 @@
+/* ---------------------------------------------------  CSS classes referenced from the Shapes.xml ----------------------------------------------------- */
+
+/* Box definition */
+.SVGBlock { opacity:0.8; stroke-opacity:0.8; stroke-linejoin:round; }
+.SVGBlockLocked { stroke-dasharray:4 4 4 4; }
+.SVGBlockDisabled { stroke-dasharray:2 2 2 2; opacity:0.3; stroke-opacity:1; }
+.SVGBlockSelect { stroke:#0AD; stroke-width:3; }
+.SVGBlockHover.SVGBlockSelect { stroke:#069; }
+.SVGBlockHover { stroke:red; }
+.SVGBlockEdit { stroke:#0A0; }
+.SVGBlockHover.SVGBlockEdit { stroke:#070; }
+
+/* Box resizing tag */
+.SVGResize { stroke:transparent; stroke-width:10px; fill:none; }
+
+/* Checkbox left to the box text */
+.SVGIcon { fill:#AFEEFF; stroke:blue; stroke-width:1; }
+.SVGIcon:hover { stroke:red;}
+.SVGCross { stroke:blue; stroke-width:1; pointer-events:none!important; }
+
+/* Universal class to hide some item */
+.Hidden { display:none; }
+
+/* The box text. Modifies also the editor tag */
+.Lines, .Text, .Edit input, .Edit textarea, .EditTextarea { font:15px/18px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; }
+.Text { white-space:nowrap; }
+.Edit input, .Edit textarea, .InputTextarea { border:1px solid #DDD; border-radius:5px; height:20px; }
+

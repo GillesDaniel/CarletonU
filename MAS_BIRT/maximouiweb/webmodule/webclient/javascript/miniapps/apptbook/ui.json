@@ -1,0 +1,304 @@
+{
+  "Actions": {
+    "OnClickCell": "Focus AND StartEdit + ClearSelection + DeselectGanttRunAll",
+    "OnClickSort": "SortAscOne OR SortDescOne",
+    "OnClickSortDown": "SortDescOne",
+    "OnClickSortUp": "SortAscOne",
+    "OnCtrlClickCell": "DeselectCell OR SelectCell OR DeselectRow OR SelectRow,1",
+    "OnCtrlClickGantt": "SelectGanttRun",
+    "OnCtrlDel": "",
+    "OnCtrlDragGantt": "DragGanttDependency OR SelectGanttRunRect",
+    "OnCtrlIns": "",
+    "OnCtrlRightClickGantt": "",
+    "OnDblClickGantt": "",
+    "OnDel": "",
+    "OnDragGantt": "ResizeGanttMain OR ResizeGanttRun OR MoveGanttMainFirst OR MoveGanttRun OR MoveGanttFlag OR MoveGanttPoint OR MoveGanttConstraint OR MoveGanttLine OR DragGanttDependency OR SelectGanttRunRect + DeselectGanttRunAll",
+    "OnIns": "",
+    "OnMetaClickGantt": "SelectGanttRun",
+    "OnMetaDragGantt": "DragGanttDependency OR SelectGanttRunRect",
+    "OnShiftClickCell": "InvertCellRangeFirst OR InvertRowRangeFirst,1",
+    "OnShiftClickSort": "SortAscAppend OR SortDescAppend",
+    "OnShiftClickSortDown": "SortDescAppend",
+    "OnShiftClickSortUp": "SortAscAppend",
+    "OnShiftCtrlIns": "",
+    "OnShiftIns": "",
+    "OnShiftRightClickGantt": "",
+    "OnClickGanttHeader": "",
+    "OnRightClickGanttHeader": "",
+    "OnDragGanttHeader": "",
+    "OnDragHeader": "",
+    "OnClick1GanttHeader": ""
+  },
+
+  "Calendars": [
+  ],
+  "Cfg": {
+  	"SafeCSS": 1,
+    "Hover": 1,
+    "Sorting": 0,
+    "xxxCOMMENT":"mm/dd/yyyy",
+    "DefaultDate":"7/1/2016",
+    "SelectClassRow": 1,
+    "Alternate": 0,
+    "AutoVersion": 0,
+    "BorderCursors": 1,
+    "CfgId": "APPTBKMGRVIEW",
+    "ChildPartMin": 0,
+    "Code": "{{code}}",
+    "Copying": 0,
+    "Dragging": 0,
+    "Editing": 1,
+    "FastGantt": 0,
+    "FastPanel": 1,
+    "FilterLap": 0,
+    "FocusWholeRow": 1,
+    "GroupTree": 0,
+    "HideRootTree": 0,
+    "LeftCanResize": 0,
+    "MaxSort": 3,
+    "MidWidth": 64,
+    "MinMidWidth": 64,
+    "NoTreeLines": 0,
+    "PersistentCfg": 0,
+    "ResizingMain": 0,
+    "RightCanResize": 2,
+    "RightWidth": 64,
+    "MinRightWidth": 64,
+    "LeftWidth": 64,
+    "MinLeftWidth": 64,
+    "SectionWidthLap": 1,
+    "SaveAttrs": "",
+    "SaveExpanded": 0,
+    "SaveFilters": 1,
+    "SaveSelected": 1,
+    "ScrollLeftLap": 0,
+    "ScrollTopLap": 0,
+    "SearchFocused": 2,
+    "SearchLap": 0,
+    "SectionResizing": 1,
+    "StandardFilter": 2,
+    "Style": "Office",
+    "SuppressCfg": 0,
+    "TipEnd": 5000,
+    "TipStart": 500,
+    "TestIds": "{{prop:mxe.skd.automationids.enabled}}"
+  },
+  "LeftCols": [
+    {
+      "CanEdit": false,
+      "CanExport": 1,
+      "CanFilter": 1,
+      "CanGroup": 1,
+      "CanHide": 1,
+      "CanMove": 1,
+      "CanPrint": 1,
+      "CanSort": false,
+      "CaseSensitive": false,
+      "Name": "id",
+      "Type": "Text",
+      "Visible": false,
+      "nameTip": "ID"
+    },
+    {
+      "Name": "TEXT",
+      "Type": "Text",
+      "Width": "140",
+      "Spanned":1,
+      "VAlign": "middle"
+    },
+    {
+      "Name": "START",
+      "Type": "Date",
+      "Visible": "0"
+    },
+    {
+      "Name": "END",
+      "Type": "Date",
+      "Visible": "0"
+    },
+    {
+      "Name": "DUR",
+      "Type": "Float",
+      "CanEmpty": "1",
+      "Visible": "0"
+    },
+    {
+      "Name": "TIP",
+      "Type": "Text",
+      "Visible": "0"
+    },
+    {
+      "Name": "CLASS",
+      "Type": "Text",
+      "Visible": "0"
+    },
+    {
+      "Name": "TYPE",
+      "Type": "Text",
+      "Visible": "0"
+    },
+    {
+      "Name": "STATE",
+      "Type": "Text",
+      "Visible": "0"
+    },
+    {
+      "Name": "TOP",
+      "Type": "Float",
+      "Visible": "0"
+    },
+    {
+      "Name": "HEIGHT",
+      "Type": "Float",
+      "Visible": "0"
+    },
+    {
+      "Name": "RUN",
+      "Type": "Text",
+      "Visible": "0"
+    },
+
+    {
+      "CanCopyPaste": 0,
+      "CanDrag": 0,
+      "CanEdit": 0,
+      "CanExport": 0,
+      "CanFilter": 0,
+      "CanFocus": 0,
+      "CanGroup": 0,
+      "CanHide": 0,
+      "CanMove": 0,
+      "CanPrint": 0,
+      "CanSearch": 0,
+      "CanSelect": 0,
+      "CanSort": 0,
+      "Name": "_spacer",
+      "RelWidth": 1,
+      "RelWidthType": 1
+    }
+  ],
+  "Cols": [
+    {
+      "Name": "GANTT",
+      "Type": "Gantt",
+      "GanttUnits": "d",
+      "GanttLastUnit": "d",
+      "GanttWidth": 64,
+      "GanttLeft": "0",
+      "GanttRight": "0",
+      "GanttHeaderHeight1": 32,
+      "GanttHeaderHeight2": 32,
+      "GanttTask": "Run"
+    }
+  ],
+  "Root": {
+    "CDef": "Run"
+  },
+  "Def": [
+    {
+      "Name": "R",
+      "Width": 64
+    },
+    {
+      "Name": "Run",
+      "CDef": "Run",
+      "Calculated": "1",
+      "CalcOrder": "RUN,START,END,DUR",
+      "RUNFormula": "ganttrunsum()",
+      "RUNUndo": "0",
+      "GANTTGanttSummary": "2",
+      "GANTTGanttSummaryCols": "START,END,,TYPE,TEXT,CLASS,TIP,id,,STATE,TOP,HEIGHT",
+      "GANTTGanttRun": "RUN",
+      "GANTTGanttRunStart": "START",
+      "GANTTGanttRunEnd": "END",
+      "GANTTGanttRunDuration": "DUR",
+      "STARTFormula": "ganttrunstart()",
+      "STARTCanEdit": "1",
+      "ENDFormula": "ganttrunend()",
+      "ENDCanEdit": "1",
+      "DURFormula": "ganttrunduration()",
+      "DURCanEdit": "1",
+      "GANTTGanttRunMoveRight": "Move"
+
+    },
+    {
+      "Name": "Data",
+      "Visible": "0",
+      "TYPE": "Solid",
+      "CLASS": "AvailCell",
+      "WIDTH": 64,
+      "HEIGHT": 44
+    },
+    {
+      "Name": "BlockedData",
+      "Def": "Data",
+      "Visible": "0",
+      "CLASS": "BlockedCell"
+    },
+    {
+      "Name": "FullyBookedData",
+      "Def": "Data",
+      "Visible": "0",
+      "CLASS": "FullyBookedCell"
+    }
+
+  ],
+  "Head": [
+    {
+      "Kind": "Filter",
+      "Visible": false,
+      "id": "Filter"
+    }
+  ],
+  "Header": {
+    "TEXT": "",
+    "GANTT": "",
+    "id": "",
+    "_spacer": ""
+  },
+  "Pagers": [
+  ],
+  "Panel": {
+    "Buttons": "Select",
+    "CanExport": 0,
+    "CanHide": 0,
+    "CanPrint": 0,
+    "Copy": 7,
+    "Visible": 0
+  },
+  "Solid": [
+  ],
+  "Toolbar": {
+    "id": "toolbar",
+    "Space": 0,
+    "LinkVisible": 0,
+    "Cells": "Print,ExpandAll,CollapseAll,GOTOTODAY,GOTOSELECTDAY,PREV,NEXT,GRIDTITLE",
+    "GOTOSELECTDAYHeight": 28,
+    "GOTOSELECTDAYIcon": "miniapps\/scheduler\/tb_selectDay.gif",
+    "GOTOSELECTDAYTip": "{{label:scheduler#goto_selected_day_tooltip}}",
+    "GOTOSELECTDAYType": "Button",
+    "GOTOSELECTDAYWidth": 30,
+    "GOTOTODAYHeight": 28,
+    "GOTOTODAYIcon": "miniapps\/scheduler\/ac22_goToToday.png",
+    "GOTOTODAYTip": "{{label:scheduler#goto_today_tooltip}}",
+    "GOTOTODAYType": "Button",
+    "GOTOTODAYWidth": 30,
+    "GRIDTITLEAlign": "Center",
+    "GRIDTITLEEmptyValue": "{{monthyear}}",
+    "GRIDTITLERelWidth": "1",
+    "GRIDTITLEType": "Html",
+    "GRIDTITLEWidth": "-1",
+    "NEXTHeight": 28,
+    "NEXTIcon": "miniapps\/scheduler\/tb_nextDays.png",
+    "NEXTIconEventArgs": "{\"Name\":\"NEXTWEEKS\",\"Value\":\"_nextwks\",\"Values\":{},\"Multi\":true,\"ClearSelection\":true,\"longOpMessage\":\"{{label:please_wait}}\"}",
+    "NEXTTip": "{{label:scheduler#next}}",
+    "NEXTType": "Button",
+    "NEXTWidth": 30,
+    "PREVHeight": 28,
+    "PREVIcon": "miniapps\/scheduler\/tb_previousDays.png",
+    "PREVIconEventArgs": "{\"Name\":\"PREVWEEKS\",\"Value\":\"_prewks\",\"Values\":{},\"Multi\":true,\"ClearSelection\":true,\"longOpMessage\":\"{{lable:pleasewait}}\"}",
+    "PREVTip": "{{label:scheduler#prev}}",
+    "PREVType": "Button",
+    "PREVWidth": 30
+  }
+}

@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:oslc="http://open-services.net/ns/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:crtv="http://open-services.net/ns/crtv#" xmlns:oslcem="http://jazz.net/ns/ism/event/omnibus#" xmlns:oslcemp="http://jazz.net/ns/ism/event/omnibus/itnm#" xmlns:oslcemb="http://jazz.net/ns/ism/event/omnibus/tbsm#" xmlns:oslcemm="http://jazz.net/ns/ism/event/omnibus/misc#">
+  <oslc:ResourceShape rdf:about="http://aci-omnibus.tivlab.austin.ibm.com:8080/objectserver/oslc/shape?type=Event&amp;create=false">
+    <dcterms:title>Event Type Shape</dcterms:title>
+    <oslc:describes rdf:resource="http://jazz.net/ns/ism/event/omnibus#Event"/>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>identifier</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://purl.org/dc/terms/identifier"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">true</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>created</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://purl.org/dc/terms/created"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>creator</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#Resource"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://purl.org/dc/terms/creator"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>ownerUID</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#Resource"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#ownerUID"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>severity</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#severity"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>summary</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#summary"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>node</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#node"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>agent</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#agent"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>alertGroup</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#alertGroup"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>lastOccurrence</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#lastOccurrence"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>tally</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#tally"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>acknowledged</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#acknowledged"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>serial</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#serial"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">true</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>serverSerial</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#serverSerial"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">true</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>serverName</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#serverName"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">true</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nodeAlias</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#nodeAlias"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>alertKey</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#alertKey"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>manager</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#manager"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>stateChange</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#stateChange"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>internalLast</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#internalLast"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>type</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#type"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>class</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#class"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>grade</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#grade"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>ownerGID</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#Resource"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#ownerGID"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>taskList</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#taskList"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>suppressEscl</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#suppressEscl"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>flash</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#flash"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>expireTime</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#expireTime"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>customer</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#customer"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>service</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#service"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>probeSubSecondId</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#probeSubSecondId"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>journal</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#Resource"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#journal"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">true</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>detail</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#Resource"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus#detail"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">true</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>eventId</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#eventId"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>processReq</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#processReq"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nmosSerial</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#nmosSerial"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nmosObjInst</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#nmosObjInst"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nmosCauseType</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#nmosCauseType"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nmosDomainName</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#nmosDomainName"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nmosEntityId</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#nmosEntityId"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nmosManagedStatus</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#nmosManagedStatus"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>nmosEventMap</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#nmosEventMap"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>localNodeAlias</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#localNodeAlias"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>localPriObj</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#localPriObj"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>localSecObj</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#localSecObj"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>localRootObj</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#localRootObj"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>remoteNodeAlias</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#remoteNodeAlias"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>remotePriObj</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#remotePriObj"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>remoteSecObj</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#remoteSecObj"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>remoteRootObj</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/itnm#remoteRootObj"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>bsmIdentity</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/tbsm#bsmIdentity"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>poll</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#poll"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>location</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#location"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>physicalSlot</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#physicalSlot"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>physicalPort</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#physicalPort"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>physicalCard</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#physicalCard"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>x733EventType</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#x733EventType"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>x733ProbableCause</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#x733ProbableCause"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>x733SpecificProb</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#x733SpecificProb"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>x733CorrNotif</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#x733CorrNotif"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>url</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#Resource"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#url"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>extendedAttr</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/event/omnibus/misc#extendedAttr"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>severity</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#severity"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>summary</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#summary"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>node</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#node"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>agent</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#agent"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>alertGroup</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#alertGroup"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>lastOccurrence</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#lastOccurrence"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>tally</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#tally"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:name>acknowledged</oslc:name>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Exactly-one"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#acknowledged"/>
+        <oslc:readOnly rdf:resource="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+      </oslc:Property>
+    </oslc:property>
+  </oslc:ResourceShape>
+</rdf:RDF>
+

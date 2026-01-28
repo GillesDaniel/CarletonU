@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by Anamitra (IBM) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ibm.com/ebp10" targetNamespace="http://www.ibm.com/ebp10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:simpleType name="mepType">
+		<xsd:annotation>
+			<xsd:documentation>Enumerated List of Message Exchange Patterns </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="sendReceive"/>
+			<xsd:enumeration value="sendRobust"/>
+			<xsd:enumeration value="sendOnly"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="bindingType">
+		<xsd:annotation>
+			<xsd:documentation>Enumerated List of supported Binding types </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="SOAP11HTTP"/>
+			<xsd:enumeration value="SOAP12HTTP"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="EndpointType">
+		<xsd:sequence>
+			<xsd:element name="MEP" type="mepType" default="sendReceive"/>
+			<xsd:element name="SOAPACTION" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EPURL" type="xsd:string"/>
+			<xsd:element name="SERVICENAME" type="xsd:string"/>
+			<xsd:element name="BINDING" type="bindingType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ENDPOINT" type="EndpointType"/>
+</xsd:schema>

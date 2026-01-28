@@ -1,0 +1,65 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define({ root:
+//begin v1.x content
+({
+	singleSort: "Single Sort",
+	nestedSort: "Nested Sort",
+	ascending: "Click to sort Ascending",
+	descending: "Click to sort Descending",
+	sortingState: "${0} - ${1}",
+	unsorted: "Do not sort this column",
+	indirectSelectionRadio: "Row ${0}, single selection",
+	indirectSelectionCheckBox: "Row ${0}, multiple selection",
+	selectAll: "Select all"
+})
+//end v1.x content
+,
+"bs": true,
+"mk": true,
+"sr": true,
+"ar": true,
+"bg": true,
+"ca": true,
+"cs": true,
+"da": true,
+"de": true,
+"eu": true,
+"el": true,
+"es": true,
+"fi": true,
+"fr": true,
+"he": true,
+"hr": true,
+"hu": true,
+"id": true,
+"it": true,
+"ja": true,
+"kk": true,
+"ko": true,
+"nb": true,
+"nl": true,
+"pl": true,
+"pt": true,
+"pt-pt": true,
+"ro": true,
+"ru": true,
+"sk": true,
+"sl": true,
+"sv": true,
+"th": true,
+"tr": true,
+"uk": true,
+"zh": true,
+"zh-tw": true
+});

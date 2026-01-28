@@ -1,0 +1,24 @@
+<!-- Prints the TreeGrid data given by parameters in url -->
+<!-- Parameters: -->
+<html>
+   <head>
+      <script src="../../miniapps/libraries/treegrid/Grid/GridE.js"> </script>
+   </head>
+   <body>
+      <style>
+         .ExampleName { font:bold 25px Arial; padding:5px 0px 5px 0px; }
+         .ExampleName i { font:normal 15px Arial; }
+      </style>
+      <div style="width:100%;height:90%;" id='GRID'>   
+         <script>
+var search = location.search.slice(1).split("@");
+var bonus = AjaxCall('../' + search[3]); // Reads grid configuration and changes from temporary file
+if(search[4]) document.body.style.zoom = 96/search[4]/0.72*0.96*0.96; // Sets DPI to document zoom, because wkhtmltopdf 13 alpha ignores it in its parameters
+Grids.OnPrintEmpty = function(G){ window.open("dummy","_self"); } // For empty result opens not existing link to return 1 from wkhtmltopdf
+var add = "<Grid><Cfg SafeCSS='0' PrintPaddingHeightFirst='55'"+(search[5]?" PrintFromPage='"+search[5]+"'":"")+(search[6]?" PrintToPage='"+search[6]+"'":"")+"/></Grid>";
+if(search[5]&&search[5]!=1) if (document.getElementById("Caption") != null) document.getElementById("Caption").style.display = "none"; // Shows the caption only on the first page
+PrintTreeGrid({Layout:{Url:search[0],Bonus:bonus}, Data:{Url:search[1],Method:"Get",Bonus:add}, Page:{Url:search[2],Method:"Get"}},"GRID");
+         </script>
+      </div>
+   </body>
+</html>

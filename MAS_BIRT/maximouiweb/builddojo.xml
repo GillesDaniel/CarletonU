@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+
+<project name="MAXIMODojo" default="all" basedir=".">
+	<description>
+		This file is used for building the Dojo layers and skins
+	</description>
+
+	<path id="task.path">
+		<pathelement path="webmodule/WEB-INF/classes" />
+		<pathelement path="../businessobjects/classes" />		
+		<pathelement location="../lib/json4j.jar" />
+	</path>
+
+	<taskdef name="dojoDir" classname="psdi.webclient.system.dojo.DojoDir" classpathref="task.path" />
+	<taskdef name="newestDir" classname="psdi.webclient.system.dojo.NewestDir" classpathref="task.path" />
+	<taskdef name="mergeProfiles" classname="psdi.webclient.system.dojo.MergeProfiles" classpathref="task.path" />
+	<typedef name="profilesUptodate" classname="psdi.webclient.system.dojo.ProfilesUptodate" classpathref="task.path" />
+
+	<property name="build" value="$build$"/>
+
+	<property name="webclient" value="webmodule/webclient" />
+	<property name="locales" value="ar,ca,cs,da,de,el,en,es,fi,fr,he,hr,hu,it,ja,kk,ko,nb,nl,pl,pt,pt-pt,ro,ru,sk,sl,sv,th,tr,zh,zh-tw"/>
+
+	<property name="skins.dir" value="${webclient}/skins" />
+	<newestDir property="skins.existing.dir" dir="${skins.dir}" prefix="skins-"/>
+
+	<property name="javascript.dir" value="${webclient}/javascript" />
+	<dojoDir property="dojo.dir" dir="${basedir}/dojo" />
+	<newestDir property="dojo.existing.dir" dir="${javascript.dir}" prefix="dojo-"/>
+	<newestDir property="tpaeJs.existing.dir" dir="${javascript.dir}" prefix="tpae-"/>
+	<newestDir property="miniapps.existing.dir" dir="${javascript.dir}" prefix="ma-"/>
+
+	<property name="profile.dir" location="${javascript.dir}/dojo_profiles" />
+	<property name="profile.file" value="${javascript.dir}/tpae.profile.js" />
+
+	<target name="all" depends="buildDojo,buildTpaeJs,buildSkins,buildMiniapps" />
+
+	<target name="clean" depends="cleanDojo,cleanTpaeJs,cleanSkins,cleanMiniapps" description="Clean"/>
+
+	<target name="cleanDojo" unless="dojo.noClean">
+		<delete dir="${dojo.existing.dir}"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${webclient}">
+				<include name="javascript/dojo_1*/**"/>
+				<include name="javascript/dojo-*/**"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="cleanTpaeJs" unless="tpaeJs.noClean">
+		<delete dir="${tpaeJs.existing.dir}"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${webclient}">
+				<include name="javascript/tpae-*/**"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="cleanSkins" unless="skins.noClean">
+		<delete dir="${skins.existing.dir}"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${webclient}">
+				<include name="skins-*/**"/>
+				<include name="skins/skins-*/**"/>
+			</fileset>
+		</delete>
+	</target>
+	
+    <target name="cleanMiniapps" unless="miniappsJs.noClean">
+        <delete dir="${miniapps.existing.dir}"/>
+        <delete includeemptydirs="true">
+            <fileset dir="${webclient}">
+                <include name="javascript/ma-*/**"/>
+            </fileset>
+        </delete>
+    </target>
+
+	<target name="dojoUptodate" if="dojo.existing.dir">
+		<profilesUptodate dir="${profile.dir}" dojoReleaseDir="${dojo.existing.dir}" dojoSrcDir="${dojo.dir}" property="dojo.uptodate" />
+
+		<condition property="dojo.noClean">
+			<or>
+				<istrue value="${dojo.uptodate}"/>
+				<not>
+					<available type="dir" file="${dojo.existing.dir}"/>
+				</not>
+			</or>
+		</condition>
+	</target>
+
+	<target name="tpaeJsUptodate" if="tpaeJs.existing.dir">
+		<uptodate property="tpaeJs.uptodate" targetfile="${tpaeJs.existing.dir}">
+			<srcfiles dir="${javascript.dir}">
+				<and>
+					<filename name="*"/>
+					<filename name=".jazzignore" negate="true"/>
+					<type type="file"/>
+				</and>
+			</srcfiles>
+		</uptodate>
+
+		<condition property="tpaeJs.noClean">
+			<or>
+				<istrue value="${tpaeJs.uptodate}"/>
+				<not>
+					<available type="dir" file="${tpaeJs.existing.dir}"/>
+				</not>
+			</or>
+		</condition>
+	</target>
+
+	<target name="skinsUpToDate">
+		<uptodate property="skins.uptodate">
+			<srcfiles dir="${skins.dir}" includes="**"/>
+			<mapper type="glob" from="*" to="${skins.existing.dir}\*"/>
+		</uptodate>
+		<condition property="skins.noClean">
+			<or>
+				<istrue value="${skins.uptodate}"/>
+				<not>
+					<available type="dir" file="${skins.existing.dir}"/>
+				</not>
+			</or>
+		</condition>
+	</target>
+	
+	
+	<target name="buildDojo"
+			depends="cleanDojo"
+			description="Build the dojo layers">
+
+		<mergeProfiles dir="${profile.dir}" tofile="${profile.file}" />
+
+		<pathconvert targetos="unix" property="javascript.dir.forwardSlash">
+			<path>
+				<pathelement path="${javascript.dir}" />
+			</path>
+		</pathconvert>
+
+		<java classname="org.mozilla.javascript.tools.shell.Main" dir="${dojo.dir}/util/buildscripts" fork="true" failonerror="true">
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<arg value="../../dojo/dojo.js" />
+			<arg value="baseUrl=../../dojo" />
+			<arg value="load=build" />
+			<arg value="--profile" />
+			<arg value="../../../../${profile.file}" />
+			<arg value="--release" />
+			<arg value="--releaseDir" />
+			<arg value="${javascript.dir.forwardSlash}" />
+			<arg value="cssOptimize=comments.keepLines" />
+			<arg value="selectorEngine=acme" />
+			<arg value="localeList=${locales}" />
+			<classpath>
+				<pathelement location="${dojo.dir}/util/shrinksafe/js.jar" />
+				<pathelement location="${dojo.dir}/util/shrinksafe/shrinksafe.jar" />
+			</classpath>
+		</java>
+
+		<!-- mkdir dir="${javascript.dir}/dojo/util/doh" />
+		<copy todir="${javascript.dir}/dojo/util/doh">
+			<fileset dir="${dojo.dir}/util/doh">
+				<include name="**/*" />
+			</fileset>
+		</copy -->
+
+		<delete file="${profile.file}" />
+
+		<move file="${javascript.dir}/dojo" tofile="${javascript.dir}/dojo-${build}" />
+	</target>
+
+	<target name="buildTpaeJs" 
+			description="Copy the maximo javascript files to the Dojo build directory"
+			depends="cleanTpaeJs">
+		<copy todir="${javascript.dir}/tpae-${build}" overwrite="true" >
+			<fileset dir="${javascript.dir}">
+				<and>
+					<filename name="*" />
+					<filename name=".jazzignore" negate="true" />
+					<type type="file" />
+				</and>
+			</fileset>
+		</copy>
+	</target>
+
+    <target name="buildMiniapps" 
+            description="Copy the compiled miniapps to the build directory"
+            depends="cleanMiniapps">
+        <copy todir="${javascript.dir}/ma-${build}" overwrite="true" >
+            <fileset dir="${javascript.dir}/miniapps/">
+                <and>
+                    <filename name="**/**" />
+                    <filename name=".jazzignore" negate="true" />
+                </and>
+            </fileset>
+        </copy>
+    </target>
+	
+	
+	<target name="emptyLayers" description="Clear the layers so you can load individual js files in your browser">
+		<copy file="${dojo.dir}/dojo/dojo.js" tofile="${javascript.dir}/dojo-${build}/dojo/dojo.js" overwrite="true"/>
+		<copy file="${dojo.dir}/dojo/dojo.js" tofile="${javascript.dir}/dojo-${build}/dojo/dojo.js.uncompressed.js" overwrite="true"/>
+		<truncate>
+			<fileset dir="${javascript.dir}/dojo-${build}/layers"/>
+		</truncate>
+	</target>
+
+	<target name="buildSkins"
+			description="Copy the skins to the build directory"
+			depends="cleanSkins">
+		<copy todir="${skins.dir}/skins-${build}" >
+			<fileset dir="${skins.dir}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+	</target>
+</project>

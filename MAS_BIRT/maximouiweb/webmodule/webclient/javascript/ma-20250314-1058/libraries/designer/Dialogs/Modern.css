@@ -1,0 +1,541 @@
+/* -------------------------------------------------------------------------------------------------------------------------- */
+/*                                                        Edit control                                                    */
+/*                                                            TGLib                                                        */
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+/* --- Edit text in <input> / <textarea> --- */
+
+/* @ Set background and text attributes
+   ...EditInput - set to <input> tag placed into inline edit cursor tag (...EditCellInput)
+   ...EditTextarea - set to <textarea> tag placed into inline edit cursor tag (...EditCellInput) for Lines type
+   ...Normal... is added to <input> / <textarea> for cell in table row, ...Header... is added for cell in Header row, ...Space is added for cell in Space row
+   ...Int..., ...Float..., ...Date..., ...Pass... is added for this cell type
+   ...Text... is added for cell type Text, Lines, Link, Img
+   ...ReadOnly is added for preview cell with CanEdit='2'
+*/
+.GMEditInput,.GMEditTextarea { font:12.9px/14px Verdana,Tahoma,"Trebuchet MS",sans-serif; border:0px none; margin:0px; padding:0px; outline:none; box-sizing:content-box; resize:none; }
+.GMEditInput::-ms-clear { height:13px; }
+.GMEditNormalInput,.GMEditNormalTextarea  { background-color:white; }
+.GMEditHeaderInput,.GMEditHeaderTextarea { background-color:#6CA6D1; color:white; }
+.GMEditSpaceInput,.GMEditSpaceTextarea { background-color:#E0E0E0; }
+.GMEditInt,.GMEditFloat,.GMEditDate { text-align:right; }
+.GMEditText,.GMEditPass { }
+.GMEditReadOnly { background-color:#FFEEFF; }
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+/*                                                   Popup menus and dialogs                                               */
+/*                                                            TGLib                                                        */
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+/* Default settings for all TreeGrid popup menus and dialogs like Enum, Defaults, Filter, cfg menu, columns menu, popup Menu, Gantt menu and custom menu shown by ShowMenu and ShowPopup
+   The styles of individual menu types can be overridden by their individual classes added to all default classes (e.g. "GMMenuMain GMEnumMenuMain")
+      Individual classes: ...EnumMenu..., ...DefaultsMenu..., ...FilterMenu..., ...CfgMenu..., ...ColumnsMenu..., ...PopupMenu, ...GanttMenu...
+      For custom JSON menu can be the individual class prefix set to Class attribute, like {..., Class:"Custom", ... } and the added classes will be ...Custom..., e.g. GxCustomMain
+   Some of the classes are used also for custom JSON dialogs shown by ShowDialog API function.
+*/
+
+/* --- Menu and dialog sections --- */
+
+/* Main menu and dialog classes
+   ...Main - Main absolute <div> tag; @ Do not change 
+   ...Static - Used instead of ...Main when dialog is written directly to page HTML by WriteDialog. Used only in TGLib, not in TreeGrid. @ Do not change
+   ...Shadow - Shadow <div> tag displayed under ...Main tag, on the same position and size. @ Set margin for the shadow shift, background, opacity and border
+   ...Outer - <div> tag inside the main tag, contains the whole menu. @ Set background, border and padding
+   ...Top is added to ...Outer when the menu is shown above the header, ...Bottom is added to ...Outer when the menu is shown below the header
+*/      
+.GMMenuMain { position:absolute; left:0px; top:0px; z-index:258; }
+.GMMenuStatic { }
+.GMMenuShadow { position:absolute; margin-left:3px; margin-top:3px; z-index:257; background:#888; border-radius:5px; opacity:0.5; filter:alpha(opacity=50); }
+.GMMenuOuter { overflow:hidden; background:white; border:1px solid #71A8D2; border-radius:5px; padding:1px; }
+.GMMenuOuterTop { }
+.GMMenuOuterBottom { }
+
+/* Shown outside menu or dialog in place of the source tag, simulating the menu is popped up. For custom JSON menus and dialogs is used when set Header attribute.
+   ...Top is added to ...Header when the menu is shown above the header, ...Bottom is added to ...Header when the menu is shown below the header
+   @ Set margin to shift the header, border, padding and background
+*/
+.GMMenuHeader { 
+   overflow:hidden; position:absolute; z-index:258; border:1px solid #b0b0c0; background:white; cursor:pointer; border-radius:5px; 
+   user-select:none; -o-user-select:none; -moz-user-select:none; -khtml-user-select:none; -webkit-user-select:none;
+   }
+.GMMenuHeaderTop { }
+.GMMenuHeaderBottom { }
+
+/* Set to menu and dialog top, not scrollable, section. Used only for TreeGrid cfg / column menus. For custom JSON menus and dialogs is used when set Head attribute.
+   @ Set border, margin, padding, background and text attributes
+*/
+.GMMenuHead { 
+   background:#6CA6D1; padding:5px 0px 4px 0px; border-radius:5px 5px 0px 0px; color:white;
+   font:12.9px/14px Verdana,Tahoma,"Trebuchet MS",sans-serif; text-align:center; cursor:default; 
+   }
+
+/* Close icon set <div> tag inside the ...MenuHead. Used only for TreeGrid cfg / column menus. For custom JSON menus and dialogs is used when set Head attribute and can be hidden by setting HeadClose:0 
+   @ Set background, width and height
+*/
+.GMMenuClose { float:right; width:14px; cursor:pointer; display:none; background:url(ModernMenu.gif?v110) no-repeat right -354px; }
+
+/* Set to menu and dialog middle, scrollable, section. For custom JSON dialogs the tag is filled by Body attribute value. 
+   @ Set border, margin, padding, background and optionally (for the custom dialogs) text attributes
+*/
+.GMMenuBody { cursor:default; padding: 1px 0px 1px 0px; }
+
+/* Set to menu and dialog bottom, not scrollable, section, contains usually control buttons. 
+   Used only for TreeGrid cfg / column menus and Range dialogs to display the buttons. For custom JSON menus and dialogs is used when set Foot or Buttons (JSON menu only) attribute.
+   @ Set border, margin, padding, background and text attributes
+*/
+.GMMenuFoot { 
+   background:#D5E9FE; padding:3px 0px 3px 0px; border-radius:0px 0px 5px 5px; 
+   font:bold 12px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; text-align:center; white-space:nowrap; 
+   }
+
+/* Control button inside the Foot section (e.g. OK, Cancel). <button> tag.
+   ...Hover is added when the <button> tag is under mouse cursor
+   @ Set border, margin, padding, background, width, height and text attributes
+*/
+.GMMenuButton {
+   border:1px solid #71A8D2; border-radius:5px; background:#C8E5FF; width:58px; margin:2px; padding-left:0px; padding-right:0px;
+   font:11.9px Arial,Helvetica,sans-serif; text-align:center; white-space:nowrap; overflow:hidden;  
+   }
+.GMMenuButtonHover { background:#ffeeaa; border:1px solid #aaaadd; }
+
+/* --- Menu item --- */
+
+/* <div> tags for individual menu items
+   ...Item is set to all menu items except focused and hovered
+   ...Focus is set to menu item with key cursor
+   ...Hover is set to menu item under mouse cursor (...ItemHover to not focused and ...FocusHover to focused)
+   ...Touch... is added to menu item on tablet
+   @ Set border, margin padding and background; all the eight classes should have the same edge width and height (margin+border+padding)
+*/
+.GMMenuItem { padding:2px 3px 2px 3px; }
+.GMMenuItemTouch { padding-top:5px; padding-bottom:5px; }
+.GMMenuItemHover { margin-left:1px; margin-right:1px; padding:2px; background:#D5E9FE; }
+.GMMenuItemHoverTouch { padding-top:4px; padding-bottom:4px; }
+.GMMenuFocus { margin-left:1px; margin-right:1px; padding:2px; background:#CAE1F3; }
+.GMMenuFocusTouch { padding-top:4px; padding-bottom:4px; }   
+.GMMenuFocusHover { margin-left:1px; margin-right:1px; padding:2px; background:#CAE1F3; }
+.GMMenuFocusHoverTouch { padding-top:4px; padding-bottom:4px; }   
+
+/* --- Icons inside menu items --- */
+
+/* The classes are set in <div> tag inside the menu item tag
+   ...CheckedIcon...  - Bool item, checkbox, checked state,                  ...UncheckedIcon... - Bool item, checkbox, unchecked state
+   ...CheckedRadio... - Bool item with Group, radio button, checked state,   ...UncheckedRadio... - Bool item with Group, radio button, unchecked state
+   ...Left            - the bool icon is shown on the item text left side,   ...Right - the bool icon is shown on the item text right side
+   ...CursorIcon      - Cursor icon shown on left side, when menu have set ShowCursor:1; the width of the cursor icon is set by menu Indent attribute, by default 12px
+   ...HoverIcon       - The cursor icon in menu item under mouse cursor
+   ...ExpandedIcon    - Icon in expanded section (Expanded:1),  the menu item with Level and Items set; the width of the expanded  icon is set by menu Indent attribute, by default 12px 
+   ...CollapsedIcon   - Icon in collapsed section (Expanded:0), the menu item with Level and Items set; the width of the collapsed icon is set by menu Indent attribute, by default 12px  
+   ...NextIcon        - Icon on right side of item with submenu, the menu item with Menu:1 and Items set 
+   ...Rtl             - used instead in RTL text mode, shows the icon on the other side
+   @ Set background and for some icons padding-left or padding-right
+*/
+.GMMenuCheckedIconLeft { background:url(ModernMenu.gif?v110) no-repeat -2px -51px; padding-left:15px; }
+.GMMenuCheckedIconRight { background:url(ModernMenu.gif?v110) no-repeat right -51px; padding-right:17px; }
+.GMMenuUncheckedIconLeft { background:url(ModernMenu.gif?v110) no-repeat -2px -1px; padding-left:15px; }
+.GMMenuUncheckedIconRight { background:url(ModernMenu.gif?v110) no-repeat right -1px; padding-right:17px; }
+.GMMenuCheckedRadioLeft { background:url(ModernMenu.gif?v110) no-repeat -2px -750px; padding-left:15px; }
+.GMMenuCheckedRadioRight { background:url(ModernMenu.gif?v110) no-repeat right -750px; padding-right:17px; }
+.GMMenuUncheckedRadioLeft { background:url(ModernMenu.gif?v110) no-repeat -2px -700px; padding-left:15px; }
+.GMMenuUncheckedRadioRight { background:url(ModernMenu.gif?v110) no-repeat right -700px; padding-right:17px; }
+.GMMenuCursorIcon { background:url(ModernMenu.gif?v110) no-repeat -6px -150px; }
+.GMMenuHoverIcon { background:url(ModernMenu.gif?v110) no-repeat -6px -100px; }   
+.GMMenuCursorIconRtl { background:url(ModernMenu.gif?v110) no-repeat right -1000px; }
+.GMMenuHoverIconRtl { background:url(ModernMenu.gif?v110) no-repeat right -950px; }   
+.GMMenuExpandedIcon { background:url(ModernMenu.gif?v110) no-repeat -6px -200px; }
+.GMMenuCollapsedIcon { background:url(ModernMenu.gif?v110) no-repeat -6px -250px; }
+.GMMenuNextIcon { background:url(ModernMenu.gif?v110) no-repeat right -300px; padding-right:15px; }
+.GMMenuNextIconRtl { background:url(ModernMenu.gif?v110) no-repeat left -900px; padding-left:15px; }
+
+/* --- Menu item content --- */
+
+/* The classes are set to <td> tag of inner table that is used to display the item, if it has set Edit, Enum, Icon, LeftHtml or RightHtml attribute.   
+   @ Set text attributes and optionally background, border, padding and margin
+   ...ItemText - every menu item text or caption, it set to <div> tag inside the menu item and inside the menu icon or to <td> tag with item text in inner table
+   ...ItemLeftHtml - <td> tag in inner table displaying the LeftHtml content on the left side
+   ...ItemRightHtml - <td> tag in inner table displaying the RightHtml content on the right side
+   ...ItemIcon - <td> tag in inner table displaying the Icon as background image on the left side, also left to LeftHtml; @ Do not change
+   ...Level - added to the tags with ...ItemText, ...ItemIcon, ...ItemLeft/RightHtml for item with Level set
+   ...ItemDisabled - added to all the menu item parts for item with Disabled:1; @ Set opacity and background
+*/
+.GMMenuItemText,.GMMenuItemLeftHtml,.GMMenuItemRightHtml { font:11.9px/15px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; white-space:nowrap; overflow:hidden; }
+.GMMenuItemIcon { background-repeat:no-repeat; }
+.GMMenuItemDisabled { opacity:0.50; filter:alpha(opacity=30); }
+.GMMenuLevel { color:blue; text-align:center; }  
+
+/* The Enum combo in item with Enum:1
+   ...EnumParent - <td> tag in inner table displaying the Enum combo for the Enum:1 item, on left or right side according to Left value
+   ...Enum - <div> tag inside the <td> tag ...EnumParent displaying the Enum combo
+   ...EnumHeader - is set to the <div> tag in Header of the popped up Enum menu
+*/
+.GMMenuEnumParent { padding-left:5px; padding-right:2px;}
+.GMMenuEnum,.GMMenuEnumHeader { font:11.9px/15px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; white-space:nowrap; overflow:hidden; }
+.GMMenuEnum { border:1px solid #D0E0F0; border-top:1px solid #71A8D2; border-left:1px solid #71A8D2; border-radius:5px; background:white url(ModernMenu.gif?v110) no-repeat left -800px; padding-left:15px; }
+.GMMenuEnumHeader { background:url(ModernMenu.gif?v110) no-repeat left -799px; padding:1px 0px 2px 15px; cursor:default; }
+
+/* The edit text in item with Edit:1
+   ...EditParent - <td> tag in inner table displaying the editable text for the Edit:1 item, on left or right side according to Left value; @ Set border, padding and background
+   ...Edit - <div> tag inside the <td> tag ...EditParent displaying the editable text; @ Set border, padding, background and text attributes 
+   ...EditIE is used instead of ...Edit in IE, in IE5 quirks mode
+   ...EditMulti - added to the ...Edit tag for item with set Multi:1, multi line edit, to be edited in <textarea>; @ Set border, background and text attributes
+   ...EditEdit - added to the ...Edit when editing the item text
+   ...EditText, ...EditInt, ...EditFloat, ...EditDate - added to the ...Edit tag and also to the <input> or <textarea> tag according to the Type attribute; @ Set text attributes
+   ...EditInput - set to <input> tag placed into ...Edit tag when editing the value; @ Set text attributes
+   ...EditTextarea - set to <textarea> tag placed into ...Edit tag when editing the value in item with Multi:1 set; @ Set text attributes
+*/
+.GMMenuEditParent { padding-left:5px; padding-right:2px; }
+.GMMenuEdit,.GMMenuEditIE {
+   font:11.9px/15px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; background:white; overflow:hidden; white-space:nowrap; 
+   border:1px solid #D0E0F0; border-top:1px solid #71A8D2; border-left:1px solid #71A8D2; border-radius:5px; padding-left:3px; padding-right:3px; height:15px;
+   }
+.GMMenuEditIE { height:17px; }
+.GMMenuEditMulti { white-space:normal; }
+.GMMenuEditEdit { background:white; }
+.GMMenuEditInput,.GMMenuEditTextarea { 
+   font:11.9px/15px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; border:0px none; margin:0px; padding:0px; outline:none; background:white; box-sizing:content-box; resize:none; 
+   }
+.GMMenuEditInput::-ms-clear { height:13px; }
+.GMMenuEditInt,.GMMenuEditFloat,.GMMenuEditDate { text-align:right; } 
+.GMMenuEditText { }
+
+/* --- Special menu items --- */
+
+/* ...Caption - Inactive item, used instead of ...Item..., along width ...ItemText, shown for menu item with Caption:1; @ Set border, margin padding, background and text attributes
+   ...Separator - Separator between items, shown for menu item with Name:"-", used instead of ...Item...; @ Set border, margin, padding, background and height
+   ...VSeparator - <td> tag shown between columns of menu items; in children of menu item width Columns attribute set; @ Set border, padding, background and width 
+   ...Section - Tag around children of item width Level attribute set; @ Set border, margin, padding and background
+*/
+.GMMenuCaption { padding:2px; background:white; color:blue; text-align:center; }
+.GMMenuSeparator { margin:3px 3px 2px 3px; height:1px; border-top:1px solid #aaaaaa; overflow:hidden; }
+.GMMenuVSeparator { border-right:1px solid #DDD; }
+.GMMenuSection  { }
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+/*                                                       Calendar dialog                                                   */
+/*                                                            TGLib                                                        */
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+/* --- Main calendar classes --- */
+
+/* Added to main menu / dialog classes ...Menu... as ...Pick...
+   ...Main - Main absolute <div> tag; @ Do not change 
+   ...Shadow - Shadow <div> tag displayed under ...Main tag, on the same position and size. @ Set margin for the shadow shift, background, opacity and border
+   ...Outer - <div> tag inside the main tag, contains the whole calendar. @ Set background, border and padding
+   ...Body - <div> inside ...Outer, contains the whole calendar, including buttons; @ Set background, border, padding and margin  
+*/      
+.GMPickMain { position:absolute; left:0px; top:0px; z-index:258; }
+.GMPickShadow { position:absolute; background:#888; z-index:257; margin-left:3px; margin-top:3px; opacity:0.5; filter:alpha(opacity=50); }   
+.GMPickOuter { border:1px solid #426b8c; background:white; padding:1px; overflow:hidden; }
+.GMPickBody { cursor:default; padding:0px; }
+
+/* --- Other standard dialog parts' classes, NOT shown by default  --- */
+
+/* Added to main menu / dialog classes ...Menu... as ...Pick...
+   ...Header is shown outside the calendar dialog in place of the source tag. Used only if set Header attribute. @ Set margin to shift the header, border, padding and background
+   ...HeaderTop is added to ...Header when the calendar is shown above the header, ...HeaderBottom is added to ...Header when the calendar is shown below the header
+   ...Head is set to calendar top section. Used only if set Head attribute. @ Set border, margin, padding, background and text attributes
+   ...Close is close icon set <div> tag inside the ...PickHead. Used only if set Head attribute. Can be hidden by setting HeadClose:0; @ Set background, width and height
+   ...Foot is set to calendar bottom section. Used only if set Foot attribute. It does NOT show calendar buttons. @ Set border, margin, padding, background and text attributes
+*/
+.GMPickHeader { 
+   position:absolute; z-index:258; border:1px solid black; background:white; 
+   font:11.9px/13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; overflow:hidden; cursor:pointer; 
+   }
+.GMPickHeaderBottom { border-bottom:0px none; }
+.GMPickHeaderTop { border-top:0px none; }
+.GMPickHead,.GMPickFoot { background:#5c8397; font:12.9px/14px Verdana,Tahoma,"Trebuchet MS",sans-serif; color:white; cursor:default; }
+.GMPickHead { border-bottom:1px solid white; border-radius:5px; padding:1px 0px 2px 5px; }
+.GMPickFoot { border-top:1px solid white; padding:1px 0px 3px 5px; }  
+.GMPickClose { float:right; width:14px; cursor:pointer; display:none; background:url(ModernMenu.gif?v110) no-repeat right -352px; }
+
+/* --- The calendar header showing month and year --- */
+
+/* ...PickMY - the whole header tag showing the month and year; @ Set border, padding, margin, background and text attributes
+   ...PickMYDown - shown inside PickMY to display icon down in the first calendar table; @ Set background and padding-right
+   ...PickMYUp - shown inside PickMY to display icon up in the second calendar table; @ Set background and padding-right
+   ...PickMYRtl - added to ...PickMYUp and ...PickMYDown in RTL mode; @ Set padding-left
+   ...PickBL - previous month icon, ...PickBR - next month icon; @ Set background, width and height
+*/
+.GMPickMY { 
+   background:#6CA6D1; padding:3px 0px 4px 0px; 
+   font:12.9px/14px Verdana,Tahoma,"Trebuchet MS",sans-serif; border-radius:5px 5px 0px 0px; color:white; cursor:default; text-align:center; 
+   }   
+.GMPickMYDown { padding-right:13px; background:url(ModernMenu.gif?v110) no-repeat right -400px; cursor:pointer; }
+.GMPickMYUp { padding-right:13px; background:url(ModernMenu.gif?v110) no-repeat right -450px; cursor:pointer; }
+.GMPickMYRtl { padding-right:0px; padding-left:13px; }
+.GMPickBL,.GMPickBR { width:16px; height:14px; overflow:hidden; cursor:pointer; display:none; }
+.GMPickBL { float:left; background:url(ModernMenu.gif?v110) no-repeat left -499px; }
+.GMPickBR { float:right; background:url(ModernMenu.gif?v110) no-repeat right -549px; }
+
+/* --- The first calendar table with days --- */
+
+/* ...PickTableParent - <div> tag containing the whole table; @ Set border, padding, margin and background 
+   ...PickTable - <table> tag inside ...PickTableParent; @ Do not change
+   ...PickRow - <tr> tags with individual day numbers; @ Set background and optionally height
+   ...PickRowW - top <tr> tag with week day names; @ Set background and optionally height
+   ...PickCell - <td> tags with day numbers or week names; @ Set width and optionally background, padding and height
+   ...PickCellTouch - added to ...PickCell on tablet
+*/
+.GMPickTableParent { }
+.GMPickTable { table-layout:fixed; width:0px; }
+.GMPickRow { background:white; }
+.GMPickRowW { background:#C6DBE9 url(Backgrounds.gif?v110) repeat-x 0px -500px; }
+.GMPickRowW > td { border-bottom:1px solid #8CA9E1; }
+.GMPickCell { width:25px; }
+.GMPickCellTouch { width:32px; }
+
+/* Individual day cells in the first calendar table; only one class per tag is set (except added ...PickTouch). <div> tags inside <td> tag.
+   @ Set background, border, margin, padding, height and text attributes
+   @ All the classes should have the same height and should not be wider than ...PickCell to avoid blinking the calendar cells on mouse actions
+   ...PickWDN - week day name in top row
+   ...PickWN  - week number in left column 
+   ...PickWNE - not selectable week number in left column
+   ...PickWD  - work day number
+   ...PickSa  - Saturday number
+   ...PickSu  - Sunday number
+   ...PickOM  - Day number from another month
+   ...PickNow - Today number
+   ...PickSel - Selected day number
+   ...NE      - any not selectable day number
+   ...PickHover - Any not selected day number under mouse cursor
+   ...PickSelHover - Selected day number under mouse cursor
+   ...PickEmpty - top left button in <div> tag to select empty date; @ Set background and height
+   ...PickTouch - class added to every tag on tablet; @ Set line-height
+*/
+.GMPickWDN { margin:2px 3px 2px 3px; padding:1px; font:11px/13px Arial,Helvetica,sans-serif; color:#333333; text-align:center; cursor:default; }
+.GMPickHover,.GMPickSelHover,.GMPickWD,.GMPickSa,.GMPickSu,.GMPickSel,.GMPickNow,.GMPickWDNE,.GMPickSaNE,.GMPickSuNE,.GMPickSelNE,.GMPickNowNE,.GMPickOM,.GMPickOMNE {
+   margin:2px; padding:0px 1px 0px 1px; border:1px solid white; 
+   font:11.9px/13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; text-align:center; cursor:pointer;
+   }
+.GMPickWN,.GMPickWNE { 
+   background:url(Backgrounds.gif?v110) no-repeat -25px 0px; padding:3px 4px 3px 4px; border-right:1px solid #8CA9E1; 
+   font:11px/13px Arial,Helvetica,sans-serif; text-align:center; cursor:pointer;
+   }
+.GMPickWNE { cursor:default; }
+.GMPickWDNE,.GMPickSaNE,.GMPickSuNE,.GMPickSelNE,.GMPickNowNE { cursor:default; text-decoration:line-through; }
+.GMPickWD { background-color:white; }
+.GMPickSa { background-color:white; }
+.GMPickSu { background-color:white; }
+.GMPickSel { background-color:#fbea54; border:1px solid #dad1d1; }
+.GMPickSelNE { background-color:#fbea54; border:1px solid #dad1d1; }
+.GMPickNow { background-color:#c0f3ff; border:1px solid #dad1d1; }
+.GMPickNowNE { background-color:#c0f3ff; border:1px solid #dad1d1; }
+.GMPickOM { background-color:white; color:#aaaaaa; }
+.GMPickOMNE { color:#aaaaaa; cursor:default; text-decoration:line-through; }
+.GMPickEmpty { background:url(ModernMenu.gif?v110) no-repeat center -1050px; cursor:pointer; height:17px; }
+.GMPickHover { background-color:#ddd; border:1px solid #ddd; }
+.GMPickSelHover { background-color:#eeeeaa; border:1px solid #ddd; }
+.GMPickTouch { line-height:18px; }
+
+/* --- The second calendar table with months and years --- */
+
+/* ...Pick2TableParent - <div> tag containing the whole table; @ Set border, padding, margin and background 
+   ...Pick2Table - <table> tag inside ...Pick2TableParent; @ Do not change
+   ...Pick2Row - <tr> tags with the cells: 2 months, separator and 2 years; @ Set background and optionally height
+   ...Pick2CellM - <td> tags with month names; @ Set height, width and optionally background and padding
+   ...Pick2CellY - <td> tags with year numbers; @ Set height, width and optionally background and padding
+   ...Pick2CellSep - <td> tag, separator between months and years section; @ Set height, width and optionally background and padding
+   ...Pick2SepH - separator between the calendar header ...PickMY and calendar body ...Pick2TableParent; @ Set height to synchronize heights of both calendar dialogs
+   ...Touch - added to ...Pick2Cell... on tablet
+*/
+.GMPick2TableParent { }
+.GMPick2Table { table-layout:fixed; width:0px; margin-left:3px; margin-right:3px; }
+.GMPick2Row { }
+.GMPick2CellM { height:22px; width:60px; }
+.GMPick2CellMTouch { height:26px; width:75px; }
+.GMPick2CellY { height:22px; width:35px; }
+.GMPick2CellYTouch { height:26px; width:45px; }
+.GMPick2CellSep { height:22px; width:5px; }
+.GMPick2CellSepTouch { height:26px; width:5px; }
+.GMPick2SepH { width:1px; height:2px; overflow:hidden; }
+.GMPick2SepHTouch { height:7px; }
+
+/* Individual cells, <div> tag inside <td> tag
+   @ Set background, border, margin, padding, height and text attributes
+   @ All the classes should have the same height and should not be wider than ...Pick2Cell... to avoid blinking the calendar cells on mouse actions
+   ...Pick2M - month name; ...Pick2Y - year number; ...Sel - selected cell; ...Hover - cell under mouse cursor; ...SelHover - selected cell under mouse cursor
+   ...Pick2Touch - class added to every tag on tablet; @ Set line-height
+*/
+.GMPick2M,.GMPick2Y,.GMPick2MSel,.GMPick2YSel,.GMPick2MHover,.GMPick2YHover,.GMPick2MSelHover,.GMPick2YSelHover {
+   margin-left:1px; margin-right:1px; padding:3px 1px 2px 1px;
+   font:11.9px/13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; cursor:pointer; text-align:center; overflow:hidden;
+   }
+.GMPick2MSel,.GMPick2YSel { background:#c0f3ff; border:1px solid #dad1d1; margin-left:0px; margin-right:0px; }
+.GMPick2MHover,.GMPick2YHover { background:#DDD; border:1px solid white; margin-left:0px; margin-right:0px; }
+.GMPick2MSelHover,.GMPick2YSelHover { background:#80e0f0; border:1px solid white; margin-left:0px; margin-right:0px; }   
+.GMPick2Touch { line-height:18px; }
+
+/* Special cells, <div> tag inside <td> tag
+   ...Pick2Sep - separator between months and years; @ Set height, width, background, border, margin, padding
+   ...Pick2SepTouch - class added to ...Pick2Sep on tablet; @ Set height
+   ...Pick2BL - button (<div> tag) showing previous 5 years; @ Set background, width and height
+   ...Pick2BR - button (<div> tag) showing next 5 years; @ Set background, width and height
+*/
+.GMPick2Sep { width:1px; background:#777; overflow:hidden; margin-left:2px; margin-right:2px; height:22px; }
+.GMPick2SepTouch { height:26px; }
+.GMPick2BL,.GMPick2BR { width:35px; cursor:pointer; height:22px; }
+.GMPick2CellYTouch .GMPick2BL,.GMPick2CellYTouch .GMPick2BR { margin-left:5px; }
+.GMPick2BL { background:url(ModernMenu.gif?v110) no-repeat center -595px; }
+.GMPick2BR { background:url(ModernMenu.gif?v110) no-repeat center -645px; }
+
+/* --- The calendar footer with time --- */
+
+/* Shown when EditFormat contains time definition (H or h or m or s); it is not shown for Range cells
+   For custom calendar it is shown if set TimeFormat attribute; it is not shown if set Multi:1
+   ...PickTimeCell - the whole calendar footer (<div> tag) on the same level as ...PickTableParent; @ Set border, padding, margin, background and text-align
+   ...PickTime - set to <input> tag inside ...PickTimeCell; @ Set text attributes
+*/
+.GMPickTimeCell { padding:7px 5px 6px 0px; border-top:1px solid #adf; background:#f0f6ff; text-align:right; line-height:0px; }
+.GMPickTime { 
+   font:11.9px/13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; background:#f0f6ff; 
+   margin:0px; padding:0px; border:0px none; white-space:nowrap; text-align:right; outline:none; 
+   }
+
+/* --- The calendar footer with buttons --- */
+
+/* Contains buttons like OK, Today, Clear; shown for Range cells or when set CalendarButtons; For custom calendar is shown for Multi and for Buttons set.
+   ...PickFooter is the whole first calendar footer (<div> tag) on the same level as ...PickTableParent; @ Set border, padding, margin, background and text-align
+   ...Pick2Footer is the whole second calendar footer (<div> tag) on the same level as ...Pick2TableParent; @ Set border, padding, margin, background and text-align
+   ...PickButton is set to <button> tags; @ Set border, margin, padding, background, width, height and text attributes
+   ...PickButtonHover is added when the <button> tag is under mouse cursor; @ Set border, margin, padding, background, width, height and text attributes 
+*/
+.GMPickFooter,.GMPick2Footer { 
+   border-top:1px solid #8CA9E1; background:#f0f6ff; padding:3px 0px 3px 0px; cursor:default; text-align:center; 
+   }
+.GMPickButton {
+   background:#C8E5FF; border:1px solid #71A8D2; border-radius:5px; width:62px; margin:2px; padding-left:0px; padding-right:0px;
+   font:11.9px Arial,Helvetica,sans-serif; text-align:center; white-space:nowrap; overflow:hidden;  
+   }
+.GMPickButtonHover { background:#ffeeaa; border:1px solid #aaaadd; }
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+/*                                       TGLib special classes not used in TreeGrid                                        */
+/*                                                            TGLib                                                        */
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+/* --- Edit control (TGLib only) --- */
+
+/* ...EditParent is set to temporary parent div tag if the edit is shown on given position, not inside tag; @ Do not change
+   ...Edit is set to the TGLib Edit control tag (cc="Edit"); @ Set border, margin, padding, background and text attributes
+   ...EditInline is set instead if the TGLib Edit control tag has display:inline; @ Set side border, margin, padding, background and text attributes
+   ...EditMulti is added for control with Multi:1 as multiline edit in <textarea>; @ Set border, margin, padding, background and text attributes
+*/
+.GMEditParent { position:absolute; z-index:258; overflow:hidden; }
+.GMEdit,.GMEditInline {
+   padding:2px 4px 2px 4px; font:11.9px/13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif;
+   border:1px solid #CCC; background:#EEE; white-space:nowrap; overflow:hidden;
+   }
+.GMEditInline { display:inline-block; vertical-align:bottom; }
+.GMEditMulti { white-space:normal; }
+
+/* --- Enum control (TGLib only) --- */
+
+/* ...EnumControl is set to the TGLib Enum control tag (cc="Enum"); @ Set border, margin, padding, background and text attributes
+   ...EnumInline is set instead if the TGLib Enum control tag has display:inline; @ Set side border, margin, padding, background and text attributes
+   ...EnumHeader is used inside popup menu header ...MenuHeader tag and shows the Enum icon on left side; @ Set background, padding and text attributes and optionally border and margin
+*/
+.GMEnumControl,.GMEnumInline {
+   background:#EEE url(ModernMenu.gif?v110) no-repeat left -800px; overflow:hidden; font:11.9px/13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; cursor:pointer;
+   padding:2px 4px 2px 15px; border:1px solid #CCC;
+   }
+.GMEnumInline { display:inline-block; vertical-align:bottom; }
+.GMEnumHeader { background:white url(ModernMenu.gif?v110) no-repeat left -798px; font:11.9px/13px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; cursor:pointer; padding:2px 4px 2px 15px; }
+
+/* --- Mouse dragging (TGLib only) --- */
+
+/* ...MouseOrig is set to original tag being dragged by mouse, when copying the tag
+   ...DragObject is set to ghost tag being dragged by mouse, when copying the tag
+*/
+.GMMouseOrig { background:yellow!important; opacity:0.5; filter:alpha(opacity=50); }
+.GMMouseDragObject { position:absolute; z-index:260; background:#888; opacity:0.5; filter:alpha(opacity=50); }
+
+/* --- Focused control (TGLib only) --- */
+
+.GMFocus { border:1px solid blue; background-color:white; } 
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+/*                                                TGLib (Tip)                                                              */
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+
+/* Tip is shown below mouse cursor on mouse hover the cell; Used only if set <Cfg StandardTip='0'/>
+   ...Main - main tip <div> tag absolutely positioned; @ Do not change
+   ...Outer - outer tip <div> tag inside ...Main, has set maximal width to overflow long text; @ Set border, margin, padding, background
+   ...Body - inner tip <div> tag inside ...Outer; @ Set text attributes and optionally border, margin, padding and background
+   ...Shadow - <div> tag displayed under tip ...Main tag, on the same position and size; @ Set margin for the shadow shift, background, opacity and border
+*/
+.GMTipMain { position:absolute; left:0px; top:0px; z-index:262; visibility:hidden; }
+.GMTipOuter { background:#E4E5F0 url(Backgrounds.gif?v110) repeat-x 0px -250px; border:1px solid #AAA; border-radius:12px; padding:1px 8px 1px 8px; overflow:hidden; cursor:default; }
+.GMTipBody { font:11.9px/14px "Microsoft Sans Serif",Tahoma,"Trebuchet MS",sans-serif; white-space:nowrap; }
+.GMTipShadow { position:absolute; margin-left:3px; margin-top:3px; z-index:261; background:#888; border-radius:12px; opacity:0.3; filter:alpha(opacity=30); visibility:hidden; }
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+/*                                                       System settings                                                   */
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
+/* --------------- Debug print ----------------- */
+/* ! Note, here is no .GM style prefix
+   Controls the default debug window shown bottom the page, controlled by <bdo Debug> attribute
+   ...Tag - <div> tag containing the debug print; @ Set position attributes, background, border and padding
+   ...TagMax - used instead of ...Tag when maximized by clicking to Max button
+   ...Buttons - <div> tag placed next to ...Tag to show the debug control buttons; @ Set position attributes, background, border and padding
+   ...ButtonsMax - used instead of ...Buttons when maximized by clicking to Max button
+*/
+.GridDebugTag,.GridDebugTagMax { overflow:auto; overflow-y:scroll; border:1px solid black; background:#DDD; }
+.GridDebugTag,.GridDebugTagMax,.GridDebugButtons,.GridDebugButtonsMax {
+   position:fixed; z-index:256; left:5px; right:5px; bottom:5px; height:200px; padding:4px;
+   position:absolute!IE;
+   left:expression((5+(document.compatMode=="CSS1Compat"?document.documentElement.scrollLeft:document.body.scrollLeft))+"px")!IE;
+   width:expression((-10+(document.compatMode=="CSS1Compat"?document.documentElement.clientWidth-8:document.body.clientWidth))+"px")!IE;
+   top:expression((-205+(document.compatMode=="CSS1Compat"?document.documentElement.scrollTop+document.documentElement.clientHeight-8:document.body.scrollTop+document.body.clientHeight))+"px")!IE;
+   }
+.GridDebugTagMax,.GridDebugButtonsMax {
+   top:5px; height:auto; 
+   top:expression((5+(document.compatMode=="CSS1Compat"?document.documentElement.scrollTop:document.body.scrollTop))+"px")!IE;
+   height:expression((-10+(document.compatMode=="CSS1Compat"?document.documentElement.clientHeight-8:document.body.clientHeight))+"px")!IE;
+   }
+.GridDebugButtons,.GridDebugButtonsMax {
+   text-align:right; margin-right:25px; width:130px; left:auto;
+   left:expression((-155+(document.compatMode=="CSS1Compat"?document.documentElement.clientWidth-8:document.body.clientWidth))+"px")!IE;
+   }
+
+/* Individual parts of the debug print
+   ...Button - one debug button, <button> tag placed inside ...Buttons; @ Set width, height, background, border, padding, margin and text attributes
+   ...Title - <span> tag with grid or print identification; @ Set text attributes and background
+   ...Mark - <span> tag that highlights some information, e.g. actual values; @ Set text attributes and background
+   ...Stop (0), ...Error (1), ...Warning (2), ...List (3), ...Info (>3) - <div> or <span> tag containing the information according to the debug level number; @ Set text attributes and background
+*/
+.GridDebugButton { font-size:10px; width:40px; padding:0px; }
+.GridDebugTitle { font-size:10px; color:blue; font-style:normal;font-weight:normal; }
+.GridDebugMark { font-weight:bold; }
+.GridDebugStop { font-size:18px; font-weight:bold; color:red; }
+.GridDebugError { font-size:12px; color:red; }
+.GridDebugWarning { font-size:12px; color:#A60;}
+.GridDebugList { font-size:10px; color:#888;}
+.GridDebugInfo { font-size:12px; }
+
+/* ------------------- Other settings ------------------- */
+
+/* Temporary tag used for some calculations; @ Do not change; ! Note, here is no .GM style prefix */
+.GridTmpTag { position:absolute; left:5px; top:5px; visibility:hidden; } 
+
+/* Tag added to disable whole page, e.g. when showing modal dialog. ! Note, here is no .GM style prefix
+   Note, to disable only the grid is used .GMDisabled class instead (e.g. when showing message in grid).
+   @ Set background and opacity, optionally margin and padding
+*/
+.GridDisabled { position:absolute; z-index:256; background:white; opacity:0.5; filter:alpha(opacity=50); } 
+
+/* Tag where the grid is rendered and also where all the support absolute tags are rendered (e.g. cursors, dialogs or messages). ! Note, here is no .GM style prefix
+   @ Increase z-index if the grid or its menus or cursors are not shown as expected. But it is usually better to set <Cfg ZIndex/> instead.
+*/
+.GridMain { z-index:255; }
+
+/* Marks the style loaded; must be the last class in the file; @ Do not change */
+.GMLoaded { border:1px solid black!important; }

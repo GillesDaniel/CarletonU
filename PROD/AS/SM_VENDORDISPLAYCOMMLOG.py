@@ -172,3 +172,21 @@ else:
     x = service.yncuserinput()
     cases[x]()
 clientSession.getDataBean("SM_SENDRFQ").refreshTable()
+
+scriptConfig="""{
+    "autoscript": "SM_VENDORDISPLAYCOMMLOG",
+    "description": "SM: SEND  RFQ: Display Commlog for  selected vendor",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_VENDORDISPLAYCOMMLOG",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "SM: SEND  RFQ: Display Commlog for  selected vendor",
+            "actionName": "SM_VENDORDISPLAYCOMMLOG"
+        }
+    ]
+}"""

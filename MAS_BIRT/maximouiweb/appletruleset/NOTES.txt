@@ -1,0 +1,9 @@
+Using certificate hashes will cause problems.
+
+1. In IE, it will cause Maximo to invalidate the session, because the APPLET will make a call back to the server using the same url
+that it was invoked with, which is the "loadapp" url, and that invalidates the session.  This is a scenario where an
+arbitrary hash exists in the rules BEFORE your IP rule.
+
+2. In all browsers, using a hash, instead of an ip/host value, will give a LiveConnect permission issue.
+
+Both of these appear to be Java Plugin bugs

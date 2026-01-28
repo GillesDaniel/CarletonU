@@ -158,3 +158,12 @@ if ticketid !="":
 else:
     errorgroup = "cu_createsr"
     errorkey = "noinspectionmsg"
+
+scriptConfig="""{
+    "autoscript": "OSACTION.MXAPIINSPRESULT.CE_CREATESRREATE",
+    "description": "Create SR for Inspections Items that require action",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+}"""

@@ -1,0 +1,29 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+(function (tree) {
+
+tree.Alpha = function (val) {
+    this.value = val;
+};
+tree.Alpha.prototype = {
+    toCSS: function () {
+        return "alpha(opacity=" +
+               (this.value.toCSS ? this.value.toCSS() : this.value) + ")";
+    },
+    eval: function (env) {
+        if (this.value.eval) { this.value = this.value.eval(env) }
+        return this;
+    }
+};
+
+})(require('../tree'));

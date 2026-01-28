@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diff docid="Differences" version="1.0">
+<addKeylessNode path="/web-app">
+	<servlet-mapping>
+		<servlet-name>OSLCServlet</servlet-name>
+		<url-pattern>/oslc/*</url-pattern>
+	</servlet-mapping>
+</addKeylessNode>
+<addNode path="/web-app">
+	<servlet>
+		<display-name>OSLC Servlet for Web App</display-name>
+		<servlet-name>OSLCServlet</servlet-name>
+		<servlet-class>com.ibm.tivoli.maximo.oslc.provider.MaximoOslcProviderServlet</servlet-class>
+		<init-param>
+			<param-name>char_encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</servlet>
+</addNode>
+</diff>

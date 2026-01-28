@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+  <report name="budgetprint.rptdesign">
+    <attribute name="filename">budgetprint.rptdesign</attribute>
+    <attribute name="description">Budget details</attribute>
+    <attribute name="dploc">NONE</attribute>
+    <attribute name="dp">false</attribute>
+    <attribute name="qlloc">NONE</attribute>
+    <attribute name="ql">false</attribute>
+    <attribute name="padloc">NONE</attribute>
+    <attribute name="pad">false</attribute>
+    <attribute name="norequestpage">0</attribute>
+    <attribute name="detail">1</attribute>
+    <attribute name="recordlimit">50</attribute>
+    <attribute name="reportfolder">BUDGET</attribute>
+    <attribute name="scheduleonly">0</attribute>
+    <attribute name="toolbarlocation">NONE</attribute>
+    <attribute name="usewherewithparam">0</attribute>
+    <attribute name="displayOrder">0</attribute>
+    <attribute name="paramcolumns">0</attribute>
+    <resources>
+      <resource>
+        <reference>budget.properties</reference>
+        <filename>./budgetprint/budget.properties</filename>
+      </resource>
+    </resources>
+  </report>
+</reports>

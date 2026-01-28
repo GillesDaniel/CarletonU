@@ -1,0 +1,977 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+  <rule objectname="LABTRANS" attributename="LINECOST" type="ACTINTLABCOST" operation="+" relation="WORKORDER" condition="BUDMON61">
+    <transactiondates>
+      <transactiondate sequence="1">ENTERDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="LABTRANS" attributename="REGULARHRS" type="ACTINTLABHRS" operation="+" relation="WORKORDER" condition="BUDMON61">
+    <transactiondates>
+      <transactiondate sequence="1">ENTERDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="LABTRANS" attributename="LINECOST" type="ACTOUTLABCOST" operation="+" relation="WORKORDER" condition="BUDMON63">
+    <transactiondates>
+      <transactiondate sequence="1">ENTERDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="LABTRANS" attributename="REGULARHRS" type="ACTOUTLABHRS" operation="+" relation="WORKORDER" condition="BUDMON63">
+    <transactiondates>
+      <transactiondate sequence="1">ENTERDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="MATUSETRANS" attributename="LINECOST" type="ACTDIRMATCOST" operation="+" relation="WORKORDER" condition="BUDMON81">
+    <transactiondates>
+      <transactiondate sequence="1">ACTUALDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="MATUSETRANS" attributename="LINECOST" type="ACTSTOMATCOST" operation="+" relation="WORKORDER" condition="BUDMON79">
+    <transactiondates>
+      <transactiondate sequence="1">ACTUALDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="SERVRECTRANS" attributename="LINECOST" type="ACTSERVCOST" operation="+" relation="WORKORDER" condition="BUDMON57">
+    <transactiondates>
+      <transactiondate sequence="1">TRANSDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="TOOLTRANS" attributename="LINECOST" type="ACTTOOLCOST" operation="+" relation="WORKORDER" condition="BUDMON59">
+    <transactiondates>
+      <transactiondate sequence="1">ENTERDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="APPDIRMATCOST" operation="+" relation="PO" condition="BUDMON88">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="APPDIRMATCOST" operation="-" relation="PO" condition="BUDMON86">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="ESTDIRMATCOST" operation="+" relation="PO" condition="BUDMON87">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="ESTDIRMATCOST" operation="-" relation="PO" condition="BUDMON89">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="APPSERVCOST" operation="+" relation="PO" condition="BUDMON84">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="APPSERVCOST" operation="-" relation="PO" condition="BUDMON82">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="ESTSERVCOST" operation="+" relation="PO" condition="BUDMON83">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="POLINE" attributename="LINECOST1" type="ESTSERVCOST" operation="-" relation="PO" condition="BUDMON85">
+    <transactiondates>
+      <transactiondate sequence="2">PO.ORDERDATE</transactiondate>
+      <transactiondate sequence="1">PO.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTDIRMATCOST" operation="+" relation="PR" condition="BUDMON70">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTDIRMATCOST" operation="-" relation="PR" condition="BUDMON71">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTSERVCOST" operation="+" relation="PR" condition="BUDMON66">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTSERVCOST" operation="-" relation="PR" condition="BUDMON67">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="ESTINTLABCOST" operation="+" relation="WORKORDER" condition="BUDMON96">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="ESTINTLABCOST" operation="-" relation="WORKORDER" condition="BUDMON94">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="ESTINTLABHRS" operation="+" relation="WORKORDER" condition="BUDMON96">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="ESTINTLABHRS" operation="-" relation="WORKORDER" condition="BUDMON94">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="ESTOUTLABCOST" operation="+" relation="WORKORDER" condition="BUDMON92">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="ESTOUTLABCOST" operation="-" relation="WORKORDER" condition="BUDMON90">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="ESTOUTLABHRS" operation="+" relation="WORKORDER" condition="BUDMON92">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="ESTOUTLABHRS" operation="-" relation="WORKORDER" condition="BUDMON90">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="APPINTLABCOST" operation="+" relation="WORKORDER" condition="BUDMON97">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="APPINTLABCOST" operation="-" relation="WORKORDER" condition="BUDMON95">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="APPINTLABHRS" operation="+" relation="WORKORDER" condition="BUDMON97">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="APPINTLABHRS" operation="-" relation="WORKORDER" condition="BUDMON95">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="APPOUTLABCOST" operation="+" relation="WORKORDER" condition="BUDMON93">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="LINECOST" type="APPOUTLABCOST" operation="-" relation="WORKORDER" condition="BUDMON91">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="APPOUTLABHRS" operation="+" relation="WORKORDER" condition="BUDMON93">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPLABOR" attributename="TOTALLABORHRS" type="APPOUTLABHRS" operation="-" relation="WORKORDER" condition="BUDMON91">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPMATERIAL" attributename="LINECOST" type="ESTDIRMATCOST" operation="+" relation="WORKORDER" condition="BUDMON54">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPMATERIAL" attributename="LINECOST" type="ESTSTOMATCOST" operation="+" relation="WORKORDER" condition="BUDMON52">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPMATERIAL" attributename="LINECOST" type="ESTSTOMATCOST" operation="-" relation="WORKORDER" condition="BUDMON51">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPMATERIAL" attributename="LINECOST" type="APPSTOMATCOST" operation="+" relation="WORKORDER" condition="BUDMON50">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPMATERIAL" attributename="LINECOST" type="APPSTOMATCOST" operation="-" relation="WORKORDER" condition="BUDMON51">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPSERVICE" attributename="LINECOST" type="ESTSERVCOST" operation="+" relation="WORKORDER" condition="BUDMON73">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPTOOL" attributename="LINECOST" type="ESTTOOLCOST" operation="+" relation="WORKORDER" condition="BUDMON76">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPTOOL" attributename="LINECOST" type="ESTTOOLCOST" operation="-" relation="WORKORDER" condition="BUDMON75">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPTOOL" attributename="LINECOST" type="APPTOOLCOST" operation="+" relation="WORKORDER" condition="BUDMON77">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPTOOL" attributename="LINECOST" type="APPTOOLCOST" operation="-" relation="WORKORDER" condition="BUDMON75">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPMATERIAL" attributename="LINECOST" type="ESTDIRMATCOST" operation="-" relation="WORKORDER" condition="BUDMON54.2">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="MATRECTRANS" attributename="LINECOST" type="ACTDIRMATCOST" operation="+" relation="WORKORDER" condition="BUDMON98">
+    <transactiondates>
+      <transactiondate sequence="1">ACTUALDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="POLINE.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="WPSERVICE" attributename="LINECOST" type="ESTSERVCOST" operation="-" relation="WORKORDER" condition="BUDMON73.2">
+    <transactiondates>
+      <transactiondate sequence="1">WORKORDER.REPORTDATE</transactiondate>
+      <transactiondate sequence="3">WORKORDER.SCHEDSTART</transactiondate>
+      <transactiondate sequence="2">WORKORDER.TARGSTARTDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="WORKORDER.ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="WORKORDER.GLACCOUNT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="WORKORDER.LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="WORKORDER.GLACCOUNT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTDIRMATCOST" operation="-" relation="PR" condition="BUDMON102">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTSERVCOST" operation="-" relation="PR" condition="BUDMON99">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTDIRMATCOST" operation="+" relation="PR" condition="BUDMON101">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+  <rule objectname="PRLINE" attributename="LINECOST1" type="ESTSERVCOST" operation="+" relation="PR" condition="BUDMON100">
+    <transactiondates>
+      <transactiondate sequence="2">PR.ISSUEDATE</transactiondate>
+      <transactiondate sequence="1">PR.REQUIREDDATE</transactiondate>
+    </transactiondates>
+    <associations>
+      <association axis="ASSET" andcondition="" attribute="ASSETNUM" dataaccessor="" />
+      <association axis="CHARTOFACCOUNTS" andcondition="" attribute="GLDEBITACCT" dataaccessor="" />
+      <association axis="LOCATIONS" andcondition="" attribute="LOCATION" dataaccessor="" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL01" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment1DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL02" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment2DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL03" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment3DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL04" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment4DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL05" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment5DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL06" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment6DataAccessor" />
+      <association axis="GLCOMPONENTS" andcondition="BUDGL07" attribute="GLDEBITACCT" dataaccessor="psdi.app.po.QualifiedSegmentDataAccessor$Segment7DataAccessor" />
+    </associations>
+  </rule>
+</rules>
+

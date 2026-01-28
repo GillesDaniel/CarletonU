@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation beanclass="psdi.webclient.beans.mobdataman.MobileDataManagerBean" id="mobdataman" mboname="MAXGROUP" orderby="groupname" resultstableid="results_showlist" version="6.0.0">
+    <page id="mainrec">
+        <include id="pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="List" type="list" width="15%">
+                    <menubar event="search" id="actiontoolbar" sourcemethod="getAppSearchOptions"/>
+                    <table datasrc="results_showlist" id="results_showlist" inputmode="readonly" label="Groups" mboname="MAXGROUP" orderby="groupname">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol filterable="false" id="results_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                            <tablecol dataattribute="GROUPNAME" filterable="false" hidden="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+                            <tablecol dataattribute="groupname" id="results_showlist_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+                            <tablecol dataattribute="description" id="results_showlist_tablebody_3"/>
+                            <tablecol filterable="false" hidden="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="main" label="Mobile Data" type="insert">
+                    <section border="true" id="ds_grid1">
+                        <multiparttextbox dataattribute="groupname" descdataattribute="description" id="ds_grid1_1"/>
+                    </section>
+                    <table beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="ds_app_table_mob" label="Applications" orderby="description" relationship="MAXGRPMOB">
+                        <tablebody displayrowsperpage="10" filterable="true" id="ds_app_table_tablebody_mob">
+                            <tablecol dataattribute="description" id="ds_tablebody_1_mob" inputmode="readonly"/>
+                            <tablecol dataattribute="formfactor" id="ds_table_tablebody_3" inputmode="readonly" sortable="true"/>
+                        </tablebody>
+                    </table>
+                    <section border="false" id="blankline">
+                        <blankline id="blkline1"/>
+                    </section>
+                    <table beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="datatypes_mob" label="Types of Data" orderby="datatype desc" parentdatasrc="ds_app_table_mob" relationship="MAXDATAGRP">
+                        <tablebody displayrowsperpage="10" filterable="true" id="datatypes_tablebody_mob">
+                            <tablecol dataattribute="datagroup" id="datatypes_1_mob" inputmode="readonly"/>
+                            <tablecol dataattribute="MOBMAXLABEL.VALUE" id="datatypes_2_mob" inputmode="readonly" label="Description"/>
+                            <tablecol dataattribute="objectname" id="datatypes_3" inputmode="readonly" sortable="true"/>
+                            <tablecol dataattribute="datatype" id="datatypes_4" inputmode="readonly" sortable="true"/>
+                        </tablebody>
+                    </table>
+                    <section border="false" id="blankline11">
+                        <blankline id="blkline12"/>
+                    </section>
+                    <tabgroup id="mq">
+                        <tab default="true" id="mobqrys" label="Queries">
+                            <table beanclass="psdi.webclient.beans.securgroup.mobile.MobileAppBean" id="mob_query" label="Queries" parentdatasrc="datatypes_mob" relationship="MAXMOBQRY">
+                                <tablebody customizable="true" displayrowsperpage="13" filterable="true" id="mob_query_tab">
+                                    <tablecol filterable="false" hidden="false" id="mob_query_tab_tablebody" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                                    <tablecol dataattribute="queryname" id="mob_query_tab1" linkedcontrolid="mob_query_details1" sortable="true"/>
+                                    <tablecol dataattribute="description" id="mob_query_tab2" linkedcontrolid="mob_query_details2" sortable="true"/>
+                                    <tablecol dataattribute="download" id="mob_query_tab4" linkedcontrolid="mob_query_details3" sortable="true"/>
+                                    <tablecol filterable="false" hidden="false" id="mob_query_tab_garbage" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                                </tablebody>
+                                <tabledetails id="mob_query_details">
+                                    <section id="mob_query_details_sec1" label="Details">
+                                        <sectionrow id="mob_query_details_r1">
+                                            <sectioncol id="mob_query_details_c1">
+                                                <section id="mob_query_details_row1_col1_sec1">
+                                                    <textbox dataattribute="queryname" id="mob_query_details1"/>
+                                                    <textbox dataattribute="description" id="mob_query_details2"/>
+                                                </section>
+                                            </sectioncol>
+                                            <sectioncol id="mob_query_details_c2">
+                                                <section id="main_refp_table_1_sec2_row1_col1_sec1">
+                                                    <multilinetextbox columns="30" dataattribute="clause" id="mob_query_details4" menutype="expbuilder" rows="3"/>
+                                                    <checkbox dataattribute="download" id="mob_query_details3"/>
+                                                </section>
+                                            </sectioncol>
+                                        </sectionrow>
+                                    </section>
+                                </tabledetails>
+                                <buttongroup id="mob_query_btngroup">
+                                    <pushbutton default="true" id="mob_query_btngroup_1" label="New Row" mxevent="addrow"/>
+                                    <pushbutton id="mob_query_btngroup_2" label="Add from Existing Queries" mxevent="addexistquery"/>
+                                    <pushbutton id="mob_query_btngroup_4" label="Count Records" mxevent="COUNTRECORDS"/>
+                                </buttongroup>
+                            </table>
+                        </tab>
+                        <tab id="mobprewhere" label="Pre-defined Where Clause" parentdatasrc="datatypes_mob" relationship="MAXMOBQRY">
+                            <section id="mobprewhere_tabledtails_1">
+                                <multilinetextbox columns="40" dataattribute="whereclause" id="mobprewhere_tabledtails_1_1" inputmode="readonly" rows="5"/>
+                            </section>
+                        </tab>
+                    </tabgroup>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include id="pageFooter"/>
+    </page>
+    <dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+        <section id="qbe_grid2_1_1_grid3">
+            <sectionrow id="qbe_grid2_1_1_grid3_r1">
+                <sectioncol id="qbe_grid2_1_1_grid3_r1_c1">
+                    <section id="qbe_grid2_1_1_grid3_r1_c1_1">
+                        <multiparttextbox dataattribute="groupname" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1a" inputmode="query"/>
+                        <textbox applink="user" dataattribute="GROUPUSER.USERID" id="qbe_grid2_1_1_grid3_1" inputmode="query" lookup="maxuser" menutype="normal"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_1_1_grid3_r1_c2">
+                    <section id="qbe_grid2_1_1_grid3_r1_c2_1">
+                        <textbox dataattribute="INDEPENDENT" id="qbe_grid2_1_1_grid3_14" inputmode="query"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_grid2_1_1_grid3a" label="Access Information">
+            <sectionrow id="qbe_grid2_1_1_grid3_r2">
+                <sectioncol id="qbe_grid2_1_1_grid3_r2_c1">
+                    <section id="qbe_grid2_1_1_grid3_r2_c1_sec1">
+                        <textbox dataattribute="SITEAUTH.SITEID" id="qbe_grid2_1_1_grid3_2" inputmode="query" lookup="site"/>
+                        <textbox dataattribute="APPLICATIONAUTH.APP" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="maxapps"/>
+                        <textbox dataattribute="APPLICATIONAUTH.OPTIONNAME" id="qbe_grid2_1_1_grid3_4" inputmode="query"/>
+                        <textbox applink="storeroom,ipc" dataattribute="LOCAUTH.LOCATION" id="qbe_grid2_1_1_grid3_5" inputmode="query" lookup="storeroom" menutype="normal"/>
+                        <textbox applink="labor" dataattribute="LABORAUTH.LABORCODE" id="qbe_grid2_1_1_grid3_13" inputmode="query" lookup="labor" menutype="normal"/>
+                        <textbox dataattribute="GLAUTH.GLACCOUNTFIELD" id="qbe_grid2_1_1_grid3_25" inputmode="query"/>
+                        <textbox dataattribute="GROUPOBJRESTRICT.OBJECTNAME" id="qbe_grid2_1_1_grid3_12" inputmode="query"/>
+                        <textbox dataattribute="SCTEMPLATEID" id="qbe_grid2_1_1_grid3_23" inputmode="query" lookup="sctemplate"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_1_1_grid3_r2_c2">
+                    <section id="qbe_grid2_1_1_grid3_r2_c2_sec1">
+                        <textbox dataattribute="AUTHALLSITES" id="qbe_grid2_1_1_grid3_15" inputmode="query"/>
+                        <textbox dataattribute="AUTHALLSTOREROOMS" id="qbe_grid2_1_1_grid3_16" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORALL" id="qbe_grid2_1_1_grid3_18" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORSELF" id="qbe_grid2_1_1_grid3_19" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORCREW" id="qbe_grid2_1_1_grid3_20" inputmode="query"/>
+                        <textbox dataattribute="AUTHLABORSUPER" id="qbe_grid2_1_1_grid3_21" inputmode="query"/>
+                        <textbox dataattribute="AUTHPERSONGROUP" id="qbe_grid2_1_1_grid3_22" inputmode="query"/>
+                        <textbox dataattribute="AUTHALLGLS" id="qbe_grid2_1_1_grid3_17" inputmode="query"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_grid2_1_1_grid3d" label="Limits">
+            <sectionrow id="qbe_grid2_1_1_grid3d_r1">
+                <sectioncol id="qbe_grid2_1_1_grid3d_r1_c1">
+                    <section id="qbe_grid2_1_1_grid3d_r1_c1_s1">
+                        <textbox applink="multisite" dataattribute="LIMITTOLERANCE.ORGID" id="qbe_grid2_1_1_grid3_24" inputmode="query" lookup="org" menutype="normal"/>
+                        <textbox dataattribute="LIMITTOLERANCE.PRLIMIT" id="qbe_grid2_1_1_grid3_7" inputmode="query"/>
+                        <textbox dataattribute="LIMITTOLERANCE.POLIMIT" id="qbe_grid2_1_1_grid3_6" inputmode="query"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_1_1_grid3d_r1_c2">
+                    <section id="qbe_grid2_1_1_grid3d_r1_c2_s1">
+                        <textbox dataattribute="LIMITTOLERANCE.MRLIMIT" id="qbe_grid2_1_1_grid3_8" inputmode="query"/>
+                        <textbox dataattribute="LIMITTOLERANCE.INVOICELIMIT" id="qbe_grid2_1_1_grid3_9" inputmode="query"/>
+                        <textbox dataattribute="LIMITTOLERANCE.CONTRACTLIMIT" id="qbe_grid2_1_1_grid3_10" inputmode="query"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="qbe_grid5_1_1_grid6">
+            <pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_2" label="Clear" mxevent="qbeclear"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="MAXGROUP">
+        <table id="bookmarks_table" inputmode="readonly" label="Groups" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+                <tablecol dataattribute="groupname" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
+                <tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
+                <tablecol filterable="false" hidden="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmarks_2">
+            <pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.securgroup.mobile.MobileQueriesBean" id="addexisting" label="Add From Existing Queries" mboname="QUERY">
+        <table id="addexisting_table" selectmode="multiple" width="500">
+            <tablebody displayrowsperpage="20" filterable="true" id="addexisting_table_tablebody">
+                <tablecol filterable="false" hidden="false" id="selectgroups_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+                <tablecol filterable="false" hidden="false" id="addexisting_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol dataattribute="clausename" id="addexisting_tablebody_2" inputmode="readonly" mxevent="selectrecord"/>
+                <tablecol dataattribute="description" id="addexisting_table_tablebody_3" inputmode="readonly"/>
+            </tablebody>
+            <tabledetails id="addexisting_tabledtails">
+                <section id="addexisting_tabledtails_1">
+                    <multilinetextbox columns="40" dataattribute="clause" id="addexisting_tabledtails_1_1" inputmode="readonly" rows="5"/>
+                </section>
+            </tabledetails>
+        </table>
+        <buttongroup id="addexisting_2">
+            <pushbutton default="true" id="addexisting_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="addexisting_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="supmobdata" label="Supporting Data" mboname="MAXAPPS">
+        <table id="supmobdata_table_mob" label="Applications" orderby="description" parentmbo="supmobdata" relationship="MOBILEAPPS">
+            <tablebody displayrowsperpage="8" filterable="true" id="supmobdata_table_tablebody_mob">
+                <tablecol dataattribute="description" id="supmobdata_tablebody_1_mob" inputmode="readonly"/>
+                <tablecol dataattribute="formfactor" id="supmobdata_table_tablebody_3" inputmode="readonly" sortable="true"/>
+            </tablebody>
+        </table>
+        <section border="false" id="blanklinesupmobdata_sec1">
+            <blankline id="blanklinesupmobdata1"/>
+        </section>
+        <table id="supmobdata_table_mob_datagroups" label="Types of Data" orderby="datatype desc" parentdatasrc="supmobdata_table_mob" relationship="MAXDATAGRP">
+            <tablebody displayrowsperpage="8" filterable="true" id="supmobdata_table_mob_datagroups_tablebody_mob">
+                <tablecol dataattribute="datagroup" id="supmobdata_table_mob_datagroups_1" inputmode="readonly"/>
+                <tablecol dataattribute="MOBMAXLABEL.VALUE" id="supmobdata_table_mob_datagroups_2" inputmode="readonly" label="Description"/>
+                <tablecol dataattribute="objectname" id="supmobdata_table_mob_datagroups_3" inputmode="readonly" sortable="true"/>
+                <tablecol dataattribute="haschildren" id="supmobdata_table_mob_datagroups_5" inputmode="readonly" sortable="false">
+                    <checkbox id="supmobdata_table_mob_datagroups_5_1" inputmode="readonly"/>
+                </tablecol>
+            </tablebody>
+        </table>
+        <section border="false" id="blanklinesupmobdata_sec2">
+            <blankline id="blanklinesupmobdata2"/>
+        </section>
+        <table id="supmobdata_table_mob_support" label="Supporting Data" orderby="datagroupname" parentdatasrc="supmobdata_table_mob_datagroups" relationship="MAXDATASUP">
+            <tablebody displayrowsperpage="8" filterable="true" id="supmobdata_table_mob_support_tablebody_mob">
+                <tablecol dataattribute="datagroupname" id="supmobdata_table_mob_support_1" inputmode="readonly"/>
+                <tablecol dataattribute="MOBMAXLABEL.VALUE" id="supmobdata_table_mob_support_2" inputmode="readonly" label="Description"/>
+                <tablecol dataattribute="referencename" id="supmobdata_table_mob_support_3" inputmode="readonly" label="Object Name" sortable="true"/>
+                <tablecol dataattribute="download" id="supmobdata_table_mob_support_5" sortable="false">
+                    <checkbox id="assocproperty_propertytable_tablebody_5_1"/>
+                </tablecol>
+            </tablebody>
+        </table>
+        <buttongroup id="asset_2" show="false">
+            <pushbutton clickmessage="Supporting Data changes have been saved." default="true" id="asset_2_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="asset_2_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="mobwooptio" label="Work Manager Options" mboname="MOBILEWOOPTION">
+        <tabgroup id="tbgrp_mobwooption">
+            <tab default="true" id="tb_mobwooption_1" label="General">
+                <section id="mobwooptio_sec_1" label="Attached Documents:">
+                    <sectionrow id="mobwooptio_sec_1_1">
+                        <sectioncol id="mobwooptio_sec_1_1_1">
+                            <section id="mobwooptio_sec_1_1_1_1">
+                                <textbox dataattribute="DOCEXTRACTFOLDER" id="mobwooptio_sec_1_1_1_1_1"/>
+                            </section>
+                            <section id="mobwooptio_sec_1_1_1_2">
+                                <helpgrid id="mobwooptio_sec_1_1_1_2_1" innerhtml="NOTE: A folder name cannot contain any of the following characters: &lt;BR&gt; \ : * ? &quot; &lt; &gt; |"/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                    <sectionrow id="mobwooptio_sec_1_2">
+                        <sectioncol id="mobwooptio_sec_1_2_1">
+                            <section id="mobwooptio_sec_1_2_1_1">
+                                <textbox dataattribute="MAXDOWNLOADKB" id="mobwooptio_sec_1_2_1_1_1"/>
+                                <textbox dataattribute="ATTACHEXTENSIONS" id="mobwooptio_sec_1_2_1_1_2"/>
+                            </section>
+                            <section id="mobwooptio_sec_1_2_1_2">
+                                <helpgrid id="mobwooptio_sec_1_2_1_2_1" innerhtml="A null value will allow any file type.  Separate file extensions by commas, such as &quot;doc,pdf,gif&quot;."/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+                <section id="mobwooptio_sec_2" label="Restrict work history for assets and locations by where clause:">
+                    <sectionrow id="mobwooptio_sec_2_1">
+                        <sectioncol id="mobwooptio_sec_2_1_1">
+                            <section id="mobwooptio_sec_2_1_1_1">
+                                <multilinetextbox columns="24" dataattribute="ASSETWHERECLAUSE" id="mobwooptio_sec_2_1_1_1_1" rows="3"/>
+                                <multilinetextbox columns="24" dataattribute="LOCATIONWHERECLAUSE" id="mobwooptio_sec_2_1_1_1_2" rows="3"/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+                <section id="mobwooptio_sec_3" label="Start/Stop Timer:">
+                    <sectionrow id="mobwooptio_sec_3_1">
+                        <sectioncol id="mobwooptio_sec_3_1_1">
+                            <section id="mobwooptio_sec_3_1_1_1">
+                                <checkbox align="right" dataattribute="MULTILABORTIMERS" id="mobwooptio_sec_3_1_1_1_1"/>
+                            </section>
+                            <section id="mobwooptio_sec_3_1_1_2">
+                                <helpgrid id="mobwooptio_sec_3_1_1_2_1" innerhtml="When selected, multiple timers can be running at one time for multiple work orders (only one per work order)."/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+                <buttongroup id="mobwooptio_buttons">
+                    <pushbutton clickmessage="Mobile WO Options have been saved." default="true" id="mobwooptio_buttons__1" label="OK" mxevent="dialogok"/>
+                    <pushbutton id="mobwooptio_buttons__2" label="Cancel" mxevent="dialogcancel"/>
+                </buttongroup>
+            </tab>
+            <tab beanclass="psdi.webclient.beans.securgroup.mobile.MobileRealStatusChangeBean" id="tb_mobwooption_2" label="Status Changes" mboname="SYNONYMDOMAIN">
+                <table datasrc="tb_mobwooption_2" id="tb_mobwooption_2_tbl1" inputmode="readonly" label="Classes" orderby="value">
+                    <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="tb_mobwooption_2_tbl1_tablebody">
+                        <tablecol dataattribute="value" filterable="true" hidden="false" id="tb_mobwooption_2_tbl1_tablebody_1" sortable="true"/>
+                        <tablecol dataattribute="description" id="tb_mobwooption_2_tbl1_tablebody_2"/>
+                    </tablebody>
+                </table>
+                <table id="tb_mobwooption_2_tbl2" label="Statuses for {0}" orderby="internalvalue" parentdatasrc="tb_mobwooption_2" relationship="MOBREALSTATUSCFG">
+                    <sectionheader id="tb_mobwooption_2_tbl2_sectionheader">
+                        <paramvalues id="tb_mobwooption_2_tbl2_params" property="label">
+                            <paramvalue dataattribute="value" datasrc="tb_mobwooption_2" id="tb_mobwooption_2_tbl2_1_sec_param_1" position="0"/>
+                        </paramvalues>
+                    </sectionheader>
+                    <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="tb_mobwooption_2_tbl2_tablebody">
+                        <tablecol filterable="false" id="tb_mobwooption_2_tbl2_tablebody_0" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                        <tablecol dataattribute="displayvalue" filterable="false" id="tb_mobwooption_2_tbl2_tablebody_1" label="Status" lookup="alndomain" sortable="true"/>
+                        <tablecol dataattribute="synonymdomain.description" filterable="false" id="tb_mobwooption_2_tbl2_tablebody_2" inputmode="readonly" label="Description" sortable="true"/>
+                        <tablecol filterable="false" id="tb_mobwooption_2_tbl2_tablebody_3" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+                    </tablebody>
+                    <tabledetails id="tb_mobwooption_2_tbl2_details">
+                        <section id="tb_mobwooption_2_tbl2_details_s1" label="Details">
+                            <sectionrow id="tb_mobwooption_2_tbl2_details_s1_r1">
+                                <sectioncol id="tb_mobwooption_2_tbl2_details_s1_r1_c1">
+                                    <multiparttextbox dataattribute="displayvalue" descdataattribute="synonymdomain.description" descinputmode="readonly" id="new_multiparttextbox_1" longdescreadonly="true" lookup="alndomain"/>
+                                </sectioncol>
+                            </sectionrow>
+                        </section>
+                    </tabledetails>
+                    <buttongroup id="tb_mobwooption_2_tbl2_btgrp1">
+                        <pushbutton default="true" id="tb_mobwooption_2_tbl2_btgrp1_1" label="New Row" mxevent="addrow"/>
+                    </buttongroup>
+                </table>
+                <buttongroup id="tb_mobwooption_2_tbl2_btgrp2">
+                    <pushbutton default="true" id="tb_mobwooption_2_tbl2_btgrp2_1" label="Ok" mxevent="dialogok"/>
+                    <pushbutton default="true" id="tb_mobwooption_2_tbl2_btgrp2_2" label="Cancel" mxevent="dialogcancel"/>
+                </buttongroup>
+            </tab>
+        </tabgroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.mobdataman.AnalyzeMobileDataBean" id="anmobdata" label="Analyze Mobile Data" mboname="ANALYZEMOBDATA">
+        <section id="anmobwodat_sec1" label="Analyze Mobile Data" titlealign="center">
+            <sectionrow id="anmobwodat_sec1_row1">
+                <sectioncol id="anmobwodat_sec1_row1_col1">
+                    <combobox dataattribute="app" id="anmobwodat_sec_1_0"/>
+                    <statictext align="right" id="anmobwodat_sec_1_1" label="Enter the User ID of the user you want to analyze the refresh data for:"/>
+                    <textbox dataattribute="userid" id="anmobwodat_sec1_2" lookup="maxuser"/>
+                    <checkbox dataattribute="async" id="anmobwodat_sec1_3"/>
+                    <textbox dataattribute="toemailaddress" id="anmobwodat_sec1_4"/>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="anmobwodat_buttons">
+            <pushbutton clickmessage="Work list refresh initiated." default="true" id="anmobwodat_buttons__1" label="Work List Refresh" mxevent="WORKREFRESH"/>
+            <pushbutton clickmessage="Full refresh initiated." default="true" id="anmobwodat_buttons__2" label="Full Refresh" mxevent="FULLREFRESH"/>
+            <pushbutton id="anmobwodat_buttons__3" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.mobdataman.AnalyzeMobileDataResultBean" id="workanalysisresults" label="Analysis Results for Work List Refresh">
+        <section id="workanalysisresults_grid1_1_1_grid21">
+            <textbox dataattribute="app" id="workanalysisresults_grid1_1_1_grid2_11" inputmode="readonly"/>
+            <textbox dataattribute="userid" id="workanalysisresults_grid1_1_1_grid2_21" inputmode="readonly"/>
+        </section>
+        <table id="workanalysisresults_groups" label="Data Groups" relationship="MOBDATAANALYSIS" width="350">
+            <tablebody displayrowsperpage="30" filterable="false" id="workanalysisresults_groups_tablebody_mob">
+                <tablecol dataattribute="datagroup" id="workanalysisresults_groups_1" inputmode="readonly"/>
+                <tablecol dataattribute="count" id="workanalysisresults_groups_2" inputmode="readonly"/>
+            </tablebody>
+        </table>
+        <section id="workanalysisresults_grid1_1_1_grid22">
+            <textbox dataattribute="totalcount" id="workanalysisresults_grid1_1_1_grid22_11" inputmode="readonly"/>
+            <textbox dataattribute="processtime" id="workanalysisresults_grid1_1_1_grid22_21" inputmode="readonly"/>
+        </section>
+        <buttongroup id="workanalysisresults_2">
+            <pushbutton default="true" id="workanalysisresults_2_1" label="OK" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.mobdataman.AnalyzeMobileDataResultBean" id="fullanalysisresults" label="Analysis Results for Full Refresh">
+        <section id="fullanalysisresults_grid1_1_1_grid21">
+            <textbox dataattribute="app" id="fullanalysisresults_grid1_1_1_grid2_11" inputmode="readonly"/>
+            <textbox dataattribute="userid" id="fullanalysisresults_grid1_1_1_grid2_21" inputmode="readonly"/>
+        </section>
+        <table id="fullanalysisresults_groups" label="Data Groups" relationship="MOBDATAANALYSIS" width="350">
+            <tablebody displayrowsperpage="30" filterable="false" id="fullanalysisresults_groups_tablebody_mob">
+                <tablecol dataattribute="datagroup" id="fullanalysisresults_groups_1" inputmode="readonly" sortable="true"/>
+                <tablecol dataattribute="count" id="fullanalysisresults_groups_2" inputmode="readonly" sortable="true"/>
+            </tablebody>
+        </table>
+        <section id="fullanalysisresults_grid1_1_1_grid22">
+            <textbox dataattribute="totalcount" id="fullanalysisresults_grid1_1_1_grid22_11" inputmode="readonly"/>
+            <textbox dataattribute="processtime" id="fullanalysisresults_grid1_1_1_grid22_21" inputmode="readonly"/>
+        </section>
+        <buttongroup id="fullanalysisresults_2">
+            <pushbutton default="true" id="fullanalysisresults_2_1" label="OK" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.beans.mobdataman.CountMobileRecordBean" id="countrecords" label="Count Records" relationship="COUNTMOBRECORD" savemode="ONUNLOAD">
+        <section id="countrecords_sec1">
+            <sectionrow id="countrecords_sec1_1">
+                <sectioncol id="countrecords_sec1_1_1">
+                    <textbox dataattribute="userid" id="countrecords_sec1_1_1_1" lookup="maxuser"/>
+                    <checkbox dataattribute="showall" id="countrecords_sec1_1_1_2" ondatachange="resetchildren"/>
+                </sectioncol>
+                <buttongroup id="countrecords_sec1_1_2">
+                    <pushbutton id="countrecords_sec1_1_2_btn_1" label="Refresh" mxevent="REFRESHCOUNT"/>
+                </buttongroup>
+            </sectionrow>
+        </section>
+        <table beanclass="psdi.webclient.beans.mobdataman.MobCountAnalysisDataBean" id="countrecords_queries" label="Queries" relationship="MOBCOUNTANALYSIS" rowdetailsexpanded="true" width="500">
+            <tablebody displayrowsperpage="20" filterable="false" id="countrecords_queries_tablebody">
+                <tablecol filterable="false" hidden="false" id="countrecords_queries_0" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol dataattribute="queryname" id="countrecords_queries_1" inputmode="readonly"/>
+                <tablecol dataattribute="description" id="countrecords_queries_2" inputmode="readonly"/>
+                <tablecol dataattribute="countdisplay" id="countrecords_queries_3" inputmode="readonly"/>
+                <tablecol dataattribute="download" id="countrecords_queries_4" inputmode="readonly"/>
+            </tablebody>
+            <tabledetails id="countrecords_queries_tabledtails">
+                <section id="countrecords_queries_tabledtails_1" label="Details">
+                    <sectionrow id="countrecords_queries_tabledtails_1_1">
+                        <sectioncol id="countrecords_queries_tabledtails_1_1_1">
+                            <textbox dataattribute="queryname" id="countrecords_queries_tabledtails_1_1_1_1" inputmode="readonly"/>
+                            <textbox dataattribute="description" id="countrecords_queries_tabledtails_1_1_1_2" inputmode="readonly"/>
+                            <textbox dataattribute="countdisplay" id="countrecords_queries_tabledtails_1_1_1_3" inputmode="readonly"/>
+                            <checkbox dataattribute="download" id="countrecords_queries_tabledtails_1_1_1_4" inputmode="readonly"/>
+                            <multilinetextbox columns="30" dataattribute="clause" id="countrecords_queries_tabledtails_1_1_2_1" inputmode="readonly" rows="3"/>
+                            <multilinetextbox columns="30" dataattribute="executedsql" id="countrecords_queries_tabledtails_1_1_2_2" inputmode="readonly" rows="3"/>
+                            <multilinetextbox columns="30" dataattribute="error" id="countrecords_queries_tabledtails_1_1_2_3" inputmode="readonly" rows="3"/>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+                <section border="false" id="blankline_countrecords_queries_1">
+                    <blankline id="blkline_countrecords_queries_1_1"/>
+                </section>
+            </tabledetails>
+        </table>
+        <buttongroup id="countrecords_2">
+            <pushbutton default="true" id="countrecords_2_1" label="OK" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="assetmanop" label="Asset Manager Options" mboname="MOBILEASSETUNIQUEFIELDS">
+        <helpgrid id="assetmanop_label" innerhtml="Enter the fields for each organization which can distinguish a unique asset, location or CI. These fields will be used to evaluate if inserted records are duplicates of existing records during an asset audit."/>
+        <table id="assetmanop_table" label="Asset/Location/CI Uniqueness Fields">
+            <tablebody displayrowsperpage="5" filterable="true" id="assetmanop_table_tablebody">
+                <tablecol filterable="false" id="assetmanop_table_tablebody_0" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                <tablecol dataattribute="orgid" id="assetmanop_table_tablebody_1" linkedcontrolid="assetmanop_org" lookup="org"/>
+                <tablecol dataattribute="assetfield" id="assetmanop_table_tablebody_2" lookup="maxattribute" width="130"/>
+                <tablecol dataattribute="locationfield" id="assetmanop_table_tablebody_3" lookup="maxattribute" width="130"/>
+                <tablecol dataattribute="cifield" id="assetmanop_table_tablebody_4" lookup="maxattribute" width="130"/>
+                <tablecol filterable="false" id="work_multiassetlocci_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+            </tablebody>
+            <tabledetails id="assetmanop_table_1">
+                <section id="assetmanop_table_1_grid11" label="Details">
+                    <sectionrow id="assetmanop_row1">
+                        <sectioncol id="assetmanop_row1_col1">
+                            <section id="assetmanop_grid1_col1">
+                                <textbox dataattribute="assetfield" id="assetmanop_assetfield" lookup="maxattribute"/>
+                                <textbox dataattribute="locationfield" id="assetmanop_locationfield" lookup="maxattribute"/>
+                                <textbox dataattribute="cifield" id="assetmanop_cifield" lookup="maxattribute"/>
+                            </section>
+                        </sectioncol>
+                        <sectioncol id="assetmanop_row1_col2">
+                            <section id="assetmanop_grid1_co23">
+                                <textbox dataattribute="orgid" id="assetmanop_org" lookup="org"/>
+                            </section>
+                        </sectioncol>
+                    </sectionrow>
+                </section>
+            </tabledetails>
+            <buttongroup id="assetmanop_table_2">
+                <pushbutton default="true" id="assetmanop_table_2_2" label="New Row" mxevent="addrow"/>
+            </buttongroup>
+        </table>
+        <buttongroup id="assetmanop_bt1">
+            <pushbutton clickmessage="Asset Manager Options have been saved." default="true" id="assetmanop_bt1_1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="assetmanop_bt1_2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog id="mobupopt" label="Mobile Application Software Update Options" mboname="MOBILEUPOPTION">
+        <section id="mobupopt_sec_1" label="Check Update Options:">
+            <sectionrow id="mobupopt_sec_3_1">
+                <sectioncol id="mobupopt_sec_3_1_1">
+                    <section id="mobupopt_sec_3_1_1_1">
+                        <checkbox align="right" dataattribute="UPDATEDATEREFRESH" id="mobupopt_sec_3_1_1_1_1"/>
+                    </section>
+                    <section id="mobupopt_sec_3_1_1_2">
+                        <helpgrid id="mobupopt_sec_3_1_1_2_1" innerhtml="Checks update when performing data refresh."/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="mobupopt_buttons">
+            <pushbutton clickmessage="Mobile Update Options have been saved." default="true" id="mobupopt_buttons__1" label="OK" mxevent="dialogok"/>
+            <pushbutton id="mobupopt_buttons__2" label="Cancel" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+</presentation>

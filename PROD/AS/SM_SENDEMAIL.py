@@ -77,3 +77,21 @@ else:
                         clientSession.addWarning( MXApplicationException("sm", "allmessage", param))
                 else:
                     clientSession.loadDialog("SMSENDEMAIL")
+
+scriptConfig="""{
+    "autoscript": "SM_SENDEMAIL",
+    "description": "Send purchase orders to vendors in batch",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_SENDEMAIL",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Send by email: Send purchase orders to vendors in batch",
+            "actionName": "SM_SENDEMAIL"
+        }
+    ]
+}"""

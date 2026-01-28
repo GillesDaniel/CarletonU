@@ -1,0 +1,877 @@
+{
+    "sourceVersion": "9.0.84",
+    "activateOnDeploy": false,
+    "inspformnum": "1001",
+    "revision": 14,
+    "name": "Chilled Water Rounds",
+    "instructions": "",
+    "reason": "",
+    "type": "Inspection",
+    "readconfirmation": false,
+    "audioguided": false,
+    "questions": [
+        {
+            "inspquestionnum": "1764",
+            "inspformnum": "1001",
+            "description": "Inhibitor",
+            "information": "",
+            "groupid": 4,
+            "sequence": 0,
+            "groupseq": 4,
+            "required": false,
+            "fields": []
+        },
+        {
+            "inspquestionnum": "1765",
+            "inspformnum": "1001",
+            "description": "Filters",
+            "information": "",
+            "groupid": 7,
+            "sequence": 0,
+            "groupseq": 7,
+            "required": false,
+            "fields": []
+        },
+        {
+            "inspquestionnum": "1766",
+            "inspformnum": "1001",
+            "description": "Date",
+            "information": "",
+            "sequence": 1,
+            "groupseq": 1,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2151",
+                    "inspquestionnum": "1766",
+                    "inspformnum": "1001",
+                    "fieldtype": "DT",
+                    "description": "Inspection Date",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1767",
+            "inspformnum": "1001",
+            "description": "Check filters",
+            "information": "",
+            "groupid": 7,
+            "sequence": 1,
+            "groupseq": 7.01,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2152",
+                    "inspquestionnum": "1767",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Did you replace the filters?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2152",
+                            "inspquestionnum": "1767",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": true,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2152",
+                            "inspquestionnum": "1767",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                },
+                {
+                    "inspfieldnum": "2153",
+                    "inspquestionnum": "1767",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Filter Size?",
+                    "sequence": 2,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": false,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2153",
+                            "inspquestionnum": "1767",
+                            "inspformnum": "1001",
+                            "description": "10\"",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": true,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "2153",
+                            "inspquestionnum": "1767",
+                            "inspformnum": "1001",
+                            "description": "20\"",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": true,
+                            "color": "",
+                            "icon": ""
+                        }
+                    ]
+                },
+                {
+                    "inspfieldnum": "2154",
+                    "inspquestionnum": "1767",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Micron?",
+                    "sequence": 3,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": false,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2154",
+                            "inspquestionnum": "1767",
+                            "inspformnum": "1001",
+                            "description": "5\"",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "2154",
+                            "inspquestionnum": "1767",
+                            "inspformnum": "1001",
+                            "description": "10\"",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "2154",
+                            "inspquestionnum": "1767",
+                            "inspformnum": "1001",
+                            "description": "20\"",
+                            "sequence": 3,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1768",
+            "inspformnum": "1001",
+            "description": "Test Inhibitor Strength (ppm)",
+            "information": "",
+            "groupid": 4,
+            "sequence": 1,
+            "groupseq": 4.01,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2155",
+                    "inspquestionnum": "1768",
+                    "inspformnum": "1001",
+                    "fieldtype": "SE",
+                    "description": "Enter inhibitor strength (ppm)",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                },
+                {
+                    "inspfieldnum": "2156",
+                    "inspquestionnum": "1768",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Is inhibitor low?",
+                    "sequence": 2,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2156",
+                            "inspquestionnum": "1768",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": true,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "2156",
+                            "inspquestionnum": "1768",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        }
+                    ]
+                },
+                {
+                    "inspfieldnum": "2157",
+                    "inspquestionnum": "1768",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Which Inhibitor?",
+                    "sequence": 3,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": false,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2157",
+                            "inspquestionnum": "1768",
+                            "inspformnum": "1001",
+                            "description": "Nitrite",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": true,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "2157",
+                            "inspquestionnum": "1768",
+                            "inspformnum": "1001",
+                            "description": "Phosphite",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": true,
+                            "color": "",
+                            "icon": ""
+                        }
+                    ]
+                },
+                {
+                    "inspfieldnum": "2158",
+                    "inspquestionnum": "1768",
+                    "inspformnum": "1001",
+                    "fieldtype": "SE",
+                    "description": "Enter amount of Nitrite added (ppm)",
+                    "sequence": 4,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": false,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                },
+                {
+                    "inspfieldnum": "2159",
+                    "inspquestionnum": "1768",
+                    "inspformnum": "1001",
+                    "fieldtype": "SE",
+                    "description": "Enter amount Phosphite added (ppm)",
+                    "sequence": 5,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": false,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1769",
+            "inspformnum": "1001",
+            "description": "Collect sample water from chilled water system",
+            "information": "",
+            "sequence": 2,
+            "groupseq": 2,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2160",
+                    "inspquestionnum": "1769",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Done?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2160",
+                            "inspquestionnum": "1769",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2160",
+                            "inspquestionnum": "1769",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1770",
+            "inspformnum": "1001",
+            "description": "Enter final Inhibitor Strength (ppm)",
+            "information": "",
+            "groupid": 4,
+            "sequence": 2,
+            "groupseq": 4.02,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2161",
+                    "inspquestionnum": "1770",
+                    "inspformnum": "1001",
+                    "fieldtype": "SE",
+                    "description": "Inhibitor strength (ppm)",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1771",
+            "inspformnum": "1001",
+            "description": "Test conductivity",
+            "information": "",
+            "sequence": 3,
+            "groupseq": 3,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2162",
+                    "inspquestionnum": "1771",
+                    "inspformnum": "1001",
+                    "fieldtype": "SE",
+                    "description": "Enter Value (uS/cm)",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1772",
+            "inspformnum": "1001",
+            "description": "Test PH",
+            "information": "",
+            "sequence": 5,
+            "groupseq": 5,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2163",
+                    "inspquestionnum": "1772",
+                    "inspformnum": "1001",
+                    "fieldtype": "SE",
+                    "description": "PH value",
+                    "sequence": 1,
+                    "required": true,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1773",
+            "inspformnum": "1001",
+            "description": "Isolate filter housing and release pressure",
+            "information": "",
+            "sequence": 6,
+            "groupseq": 6,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2164",
+                    "inspquestionnum": "1773",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Complete?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2164",
+                            "inspquestionnum": "1773",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2164",
+                            "inspquestionnum": "1773",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1774",
+            "inspformnum": "1001",
+            "description": "Bleed chemical pot feeder",
+            "information": "",
+            "sequence": 8,
+            "groupseq": 8,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2165",
+                    "inspquestionnum": "1774",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Done",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2165",
+                            "inspquestionnum": "1774",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2165",
+                            "inspquestionnum": "1774",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1775",
+            "inspformnum": "1001",
+            "description": "Reseal pot feeder",
+            "information": "",
+            "sequence": 9,
+            "groupseq": 9,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2166",
+                    "inspquestionnum": "1775",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Done?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2166",
+                            "inspquestionnum": "1775",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2166",
+                            "inspquestionnum": "1775",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1776",
+            "inspformnum": "1001",
+            "description": "Slowly build pressure through the system to allow chemical to circulate",
+            "information": "",
+            "sequence": 10,
+            "groupseq": 10,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2167",
+                    "inspquestionnum": "1776",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Done?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2167",
+                            "inspquestionnum": "1776",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2167",
+                            "inspquestionnum": "1776",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1777",
+            "inspformnum": "1001",
+            "description": "Baterial Dip Slide",
+            "information": "",
+            "sequence": 11,
+            "groupseq": 11,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2168",
+                    "inspquestionnum": "1777",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Acceptable?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2168",
+                            "inspquestionnum": "1777",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2168",
+                            "inspquestionnum": "1777",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1778",
+            "inspformnum": "1001",
+            "description": "Additional Work Required?",
+            "information": "",
+            "sequence": 12,
+            "groupseq": 12,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "2169",
+                    "inspquestionnum": "1778",
+                    "inspformnum": "1001",
+                    "fieldtype": "SO",
+                    "description": "Is additional work required?",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "2169",
+                            "inspquestionnum": "1778",
+                            "inspformnum": "1001",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": true,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "2169",
+                            "inspquestionnum": "1778",
+                            "inspformnum": "1001",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                },
+                {
+                    "inspfieldnum": "2170",
+                    "inspquestionnum": "1778",
+                    "inspformnum": "1001",
+                    "fieldtype": "TR",
+                    "description": "Description of Additional Work Required",
+                    "sequence": 2,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": false,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        }
+    ],
+    "cascadeoptions": [],
+    "scripts": [
+        {
+            "inspformnum": "1001",
+            "autoscript": "OSACTION.MXAPIINSPRESULT.CE_CREATESRREATE",
+            "sequence": 1
+        }
+    ]
+}

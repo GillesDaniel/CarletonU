@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<project name="MAXIMO" default="all" basedir=".">
+	<description>
+		Deprecated: use buildapplets.xml with the target skdviewer instead
+	</description>
+        
+	<target name="all">
+		<echo>buildskdviewerjar.xml is deprecated. Use buildapplets.xml instead.</echo>
+		<!--<ant antfile="buildapplets.xml" target="skdviewer"/>-->
+	</target>
+</project>

@@ -122,3 +122,21 @@ if(po is not None):
         newCommlog=po.getMboSet("COMMLOG").add()
         load(newCommlog)
         clientSession.loadDialog("SM_PORELANCE")
+
+scriptConfig="""{
+    "autoscript": "SM_PORELANCE",
+    "description": "Po Relance Menu Action",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_PORELANCE",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "Po Relance Menu Action",
+            "actionName": "SM_PORELANCE"
+        }
+    ]
+}"""

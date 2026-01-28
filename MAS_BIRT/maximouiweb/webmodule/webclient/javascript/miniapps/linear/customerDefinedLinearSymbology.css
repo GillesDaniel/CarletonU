@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+/* describes the solid bar itself */
+${id} .CGGanttRosadoIn { 
+	background:#ffb871; /* bar color */
+	color:blue; /* color of text */
+} 
+
+/* describes outer part of the solid bar */
+${id} .CGGanttRosadoOut { 
+	border-color:red; 
+	border-style:dashed; 
+}
+	
+/* describes the outer part of the solid bar when hovered... 
+it will replace the outer part of the bar*/	
+${id} .CGGanttRosadoOutHover { 
+	border-color:Green!important;
+	border-style:dotted; 
+}
+
+/* describes the graphic milestone/point */
+${id} .CGGanttRosadoMilestone { 
+	background: url("${appUrl}/us.gif") no-repeat;
+}
+
+/* replaces the graphic milestone/point when hovered */
+${id} .CGGanttRosadoMilestoneHover { 
+	background: url("${appUrl}/treeplus.gif") no-repeat;
+}

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Manage javax servlet
+Bundle-SymbolicName: javax.servlet
+Bundle-Version: 3.1.0
+Bundle-Vendor: IBM
+Bundle-Localization: plugin
+Bundle-ClassPath: .
+Fragment-Host: system.bundle; extension:=framework
+Export-Package: javax.servlet.annotation;version="3.1.0",
+ javax.servlet.descriptor;version="3.1.0",
+ javax.servlet.http;version="3.1.0",
+ javax.servlet;version="3.1.0"
+ 

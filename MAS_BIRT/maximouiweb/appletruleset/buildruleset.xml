@@ -1,0 +1,36 @@
+<project name="MAXIMO-DeploymentRuleSet" default="trustedruleset" basedir="..">
+	<description>
+		This builds a DeploymentRuleSet.jar that whitelists ALL Maximo Signed Applets
+		This is meant usually for developers to create a local deployment ruleset that
+		will get around the annoying applet warning messages
+		
+		<!-- Sean Stuckless - sls@ca.ibm.com -->
+	</description>
+	
+	<!--
+	More Information
+	http://docs.oracle.com/javase/7/docs/technotes/guides/jweb/deployment_rules.html
+	https://blogs.oracle.com/java-platform-group/entry/introducing_deployment_rule_sets
+	-->
+	
+	<import file="../buildapplets.xml" optional="false"/>
+	
+	<target name="trustedruleset" description="Create Trusted RuleSet.jar">
+		<delete file="${basedir}/appletruleset/DeploymentRuleSet.jar" verbose="true" failonerror="false"/>
+		<jar destfile="${basedir}/appletruleset/DeploymentRuleSet.jar">
+			<fileset dir="${basedir}/appletruleset/">
+				<include name="ruleset.xml"/>
+			</fileset>
+		</jar>
+
+		<maximo_signjar jar="${basedir}/appletruleset/DeploymentRuleSet.jar" name="Deployment RuleSet"/>
+	</target>
+	
+	<condition property="deploymentruleset.install.dir" value="c:/Windows/Sun/Java/Deployment/" else="/etc/.java/deployment/">
+	    <os family="windows" />
+	</condition>
+	
+	<target name="install" depends="trustedruleset">
+		<copy file="${basedir}/appletruleset/DeploymentRuleSet.jar" todir="${deploymentruleset.install.dir}" failonerror="true"/>
+	</target>
+</project>

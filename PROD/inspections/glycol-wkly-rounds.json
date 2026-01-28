@@ -1,0 +1,406 @@
+{
+    "sourceVersion": "9.0.84",
+    "activateOnDeploy": false,
+    "inspformnum": "1003",
+    "revision": 1,
+    "name": "Glycol Wkly Rounds",
+    "instructions": "",
+    "reason": "",
+    "type": "Inspection",
+    "readconfirmation": false,
+    "audioguided": false,
+    "questions": [
+        {
+            "inspquestionnum": "1057",
+            "inspformnum": "1003",
+            "description": "Date",
+            "information": "",
+            "sequence": 1,
+            "groupseq": 1,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1087",
+                    "inspquestionnum": "1057",
+                    "inspformnum": "1003",
+                    "fieldtype": "DT",
+                    "description": "Date/time",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1058",
+            "inspformnum": "1003",
+            "description": "Change filter?",
+            "information": "",
+            "sequence": 2,
+            "groupseq": 2,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1088",
+                    "inspquestionnum": "1058",
+                    "inspformnum": "1003",
+                    "fieldtype": "SO",
+                    "description": "Changed filter",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "1088",
+                            "inspquestionnum": "1058",
+                            "inspformnum": "1003",
+                            "description": "Yes",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-up"
+                        },
+                        {
+                            "inspfieldnum": "1088",
+                            "inspquestionnum": "1058",
+                            "inspformnum": "1003",
+                            "description": "No",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": "icons:thumb-down"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1059",
+            "inspformnum": "1003",
+            "description": "Filter size",
+            "information": "",
+            "sequence": 3,
+            "groupseq": 3,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1089",
+                    "inspquestionnum": "1059",
+                    "inspformnum": "1003",
+                    "fieldtype": "SO",
+                    "description": "Filter Size",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "1089",
+                            "inspquestionnum": "1059",
+                            "inspformnum": "1003",
+                            "description": "10\"",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "1089",
+                            "inspquestionnum": "1059",
+                            "inspformnum": "1003",
+                            "description": "20\"",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1060",
+            "inspformnum": "1003",
+            "description": "Filter micron",
+            "information": "",
+            "sequence": 4,
+            "groupseq": 4,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1090",
+                    "inspquestionnum": "1060",
+                    "inspformnum": "1003",
+                    "fieldtype": "SO",
+                    "description": "Micron",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": [
+                        {
+                            "inspfieldnum": "1090",
+                            "inspquestionnum": "1060",
+                            "inspformnum": "1003",
+                            "description": "5",
+                            "sequence": 1,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "1090",
+                            "inspquestionnum": "1060",
+                            "inspformnum": "1003",
+                            "description": "10",
+                            "sequence": 2,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        },
+                        {
+                            "inspfieldnum": "1090",
+                            "inspquestionnum": "1060",
+                            "inspformnum": "1003",
+                            "description": "20",
+                            "sequence": 3,
+                            "inspectorfeedback": "",
+                            "requireaction": false,
+                            "color": "",
+                            "icon": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1061",
+            "inspformnum": "1003",
+            "description": "Freezing point?",
+            "information": "",
+            "sequence": 5,
+            "groupseq": 5,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1091",
+                    "inspquestionnum": "1061",
+                    "inspformnum": "1003",
+                    "fieldtype": "SE",
+                    "description": "in Celcius",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1062",
+            "inspformnum": "1003",
+            "description": "Concentration",
+            "information": "",
+            "sequence": 6,
+            "groupseq": 6,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1092",
+                    "inspquestionnum": "1062",
+                    "inspformnum": "1003",
+                    "fieldtype": "SE",
+                    "description": "Concentration %",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1063",
+            "inspformnum": "1003",
+            "description": "pH",
+            "information": "",
+            "sequence": 7,
+            "groupseq": 7,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1093",
+                    "inspquestionnum": "1063",
+                    "inspformnum": "1003",
+                    "fieldtype": "SE",
+                    "description": "pH",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1064",
+            "inspformnum": "1003",
+            "description": "Conductivity (us/cm)",
+            "information": "",
+            "sequence": 8,
+            "groupseq": 8,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1094",
+                    "inspquestionnum": "1064",
+                    "inspformnum": "1003",
+                    "fieldtype": "SE",
+                    "description": "conductivity",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1065",
+            "inspformnum": "1003",
+            "description": "Ortho Phosphate as PO4 (ppm)",
+            "information": "",
+            "sequence": 9,
+            "groupseq": 9,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1095",
+                    "inspquestionnum": "1065",
+                    "inspformnum": "1003",
+                    "fieldtype": "SE",
+                    "description": "ppm",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "inspquestionnum": "1066",
+            "inspformnum": "1003",
+            "description": "Inhibitor Strength / Added (L)",
+            "information": "",
+            "sequence": 10,
+            "groupseq": 10,
+            "required": false,
+            "fields": [
+                {
+                    "inspfieldnum": "1096",
+                    "inspquestionnum": "1066",
+                    "inspformnum": "1003",
+                    "fieldtype": "SE",
+                    "description": "Inhibitor",
+                    "sequence": 1,
+                    "required": false,
+                    "initiallabel": "",
+                    "endlabel": "",
+                    "metername": "",
+                    "metertype": "",
+                    "showdate": false,
+                    "showtime": false,
+                    "doctype": "",
+                    "visible": true,
+                    "domainid": "",
+                    "domaintype": "",
+                    "options": []
+                }
+            ]
+        }
+    ],
+    "cascadeoptions": [],
+    "scripts": []
+}

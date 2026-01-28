@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation beanclass="psdi.webclient.system.beans.AppBean" id="viewdoc" mboname="DOCINFO" orderby="DOCINFOID" resultstableid="results_showlist" version="7.1.0.0">
+    <page id="mainrec">
+        <include id="pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="Documents" type="list">
+                    <menubar event="search" id="actiontoolbar1" sourcemethod="getAppSearchOptions"/>
+                    <table datasrc="results_showlist" id="results_showlist" inputmode="readonly" label="Documents" mboname="DOCINFO" orderby="document" selectmode="multiple">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+                            <tablecol filterable="false" id="results_col_details" mxevent="toggledetailstate" sortable="false" type="event"/>
+                            <tablecol filterable="false" hidden="false" id="results_showlist_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+                            <tablecol dataattribute="document" id="results_showlist_tablebody_2" inputmode="readonly" type="openurl" urlattribute="weburl"/>
+                            <tablecol dataattribute="description" id="results_showlist_tablebody_3" inputmode="readonly"/>
+                            <tablecol dataattribute="doctype" id="results_showlist_tablebody_4" inputmode="readonly"/>
+                            <tablecol dataattribute="urltype" id="results_showlist_tablebody_5" inputmode="readonly" linkedcontrolid="main_grid2_2a"/>
+                            <tablecol dataattribute="urlname" id="results_showlist_tablebody_6" inputmode="readonly" linkedcontrolid="main_grid3_1"/>
+                        </tablebody>
+                        <tabledetails id="results_tabledetails">
+                            <section id="main_grid1" label="Document Details">
+                                <sectionrow id="main_grid1_row1">
+                                    <sectioncol id="main_grid1_row1_col1">
+                                        <section id="main_grid2">
+                                            <multiparttextbox dataattribute="document" descdataattribute="description" id="main_grid2_1a"/>
+                                            <textbox dataattribute="doctype" id="main_grid2_1b"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="main_grid1_row1_col2">
+                                        <section id="main_grid2a">
+                                            <textbox dataattribute="urltype" id="main_grid2_2a"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="main_grid1_row1_col3">
+                                        <section id="main_grid3">
+                                            <textbox dataattribute="urlname" id="main_grid3_1"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                                <sectionrow id="main_grid6_row1">
+                                    <sectioncol id="main_grid6_row1_col1">
+                                        <section id="main_grid6_row1_col1_1">
+                                            <textbox dataattribute="docinfoid" id="main_grid6a_1" inputmode="readonly"/>
+                                            <textbox dataattribute="application" id="main_grid6a_2" inputmode="readonly"/>
+                                            <textbox dataattribute="status" id="main_grid6a_3" inputmode="readonly"/>
+                                            <textbox dataattribute="statusdate" id="main_grid6a_4" inputmode="readonly"/>
+                                            <textbox dataattribute="createdate" id="main_grid6a_5" inputmode="readonly"/>
+                                            <textbox dataattribute="revision" id="main_grid6a_6" inputmode="readonly"/>
+                                            <textbox dataattribute="changeby" id="main_grid6a_7" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="main_grid6_row1_col2">
+                                        <section id="main_grid6_row1_col2_1">
+                                            <textbox dataattribute="changedate" id="main_grid6b_1" inputmode="readonly"/>
+                                            <textbox dataattribute="doclocation" id="main_grid6b_2" inputmode="readonly"/>
+                                            <textbox dataattribute="createby" id="main_grid6b_3" inputmode="readonly"/>
+                                            <textbox dataattribute="dmsname" id="main_grid6b_4" inputmode="readonly"/>
+                                            <textbox dataattribute="urlparam1" id="main_grid6b_5" inputmode="readonly"/>
+                                            <textbox dataattribute="urlparam2" id="main_grid6b_6" inputmode="readonly"/>
+                                            <textbox dataattribute="urlparam3" id="main_grid6b_7" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                    <sectioncol id="main_grid6_row1_col3">
+                                        <section id="main_grid6_row1_col3_1">
+                                            <textbox dataattribute="urlparam4" id="main_grid6c_1" inputmode="readonly"/>
+                                            <textbox dataattribute="urlparam5" id="main_grid6c_2" inputmode="readonly"/>
+                                            <textbox dataattribute="printthrulinkdflt" id="main_grid6c_3" inputmode="readonly"/>
+                                            <textbox dataattribute="usedefaultfilepath" id="main_grid6c_4" inputmode="readonly"/>
+                                            <textbox dataattribute="show" id="main_grid6c_5" inputmode="readonly"/>
+                                            <textbox dataattribute="langcode" id="main_grid6c_6" inputmode="readonly"/>
+                                        </section>
+                                    </sectioncol>
+                                </sectionrow>
+                            </section>
+                        </tabledetails>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include id="pageFooter"/>
+    </page>
+    <dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+        <section id="qbe_grid2">
+            <sectionrow id="qbe_grid2_r1">
+                <sectioncol id="qbe_grid2_r1_c1">
+                    <section id="qbe_grid2_r1_c1_s1">
+                        <textbox dataattribute="docinfoid" id="qbe_grid2_1" inputmode="query"/>
+                        <textbox dataattribute="document" id="qbe_grid2_2" inputmode="query"/>
+                        <textbox dataattribute="description" id="qbe_grid2_3" inputmode="query"/>
+                        <textbox dataattribute="application" id="qbe_grid2_4" inputmode="query"/>
+                        <textbox dataattribute="status" id="qbe_grid2_5" inputmode="query"/>
+                        <textbox dataattribute="revision" id="qbe_grid2_6" inputmode="query"/>
+                        <textbox dataattribute="changeby" id="qbe_grid2_7" inputmode="query"/>
+                        <textbox dataattribute="doclocation" id="qbe_grid2_8" inputmode="query"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_r1_c2">
+                    <section id="qbe_grid2_r1_c2_s1">
+                        <textbox dataattribute="doctype" id="qbe_grid2_9" inputmode="query"/>
+                        <textbox dataattribute="createby" id="qbe_grid2_10" inputmode="query"/>
+                        <textbox dataattribute="urltype" id="qbe_grid2_11" inputmode="query"/>
+                        <textbox dataattribute="dmsname" id="qbe_grid2_12" inputmode="query"/>
+                        <textbox dataattribute="urlname" id="qbe_grid2_13" inputmode="query"/>
+                        <textbox dataattribute="urlparam1" id="qbe_grid2_14" inputmode="query"/>
+                        <textbox dataattribute="urlparam2" id="qbe_grid2_15" inputmode="query"/>
+                        <textbox dataattribute="urlparam3" id="qbe_grid2_16" inputmode="query"/>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_grid2_r1_c3">
+                    <section id="qbe_grid2_r1_c3_s1">
+                        <textbox dataattribute="urlparam4" id="qbe_grid2_17" inputmode="query"/>
+                        <textbox dataattribute="urlparam5" id="qbe_grid2_18" inputmode="query"/>
+                        <textbox dataattribute="printthrulinkdflt" id="qbe_grid2_19" inputmode="query"/>
+                        <textbox dataattribute="usedefaultfilepath" id="qbe_grid2_20" inputmode="query"/>
+                        <textbox dataattribute="show" id="qbe_grid2_21" inputmode="query"/>
+                        <textbox dataattribute="langcode" id="qbe_grid2_22" inputmode="query"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <section id="qbe_date_s1" label="Dates">
+            <sectionrow id="qbe_date_r1">
+                <sectioncol id="qbe_date_r1_c1">
+                    <section id="qbe_date_r1_c1_s1">
+                        <sectionrow id="qbe_date_s1_r1">
+                            <sectioncol id="qbe_date_s1_r1_c2">
+                                <section id="qbe_date_s1_r1_c2_s1">
+                                    <statictext align="center" id="qbe_date_s1_r1_c2_s1_st1" label="From"/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r1_c3">
+                                <section id="qbe_date_s1_r1_c3_s1">
+                                    <statictext align="center" id="qbe_date_s1_r1_c3_s1_st1" label="To"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r2">
+                            <sectioncol id="qbe_date_s1_r2_c2">
+                                <section id="qbe_date_s1_r2_c2_s1">
+                                    <textbox dataattribute="statusdate" id="qbe_grid1_5a" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r2_c3">
+                                <section id="qbe_date_s1_r2_c3_s1">
+                                    <textbox dataattribute="statusdate" id="qbe_grid1_5b" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r3">
+                            <sectioncol id="qbe_date_s1_r3_c2">
+                                <section id="qbe_date_s1_r3_c2_s1">
+                                    <textbox dataattribute="createdate" id="qbe_grid1_6a" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r3_c3">
+                                <section id="qbe_date_s1_r3_c3_s1">
+                                    <textbox dataattribute="createdate" id="qbe_grid1_6b" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="qbe_date_s1_r4">
+                            <sectioncol id="qbe_date_s1_r4_c2">
+                                <section id="qbe_date_s1_r4_c2_s1">
+                                    <textbox dataattribute="changedate" id="qbe_grid1_7a" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+                                </section>
+                            </sectioncol>
+                            <sectioncol id="qbe_date_s1_r4_c3">
+                                <section id="qbe_date_s1_r4_c3_s1">
+                                    <textbox dataattribute="changedate" id="qbe_grid1_7b" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                    </section>
+                </sectioncol>
+                <sectioncol id="qbe_date_r1_c2">
+                    <section id="qbe_date_r1_c2_s1">
+                        <blankline id="qbe_blkline"/>
+                    </section>
+                </sectioncol>
+            </sectionrow>
+        </section>
+        <buttongroup id="qbe_grid5_1_1_grid6">
+            <pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_2" label="Clear" mxevent="qbeclear"/>
+            <pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+</presentation>

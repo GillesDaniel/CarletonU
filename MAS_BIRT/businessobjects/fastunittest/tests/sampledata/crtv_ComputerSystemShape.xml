@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rr="http://jazz.net/ns/ism/registry#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:oslc="http://open-services.net/ns/core#">
+  <oslc:ResourceShape rdf:about="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:ComputerSystem">
+    <oslc:property>
+      <oslc:Property>
+        <rr:isRelationship>false</rr:isRelationship>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#observationTime"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>observationTime</oslc:name>
+        <dcterms:title>Observation Time</dcterms:title>
+        <dcterms:description>&lt;p&gt;The time the resource was last observed by the provider &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <dcterms:title>ComputerSystem</dcterms:title>
+    <rr:identificationRule>
+      <rr:IdentificationRule>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#fqdn"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:priority>6</rr:priority>
+      </rr:IdentificationRule>
+    </rr:identificationRule>
+    <rr:identificationRule>
+      <rr:IdentificationRule>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#manufacturer"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#model"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#serialNumber"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#vmid"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:priority>3</rr:priority>
+      </rr:IdentificationRule>
+    </rr:identificationRule>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:readOnly>true</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://purl.org/dc/terms/created"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>created</oslc:name>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#vmid"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>vmid</oslc:name>
+        <dcterms:title>virtual machine ID</dcterms:title>
+        <dcterms:description>&lt;p&gt;The VMID is a unique identifier for the virtual machine.
+IBM providers:  the vmid must be normalized according to the following rules: remove leading and trailing blanks;remove non-alphanumeric characters;convert all remaining characters to upper case
+An example valid vmid is "5" from an AIX machine via command uname -L. &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#serialNumber"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>serialNumber</oslc:name>
+        <dcterms:title>Serial Number</dcterms:title>
+        <dcterms:description>&lt;p&gt;Serial number assigned by the manufacturer. The value should be provided by the manufacturer of the resource.
+IBM providers : The value must be as it is provided by the manufacturer of the resource, with the following transformations applied: remove everything before a comma ( for example, when the value is "...IBM,123456...");  remove string "VMware-" ( this is to handle cases where the serial number is automatically generated for virtual machines, e.g. "...VMware-123456..."; remove all non-alphanumeric characters including blanks; convert the remaining characters to upper case;
+
+An example valid serialNumber value is "KDFDXTT"  from a Windows machine via a call to Win32_ComputerSystemProduct(IdentifyingNumber)
+
+Example: the output from the system call is "VMware-56 4d c6 9e d1 37 ff 34-a6 72 b0 ae d2 62 c5 64". Apply the transformation rules and populate serialNumber with "564DC69ED137FF34A672B0AED262C564"
+
+For AIX machines, if you are using the Object Data Manager to retreive the serial number then you MUST apply the following transformation : remove all characters before the first comma, the comma itself and the first character after the comma. This is so that the value will match the output of the lsconf command which returns the true serial number of the machine.
+Example: odm returns  "IBM,0310DD5AG" . Apply the transformation rules and populate serialNumber with  "10DD5AG". &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <rr:identificationRule>
+      <rr:IdentificationRule>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#hostid"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <rr:absent>true</rr:absent>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#vmid"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:priority>2</rr:priority>
+      </rr:IdentificationRule>
+    </rr:identificationRule>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#hostid"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>hostid</oslc:name>
+        <dcterms:title>host ID</dcterms:title>
+        <dcterms:description>&lt;p&gt;A globally unique ID assigned to their machines by some manufacturers (.e.g Sun Solaris)
+IBM providers: the hostid must be normalized according to the following rules: remove leading and trailing blanks;remove non-alphanumeric characters;convert all remaining characters to upper case
+An example valid hostd is "84FB046F" from a Solaris machine via command hostid. &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#model"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>model</oslc:name>
+        <dcterms:title>Model</dcterms:title>
+        <dcterms:description>&lt;p&gt;Value of the device model. The model number as provided by the device manufacturer.
+IBM providers : for system z machines, use the 4-digit "Machine type" value with no embedded special characters or blanks. Do not use the "Model ID" value as this can change when a hardware component is replaced.
+In all cases, the model number must be normalized according to the following rules: use the string provided by the system and apply the following: if the string returned by the system command contains [], extract the value within [];remove everything before a comma; remove all non-alphanumeric characters including spaces;convert remaining characters to upper case.
+An example valid model value is "7978K8G" from a Windows machine via a call to Windows WMI class Win32_ComputerSystemProduct (Name)
+Example: the output from the system call is  "IBM,9133-55A", apply transformation rules and populate model with value "913355A"
+Example: the output from the system call is "IBM eServer 325 -[88355EX]-", apply the transformation rules and populate model with "88355EX". &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <oslc:readOnly>true</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://purl.org/dc/terms/modified"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>modified</oslc:name>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:describes rdf:resource="http://open-services.net/ns/crtv#ComputerSystem"/>
+    <oslc:property>
+      <oslc:Property>
+        <rr:isRelationship>true</rr:isRelationship>
+        <oslc:valueType rdf:resource="http://open-services.net/ns/core#Resource"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#dependsOn"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-many"/>
+        <oslc:name>dependsOn</oslc:name>
+        <dcterms:title>Depends On</dcterms:title>
+        <dcterms:description>&lt;p&gt;A relationship denoting that the source of the relationship cannot function properly without an association with the target. The dependency is directional ( the source depends on the target but the reverse is not necessarily true ) and can represent any cause or type of dependency. For instance, this relationship can be used to denote that a device depends on its power supply(s) or that an IP path depends on a layer 2 connection.&lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <rr:isRelationship>false</rr:isRelationship>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#version"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>version</oslc:name>
+        <dcterms:title>Version</dcterms:title>
+        <dcterms:description>&lt;p&gt;The complete version specification of the entity, expressed as a single string. Note that this string should not contain any information about the manufacturer of the entity, the model of the entity, or the name of the product associated with the entity. It must contain version information only, in a format described by the manufacturer of the entity. &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#fqdn"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-many"/>
+        <oslc:name>fqdn</oslc:name>
+        <dcterms:title>Fully Qualified Domain Name</dcterms:title>
+        <dcterms:description>&lt;p&gt;The fully qualified domain name (FQDN). In Internet communications, the name of a host system that includes all of the subnames of the domain name. An example of a fully qualified domain name is es123126.lab.ibm.com. 
+IBM providers: The fqdn MUST be in lower case. 
+Do not populate this property with IP addresses or hostnames&lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/core#shortTitle"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>shortTitle</oslc:name>
+        <dcterms:title>Short title</dcterms:title>
+      </oslc:Property>
+    </oslc:property>
+    <dcterms:identifier>crtv:ComputerSystem</dcterms:identifier>
+    <rr:identificationRule>
+      <rr:IdentificationRule>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#hostid"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#vmid"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:priority>1</rr:priority>
+      </rr:IdentificationRule>
+    </rr:identificationRule>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#manufacturer"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>manufacturer</oslc:name>
+        <dcterms:title>Manufacturer</dcterms:title>
+        <dcterms:description>&lt;p&gt;Name of the device manufacturer. This attribute SHOULD be a publicly available manufacturer name vocabulary.
+IBM providers : This attribute must be set using one of a predefined set of manufacturer names. ( See below for more specific rules regarding Windows and Intel Linux systems )
+Providers must normalize the manufacturer name. If the manufacturer name cannot be mapped to a value in a list, apply the following transformations to the value before setting this attribute: do not use punctuation if the company name is an acronym; do not use the model type or any characteristics other than the commonly understood name of a manufacturer; and do not use terms such as: LLC, Inc., Corporation, Incorporated, GmbH, AG, SRL, Ltd., sp. z o.o., or sarl. Do not include leading or trailing spaces.
+On Windows systems, use the raw output from WMI Win32_ComputerSystemProduct (attribute Vendor). If you do not have access to WMI, use the list of manufacturers from CRTV.
+ On Linux Intel machines, use the raw output from  dmidecode (value of Manufacturer: field). If you do not have access to dmidecode, use the list of manufacturers from CRTV.
+For Windows and Linux Intel machines that are running VMware virtual machines, use string "VMware" as the manufacturer value. &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <rr:isRelationship>false</rr:isRelationship>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#name"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>name</oslc:name>
+        <dcterms:title>Name</dcterms:title>
+        <dcterms:description>&lt;p&gt;Typically in use as an identity field, this property is in use to represent a known name of a resource instance. The property contents SHOULD be human-readable. &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#shortHostname"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-many"/>
+        <oslc:name>shortHostname</oslc:name>
+        <dcterms:title>Short hostname</dcterms:title>
+        <dcterms:description>&lt;p&gt;A label assigned to a machine and used for communications on the local network. For example, a Windows hostname is IBM-2JMUUEH6TEQ. 
+IBM providers: The shortHostname MUST be in lower case. 
+If the value contains the DNS domain name then use the property crtv:fqdn instead. &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <rr:identificationRule>
+      <rr:IdentificationRule>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#manufacturer"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#model"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#serialNumber"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <rr:absent>true</rr:absent>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#vmid"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:priority>4</rr:priority>
+      </rr:IdentificationRule>
+    </rr:identificationRule>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#ipAddress"/>
+        <dcterms:description>&lt;p&gt;The IP address assigned to this system.&lt;/p&gt;</dcterms:description>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:valueType rdf:resource="http://open-services.net/ns/core#Resource"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-many"/>
+        <oslc:name>ipAddress</oslc:name>
+        <rr:isRelationship>true</rr:isRelationship>
+        <oslc:representation rdf:resource="http://open-services.net/ns/core#Reference"/>
+        <dcterms:title>IP Address</dcterms:title>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"/>
+        <oslc:propertyDefinition rdf:resource="http://purl.org/dc/terms/description"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>description</oslc:name>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <oslc:readOnly>false</oslc:readOnly>
+        <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#systemBoardUUID"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+        <oslc:name>systemBoardUUID</oslc:name>
+        <dcterms:title>System board UUID</dcterms:title>
+        <dcterms:description>&lt;p&gt;The unique identifier of the system board.
+IBM providers : provide the SystemBoardUUID in human-readable string format, in the form 8-4-4-4-12, where there are 8 hexadecimal values separated by a hyphen, followed by 4 hexadecimal values separated by a hyphen, and so forth; the hexadecimal values from 'a' to 'f' are to be given as lower-case characters; do not include the manufacturer, model or serial number of the machine in this attribute. Do not include leading or trailing spaces.
+An example valid systemBoardUUID is  "62f05081-40d1-b238-98fd-d418846eaebe" from a Windows machine via a call to WMI class Win32_ComputerSystemProduct (UUID attribute)
+
+If the machine type you are working with has a designated system board UUID that has the correct number of digits (32)  but does not have the '-' characters, transform the UUID string to the 8-4-4-4-12 format. For example, VMware returns "56 4d c6 9e d1 37 ff 34-a6 72 b0 ae d2 62 c5 64". Populate systemBoardUUID with "564dc69e-d137-ff34-a672-b0aed262c564"
+
+If the machine type you are working with has a designated system board UUID that does not have the correct number of hexadecimal characters then use the raw output from the system command. For example, the AIX unamex() command returns "36e2374d20f2e00". Populate systemBoardUUID as "36e2374d20f2e00". &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+    <dcterms:modified>2013-01-22T08:43:48.382Z</dcterms:modified>
+    <rr:version>3.6</rr:version>
+    <rr:identificationRule>
+      <rr:IdentificationRule>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#systemBoardUUID"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:priority>5</rr:priority>
+      </rr:IdentificationRule>
+    </rr:identificationRule>
+    <rr:identificationRule>
+      <rr:IdentificationRule>
+        <rr:ruleProperty>
+          <rr:RuleProperty>
+            <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/crtv#ipAddress"/>
+          </rr:RuleProperty>
+        </rr:ruleProperty>
+        <rr:priority>7</rr:priority>
+      </rr:IdentificationRule>
+    </rr:identificationRule>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/rr:ProviderRecord"/>
+        <oslc:valueType rdf:resource="http://open-services.net/ns/core#LocalResource"/>
+        <oslc:range rdf:resource="http://jazz.net/ns/ism/registry#ProviderRecord"/>
+        <oslc:propertyDefinition rdf:resource="http://jazz.net/ns/ism/registry#providerRecord"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-many"/>
+        <oslc:name>providerRecord</oslc:name>
+        <dcterms:title>Provider Record</dcterms:title>
+      </oslc:Property>
+    </oslc:property>
+    <oslc:property>
+      <oslc:Property>
+        <oslc:valueType rdf:resource="http://open-services.net/ns/core#Resource"/>
+        <oslc:representation rdf:resource="http://open-services.net/ns/core#Reference"/>
+        <oslc:propertyDefinition rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-many"/>
+        <oslc:name>type</oslc:name>
+        <dcterms:description>&lt;p&gt;The qualifier to describe the kind of ComputerSystem as well as the functions provided by the ComputerSystem. A system may provide more than one function at the same time. &lt;/p&gt;</dcterms:description>
+      </oslc:Property>
+    </oslc:property>
+  </oslc:ResourceShape>
+</rdf:RDF>

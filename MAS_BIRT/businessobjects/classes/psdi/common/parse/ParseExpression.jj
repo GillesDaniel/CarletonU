@@ -1,0 +1,478 @@
+/* WFCondition parser
+ *
+ * Written by John Neville
+ */
+
+options
+{
+    IGNORE_CASE=true ;
+    STATIC=false;
+    UNICODE_INPUT=true;
+    JAVA_UNICODE_ESCAPE=true;
+}
+
+PARSER_BEGIN(ParseExpression)
+package psdi.common.parse;
+
+import java.util.Vector;
+
+public class ParseExpression
+{
+}
+
+PARSER_END(ParseExpression)
+
+SKIP :
+{
+        " "
+    |   "\t"
+    |   "\n"
+    |   "\r"
+}
+
+TOKEN:  /* Literals */
+{
+    < INTEGER_LITERAL: (["0"-"9"])+ >
+  | < FLOATING_POINT_LITERAL:
+          (["0"-"9"])+ "." (["0"-"9"])+ (<EXPONENT>)?
+        | "." (["0"-"9"])+ (<EXPONENT>)?
+        | (["0"-"9"])+ <EXPONENT>
+        | (["0"-"9"])+ (<EXPONENT>)?
+    >
+  | < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+  | < STRING_LITERAL: "'" (~["'"])* ( "''" (~["'"])* )* "'" >
+}
+
+TOKEN: /* Keywords */
+{
+    < OR: "or" >
+    |   <AND: "and" >
+    |   <IN: "in" >
+    |   <IS: "is" >
+    |   <NOT: "not">
+    |   <LIKE: "like">
+    |   <NULL: "null">
+    |   <UPPER: "upper">
+    |   <LOWER: "lower">
+    |   <LENGTH: "length">
+    | 	<SQL: "sql">
+    |   <BETWEEN: "between">
+    |	<STDDEV: "stddev">
+    |	<MAX: "max">
+    |	<MIN: "min">
+    |	<AVG: "avg">
+    |	<ROUND: "round">
+    |	<SQRT: "sqrt">
+    |	<EXP: "exp">
+    |	<POW: "pow">
+    |	<CUSTOM: "custom">
+    |	<TODATE: "todate">
+}
+
+Token identifier() :{}
+{
+    <ID: (":")? (["A"-"Z"]|"$" | "&") ("_" | "." | ["0"-"9"] | ["A"-"Z"] | "[" | "]" | "$" | "&" )* >
+ 
+    {
+        return token ;
+    }
+}
+/**
+ * Top-down parser grammer.  This is the top of the tree.  Read it this way:
+ * a valid expression input is composed of a clause followed by an EOF.  A clause is
+ * composed of a logical expression.  A logical expression is composed of ...
+ * Eventually we get down to the Terms.
+ */
+TreeNode input() :
+{
+    TreeNode tn ;
+}
+{
+    tn = clause() <EOF>
+    {
+        return tn ;
+    }
+}
+
+TreeNode clause() :
+{
+    TreeNode tn ;
+}
+{
+    tn = logicalExpression()
+    {
+        return tn ;
+    }
+}
+
+TreeNode logicalExpression() :
+{
+    TreeNode tn ;
+}
+{
+    (LOOKAHEAD(3)
+        tn = orExpression()
+        |
+        "(" tn = logicalExpression() ")"
+    )
+    {
+        return tn ;
+    }
+}
+
+TreeNode orExpression() :
+{
+    TreeNode oper1, oper2 = null ;
+    Vector v = new Vector() ;
+}
+{
+    oper1 = andExpression() { v.add(oper1); } ( <OR> oper2 = andExpression() { v.add(oper2); } )*
+    {
+        if (oper2 == null)
+        {
+            return oper1 ;
+        }
+        else
+        {
+            return new OrNode(v) ;
+        }
+    }
+}
+
+TreeNode andExpression() :
+{
+    TreeNode oper1, oper2 = null ;
+    Vector v = new Vector() ;
+}
+{
+    oper1 = notExpression() { v.add(oper1); } ( <AND> oper2 = notExpression() { v.add(oper2); } )*
+    {
+        if (oper2 == null)
+        {
+            return oper1 ;
+        }
+        else
+        {
+            return new AndNode(v) ;
+        }
+    }
+}
+
+TreeNode notExpression() :
+{
+    boolean isNot = false ;
+    TreeNode arg ;
+}
+{
+    // return a NotNode if not is used, otherwise, simply return the node from comparisonExpression
+    [ <NOT> { isNot = true ; } ] arg = comparisonExpression()
+    {
+        if (isNot)
+        {
+            return new NotNode(arg) ;
+        }
+        else
+        {
+            return arg ;
+        }
+    }
+}
+
+TreeNode comparisonExpression() :
+{
+    TreeNode operand  ;
+}
+{
+    // In the case of a compare expression, the first sum expr. is passed to the
+    // comparision parsing to be used to build the node there.
+    (LOOKAHEAD(2)
+        operand = isClause()
+    |   operand = sumExpression() [ operand = compareExprRight(operand) ]
+    )
+    {
+        return operand ;
+    }
+}
+
+TreeNode compareExprRight(TreeNode operand) :
+{
+    TreeNode operand2 ;
+    String operator ;
+    TreeNode returnNode ;
+}
+{
+    (
+        LOOKAHEAD(2) returnNode = likeClause(operand)
+        | LOOKAHEAD(2) returnNode = inClause(operand)
+        | LOOKAHEAD(2) returnNode = betweenClause(operand)
+        | operator = compareOp() operand2 = sumExpression()
+            {
+                returnNode = new ComparisonNode(operand, operator, operand2) ;
+            }
+    )
+    {
+        return returnNode ;
+    }
+}
+
+TreeNode isClause() :
+{
+    Token attr ;
+    boolean isNot = false ;
+}
+{
+    attr = identifier() <IS> [ <NOT> { isNot = true;} ] <NULL>
+    {
+        TreeNode returnNode = new IsNullNode(new AttributeNode(attr.image).getAttributeName()) ;
+        if (isNot)
+        {
+            returnNode = new NotNode(returnNode) ;
+        }
+        return returnNode ;
+    }
+}
+
+TreeNode sumExpression() :
+{
+    TreeNode top, oper2 = null ;
+    String sumType = null ;
+}
+{
+    /* If the sum expression consists of a single product expression, the product node is returned.
+     * If there are two products, a sum node is created.
+     * When there's multiple products, an unbalanced tree is created, with the first expression
+     * being lowest & therefore evaulated first.
+     * i.e. A + B - C - D will be expressed in the tree nodes as:
+     *                                                                -
+     *                                                              -   D
+     *                                                            +   C
+     *                                                           A B
+     */
+    top = productExpression()
+        (( "+" { sumType = "+"; } | "-" { sumType = "-"; } | "||" { sumType = "||"; } )
+            oper2 = productExpression() { top = new SumNode(top, sumType, oper2) ; } )*
+    {
+        return top ;
+    }
+}
+
+TreeNode productExpression() :
+{
+    TreeNode top, oper2 = null ;
+    String productType = null;
+}
+{
+    // see the comment in sumExpression for what we're doing here.
+    top = unaryExpression()
+        (("*" { productType = "*"; } | "/" { productType = "/"; })
+            oper2 = unaryExpression() { top = new ProductNode(top, productType, oper2) ; } )*
+    {
+        return top ;
+    }
+}
+
+TreeNode unaryExpression() :
+{
+    TreeNode term ;
+    boolean makeNeg = false ;
+}
+{
+    [ ( "+" | "-" { makeNeg = true; } ) ] term = Term()
+    {
+        if (makeNeg)
+        {
+            return new NegativeNode(term) ;
+        }
+        else
+        {
+            return term ;
+        }
+    }
+}
+
+TreeNode Term() :
+{
+    TreeNode returnNode ;
+    Token attribute ;
+}
+{
+    (
+        "(" returnNode = orExpression() ")"
+    |   attribute = identifier() { returnNode = AttributeNode.createNode(attribute.image); }
+    |   returnNode = literal()
+    |	returnNode = BuiltInFunction()
+//    |	returnNode = keyWord()
+    )
+    { return returnNode ; }
+}
+
+TreeNode BuiltInFunction() :
+{
+	Vector args;
+    TreeNode returnNode ;
+}
+{
+	(
+    	<UPPER> args = functionArgs() { returnNode = new UpperNode(args); }
+    | 	<LOWER> args = functionArgs() { returnNode = new LowerNode(args); }
+    | 	<LENGTH> args = functionArgs() { returnNode = new LengthNode(args); }
+    |	<SQL> args = functionArgs() { returnNode = new SQLNode(args); }    	
+    |	<STDDEV> args = functionArgs() { returnNode = new StdDevNode(args); }
+    | 	<MAX> args = functionArgs() { returnNode = new MaxNode(args); }
+    | 	<MIN> args = functionArgs() { returnNode = new MinNode(args); }
+    |	<AVG> args = functionArgs() { returnNode = new AvgNode(args); }
+    |	<ROUND> args = functionArgs() { returnNode = new RoundNode(args); }
+    |	<SQRT> args = functionArgs() { returnNode = new SqrtNode(args); }
+    |	<EXP> args = functionArgs() { returnNode = new ExpNode(args); }
+    |	<POW> args = functionArgs() { returnNode = new PowNode(args); }
+    |	<CUSTOM> args = functionArgs() { returnNode = new CustomNode(args); }
+    |	<TODATE> args = functionArgs() { returnNode = new DateNode(args); }
+    )
+    {
+        return returnNode ;
+    }
+}
+
+Vector functionArgs() :
+{
+	Vector args = null;
+}
+{
+    "(" [ args = valueList() ] ")"
+ 	 {
+        return args ;
+    }
+}
+
+TreeNode likeClause(TreeNode operand) :
+{
+    TreeNode pattern ;
+    boolean isNot = false ;
+}
+{
+    [ <NOT> { isNot = true; } ] <LIKE> pattern = SQLPattern()
+    {
+        TreeNode returnNode = new LikeNode(operand, pattern) ;
+        if (isNot)
+        {
+            returnNode = new NotNode(returnNode) ;
+        }
+        return returnNode ;
+    }
+}
+
+TreeNode SQLPattern() :
+{
+    TreeNode returnNode ;
+    Token t ;
+}
+{
+    (t = <STRING_LITERAL> { returnNode = new LiteralNode(t.image) ; }
+    | t = identifier() { returnNode = AttributeNode.createNode(t.image) ; }
+    )
+    {
+        return returnNode ;
+    }
+}
+
+TreeNode inClause(TreeNode operand) :
+{
+    Vector matchValues ;
+    boolean isNot = false ;
+}
+{
+    //[ "not" { isNot = true; } ] "in" "(" matchValues = valueList() ")"
+    ( <NOT> <IN> { isNot = true; } | <IN>) "(" matchValues = valueList() ")"
+    {
+        TreeNode returnNode = new InNode(operand, matchValues) ;
+        if (isNot)
+        	return new NotNode(returnNode);
+        return returnNode;	
+    }
+}
+
+Vector valueList() :
+{
+    Vector elements = new Vector() ;
+    TreeNode tn ;
+}
+{
+    tn = vlElement() { elements.add(tn) ; } ("," tn = vlElement() { elements.add(tn) ; } )*
+    {
+        return elements;
+    }
+}
+
+TreeNode vlElement() :
+{
+    TreeNode returnNode ;
+}
+{
+//    (<NULL> { returnNode = AttributeNode.createNode("null"); } // qqqq do we need to support null here?
+//    |
+//    returnNode = sumExpression()
+		returnNode = logicalExpression()
+//    )
+    {
+        return returnNode ;
+    }
+}
+
+TreeNode betweenClause(TreeNode operand) :
+{
+    boolean isNot = false ;
+    TreeNode bound1, bound2 ;
+}
+{
+    [ <NOT> { isNot = true; } ] <BETWEEN> bound1 = sumExpression() "and" bound2 = sumExpression()
+    {
+        TreeNode returnNode = new BetweenNode(operand, bound1, bound2) ;
+        if (isNot)
+        {
+            returnNode = new NotNode(returnNode) ;
+        }
+        return returnNode ;
+    }
+}
+
+String compareOp() :
+{
+    Token t;
+}
+{
+    t = <COMPAREOP: "=" | "!=" | "<>" | ">" | ">=" | "<" | "<=" >
+    {
+        return t.image ;
+    }
+}
+
+TreeNode literal() :
+{
+}
+{
+        <INTEGER_LITERAL>
+        {
+            return new LiteralNode( Integer.parseInt(token.image) ) ;
+        }
+    |   <FLOATING_POINT_LITERAL>
+        {
+            return new LiteralNode( Double.parseDouble(token.image) ) ;
+        }
+    |   <STRING_LITERAL>
+        {
+            return new LiteralNode( token.image ) ;
+        }
+}
+
+/*TreeNode keyWord() :
+{
+}
+{
+		<DATE> 		
+		{ 
+			DateNode returnNode = new DateNode(null); 
+			returnNode.setDateOnly(true);
+			return returnNode;
+		}
+	| 	<DATETIME>	{ return new DateNode(null); }
+}*/

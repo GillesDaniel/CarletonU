@@ -68,3 +68,21 @@ if(parent is not None and "CLOSE"!=parent.getString("STATUS")and "CANCEL"!=paren
         
         errorgroup = "sm"
         errorkey = "selectOne"
+
+scriptConfig="""{
+    "autoscript": "SM_SENDRFQSELECTVENDOR",
+    "description": "SM Send RFQ From Table Vendor (SELECT )",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_SENDRFQSELECTVENDOR",
+            "launchPointType": "ACTION",
+            "active": true,
+            "description": "SM Send RFQ From Table Vendor (SELECT )",
+            "actionName": "SM_SENDRFQSELECTVENDOR"
+        }
+    ]
+}"""

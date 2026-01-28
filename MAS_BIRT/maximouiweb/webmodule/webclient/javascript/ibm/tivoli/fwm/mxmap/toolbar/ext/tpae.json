@@ -1,0 +1,20 @@
+{
+	"provider": "TPAE",
+	"toolList": ["AssetLocationTool",
+			"AuditLocationTool",
+			"FindLocationTool",
+			"FullScreen",
+			"ItineraryTool",
+			"LayersTool",
+			"MyLocationTool",
+			"QueryNearResources",
+			"QueryNearResourcesDispatcher",
+			"QueryUnassignedWorkDispatcherTool",
+			"QueryUnassignedWorkTool",
+			"QueryWeatherAlerts",
+			"QueryWeatherAlertsTool",
+			"RefresherTool",
+			"ToggleComboButton",
+			"WorkOrderSymbologyTool"],
+	"toolBlockList": ""
+}

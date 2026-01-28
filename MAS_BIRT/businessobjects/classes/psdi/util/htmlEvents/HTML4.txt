@@ -1,0 +1,21 @@
+# HTML element events for Mozilla Firefox
+#  http://www.w3.org/TR/xhtml-modularization/xhtml-modularization.html#s_intrinsiceventsmodule
+#  http://www.w3.org/TR/xhtml-modularization/xhtml-modularization.html#s_events_collection
+onload
+onunload
+onreset
+onsubmit
+onblur
+onchange
+onfocus
+onselect
+onclick
+ondblclick
+onmousedown
+onmouseup
+onmouseover
+onmousemove
+onmouseout
+onkeypress
+onkeydown
+onkeyup

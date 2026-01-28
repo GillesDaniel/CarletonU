@@ -71,3 +71,23 @@ if(clientSession is not None):
         ##else:
         ##    errorgroup = "sm"
         ##    errorkey = "purchaseagentrequired"
+
+scriptConfig="""{
+    "autoscript": "CU_PO_PWSEND_VALIDATE",
+    "description": "Validate Emails when PWSEND is checked",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "CU_PO_PWSEND_VALIDATE",
+            "launchPointType": "ATTRIBUTE",
+            "active": true,
+            "description": "Validate Emails when PWSEND is checked",
+            "objectName": "PO",
+            "attributeName": "SM_AUTOSENDEMAIL",
+            "validate": true
+        }
+    ]
+}"""

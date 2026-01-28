@@ -1,0 +1,24 @@
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5724-U18, 5737-M66
+ *
+ * (C) Copyright IBM Corp. 2023,2024 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+define("dijit/_base/sniff", [ "dojo/uacss" ], function(){
+
+	// module:
+	//		dijit/_base/sniff
+
+	/*=====
+	return {
+		// summary:
+		//		Deprecated, back compatibility module, new code should require dojo/uacss directly instead of this module.
+	};
+	=====*/
+});

@@ -176,3 +176,12 @@ function calculateInvoiceLineTaxes(invoiceMbo) {
     invoiceLineSet.close();
   });
 }
+
+var scriptConfig={
+    "autoscript": "CALCULATE_SCANNMAX_TAXES",
+    "description": "Get the taxes before creating an invoice",
+    "version": "1.0",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false
+};

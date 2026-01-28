@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rr="http://jazz.net/ns/ism/registry#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:oslc="http://open-services.net/ns/core#">
+  <oslc:ServiceProvider rdf:about="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr">
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/config#"/>
+        <oslc:prefix>config</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/event/impact#"/>
+        <oslc:prefix>impact</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism#"/>
+        <oslc:prefix>ism</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://open-services.net/ns/asset#"/>
+        <oslc:prefix>oslc_asset</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:service>
+      <oslc:Service>
+        <oslc:queryCapability>
+          <oslc:QueryCapability>
+            <dcterms:title rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Resource Shape Query Capability</dcterms:title>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/core#ResourceShape"/>
+            <oslc:queryBase rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/collection"/>
+            <oslc:label>Resource Shape Query Capability</oslc:label>
+          </oslc:QueryCapability>
+        </oslc:queryCapability>
+        <oslc:queryCapability>
+          <oslc:QueryCapability>
+            <dcterms:title rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Batch Operations Query Capability</dcterms:title>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/auto#AutomationResult"/>
+            <oslc:queryBase rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/operations/collection"/>
+            <oslc:label>Batch Operations Query Capability</oslc:label>
+          </oslc:QueryCapability>
+        </oslc:queryCapability>
+        <oslc:queryCapability>
+          <oslc:QueryCapability>
+            <dcterms:title rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Registration Record Query Capability</dcterms:title>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/asset#Asset"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ComputerSystem"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#StorageVolume"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Database"/>
+            <oslc:resourceType rdf:resource="http://jazz.net/ns/ism/registry#ProviderRecord"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#IPAddress"/>
+            <oslc:queryBase rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/registration/collection"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ServiceInstance"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#SoftwareServer"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ServerAccessPoint"/>
+            <oslc:label>Registration Record Query Capability</oslc:label>
+            <oslc:resourceType rdf:resource="http://jazz.net/ns/ism/registry#RegistrationRecord"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Path"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Location"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#SoftwareModule"/>
+          </oslc:QueryCapability>
+        </oslc:queryCapability>
+        <oslc:queryCapability>
+          <oslc:QueryCapability>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/asset#Asset"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Location"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ComputerSystem"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#SoftwareServer"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#SoftwareModule"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#IPAddress"/>
+            <oslc:label>Resource Record Query Capability</oslc:label>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#StorageVolume"/>
+            <dcterms:title rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Resource Record Query Capability</dcterms:title>
+            <oslc:resourceType rdf:resource="http://jazz.net/ns/ism/registry#ProviderRecord"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ServerAccessPoint"/>
+            <oslc:resourceType rdf:resource="http://jazz.net/ns/ism/registry#ResourceRecord"/>
+            <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Database"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ServiceInstance"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Path"/>
+            <oslc:queryBase rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/collection"/>
+          </oslc:QueryCapability>
+        </oslc:queryCapability>
+        <oslc:domain rdf:resource="http://jazz.net/ns/ism/registry#"/>
+        <oslc:creationFactory>
+          <oslc:CreationFactory>
+            <dcterms:title rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Batch Operations Creation Factory</dcterms:title>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/auto#AutomationRequest"/>
+            <oslc:label>Batch Operations Creation Factory</oslc:label>
+            <oslc:creation rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/operations/collection"/>
+          </oslc:CreationFactory>
+        </oslc:creationFactory>
+        <oslc:creationFactory>
+          <oslc:CreationFactory>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:ServerAccessPoint"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:ServiceInstance"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/oslc_asset:Asset"/>
+            <dcterms:title rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Registration Record Creation Factory</dcterms:title>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:Database"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:Location"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Database"/>
+            <oslc:resourceType rdf:resource="http://jazz.net/ns/ism/registry#ProviderRecord"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:SoftwareServer"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:IPAddress"/>
+            <oslc:resourceType rdf:resource="http://jazz.net/ns/ism/registry#RegistrationRecord"/>
+            <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Location"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#Path"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:SoftwareModule"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/asset#Asset"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:StorageVolume"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:ComputerSystem"/>
+            <oslc:creation rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/registration/collection"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#SoftwareModule"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#IPAddress"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/crtv:Path"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ServiceInstance"/>
+            <oslc:label>Registration Record Creation Factory</oslc:label>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ComputerSystem"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#SoftwareServer"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#StorageVolume"/>
+            <oslc:resourceShape rdf:resource="http://ACI-JazzSM.tivlab.austin.ibm.com:16310/oslc/rr/shapes/rr:ProviderRecord"/>
+            <oslc:resourceType rdf:resource="http://open-services.net/ns/crtv#ServerAccessPoint"/>
+          </oslc:CreationFactory>
+        </oslc:creationFactory>
+      </oslc:Service>
+    </oslc:service>
+    <dcterms:title rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Resource Registry</dcterms:title>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/event/omnibus#"/>
+        <oslc:prefix>oslcem</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/registry#"/>
+        <oslc:prefix>rr</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://open-services.net/ns/auto#"/>
+        <oslc:prefix>oslc_auto</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://open-services.net/ns/crtv#"/>
+        <oslc:prefix>crtv</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/event#"/>
+        <oslc:prefix>event</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/perfmon/cloudhealth#"/>
+        <oslc:prefix>cloudhealth</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+        <oslc:prefix>rdfs</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/config/taddm#"/>
+        <oslc:prefix>taddm</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+        <oslc:prefix>oslc</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+        <oslc:prefix>dcterms</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/ui#"/>
+        <oslc:prefix>ui</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/perfmon#"/>
+        <oslc:prefix>perf</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://jazz.net/ns/ism/perfmon/itm#"/>
+        <oslc:prefix>itm</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <oslc:prefixDefinition>
+      <oslc:PrefixDefinition>
+        <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        <oslc:prefix>rdf</oslc:prefix>
+      </oslc:PrefixDefinition>
+    </oslc:prefixDefinition>
+    <dcterms:description rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Enables registration of resources and resource relationships</dcterms:description>
+  </oslc:ServiceProvider>
+</rdf:RDF>

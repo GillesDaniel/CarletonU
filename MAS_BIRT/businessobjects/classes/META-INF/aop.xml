@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+* Licensed Materials - Property of IBM
+* Restricted Materials of IBM
+* 5724-U18, 5737-M66
+* (C) COPYRIGHT IBM CORP. 2011,2021 All Rights Reserved.
+* US Government Users Restricted Rights - Use, duplication or
+* disclosure restricted by GSA ADP Schedule Contract with
+* IBM Corp.
+-->
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+
+<aspectj>
+
+	<!-- If your having trouble add the following to the weaver options "-verbose -showWeaveInfo" -->
+	<weaver options="-Xlint:ignore">
+	
+		<!-- 
+		 # A list of packages to include in tracing
+		 #
+		 # Notice the ..* is used to also include subpackages, using .* would only
+		 #  include classes in the listed package
+		-->
+	
+		<!-- Object Framework Mbos -->
+		<include within="psdi.mbo..*" />
+		<include within="psdi.server..*" />
+		
+		<include within="psdi.app..*" />
+
+		<include within="psdi.workflow..*" />
+
+		<include within="psdi.iface..*" />
+		<include within="psdi.dm..*" />
+		<include within="psdi.configure..*" />
+		<include within="psdi.common..*" />
+
+		<include within="psdi.plus*..*" />
+
+		<include within="com.ibm.ism..*" />
+		<include within="com.ibm.tivoli.maximo..*" />
+
+		<!-- Data Beans -->
+		<include within="psdi.webclient.beans..*" />
+		<include within="psdi.plus*.webclient.beans..*" />
+		
+		<!-- UI Framework and Controls and Components -->
+		<include within="psdi.webclient.controls..*" />
+		<include within="psdi.webclient.components..*" />
+		<include within="psdi.webclient.system..*" />
+
+		<!-- JSPs in WebSphere -->
+	<!--
+ 		<include within="com.ibm._jsp..*" />
+ 	-->
+	</weaver>
+
+	<!--
+	 # There are three variables to play with here; detail, method scope, included packages
+	 #
+	 # If you increase one of the variables you should consider decreasing the others
+	 #  or performance may be impacted. In particular, if you increase method scope you should
+	 #  decrease the included packages.
+	 #
+	-->
+	<aspects>
+		<!--
+		 # Change the extends="" to change the amount of detail traced on entry, exit, and exception 
+		 #
+		 # If you increase the detail level or scope above, you'll want to remove
+		 #  some of these or performance may be severely impacted.
+		 #
+		 # Valid values:
+
+			extends="psdi.util.logging.EntryExitTracing"
+				* Just method name and the first element from the stack trace on exceptions
+
+			extends="psdi.util.logging.EntryExitTracingWithParameters"
+				* Same as above plus: parameters, and return values. Some parameter values may
+				  not be displayed if a developer has marked them to be hidden by default
+		 
+			extends="psdi.util.logging.EntryExitTracingWithAllParametersAndStack"
+				* Above plus: full stack traces and all param/return values
+
+		-->
+		<concrete-aspect name="EntryExitTracing" 
+				extends="psdi.util.logging.EntryExitTracing"
+			>
+		
+			<!-- 
+			 #  Change the expression="" to change which methods are traced
+			 #
+			 # Suggested values:
+			 
+					  "execution(@psdi.util.logging.annotations.TracePrimary * *(..)) 
+					|| execution(@psdi.util.logging.annotations.TracePrimary *.new(..))"
+						* First order tracing, intended to cover a few basics methods that might help 
+						  narrow down where the problem is, without to much of a performance impact
+			
+					  "execution(@psdi.util.logging.annotations.TracePrimary * *(..)) 
+					|| execution(@psdi.util.logging.annotations.TracePrimary *.new(..)) 
+					|| execution(@psdi.util.logging.annotations.TraceSecondary * *(..)) 
+					|| execution(@psdi.util.logging.annotations.TraceSecondary *.new(..))"
+						* Same as above plus a little more
+			
+					"execution(!@psdi.util.logging.annotations.TraceDisabled !private * *(..)) 
+					&amp;&amp; !@within(psdi.util.logging.annotations.TraceDisabled)"
+						* Trace everything accept methods that have been marked by developers as
+						  things that should normally not be included in tracing usually because
+						  they are simple and not likely to fail and called very frequently.
+			
+					"execution(* *(..))"
+						* Trace ALL methods
+			-->
+			<pointcut name="scope" expression=
+					  "execution(@psdi.util.logging.annotations.TracePrimary * *(..)) 
+					|| execution(@psdi.util.logging.annotations.TracePrimary *.new(..))"
+				/>
+			
+		</concrete-aspect>
+	</aspects>
+
+</aspectj>

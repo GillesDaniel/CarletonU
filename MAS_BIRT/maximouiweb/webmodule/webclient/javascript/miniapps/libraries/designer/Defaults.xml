@@ -1,0 +1,79 @@
+<Designer>
+
+   <!-- Default CSS styles -->
+   <Styles>
+      <S Name="Designer" Src="Designer.css"/>
+      <S Name="Dialogs" Src="Dialogs/Modern.css"/>
+   </Styles>
+
+   <!-- Configuration -->
+   <Cfg 
+      Resizing="7" Dragging="2" Dropping="2" MoveOut="3" Editing="1" Deleting="1" Selecting="1" Disabling="3" Adding="1" Copying="1" Changing="1" Hiding="1" DeletingLines="1" AddingLines="1" ChangingLines="1"
+      ResizeSize="7" DragSize="5" SelectRangeSize="5" CornerSize="0.25" CopyDef="1" CenterMessage='1' BoxDefs="" BoxDef="" LineDefs="" LineDef="" MoreLines="4" MoreLinesReplace="3"
+      Padding="10" AutoSize="3" Zoom="-1" ZoomFitMax="2" ZoomFitMin="0.4" ZoomMax="3" ZoomMin="0.4" EmptySize="1000,1000"
+      HoverTime="200" HoverClearTime="2000"
+      Menu="|SelectAll|ClearSelection|ShowBoxes|ShowLines|-|Add|ChooseAdd|-|ChooseDef|ChooseLineDef|-|DragMove|DragCopy|DragResize|DragLine|ClearDrag" HideMenuUnused="1"
+      SVG="0"
+      Input="{Class:'Edit',AutoSize:0,AutoSelect:1}" ShowMenuSingle="1"
+      WaitForStyles="10"
+      Merge="Save,HoverClass,SelectClass,FocusClass,DisableClass,LockClass,EditedClass"
+      />
+
+   <!-- Mouse action schema -->
+   <Actions
+      OnDragBox="Front, Resize OR MoveSelected OR Move"
+      OnRightDragBox="Front, CreateLine"
+      OnCtrlDragBox="CopySelected OR Copy" OnShiftDragBox="CopySelectedWithLines OR CopyWithLines"
+      OnDragEmpty="SelectRangeOne" OnCtrlDragEmpty="SelectRange" OnShiftDragEmpty="SelectRangeOneLinked" OnRightDragEmpty="Scroll" OnCtrlRightDragEmpty="Zoom"
+
+      OnDrag1="100" OnDrag1Box="Front, Resize OR MoveSelected OR Move OR CopySelected OR Copy OR CreateLine"
+      OnClick1="Front,ShowMenu"
+      OnDrag1Empty="SelectRangeOne OR Zoom"
+
+      OnClickBox="Front,SelectOne" OnCtrlClickBox="Front,Invert" OnShiftClickBox="Front,InvertLinked" 
+      OnClickLine="Front,0" OnClickEmpty="ClearSelection"
+      OnCtrlRightClickBox="DeleteSelected OR Delete" OnShiftRightClickBox="DeleteSelectedLinked OR DeleteLinked"
+      OnCtrlRightClickLine="DeleteLine" OnShiftRightClickLine="DeleteFromTo"
+      OnRightClick="Front,ShowMenu OR ShowNoMenu" OnDblClickBox="Edit" OnDblClickLine="Prompt" OnDblClickEmpty="ChooseAdd"
+      />
+
+   <!-- Internal graphic objects -->
+   <Objects>
+      <!-- Object shown on touch screens on "hover" of empty space -->
+      <O Name="HoverEmpty" Width="40" Height="40" Kind="Object">
+         <svg>
+            <circle cx="{Width/2}" cy="{Width/2}" r="{Width/2}" fill="url(#HoverEmptyGradient)" part="Empty"/>
+         </svg>
+      </O>
+   </Objects>
+   <DefSvg>
+      <D Name="HoverEmptyGradient">
+         <radialGradient id="HoverEmptyGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:#F00;" />
+            <stop offset="100%" style="stop-color:#FAA;stop-opacity:0.3;" />
+         </radialGradient>
+      </D>
+   </DefSvg>
+
+   <!-- Default line definitions -->
+   <DefLines>
+      <D Name="Line" Kind="Line" Text="" Visible="1" 
+         CanEdit="1" CanChange="1" CanDelete="1" CanHide="1" CanDisable="3" Disabled="0"
+         FromDX="0" ToDX="0" FromDY="0" ToDY="0" FromEdge="Right" ToEdge="Left"
+         Menu="|Prompt|ChangeLine|ChooseChangeLine|ChooseLineDef|ReverseLine|Enable|Disable|Lock|Hide|DeleteLine|DeleteFromTo|ShowLines|-|SelectOneFrom|SelectOneTo|SelectOneFromTo|DeselectFromTo"
+         AutoWidth="0" AutoHeight="0" 
+         />
+   </DefLines>
+
+   <!-- Default box definition -->
+   <DefBoxes>
+      <D Name="Box" Kind="Box" Text="" Visible="1"
+         CanEdit="1" CanChange="1" CanDelete="1" CanHide="1" CanDisable="3" Disabled="0"
+         CanResize="3" CanMove="2" CanCopy="2" CanSelect="1" AutoSize="3"
+         LineOutEdge="All" LineInEdge="All" LineIn="All"
+         Menu="|Select|SelectOne|SelectOneLinked|SelectOneLinkedDirect|Deselect|SelectAll|ClearSelection|-|Edit|Change|ChangeSelected|ChooseChange|ChooseChangeSelected|-|AutoSize|AutoSizeSelected|-|Duplicate|DuplicateWithLines|DuplicateSelectedWithoutLines|DuplicateSelected|DuplicateSelectedWithLines|Add|ChooseAdd|ChooseDef|-|Disable|Enable|Lock|DisableSelected|EnableSelected|LockSelected|-|Hide|HideSelected|ShowBoxes|-|Delete|DeleteLinked|DeleteSelected|DeleteLines|DeleteLinesFrom|DeleteLinesTo|DeleteLinesSelected|DeleteLinesFromSelected|DeleteLinesToSelected|-|DragMove|DragCopy|DragResize|DragLine|ClearDrag"
+         MaxWidth="500" MaxHeight="200" AutoWidth="0" AutoHeight="0"
+         />
+   </DefBoxes>
+
+</Designer>

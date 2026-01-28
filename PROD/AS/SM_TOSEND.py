@@ -34,3 +34,22 @@ if interactive== True and "SM_SENDEMAIL"==mbo.getThisMboSet().getParentApp():
     else:
         mbo.setValue("TOSEND",False);
     mbo.getThisMboSet().save()
+
+scriptConfig="""{
+    "autoscript": "SM_TOSEND",
+    "description": "related to sm_send email",
+    "version": "",
+    "active": true,
+    "logLevel": "ERROR",
+    "allowInvokingScriptFunctions": false,
+    "scriptLaunchPoints": [
+        {
+            "launchPointName": "SM_TOSEND",
+            "launchPointType": "ATTRIBUTE",
+            "active": true,
+            "objectName": "SM_SENDEMAIL",
+            "attributeName": "TOSEND",
+            "runAction": true
+        }
+    ]
+}"""
